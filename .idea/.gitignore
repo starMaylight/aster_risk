@@ -1,25 +1,18 @@
-# eclipse
-bin
-*.launch
-.settings
-.metadata
-.classpath
-.project
+# ==== Gradle ====
+.gradle/
+build/
 
-# idea
-out
-*.ipr
-*.iws
+# ==== MCreator ====
+.mcreator/
+run/
+
+# ==== IDE ====
+.idea/
 *.iml
-.idea
+.eclipse/
+.settings/
 
-# gradle
-build
-.gradle
-
-# other
-eclipse
-run
-
-# Files from Forge MDK
-forge*changelog.txt
+# ==== OS ごみファイル（お好みで）====
+.DS_Store
+Thumbs.db
+*.log
