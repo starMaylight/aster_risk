@@ -53,6 +53,34 @@
     "kotlin-language-version-configured": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Client" type="Application" factoryName="Application">
+      <envs>
+        <env name="MOD_CLASSES" value="mcreator%%C:\Users\yanas\MCreatorWorkspaces\aster_risk\build\classes\java\main;mcreator%%C:\Users\yanas\MCreatorWorkspaces\aster_risk\build\resources\main" />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="net.neoforged.devlaunch.Main" />
+      <module name="aster_risk.main" />
+      <option name="PROGRAM_PARAMETERS" value="@C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\build\\moddev\\clientRunProgramArgs.txt" />
+      <option name="VM_PARAMETERS" value="@C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\build\\moddev\\clientRunVmArgs.txt -Dfml.modFolders=mcreator%%C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\build\\classes\\java\\main;mcreator%%C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\build\\resources\\main" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server" type="Application" factoryName="Application">
+      <envs>
+        <env name="MOD_CLASSES" value="mcreator%%C:\Users\yanas\MCreatorWorkspaces\aster_risk\build\classes\java\main;mcreator%%C:\Users\yanas\MCreatorWorkspaces\aster_risk\build\resources\main" />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="net.neoforged.devlaunch.Main" />
+      <module name="aster_risk.main" />
+      <option name="PROGRAM_PARAMETERS" value="@C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\build\\moddev\\serverRunProgramArgs.txt" />
+      <option name="VM_PARAMETERS" value="@C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\build\\moddev\\serverRunVmArgs.txt -Dfml.modFolders=mcreator%%C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\build\\classes\\java\\main;mcreator%%C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\build\\resources\\main" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="アプリケーションレベル" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="デフォルトタスク">
