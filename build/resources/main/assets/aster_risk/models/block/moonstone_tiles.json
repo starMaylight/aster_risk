@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "aster_risk:block/moonstone_tiles",
-    "particle": "aster_risk:block/moonstone_tiles"
-  },
-  "render_type": "solid"
-}

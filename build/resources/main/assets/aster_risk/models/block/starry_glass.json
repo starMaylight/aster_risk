@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "aster_risk:block/starry_glass_transparent",
-    "particle": "aster_risk:block/starry_glass_transparent"
-  },
-  "render_type": "translucent"
-}

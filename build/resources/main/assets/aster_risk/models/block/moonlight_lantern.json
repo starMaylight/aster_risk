@@ -1,9 +1,0 @@
-{
-  "parent": "aster_risk:custom/moonlight_lantern",
-  "textures": {
-    "all": "aster_risk:block/moonlight_lantern_model",
-    "particle": "aster_risk:block/moonlight_lantern_model",
-    "0": "aster_risk:block/moonlight_lantern"
-  },
-  "render_type": "solid"
-}

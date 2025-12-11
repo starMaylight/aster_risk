@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "aster_risk:block/meteorite_block",
-    "particle": "aster_risk:block/meteorite_block"
-  },
-  "render_type": "solid"
-}

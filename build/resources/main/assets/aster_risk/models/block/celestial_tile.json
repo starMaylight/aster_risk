@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "aster_risk:block/celestial_tile",
-    "particle": "aster_risk:block/celestial_tile"
-  },
-  "render_type": "solid"
-}

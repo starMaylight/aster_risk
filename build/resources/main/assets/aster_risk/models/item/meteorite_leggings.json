@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "aster_risk:item/meteorite_leggings"
-  }
-}
