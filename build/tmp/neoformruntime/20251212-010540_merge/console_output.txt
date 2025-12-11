@@ -1,0 +1,18 @@
+--------------------------------------------------------------------------------
+
+Command-Line:
+ - C:\Program Files\Eclipse Adoptium\jdk-17.0.9.9-hotspot\bin\java.exe
+ - -jar
+ - C:\Users\yanas\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mergetool\1.1.7\3d41564f78f123d64573cae7948014baf3aaba3f\mergetool-1.1.7-fatjar.jar
+ - --client
+ - C:\Users\yanas\.gradle\caches\neoformruntime\intermediate_results\stripClient_1e286e55796174bc3a6c9835ec3938a5b0b8c933_output.jar
+ - --server
+ - C:\Users\yanas\.gradle\caches\neoformruntime\intermediate_results\stripServer_88bb2df07ac3cea47cdee5c3051156d58a1cc4c9_output.jar
+ - --ann
+ - 1.20.1
+ - --output
+ - ./output.jar
+ - --inject
+ - false
+--------------------------------------------------------------------------------
+

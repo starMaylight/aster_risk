@@ -1,0 +1,98 @@
+[
+  {
+    "problemId": {
+      "id": "invalid-at",
+      "displayName": "Invalid",
+      "group": {
+        "id": "access-transformer",
+        "displayName": "Access Transformers"
+      }
+    },
+    "severity": "WARNING",
+    "location": {
+      "file": "C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\build\\tmp\\neoformruntime\\20251212-010836_transformSources\\ats\\accesstransformer.cfg",
+      "line": 164
+    },
+    "contextualLabel": "Access transformer targeting record class net.minecraft.core.RegistrySynchronization$NetworkedRegistryData attempts to widen its access without widening the constructor\u0027s access. You must AT the constructor too: \"public net.minecraft.core.RegistrySynchronization$NetworkedRegistryData \u003cinit\u003e(Lnet/minecraft/resources/ResourceKey;Lcom/mojang/serialization/Codec;)V\""
+  },
+  {
+    "problemId": {
+      "id": "invalid-at",
+      "displayName": "Invalid",
+      "group": {
+        "id": "access-transformer",
+        "displayName": "Access Transformers"
+      }
+    },
+    "severity": "WARNING",
+    "location": {
+      "file": "C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\build\\tmp\\neoformruntime\\20251212-010836_transformSources\\ats\\accesstransformer.cfg",
+      "line": 221
+    },
+    "contextualLabel": "Access transformer targeting record class net.minecraft.util.datafix.fixes.StructuresBecomeConfiguredFix$Conversion attempts to widen its access without widening the constructor\u0027s access. You must AT the constructor too: \"public net.minecraft.util.datafix.fixes.StructuresBecomeConfiguredFix$Conversion \u003cinit\u003e(Ljava/util/Map;Ljava/lang/String;)V\""
+  },
+  {
+    "problemId": {
+      "id": "invalid-at",
+      "displayName": "Invalid",
+      "group": {
+        "id": "access-transformer",
+        "displayName": "Access Transformers"
+      }
+    },
+    "severity": "WARNING",
+    "location": {
+      "file": "C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\build\\tmp\\neoformruntime\\20251212-010836_transformSources\\ats\\accesstransformer.cfg",
+      "line": 209
+    },
+    "contextualLabel": "Access transformer targeting record class net.minecraft.server.MinecraftServer$ReloadableResources attempts to widen its access without widening the constructor\u0027s access. You must AT the constructor too: \"public net.minecraft.server.MinecraftServer$ReloadableResources \u003cinit\u003e(Lnet/minecraft/server/packs/resources/CloseableResourceManager;Lnet/minecraft/server/ReloadableServerResources;)V\""
+  },
+  {
+    "problemId": {
+      "id": "invalid-at",
+      "displayName": "Invalid",
+      "group": {
+        "id": "access-transformer",
+        "displayName": "Access Transformers"
+      }
+    },
+    "severity": "WARNING",
+    "location": {
+      "file": "C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\build\\tmp\\neoformruntime\\20251212-010836_transformSources\\ats\\accesstransformer.cfg",
+      "line": 280
+    },
+    "contextualLabel": "Access transformer attempted to make m_43923_ of net.minecraft.world.item.crafting.Ingredient final. Was non-final"
+  },
+  {
+    "problemId": {
+      "id": "invalid-at",
+      "displayName": "Invalid",
+      "group": {
+        "id": "access-transformer",
+        "displayName": "Access Transformers"
+      }
+    },
+    "severity": "WARNING",
+    "location": {
+      "file": "C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\build\\tmp\\neoformruntime\\20251212-010836_transformSources\\ats\\accesstransformer.cfg",
+      "line": 296
+    },
+    "contextualLabel": "Access transformer targeting record class net.minecraft.world.level.biome.Biome$ClimateSettings attempts to widen its access without widening the constructor\u0027s access. You must AT the constructor too: \"public net.minecraft.world.level.biome.Biome$ClimateSettings \u003cinit\u003e(ZFLnet/minecraft/world/level/biome/Biome$TemperatureModifier;F)V\""
+  },
+  {
+    "problemId": {
+      "id": "missing-target",
+      "displayName": "Missing Target",
+      "group": {
+        "id": "access-transformer",
+        "displayName": "Access Transformers"
+      }
+    },
+    "severity": "ERROR",
+    "location": {
+      "file": "C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\build\\tmp\\neoformruntime\\20251212-010836_transformSources\\ats\\accesstransformer.cfg",
+      "line": 458
+    },
+    "contextualLabel": "The target net.minecraft.world.level.levelgen.NoiseGeneratorSettings METHOD m_64474_(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App; does not exist."
+  }
+]
