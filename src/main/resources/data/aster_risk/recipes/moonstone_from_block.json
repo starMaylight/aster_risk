@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "aster_risk:moonstone_block"
+    }
+  ],
+  "result": {
+    "item": "aster_risk:moonstone",
+    "count": 9
+  }
+}

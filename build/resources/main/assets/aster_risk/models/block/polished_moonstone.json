@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "aster_risk:block/polished_moonstone",
+    "particle": "aster_risk:block/polished_moonstone"
+  },
+  "render_type": "solid"
+}

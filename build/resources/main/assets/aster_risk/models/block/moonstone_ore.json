@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "aster_risk:block/moonstone_ore",
+    "up": "aster_risk:block/moonstone_ore",
+    "north": "aster_risk:block/moonstone_ore",
+    "east": "aster_risk:block/moonstone_ore",
+    "south": "aster_risk:block/moonstone_ore",
+    "west": "aster_risk:block/moonstone_ore",
+    "particle": "aster_risk:block/moonstone_ore"
+  },
+  "render_type": "solid"
+}

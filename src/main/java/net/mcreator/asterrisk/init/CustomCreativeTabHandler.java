@@ -1,0 +1,68 @@
+package net.mcreator.asterrisk.init;
+
+import net.mcreator.asterrisk.AsterRiskMod;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+
+/**
+ * 手動で追加するアイテム・ブロックのクリエイティブタブ登録
+ * MCreatorによって上書きされないファイル
+ */
+@Mod.EventBusSubscriber(modid = AsterRiskMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+public class CustomCreativeTabHandler {
+
+    @SubscribeEvent
+    public static void addCreative(BuildCreativeModeTabContentsEvent event) {
+        // Aster Riskタブにカスタムアイテムを追加
+        if (event.getTabKey() == AsterRiskModTabs.ASTER_RISK.getKey()) {
+            // === 機能ブロック ===
+            event.accept(AsterRiskModItems.LUNAR_COLLECTOR.get());
+            event.accept(AsterRiskModItems.RESONATOR_TIER1.get());
+            event.accept(AsterRiskModItems.RESONATOR_TIER2.get());
+            event.accept(AsterRiskModItems.RESONATOR_TIER3.get());
+            event.accept(AsterRiskModItems.MANA_BATTERY.get());
+            
+            // === 儀式システム ===
+            event.accept(AsterRiskModItems.RITUAL_PEDESTAL.get());
+            event.accept(AsterRiskModItems.ALTAR_CORE.get());
+            
+            // === Phase 6.1: 機能ブロック ===
+            event.accept(AsterRiskModItems.MOONLIGHT_BEACON.get());
+            event.accept(AsterRiskModItems.LUNAR_INFUSER.get());
+            event.accept(AsterRiskModItems.STAR_ANVIL.get());
+            
+            // === 魔法道具 ===
+            event.accept(AsterRiskModItems.MOONLIGHT_WAND.get());
+            event.accept(AsterRiskModItems.STARGAZER_WAND.get());
+            event.accept(AsterRiskModItems.LUNAR_COMPASS.get());
+            event.accept(AsterRiskModItems.METEOR_WAND.get());
+            event.accept(AsterRiskModItems.LUNAR_HEALING_STAFF.get());
+            event.accept(AsterRiskModItems.LINKING_WAND.get());
+            
+            // === 武器 ===
+            event.accept(AsterRiskModItems.LUNAR_BLADE.get());
+            event.accept(AsterRiskModItems.METEOR_HAMMER.get());
+            event.accept(AsterRiskModItems.STARDUST_DAGGER.get());
+            event.accept(AsterRiskModItems.METEORITE_GREATSWORD.get());
+            
+            // === 月光の防具セット ===
+            event.accept(AsterRiskModItems.LUNAR_HELMET.get());
+            event.accept(AsterRiskModItems.LUNAR_CHESTPLATE.get());
+            event.accept(AsterRiskModItems.LUNAR_LEGGINGS.get());
+            event.accept(AsterRiskModItems.LUNAR_BOOTS.get());
+            
+            // === 星屑の防具セット ===
+            event.accept(AsterRiskModItems.STELLAR_CROWN.get());
+            event.accept(AsterRiskModItems.STELLAR_ROBE.get());
+            event.accept(AsterRiskModItems.STELLAR_LEGGINGS.get());
+            event.accept(AsterRiskModItems.STELLAR_BOOTS.get());
+            
+            // === 隕石の防具セット ===
+            event.accept(AsterRiskModItems.METEORITE_HELMET.get());
+            event.accept(AsterRiskModItems.METEORITE_CHESTPLATE.get());
+            event.accept(AsterRiskModItems.METEORITE_LEGGINGS.get());
+            event.accept(AsterRiskModItems.METEORITE_BOOTS.get());
+        }
+    }
+}

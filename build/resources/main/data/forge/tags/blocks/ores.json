@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#forge:ores/meteorite",
+      "required": false
+    },
+    {
+      "id": "#forge:ores/moonstone",
+      "required": false
+    },
+    {
+      "id": "#forge:ores/silver",
+      "required": false
+    }
+  ]
+}

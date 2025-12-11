@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#forge:gems/meteorite",
+      "required": false
+    },
+    {
+      "id": "#forge:gems/moonstone",
+      "required": false
+    },
+    {
+      "id": "#forge:gems/star_fragment",
+      "required": false
+    }
+  ]
+}

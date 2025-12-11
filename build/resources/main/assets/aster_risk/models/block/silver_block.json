@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "aster_risk:block/silver_block",
+    "up": "aster_risk:block/silver_block",
+    "north": "aster_risk:block/silver_block",
+    "east": "aster_risk:block/silver_block",
+    "south": "aster_risk:block/silver_block",
+    "west": "aster_risk:block/silver_block",
+    "particle": "aster_risk:block/silver_block"
+  },
+  "render_type": "solid"
+}

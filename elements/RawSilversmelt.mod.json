@@ -1,0 +1,27 @@
+{
+  "_fv": 79,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Smelting",
+    "recipeRetstackSize": 1,
+    "group": "",
+    "unlockingItems": [
+      {
+        "value": "TAG:forge:raw_materials/silver"
+      }
+    ],
+    "cookingBookCategory": "MISC",
+    "xpReward": 1.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "smeltingInputStack": {
+      "value": "TAG:forge:raw_materials/silver"
+    },
+    "smeltingReturnStack": {
+      "value": "CUSTOM:Silveringot"
+    },
+    "name": "silver_ingot",
+    "namespace": "mod"
+  }
+}

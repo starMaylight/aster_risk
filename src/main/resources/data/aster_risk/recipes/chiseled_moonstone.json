@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a",
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "aster_risk:polished_moonstone"
+    }
+  },
+  "result": {
+    "item": "aster_risk:chiseled_moonstone",
+    "count": 2
+  }
+}

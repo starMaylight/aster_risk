@@ -1,0 +1,12 @@
+{
+    "type": "aster_risk:infuser",
+    "input": {
+        "item": "aster_risk:moonstone"
+    },
+    "result": {
+        "item": "aster_risk:lunar_dust",
+        "count": 2
+    },
+    "mana_cost": 80,
+    "process_time": 80
+}

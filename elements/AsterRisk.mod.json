@@ -1,0 +1,11 @@
+{
+  "_fv": 79,
+  "_type": "tab",
+  "definition": {
+    "name": "Aster Risk",
+    "icon": {
+      "value": "CUSTOM:Moonstone"
+    },
+    "showSearch": false
+  }
+}

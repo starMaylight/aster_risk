@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "bcb",
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "tag": "forge:glass"
+    },
+    "b": {
+      "tag": "forge:dusts/stardust"
+    },
+    "c": {
+      "tag": "forge:gems/star_fragment"
+    }
+  },
+  "result": {
+    "item": "aster_risk:starry_glass",
+    "count": 4
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "_fv": 79,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "recipeRetstackSize": 1,
+    "group": "",
+    "unlockingItems": [
+      {
+        "value": "TAG:forge:gems/moonstone"
+      }
+    ],
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "TAG:forge:gems/moonstone"
+      },
+      {
+        "value": "TAG:forge:gems/moonstone"
+      },
+      {
+        "value": "TAG:forge:gems/moonstone"
+      },
+      {
+        "value": "TAG:forge:gems/moonstone"
+      },
+      {
+        "value": "TAG:forge:gems/moonstone"
+      },
+      {
+        "value": "TAG:forge:gems/moonstone"
+      },
+      {
+        "value": "TAG:forge:gems/moonstone"
+      },
+      {
+        "value": "TAG:forge:gems/moonstone"
+      },
+      {
+        "value": "TAG:forge:gems/moonstone"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:Moonstoneblock"
+    },
+    "name": "moonstone_block",
+    "namespace": "mod"
+  }
+}

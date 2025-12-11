@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aa",
+    "aa"
+  ],
+  "key": {
+    "a": {
+      "item": "aster_risk:silver_block"
+    }
+  },
+  "result": {
+    "item": "aster_risk:silver_bricks",
+    "count": 4
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "top": "aster_risk:block/lunar_collector_top",
+    "bottom": "aster_risk:block/lunar_collector_bottom",
+    "side": "aster_risk:block/lunar_collector_side",
+    "particle": "aster_risk:block/lunar_collector_side"
+  },
+  "elements": [
+    {
+      "name": "base",
+      "from": [2, 0, 2],
+      "to": [14, 12, 14],
+      "faces": {
+        "north": {"texture": "#side", "uv": [2, 4, 14, 16]},
+        "south": {"texture": "#side", "uv": [2, 4, 14, 16]},
+        "east": {"texture": "#side", "uv": [2, 4, 14, 16]},
+        "west": {"texture": "#side", "uv": [2, 4, 14, 16]},
+        "up": {"texture": "#top", "uv": [2, 2, 14, 14]},
+        "down": {"texture": "#bottom", "uv": [2, 2, 14, 14]}
+      }
+    },
+    {
+      "name": "rim",
+      "from": [1, 12, 1],
+      "to": [15, 14, 15],
+      "faces": {
+        "north": {"texture": "#side", "uv": [1, 2, 15, 4]},
+        "south": {"texture": "#side", "uv": [1, 2, 15, 4]},
+        "east": {"texture": "#side", "uv": [1, 2, 15, 4]},
+        "west": {"texture": "#side", "uv": [1, 2, 15, 4]},
+        "up": {"texture": "#top", "uv": [1, 1, 15, 15]},
+        "down": {"texture": "#top", "uv": [1, 1, 15, 15]}
+      }
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+    "parent": "block/block",
+    "textures": {
+        "base": "aster_risk:block/ritual_pedestal_base",
+        "pillar": "aster_risk:block/ritual_pedestal_pillar",
+        "top": "aster_risk:block/ritual_pedestal_top",
+        "particle": "aster_risk:block/ritual_pedestal_pillar"
+    },
+    "elements": [
+        {
+            "name": "base",
+            "from": [3, 0, 3],
+            "to": [13, 2, 13],
+            "faces": {
+                "north": {"uv": [3, 14, 13, 16], "texture": "#base"},
+                "east": {"uv": [3, 14, 13, 16], "texture": "#base"},
+                "south": {"uv": [3, 14, 13, 16], "texture": "#base"},
+                "west": {"uv": [3, 14, 13, 16], "texture": "#base"},
+                "up": {"uv": [3, 3, 13, 13], "texture": "#base"},
+                "down": {"uv": [3, 3, 13, 13], "texture": "#base", "cullface": "down"}
+            }
+        },
+        {
+            "name": "pillar",
+            "from": [5, 2, 5],
+            "to": [11, 8, 11],
+            "faces": {
+                "north": {"uv": [5, 8, 11, 14], "texture": "#pillar"},
+                "east": {"uv": [5, 8, 11, 14], "texture": "#pillar"},
+                "south": {"uv": [5, 8, 11, 14], "texture": "#pillar"},
+                "west": {"uv": [5, 8, 11, 14], "texture": "#pillar"}
+            }
+        },
+        {
+            "name": "dish",
+            "from": [2, 8, 2],
+            "to": [14, 10, 14],
+            "faces": {
+                "north": {"uv": [2, 6, 14, 8], "texture": "#top"},
+                "east": {"uv": [2, 6, 14, 8], "texture": "#top"},
+                "south": {"uv": [2, 6, 14, 8], "texture": "#top"},
+                "west": {"uv": [2, 6, 14, 8], "texture": "#top"},
+                "up": {"uv": [2, 2, 14, 14], "texture": "#top"},
+                "down": {"uv": [2, 2, 14, 14], "texture": "#top"}
+            }
+        }
+    ]
+}

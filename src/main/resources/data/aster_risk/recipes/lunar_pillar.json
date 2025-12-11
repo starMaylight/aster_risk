@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a",
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "aster_risk:moonstone_block"
+    }
+  },
+  "result": {
+    "item": "aster_risk:lunar_pillar",
+    "count": 2
+  }
+}

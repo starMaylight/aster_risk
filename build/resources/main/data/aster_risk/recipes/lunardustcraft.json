@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "aster_risk:moonstone"
+    }
+  ],
+  "result": {
+    "item": "aster_risk:lunar_dust",
+    "count": 4
+  }
+}

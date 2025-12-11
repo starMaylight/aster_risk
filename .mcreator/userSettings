@@ -1,0 +1,29 @@
+{
+  "workspacePanelIconSize": "TILES",
+  "workspacePanelSortType": "TYPE",
+  "workspacePanelSortAscending": true,
+  "projectBrowserSplitPos": 423,
+  "projectBrowserState": {
+    "expandedPaths": [
+      "[, Aster Risk]",
+      "[, Aster Risk, Source (Gradle)]",
+      "[, Aster Risk, Source (Gradle), C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net]",
+      "[, Aster Risk, Source (Gradle), C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator]",
+      "[, Aster Risk, Source (Gradle), C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator\\asterrisk]",
+      "[, Aster Risk, Source (Gradle), C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator\\asterrisk, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator\\asterrisk\\block]",
+      "[, Aster Risk, Source (Gradle), C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator\\asterrisk, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator\\asterrisk\\block, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator\\asterrisk\\block\\entity]",
+      "[, Aster Risk, Source (Gradle), C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator\\asterrisk, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator\\asterrisk\\client]",
+      "[, Aster Risk, Source (Gradle), C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator\\asterrisk, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator\\asterrisk\\client, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator\\asterrisk\\client\\renderer]",
+      "[, Aster Risk, Source (Gradle), C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator\\asterrisk, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator\\asterrisk\\compat]",
+      "[, Aster Risk, Source (Gradle), C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator\\asterrisk, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator\\asterrisk\\compat, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator\\asterrisk\\compat\\jei]",
+      "[, Aster Risk, Source (Gradle), C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator\\asterrisk, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator\\asterrisk\\init]",
+      "[, Aster Risk, Source (Gradle), C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator\\asterrisk, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\java\\net\\mcreator\\asterrisk\\recipe]",
+      "[, Aster Risk, Resources (Gradle)]",
+      "[, Aster Risk, Resources (Gradle), C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\resources\\data]",
+      "[, Aster Risk, Resources (Gradle), C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\resources\\data, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\resources\\data\\aster_risk]",
+      "[, Aster Risk, Resources (Gradle), C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\resources\\data, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\resources\\data\\aster_risk, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\resources\\data\\aster_risk\\forge]",
+      "[, Aster Risk, Resources (Gradle), C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\resources\\data, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\resources\\data\\aster_risk, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\resources\\data\\aster_risk\\recipes]",
+      "[, Aster Risk, Resources (Gradle), C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\resources\\data, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\resources\\data\\aster_risk, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\resources\\data\\aster_risk\\recipes, C:\\Users\\yanas\\MCreatorWorkspaces\\aster_risk\\src\\main\\resources\\data\\aster_risk\\recipes\\ritual]"
+    ]
+  }
+}

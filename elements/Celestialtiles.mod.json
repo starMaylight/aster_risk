@@ -1,0 +1,49 @@
+{
+  "_fv": 79,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "recipeRetstackSize": 1,
+    "group": "",
+    "unlockingItems": [],
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:Moonstoneblock"
+      },
+      {
+        "value": "TAG:forge:ingots/gold"
+      },
+      {
+        "value": "CUSTOM:Moonstoneblock"
+      },
+      {
+        "value": "TAG:forge:ingots/gold"
+      },
+      {
+        "value": "TAG:forge:gems/star_fragment"
+      },
+      {
+        "value": "TAG:forge:ingots/gold"
+      },
+      {
+        "value": "CUSTOM:Moonstoneblock"
+      },
+      {
+        "value": "TAG:forge:ingots/gold"
+      },
+      {
+        "value": "CUSTOM:Moonstoneblock"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:CelestialTile"
+    },
+    "name": "celestial_tile",
+    "namespace": "mod"
+  }
+}

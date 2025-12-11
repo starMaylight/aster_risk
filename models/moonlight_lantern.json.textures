@@ -1,0 +1,16 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "moonlight_lantern_model"
+      },
+      "name": "default"
+    },
+    "def": {
+      "map": {
+        "0": "moonlight_lantern"
+      },
+      "name": "def"
+    }
+  }
+}

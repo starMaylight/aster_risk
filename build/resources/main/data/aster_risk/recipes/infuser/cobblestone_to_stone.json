@@ -1,0 +1,12 @@
+{
+    "type": "aster_risk:infuser",
+    "input": {
+        "item": "minecraft:cobblestone"
+    },
+    "result": {
+        "item": "minecraft:stone",
+        "count": 1
+    },
+    "mana_cost": 20,
+    "process_time": 40
+}

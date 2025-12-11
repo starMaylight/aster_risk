@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "aster_risk:block/stardust_block",
+    "particle": "aster_risk:block/stardust_block"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aaa",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "tag": "forge:dusts/stardust"
+    }
+  },
+  "result": {
+    "item": "aster_risk:stardust_block",
+    "count": 1
+  }
+}

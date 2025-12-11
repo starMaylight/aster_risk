@@ -1,0 +1,49 @@
+{
+  "_fv": 79,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "recipeRetstackSize": 4,
+    "group": "",
+    "unlockingItems": [],
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "TAG:forge:glass"
+      },
+      {
+        "value": "TAG:forge:dusts/stardust"
+      },
+      {
+        "value": "TAG:forge:glass"
+      },
+      {
+        "value": "TAG:forge:dusts/stardust"
+      },
+      {
+        "value": "TAG:forge:gems/star_fragment"
+      },
+      {
+        "value": "TAG:forge:dusts/stardust"
+      },
+      {
+        "value": "TAG:forge:glass"
+      },
+      {
+        "value": "TAG:forge:dusts/stardust"
+      },
+      {
+        "value": "TAG:forge:glass"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:StarryGlass"
+    },
+    "name": "starry_glass",
+    "namespace": "mod"
+  }
+}
