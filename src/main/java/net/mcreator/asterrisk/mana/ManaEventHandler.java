@@ -11,6 +11,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.mcreator.asterrisk.enchantment.EnchantmentEventHandler;
 
 /**
  * 魔力システムのイベントハンドラー
@@ -59,6 +60,11 @@ public class ManaEventHandler {
                     }
                 }
             });
+            
+            // 月の引力エンチャントによるアイテム吸引（毎tick）
+            if (!event.player.level().isClientSide()) {
+                EnchantmentEventHandler.handleLunarAttraction(event.player);
+            }
         }
     }
 

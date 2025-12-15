@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " F ",
+    "GMG",
+    " S "
+  ],
+  "key": {
+    "F": {
+      "item": "aster_risk:starflagment"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "M": {
+      "item": "aster_risk:moonstone"
+    },
+    "S": {
+      "item": "aster_risk:silver_ingot"
+    }
+  },
+  "result": {
+    "item": "aster_risk:celestial_charm",
+    "count": 1
+  }
+}

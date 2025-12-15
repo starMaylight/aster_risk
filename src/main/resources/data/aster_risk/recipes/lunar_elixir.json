@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " M ",
+    "GBG",
+    " M "
+  ],
+  "key": {
+    "M": {
+      "item": "aster_risk:moonstone"
+    },
+    "G": {
+      "item": "minecraft:glass_bottle"
+    },
+    "B": {
+      "item": "aster_risk:lunar_dust"
+    }
+  },
+  "result": {
+    "item": "aster_risk:lunar_elixir",
+    "count": 2
+  }
+}

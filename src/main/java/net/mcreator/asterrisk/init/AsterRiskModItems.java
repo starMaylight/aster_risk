@@ -22,6 +22,7 @@ import net.mcreator.asterrisk.item.armor.LunarArmorItem;
 import net.mcreator.asterrisk.item.StargazerWandItem;
 import net.mcreator.asterrisk.item.StarflagmentItem;
 import net.mcreator.asterrisk.item.StardustItem;
+import net.mcreator.asterrisk.item.StardustCandyItem;
 import net.mcreator.asterrisk.item.SilveringotItem;
 import net.mcreator.asterrisk.item.RawsilverItem;
 import net.mcreator.asterrisk.item.MoonstoneItem;
@@ -30,8 +31,10 @@ import net.mcreator.asterrisk.item.MeteoritefragmentItem;
 import net.mcreator.asterrisk.item.MeteorWandItem;
 import net.mcreator.asterrisk.item.LunardustItem;
 import net.mcreator.asterrisk.item.LunarHealingStaffItem;
+import net.mcreator.asterrisk.item.LunarElixirItem;
 import net.mcreator.asterrisk.item.LunarCompassItem;
 import net.mcreator.asterrisk.item.LinkingWandItem;
+import net.mcreator.asterrisk.item.CelestialCharmItem;
 import net.mcreator.asterrisk.AsterRiskMod;
 
 public class AsterRiskModItems {
@@ -102,6 +105,10 @@ public class AsterRiskModItems {
 	public static final RegistryObject<Item> MOONLIGHT_BEACON = block(AsterRiskModBlocks.MOONLIGHT_BEACON);
 	public static final RegistryObject<Item> LUNAR_INFUSER = block(AsterRiskModBlocks.LUNAR_INFUSER);
 	public static final RegistryObject<Item> STAR_ANVIL = block(AsterRiskModBlocks.STAR_ANVIL);
+	// Phase 7: 消費アイテム（エフェクト付与）
+	public static final RegistryObject<Item> LUNAR_ELIXIR = REGISTRY.register("lunar_elixir", LunarElixirItem::new);
+	public static final RegistryObject<Item> STARDUST_CANDY = REGISTRY.register("stardust_candy", StardustCandyItem::new);
+	public static final RegistryObject<Item> CELESTIAL_CHARM = REGISTRY.register("celestial_charm", CelestialCharmItem::new);
 
 	// End of user code block custom items
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {

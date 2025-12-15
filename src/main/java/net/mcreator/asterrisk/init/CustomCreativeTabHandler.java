@@ -63,6 +63,11 @@ public class CustomCreativeTabHandler {
             event.accept(AsterRiskModItems.METEORITE_CHESTPLATE.get());
             event.accept(AsterRiskModItems.METEORITE_LEGGINGS.get());
             event.accept(AsterRiskModItems.METEORITE_BOOTS.get());
+            
+            // === Phase 7: 消費アイテム（エフェクト付与） ===
+            event.accept(AsterRiskModItems.LUNAR_ELIXIR.get());
+            event.accept(AsterRiskModItems.STARDUST_CANDY.get());
+            event.accept(AsterRiskModItems.CELESTIAL_CHARM.get());
         }
     }
 }

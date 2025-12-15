@@ -17,10 +17,12 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.FriendlyByteBuf;
 
+import net.mcreator.asterrisk.registry.ModEnchantments;
 import net.mcreator.asterrisk.recipe.ModRecipes;
 import net.mcreator.asterrisk.network.AsterRiskNetwork;
 import net.mcreator.asterrisk.init.AsterRiskModTabs;
 import net.mcreator.asterrisk.init.AsterRiskModItems;
+import net.mcreator.asterrisk.init.AsterRiskModEffects;
 import net.mcreator.asterrisk.init.AsterRiskModBlocks;
 
 import java.util.function.Supplier;
@@ -44,6 +46,10 @@ public class AsterRiskMod {
 		// カスタムレシピ登録
 		ModRecipes.RECIPE_TYPES.register(context.getModEventBus());
 		ModRecipes.RECIPE_SERIALIZERS.register(context.getModEventBus());
+		// エフェクト登録（initフォルダのものを使用）
+		AsterRiskModEffects.REGISTRY.register(context.getModEventBus());
+		// エンチャント登録（registryパッケージを使用）
+		ModEnchantments.REGISTRY.register(context.getModEventBus());
 		// End of user code block mod constructor
 		MinecraftForge.EVENT_BUS.register(this);
 		IEventBus bus = context.getModEventBus();
