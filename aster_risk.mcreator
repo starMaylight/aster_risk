@@ -688,6 +688,214 @@
           "src/main/java/net/mcreator/asterrisk/procedures/StarflagmentYoukuritukusitatokiProcedure.java"
         ]
       }
+    },
+    {
+      "name": "Lunargrass",
+      "type": "block",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "lunargrass",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/aster_risk/blockstates/lunargrass.json",
+          "src/main/java/net/mcreator/asterrisk/block/LunargrassBlock.java",
+          "src/main/resources/data/aster_risk/loot_tables/blocks/lunargrass.json",
+          "src/main/resources/assets/aster_risk/models/item/lunargrass.json",
+          "src/main/resources/assets/aster_risk/models/block/lunargrass.json"
+        ]
+      }
+    },
+    {
+      "name": "Lunardirt",
+      "type": "block",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "lunardirt",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/aster_risk/loot_tables/blocks/lunardirt.json",
+          "src/main/resources/assets/aster_risk/models/item/lunardirt.json",
+          "src/main/java/net/mcreator/asterrisk/block/LunardirtBlock.java",
+          "src/main/resources/assets/aster_risk/blockstates/lunardirt.json",
+          "src/main/resources/assets/aster_risk/models/block/lunardirt.json"
+        ]
+      }
+    },
+    {
+      "name": "Lunarstone",
+      "type": "block",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "lunarstone",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/aster_risk/loot_tables/blocks/lunarstone.json",
+          "src/main/resources/assets/aster_risk/models/item/lunarstone.json",
+          "src/main/resources/assets/aster_risk/blockstates/lunarstone.json",
+          "src/main/resources/assets/aster_risk/models/block/lunarstone.json",
+          "src/main/java/net/mcreator/asterrisk/block/LunarstoneBlock.java"
+        ]
+      }
+    },
+    {
+      "name": "Lunarlog",
+      "type": "block",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "lunarlog",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/aster_risk/blockstates/lunarlog.json",
+          "src/main/resources/assets/aster_risk/models/item/lunarlog.json",
+          "src/main/resources/data/aster_risk/loot_tables/blocks/lunarlog.json",
+          "src/main/java/net/mcreator/asterrisk/block/LunarlogBlock.java",
+          "src/main/resources/assets/aster_risk/models/block/lunarlog.json"
+        ]
+      }
+    },
+    {
+      "name": "Lunarleaves",
+      "type": "block",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "lunarleaves",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/aster_risk/models/item/lunarleaves.json",
+          "src/main/resources/assets/aster_risk/blockstates/lunarleaves.json",
+          "src/main/resources/assets/aster_risk/models/block/lunarleaves.json",
+          "src/main/resources/data/aster_risk/loot_tables/blocks/lunarleaves.json",
+          "src/main/java/net/mcreator/asterrisk/block/LunarleavesBlock.java"
+        ]
+      }
+    },
+    {
+      "name": "Lunarplanks",
+      "type": "block",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "lunarplanks",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/aster_risk/models/block/lunarplanks.json",
+          "src/main/resources/assets/aster_risk/blockstates/lunarplanks.json",
+          "src/main/resources/assets/aster_risk/models/item/lunarplanks.json",
+          "src/main/java/net/mcreator/asterrisk/block/LunarplanksBlock.java",
+          "src/main/resources/data/aster_risk/loot_tables/blocks/lunarplanks.json"
+        ]
+      }
+    },
+    {
+      "name": "Starfallsand",
+      "type": "block",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "starfallsand",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/aster_risk/blockstates/starfallsand.json",
+          "src/main/resources/data/aster_risk/loot_tables/blocks/starfallsand.json",
+          "src/main/java/net/mcreator/asterrisk/block/StarfallsandBlock.java",
+          "src/main/resources/assets/aster_risk/models/block/starfallsand.json",
+          "src/main/resources/assets/aster_risk/models/item/starfallsand.json"
+        ]
+      }
+    },
+    {
+      "name": "Eclipsestone",
+      "type": "block",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "eclipsestone",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/asterrisk/block/EclipsestoneBlock.java",
+          "src/main/resources/data/aster_risk/loot_tables/blocks/eclipsestone.json",
+          "src/main/resources/assets/aster_risk/models/block/eclipsestone.json",
+          "src/main/resources/assets/aster_risk/blockstates/eclipsestone.json",
+          "src/main/resources/assets/aster_risk/models/item/eclipsestone.json"
+        ]
+      }
+    },
+    {
+      "name": "Moonwater",
+      "type": "fluid",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "moonwater",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/aster_risk/blockstates/moonwater.json",
+          "src/main/java/net/mcreator/asterrisk/item/MoonwaterItem.java",
+          "src/main/java/net/mcreator/asterrisk/block/MoonwaterBlock.java",
+          "src/main/resources/assets/aster_risk/models/item/moonwater_bucket.json",
+          "src/main/resources/assets/aster_risk/models/block/moonwater.json",
+          "src/main/java/net/mcreator/asterrisk/fluid/MoonwaterFluid.java",
+          "src/main/java/net/mcreator/asterrisk/fluid/types/MoonwaterFluidType.java"
+        ]
+      }
+    },
+    {
+      "name": "Test",
+      "type": "biome",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "test",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/aster_risk/worldgen/placed_feature/test_tree.json",
+          "src/main/resources/data/aster_risk/worldgen/configured_feature/test_tree.json",
+          "src/main/resources/data/aster_risk/worldgen/biome/test.json"
+        ]
+      }
+    },
+    {
+      "name": "Starfall_hills",
+      "type": "biome",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "starfall_hills",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/aster_risk/worldgen/biome/starfall_hills.json"
+        ]
+      }
+    },
+    {
+      "name": "Lunar_lake",
+      "type": "biome",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "lunar_lake",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/aster_risk/worldgen/biome/lunar_lake.json"
+        ]
+      }
+    },
+    {
+      "name": "Lunar_forest",
+      "type": "biome",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "lunar_forest",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/aster_risk/worldgen/biome/lunar_forest.json"
+        ]
+      }
+    },
+    {
+      "name": "Eclipse_wastes",
+      "type": "biome",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "eclipse_wastes",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/aster_risk/worldgen/biome/eclipse_wastes.json"
+        ]
+      }
     }
   ],
   "variable_elements": [],
@@ -768,6 +976,12 @@
     ],
     "BLOCKS:minecraft:needs_stone_tool": [
       "~CUSTOM:Silverore"
+    ],
+    "BLOCKS:minecraft:leaves": [
+      "~CUSTOM:Lunarleaves"
+    ],
+    "BLOCKS:minecraft:replaceable": [
+      "~CUSTOM:Moonwater"
     ]
   },
   "tab_element_order": {},
@@ -815,7 +1029,7 @@
       "tooltip.aster_risk.lunar_infuser.line1": "Transmutes items using lunar mana",
       "tooltip.aster_risk.lunar_infuser.line2": "Place items and supply mana to convert",
       "tooltip.aster_risk.star_anvil.line1": "A celestial anvil infused with starlight",
-      "tooltip.aster_risk.star_anvil.line2": "",
+      "tooltip.aster_risk.star_anvil.line2": "Repair and enhance equipment with mana",
       "gui.aster_risk.jei.infuser": "Lunar Infusion",
       "effect.aster_risk.lunar_blessing": "Lunar Blessing",
       "effect.aster_risk.stardust_protection": "Stardust Protection",
@@ -835,7 +1049,45 @@
       "item.aster_risk.celestial_charm": "Celestial Charm",
       "tooltip.aster_risk.lunar_elixir": "Lunar Elixir",
       "tooltip.aster_risk.stardust_candy": "Grants Stardust Protection for 5 minutes",
-      "tooltip.aster_risk.celestial_charm": "Activates Celestial Guard (10 min cooldown)"
+      "tooltip.aster_risk.celestial_charm": "Activates Celestial Guard (10 min cooldown)",
+      "entity.aster_risk.moon_rabbit": "Moon Rabbit",
+      "entity.aster_risk.star_spirit": "Star Spirit",
+      "entity.aster_risk.moonlight_fairy": "Moonlight Fairy",
+      "item.aster_risk.moon_rabbit_spawn_egg": "Moon Rabbit Spawn Egg",
+      "item.aster_risk.star_spirit_spawn_egg": "Star Spirit Spawn Egg",
+      "item.aster_risk.moonlight_fairy_spawn_egg": "Moonlight Fairy Spawn Egg",
+      "entity.aster_risk.eclipse_phantom": "Eclipse Phantom",
+      "entity.aster_risk.void_walker": "Void Walker",
+      "entity.aster_risk.corrupted_golem": "Corrupted Golem",
+      "item.aster_risk.eclipse_phantom_spawn_egg": "Eclipse Phantom Spawn Egg",
+      "item.aster_risk.void_walker_spawn_egg": "Void Walker Spawn Egg",
+      "item.aster_risk.corrupted_golem_spawn_egg": "Corrupted Golem Spawn Egg",
+      "entity.aster_risk.eclipse_monarch": "Eclipse Monarch",
+      "item.aster_risk.eclipse_monarch_spawn_egg": "Eclipse Monarch Spawn Egg",
+      "entity.aster_risk.star_devourer": "Star Devourer",
+      "item.aster_risk.star_devourer_spawn_egg": "Star Devourer Spawn Egg",
+      "block.aster_risk.lunar_obelisk": "Lunar Obelisk",
+      "block.aster_risk.stellar_obelisk": "Stellar Obelisk",
+      "block.aster_risk.solar_obelisk": "Solar Obelisk",
+      "block.aster_risk.void_obelisk": "Void Obelisk",
+      "block.aster_risk.lunargrass": "Lunar grass",
+      "block.aster_risk.lunardirt": "Lunar dirt",
+      "block.aster_risk.lunarstone": "Lunar stone",
+      "block.aster_risk.lunarlog": "Lunar Log",
+      "block.aster_risk.lunarleaves": "Lunar Leaves",
+      "block.aster_risk.lunarplanks": "Lunarplanks",
+      "block.aster_risk.starfallsand": "Starfall Sand",
+      "block.aster_risk.eclipsestone": "Eclipse Stone",
+      "fluid_type.aster_risk.moonwater": "Moon Water",
+      "item.aster_risk.moonwater_bucket": "Moonwater Bucket",
+      "block.aster_risk.moonwater": "Moon Water",
+      "fluid.aster_risk.moonwater": "Moon Water",
+      "block.aster_risk.lunar_portal": "Lunar Portal",
+      "biome.aster_risk.lunar_forest": "Lunar Forest",
+      "biome.aster_risk.lunar_lake": "Lunar Lake",
+      "biome.aster_risk.starfall_hills": "Starfall Hills",
+      "biome.aster_risk.eclipse_wastes": "Eclipse Wastes",
+      "biome.aster_risk.test": "Test"
     }
   },
   "metadata": {
@@ -843,7 +1095,11 @@
       "src/main/resources/pack.mcmeta",
       "src/main/java/net/mcreator/asterrisk/AsterRiskMod.java",
       "src/main/java/net/mcreator/asterrisk/init/AsterRiskModTabs.java",
+      "src/main/resources/META-INF/accesstransformer.cfg",
       "src/main/resources/META-INF/mods.toml",
+      "src/main/java/net/mcreator/asterrisk/init/AsterRiskModBiomes.java",
+      "src/main/java/net/mcreator/asterrisk/init/AsterRiskModFluidTypes.java",
+      "src/main/java/net/mcreator/asterrisk/init/AsterRiskModFluids.java",
       "src/main/java/net/mcreator/asterrisk/init/AsterRiskModBlocks.java",
       "src/main/java/net/mcreator/asterrisk/init/AsterRiskModItems.java"
     ]

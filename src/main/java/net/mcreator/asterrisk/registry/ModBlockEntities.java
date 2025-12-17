@@ -9,6 +9,7 @@ import net.mcreator.asterrisk.block.entity.MoonlightBeaconBlockEntity;
 import net.mcreator.asterrisk.block.entity.ResonatorBlockEntity;
 import net.mcreator.asterrisk.block.entity.RitualPedestalBlockEntity;
 import net.mcreator.asterrisk.block.entity.StarAnvilBlockEntity;
+import net.mcreator.asterrisk.block.entity.ObeliskBlockEntity;
 import net.mcreator.asterrisk.init.AsterRiskModBlocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.registries.DeferredRegister;
@@ -113,5 +114,19 @@ public class ModBlockEntities {
             BlockEntityType.Builder.of(
                 StarAnvilBlockEntity::create,
                 AsterRiskModBlocks.STAR_ANVIL.get())
+            .build(null));
+
+    // === オベリスク ===
+
+    // オベリスク（全タイプ共通BlockEntity）
+    @SuppressWarnings("ConstantConditions")
+    public static final RegistryObject<BlockEntityType<ObeliskBlockEntity>> OBELISK = 
+        REGISTRY.register("obelisk", () -> 
+            BlockEntityType.Builder.of(
+                ObeliskBlockEntity::new,
+                AsterRiskModBlocks.LUNAR_OBELISK.get(),
+                AsterRiskModBlocks.STELLAR_OBELISK.get(),
+                AsterRiskModBlocks.SOLAR_OBELISK.get(),
+                AsterRiskModBlocks.VOID_OBELISK.get())
             .build(null));
 }

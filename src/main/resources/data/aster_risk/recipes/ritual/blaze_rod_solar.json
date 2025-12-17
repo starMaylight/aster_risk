@@ -1,0 +1,18 @@
+{
+    "type": "aster_risk:ritual",
+    "ingredients": [
+        { "item": "aster_risk:meteorite_fragment" },
+        { "item": "aster_risk:meteorite_fragment" },
+        { "item": "minecraft:blaze_powder" },
+        { "item": "minecraft:blaze_powder" }
+    ],
+    "result": {
+        "item": "minecraft:blaze_rod",
+        "count": 4
+    },
+    "mana_cost": 200,
+    "required_energy": {
+        "type": "solar",
+        "amount": 150
+    }
+}

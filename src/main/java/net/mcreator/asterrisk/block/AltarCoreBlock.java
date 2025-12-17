@@ -80,6 +80,11 @@ public class AltarCoreBlock extends BaseEntityBlock {
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        // Linking Wandを持っている場合は処理をスキップ（アイテム側で処理）
+        if (player.getItemInHand(hand).getItem() instanceof net.mcreator.asterrisk.item.LinkingWandItem) {
+            return InteractionResult.PASS;
+        }
+        
         if (level.isClientSide()) {
             return InteractionResult.SUCCESS;
         }

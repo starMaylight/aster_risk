@@ -1,26 +1,33 @@
 package net.mcreator.asterrisk.item;
 
+import net.mcreator.asterrisk.block.LunarPortalBlock;
+import net.mcreator.asterrisk.init.AsterRiskModBlocks;
 import net.mcreator.asterrisk.mana.ManaProcedures;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 
 /**
  * 月の羅針盤 - スポーン地点への方向と距離を表示
- * （構造物検索は負荷が高すぎるため、シンプルな機能に変更）
+ * 右クリックでポータル点火機能追加
  */
 public class LunarCompassItem extends Item {
     
     private static final float MANA_COST = 25f;
+    private static final float PORTAL_MANA_COST = 100f;
     private static final int COOLDOWN_TICKS = 60; // 3秒
 
     public LunarCompassItem() {
@@ -29,6 +36,87 @@ public class LunarCompassItem extends Item {
             .rarity(Rarity.RARE)
             .durability(64)
         );
+    }
+    
+    @Override
+    public InteractionResult useOn(UseOnContext context) {
+        Level level = context.getLevel();
+        BlockPos pos = context.getClickedPos();
+        Player player = context.getPlayer();
+        
+        if (player == null) return InteractionResult.PASS;
+        
+        BlockState state = level.getBlockState(pos);
+        
+        // Moonstone Bricksをクリックした場合、ポータル点火を試みる
+        if (state.is(AsterRiskModBlocks.MOONSTONE_BRICKS.get())) {
+            if (!level.isClientSide()) {
+                // マナコスト確認
+                if (!ManaProcedures.castSpell(player, PORTAL_MANA_COST)) {
+                    player.displayClientMessage(
+                        Component.literal("§c Not enough mana to ignite portal! Need: " + (int)PORTAL_MANA_COST),
+                        true
+                    );
+                    return InteractionResult.FAIL;
+                }
+                
+                // ポータルフレームを探す
+                boolean success = tryIgnitePortal(level, pos, player);
+                
+                if (success) {
+                    player.displayClientMessage(
+                        Component.literal("§d✦ Lunar Portal opened!"),
+                        true
+                    );
+                    level.playSound(null, pos, SoundEvents.END_PORTAL_SPAWN, SoundSource.BLOCKS, 1.0f, 1.0f);
+                    
+                    // 耐久値を減らす
+                    if (!player.isCreative()) {
+                        context.getItemInHand().hurtAndBreak(5, player, p -> p.broadcastBreakEvent(context.getHand()));
+                    }
+                    
+                    return InteractionResult.SUCCESS;
+                } else {
+                    // マナを返還（失敗時）
+                    player.getCapability(net.mcreator.asterrisk.mana.LunarManaCapability.LUNAR_MANA).ifPresent(mana -> mana.addMana(PORTAL_MANA_COST));
+                    player.displayClientMessage(
+                        Component.literal("§c Invalid portal frame!"),
+                        true
+                    );
+                    return InteractionResult.FAIL;
+                }
+            }
+            return InteractionResult.sidedSuccess(level.isClientSide());
+        }
+        
+        return InteractionResult.PASS;
+    }
+    
+    private boolean tryIgnitePortal(Level level, BlockPos clickedPos, Player player) {
+        // クリックした位置の全方向を探索してポータル内部を見つける
+        // 水平方向だけでなく、上下も探索
+        for (Direction dir : Direction.values()) {
+            BlockPos insidePos = clickedPos.relative(dir);
+            BlockState insideState = level.getBlockState(insidePos);
+            
+            if (insideState.isAir()) {
+                // X軸方向のポータルを試す（東西に広がるフレーム）
+                LunarPortalBlock.Size sizeX = new LunarPortalBlock.Size(level, insidePos, Direction.Axis.X);
+                if (sizeX.isValid() && !sizeX.isComplete()) {
+                    sizeX.createPortalBlocks();
+                    return true;
+                }
+                
+                // Z軸方向のポータルを試す（南北に広がるフレーム）
+                LunarPortalBlock.Size sizeZ = new LunarPortalBlock.Size(level, insidePos, Direction.Axis.Z);
+                if (sizeZ.isValid() && !sizeZ.isComplete()) {
+                    sizeZ.createPortalBlocks();
+                    return true;
+                }
+            }
+        }
+        
+        return false;
     }
 
     @Override
@@ -74,6 +162,13 @@ public class LunarCompassItem extends Item {
                 String moonName = getMoonPhaseName(moonPhase);
                 player.displayClientMessage(
                     Component.literal("§7Moon phase: §e" + moonName),
+                    false
+                );
+                
+                // 現在のディメンション
+                String dimName = level.dimension() == LunarPortalBlock.LUNAR_REALM ? "Lunar Realm" : level.dimension().location().toString();
+                player.displayClientMessage(
+                    Component.literal("§7Dimension: §e" + dimName),
                     false
                 );
                 

@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "aster_risk:block/lunar_leaves",
+    "particle": "aster_risk:block/lunar_leaves"
+  }
+}

@@ -45,10 +45,10 @@ public class ResonatorBlockEntity extends BlockEntity {
         
         // Tier別の設定
         switch (tier) {
-            case 1 -> { maxRange = 16; transferRate = 10f; }
-            case 2 -> { maxRange = 32; transferRate = 25f; }
-            case 3 -> { maxRange = 64; transferRate = 50f; }
-            default -> { maxRange = 16; transferRate = 10f; }
+            case 1 -> { maxRange = 16; transferRate = 25f; }
+            case 2 -> { maxRange = 32; transferRate = 50f; }
+            case 3 -> { maxRange = 64; transferRate = 150f; }
+            default -> { maxRange = 16; transferRate = 25f; }
         }
     }
 

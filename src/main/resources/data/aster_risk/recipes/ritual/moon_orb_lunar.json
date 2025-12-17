@@ -1,0 +1,18 @@
+{
+    "type": "aster_risk:ritual",
+    "ingredients": [
+        { "item": "aster_risk:moonstone" },
+        { "item": "aster_risk:moonstone" },
+        { "item": "aster_risk:starflagment" },
+        { "item": "minecraft:gold_ingot" }
+    ],
+    "result": {
+        "item": "minecraft:nether_star",
+        "count": 1
+    },
+    "mana_cost": 300,
+    "required_energy": {
+        "type": "lunar",
+        "amount": 200
+    }
+}

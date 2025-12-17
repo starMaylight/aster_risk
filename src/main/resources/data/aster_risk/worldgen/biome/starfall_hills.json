@@ -1,0 +1,53 @@
+{
+  "temperature": 0.3,
+  "downfall": 0.0,
+  "has_precipitation": false,
+  "effects": {
+    "fog_color": 2960746,
+    "sky_color": 1579066,
+    "water_color": 4166984,
+    "water_fog_color": 2631984,
+    "grass_color": 4237180,
+    "foliage_color": 5290380
+  },
+  "spawners": {
+    "monster": [],
+    "creature": [
+      {
+        "type": "aster_risk:star_spirit",
+        "weight": 15,
+        "minCount": 2,
+        "maxCount": 5
+      },
+      {
+        "type": "aster_risk:moonlight_fairy",
+        "weight": 10,
+        "minCount": 2,
+        "maxCount": 4
+      }
+    ],
+    "ambient": [],
+    "axolotls": [],
+    "underground_water_creature": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "carvers": {
+    "air": []
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ]
+}

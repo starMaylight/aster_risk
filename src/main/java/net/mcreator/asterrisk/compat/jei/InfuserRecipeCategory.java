@@ -24,7 +24,7 @@ import net.minecraft.world.item.ItemStack;
  */
 public class InfuserRecipeCategory implements IRecipeCategory<InfuserRecipe> {
 
-    public static final ResourceLocation UID = new ResourceLocation(AsterRiskMod.MODID, "infuser");
+    public static final ResourceLocation UID = ResourceLocation.fromNamespaceAndPath(AsterRiskMod.MODID, "infuser");
 
     public static final RecipeType<InfuserRecipe> RECIPE_TYPE = RecipeType.create(AsterRiskMod.MODID, "infuser", InfuserRecipe.class);
 

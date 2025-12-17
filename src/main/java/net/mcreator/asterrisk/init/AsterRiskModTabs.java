@@ -42,5 +42,14 @@ public class AsterRiskModTabs {
 				tabData.accept(AsterRiskModBlocks.LUNAR_PILLAR.get().asItem());
 				tabData.accept(AsterRiskModBlocks.CELESTIAL_TILE.get().asItem());
 				tabData.accept(AsterRiskModBlocks.MOONLIGHT_LANTERN.get().asItem());
+				tabData.accept(AsterRiskModBlocks.LUNARGRASS.get().asItem());
+				tabData.accept(AsterRiskModBlocks.LUNARDIRT.get().asItem());
+				tabData.accept(AsterRiskModBlocks.LUNARSTONE.get().asItem());
+				tabData.accept(AsterRiskModBlocks.LUNARLOG.get().asItem());
+				tabData.accept(AsterRiskModBlocks.LUNARLEAVES.get().asItem());
+				tabData.accept(AsterRiskModBlocks.LUNARPLANKS.get().asItem());
+				tabData.accept(AsterRiskModBlocks.STARFALLSAND.get().asItem());
+				tabData.accept(AsterRiskModBlocks.ECLIPSESTONE.get().asItem());
+				tabData.accept(AsterRiskModItems.MOONWATER_BUCKET.get());
 			}).build());
 }

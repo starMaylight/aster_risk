@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "aster_risk:block/lunar_log_top",
+    "up": "aster_risk:block/lunar_log_top",
+    "north": "aster_risk:block/lunar_log",
+    "east": "aster_risk:block/lunar_log",
+    "south": "aster_risk:block/lunar_log",
+    "west": "aster_risk:block/lunar_log",
+    "particle": "aster_risk:block/lunar_log_top"
+  },
+  "render_type": "solid"
+}

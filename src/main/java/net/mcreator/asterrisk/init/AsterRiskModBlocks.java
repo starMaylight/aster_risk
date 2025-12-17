@@ -3,13 +3,17 @@
 */
 package net.mcreator.asterrisk.init;
 
+import org.checkerframework.checker.units.qual.s;
+
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.DeferredRegister;
 
 import net.minecraft.world.level.block.Block;
 
+import net.mcreator.asterrisk.block.entity.ObeliskEnergyType;
 import net.mcreator.asterrisk.block.StarryGlassBlock;
+import net.mcreator.asterrisk.block.StarfallsandBlock;
 import net.mcreator.asterrisk.block.StardustBlockBlock;
 import net.mcreator.asterrisk.block.StarAnvilBlock;
 import net.mcreator.asterrisk.block.SilveroreBlock;
@@ -18,7 +22,9 @@ import net.mcreator.asterrisk.block.SilverBlockBlock;
 import net.mcreator.asterrisk.block.RitualPedestalBlock;
 import net.mcreator.asterrisk.block.ResonatorBlock;
 import net.mcreator.asterrisk.block.PolishedMoonstoneBlock;
+import net.mcreator.asterrisk.block.ObeliskBlock;
 import net.mcreator.asterrisk.block.MossyMoonstoneBricksBlock;
+import net.mcreator.asterrisk.block.MoonwaterBlock;
 import net.mcreator.asterrisk.block.MoonstoneblockBlock;
 import net.mcreator.asterrisk.block.MoonstoneTilesBlock;
 import net.mcreator.asterrisk.block.MoonstoneOreBlock;
@@ -29,9 +35,17 @@ import net.mcreator.asterrisk.block.MoonlightBeaconBlock;
 import net.mcreator.asterrisk.block.MeteoriteOreBlock;
 import net.mcreator.asterrisk.block.MeteoriteBlockBlock;
 import net.mcreator.asterrisk.block.ManaBatteryBlock;
+import net.mcreator.asterrisk.block.LunarstoneBlock;
+import net.mcreator.asterrisk.block.LunarplanksBlock;
+import net.mcreator.asterrisk.block.LunarlogBlock;
+import net.mcreator.asterrisk.block.LunarleavesBlock;
+import net.mcreator.asterrisk.block.LunargrassBlock;
+import net.mcreator.asterrisk.block.LunardirtBlock;
+import net.mcreator.asterrisk.block.LunarPortalBlock;
 import net.mcreator.asterrisk.block.LunarPillarBlock;
 import net.mcreator.asterrisk.block.LunarInfuserBlock;
 import net.mcreator.asterrisk.block.LunarCollectorBlock;
+import net.mcreator.asterrisk.block.EclipsestoneBlock;
 import net.mcreator.asterrisk.block.CrackedMoonstoneBricksBlock;
 import net.mcreator.asterrisk.block.ChiseledMoonstoneBlock;
 import net.mcreator.asterrisk.block.CelestialTileBlock;
@@ -58,6 +72,15 @@ public class AsterRiskModBlocks {
 	public static final RegistryObject<Block> LUNAR_PILLAR = REGISTRY.register("lunar_pillar", () -> new LunarPillarBlock());
 	public static final RegistryObject<Block> CELESTIAL_TILE = REGISTRY.register("celestial_tile", () -> new CelestialTileBlock());
 	public static final RegistryObject<Block> MOONLIGHT_LANTERN = REGISTRY.register("moonlight_lantern", () -> new MoonlightLanternBlock());
+	public static final RegistryObject<Block> LUNARGRASS = REGISTRY.register("lunargrass", () -> new LunargrassBlock());
+	public static final RegistryObject<Block> LUNARDIRT = REGISTRY.register("lunardirt", () -> new LunardirtBlock());
+	public static final RegistryObject<Block> LUNARSTONE = REGISTRY.register("lunarstone", () -> new LunarstoneBlock());
+	public static final RegistryObject<Block> LUNARLOG = REGISTRY.register("lunarlog", () -> new LunarlogBlock());
+	public static final RegistryObject<Block> LUNARLEAVES = REGISTRY.register("lunarleaves", () -> new LunarleavesBlock());
+	public static final RegistryObject<Block> LUNARPLANKS = REGISTRY.register("lunarplanks", () -> new LunarplanksBlock());
+	public static final RegistryObject<Block> STARFALLSAND = REGISTRY.register("starfallsand", () -> new StarfallsandBlock());
+	public static final RegistryObject<Block> ECLIPSESTONE = REGISTRY.register("eclipsestone", () -> new EclipsestoneBlock());
+	public static final RegistryObject<Block> MOONWATER = REGISTRY.register("moonwater", () -> new MoonwaterBlock());
 	// Start of user code block custom blocks
 	public static final RegistryObject<Block> MOONLIGHT = REGISTRY.register("moonlight", () -> new MoonlightBlock());
 	// 機能ブロック
@@ -73,5 +96,15 @@ public class AsterRiskModBlocks {
 	public static final RegistryObject<Block> MOONLIGHT_BEACON = REGISTRY.register("moonlight_beacon", () -> new MoonlightBeaconBlock());
 	public static final RegistryObject<Block> LUNAR_INFUSER = REGISTRY.register("lunar_infuser", () -> new LunarInfuserBlock());
 	public static final RegistryObject<Block> STAR_ANVIL = REGISTRY.register("star_anvil", () -> new StarAnvilBlock());
+	// オベリスク
+	public static final RegistryObject<Block> LUNAR_OBELISK = REGISTRY.register("lunar_obelisk",
+			() -> new ObeliskBlock(Block.Properties.of().strength(3.0F, 6.0F).requiresCorrectToolForDrops().lightLevel(s -> 8).noOcclusion(), ObeliskEnergyType.LUNAR));
+	public static final RegistryObject<Block> STELLAR_OBELISK = REGISTRY.register("stellar_obelisk",
+			() -> new ObeliskBlock(Block.Properties.of().strength(3.0F, 6.0F).requiresCorrectToolForDrops().lightLevel(s -> 10).noOcclusion(), ObeliskEnergyType.STELLAR));
+	public static final RegistryObject<Block> SOLAR_OBELISK = REGISTRY.register("solar_obelisk",
+			() -> new ObeliskBlock(Block.Properties.of().strength(3.0F, 6.0F).requiresCorrectToolForDrops().lightLevel(s -> 12).noOcclusion(), ObeliskEnergyType.SOLAR));
+	public static final RegistryObject<Block> VOID_OBELISK = REGISTRY.register("void_obelisk", () -> new ObeliskBlock(Block.Properties.of().strength(3.0F, 6.0F).requiresCorrectToolForDrops().lightLevel(s -> 4).noOcclusion(), ObeliskEnergyType.VOID));
+	// ポータル
+	public static final RegistryObject<Block> LUNAR_PORTAL = REGISTRY.register("lunar_portal", () -> new LunarPortalBlock());
 	// End of user code block custom blocks
 }

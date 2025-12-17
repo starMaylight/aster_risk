@@ -3,6 +3,7 @@ package net.mcreator.asterrisk.recipe;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import net.mcreator.asterrisk.block.entity.ObeliskEnergyType;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 儀式レシピ
+ * 儀式レシピ - オベリスクエネルギー要求対応
  */
 public class RitualRecipe implements Recipe<Container> {
 
@@ -29,12 +30,24 @@ public class RitualRecipe implements Recipe<Container> {
     private final NonNullList<Ingredient> ingredients;
     private final ItemStack result;
     private final float manaCost;
+    
+    // オベリスクエネルギー要求
+    @Nullable
+    private final ObeliskEnergyType requiredEnergyType;
+    private final int requiredEnergyAmount;
 
     public RitualRecipe(ResourceLocation id, NonNullList<Ingredient> ingredients, ItemStack result, float manaCost) {
+        this(id, ingredients, result, manaCost, null, 0);
+    }
+    
+    public RitualRecipe(ResourceLocation id, NonNullList<Ingredient> ingredients, ItemStack result, float manaCost,
+                        @Nullable ObeliskEnergyType requiredEnergyType, int requiredEnergyAmount) {
         this.id = id;
         this.ingredients = ingredients;
         this.result = result;
         this.manaCost = manaCost;
+        this.requiredEnergyType = requiredEnergyType;
+        this.requiredEnergyAmount = requiredEnergyAmount;
     }
 
     @Override
@@ -44,6 +57,19 @@ public class RitualRecipe implements Recipe<Container> {
 
     public float getManaCost() {
         return manaCost;
+    }
+    
+    @Nullable
+    public ObeliskEnergyType getRequiredEnergyType() {
+        return requiredEnergyType;
+    }
+    
+    public int getRequiredEnergyAmount() {
+        return requiredEnergyAmount;
+    }
+    
+    public boolean requiresObeliskEnergy() {
+        return requiredEnergyType != null && requiredEnergyAmount > 0;
     }
 
     public ItemStack getResultItem() {
@@ -131,8 +157,19 @@ public class RitualRecipe implements Recipe<Container> {
 
             // manaCost読み込み
             float manaCost = GsonHelper.getAsFloat(json, "mana_cost", 100f);
+            
+            // オベリスクエネルギー要求読み込み（オプション）
+            ObeliskEnergyType energyType = null;
+            int energyAmount = 0;
+            
+            if (json.has("required_energy")) {
+                JsonObject energyJson = GsonHelper.getAsJsonObject(json, "required_energy");
+                String typeStr = GsonHelper.getAsString(energyJson, "type", "");
+                energyType = ObeliskEnergyType.fromName(typeStr);
+                energyAmount = GsonHelper.getAsInt(energyJson, "amount", 0);
+            }
 
-            return new RitualRecipe(recipeId, ingredients, result, manaCost);
+            return new RitualRecipe(recipeId, ingredients, result, manaCost, energyType, energyAmount);
         }
 
         @Override
@@ -144,8 +181,18 @@ public class RitualRecipe implements Recipe<Container> {
             }
             ItemStack result = buffer.readItem();
             float manaCost = buffer.readFloat();
+            
+            // エネルギー要求読み込み
+            boolean hasEnergy = buffer.readBoolean();
+            ObeliskEnergyType energyType = null;
+            int energyAmount = 0;
+            if (hasEnergy) {
+                String typeStr = buffer.readUtf();
+                energyType = ObeliskEnergyType.fromName(typeStr);
+                energyAmount = buffer.readVarInt();
+            }
 
-            return new RitualRecipe(recipeId, ingredients, result, manaCost);
+            return new RitualRecipe(recipeId, ingredients, result, manaCost, energyType, energyAmount);
         }
 
         @Override
@@ -156,6 +203,14 @@ public class RitualRecipe implements Recipe<Container> {
             }
             buffer.writeItem(recipe.result);
             buffer.writeFloat(recipe.manaCost);
+            
+            // エネルギー要求書き込み
+            boolean hasEnergy = recipe.requiredEnergyType != null;
+            buffer.writeBoolean(hasEnergy);
+            if (hasEnergy) {
+                buffer.writeUtf(recipe.requiredEnergyType.getName());
+                buffer.writeVarInt(recipe.requiredEnergyAmount);
+            }
         }
     }
 }

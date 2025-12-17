@@ -10,6 +10,7 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.mcreator.asterrisk.AsterRiskMod;
+import net.mcreator.asterrisk.block.entity.ObeliskEnergyType;
 import net.mcreator.asterrisk.init.AsterRiskModBlocks;
 import net.mcreator.asterrisk.recipe.RitualRecipe;
 import net.minecraft.client.Minecraft;
@@ -20,11 +21,11 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
 /**
- * JEI用の儀式レシピカテゴリ
+ * JEI用の儀式レシピカテゴリ - オベリスクエネルギー表示対応
  */
 public class RitualRecipeCategory implements IRecipeCategory<RitualRecipe> {
 
-    public static final ResourceLocation UID = new ResourceLocation(AsterRiskMod.MODID, "ritual");
+    public static final ResourceLocation UID = ResourceLocation.fromNamespaceAndPath(AsterRiskMod.MODID, "ritual");
 
     public static final RecipeType<RitualRecipe> RECIPE_TYPE = RecipeType.create(AsterRiskMod.MODID, "ritual", RitualRecipe.class);
 
@@ -32,11 +33,10 @@ public class RitualRecipeCategory implements IRecipeCategory<RitualRecipe> {
     private final IDrawable icon;
 
     // レシピ表示領域のサイズ
-    private static final int WIDTH = 150;
-    private static final int HEIGHT = 75;
+    private static final int WIDTH = 160;
+    private static final int HEIGHT = 85;
 
     public RitualRecipeCategory(IGuiHelper helper) {
-        // シンプルな空白背景を使用
         this.background = helper.createBlankDrawable(WIDTH, HEIGHT);
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(AsterRiskModBlocks.ALTAR_CORE.get()));
     }
@@ -65,40 +65,33 @@ public class RitualRecipeCategory implements IRecipeCategory<RitualRecipe> {
     public void setRecipe(IRecipeLayoutBuilder builder, RitualRecipe recipe, IFocusGroup focuses) {
         var ingredients = recipe.getIngredients();
 
-        // 入力スロット位置（左側に配置、2x4グリッド風）
-        // 中央に祭壇イメージ、右に出力
         int startX = 5;
         int startY = 5;
         int slotSize = 18;
         
-        // 材料の数に応じてレイアウトを調整
         int count = Math.min(ingredients.size(), 8);
         
         if (count <= 4) {
-            // 4個以下: 横一列
             for (int i = 0; i < count; i++) {
-                builder.addSlot(RecipeIngredientRole.INPUT, startX + i * slotSize, startY + 20)
+                builder.addSlot(RecipeIngredientRole.INPUT, startX + i * slotSize, startY + 15)
                     .addIngredients(ingredients.get(i));
             }
         } else {
-            // 5個以上: 2行に分ける
             int topRow = (count + 1) / 2;
             int bottomRow = count - topRow;
             
-            // 上段
             for (int i = 0; i < topRow; i++) {
-                builder.addSlot(RecipeIngredientRole.INPUT, startX + i * slotSize, startY + 10)
+                builder.addSlot(RecipeIngredientRole.INPUT, startX + i * slotSize, startY + 5)
                     .addIngredients(ingredients.get(i));
             }
-            // 下段
             for (int i = 0; i < bottomRow; i++) {
-                builder.addSlot(RecipeIngredientRole.INPUT, startX + i * slotSize, startY + 10 + slotSize + 5)
+                builder.addSlot(RecipeIngredientRole.INPUT, startX + i * slotSize, startY + 5 + slotSize + 5)
                     .addIngredients(ingredients.get(topRow + i));
             }
         }
 
-        // 出力スロット（右側）
-        builder.addSlot(RecipeIngredientRole.OUTPUT, WIDTH - 25, 25)
+        // 出力スロット
+        builder.addSlot(RecipeIngredientRole.OUTPUT, WIDTH - 25, 20)
             .addItemStack(recipe.getResultItem());
     }
 
@@ -107,10 +100,37 @@ public class RitualRecipeCategory implements IRecipeCategory<RitualRecipe> {
         Font font = Minecraft.getInstance().font;
         
         // 矢印を描画
-        guiGraphics.drawString(font, ">>>", 95, 30, 0x555555, false);
+        guiGraphics.drawString(font, ">>>", 100, 25, 0x555555, false);
         
         // マナコスト表示
         String manaText = "Mana: " + (int) recipe.getManaCost();
-        guiGraphics.drawString(font, manaText, WIDTH / 2 - font.width(manaText) / 2, HEIGHT - 15, 0x9966FF, false);
+        guiGraphics.drawString(font, manaText, 5, HEIGHT - 25, 0x9966FF, false);
+        
+        // オベリスクエネルギー要求表示
+        if (recipe.requiresObeliskEnergy()) {
+            ObeliskEnergyType type = recipe.getRequiredEnergyType();
+            int amount = recipe.getRequiredEnergyAmount();
+            
+            String typeName = type != null ? type.getName() : "unknown";
+            typeName = typeName.substring(0, 1).toUpperCase() + typeName.substring(1);
+            
+            int color = type != null ? type.getColor() : 0xFFFFFF;
+            
+            String energyText = typeName + " Energy: " + amount;
+            guiGraphics.drawString(font, energyText, 5, HEIGHT - 12, color, false);
+            
+            // アイコン表示（オベリスクの種類を示す）
+            String icon = switch (type) {
+                case LUNAR -> "☽";
+                case STELLAR -> "★";
+                case SOLAR -> "☀";
+                case VOID -> "◯";
+                default -> "?";
+            };
+            guiGraphics.drawString(font, icon, WIDTH - 15, HEIGHT - 12, color, false);
+        } else {
+            // エネルギー不要の場合
+            guiGraphics.drawString(font, "No special energy required", 5, HEIGHT - 12, 0x888888, false);
+        }
     }
 }

@@ -1,0 +1,19 @@
+{
+    "type": "aster_risk:ritual",
+    "ingredients": [
+        { "item": "aster_risk:stardust" },
+        { "item": "aster_risk:stardust" },
+        { "item": "aster_risk:stardust" },
+        { "item": "aster_risk:stardust" },
+        { "item": "minecraft:diamond" }
+    ],
+    "result": {
+        "item": "minecraft:emerald_block",
+        "count": 1
+    },
+    "mana_cost": 400,
+    "required_energy": {
+        "type": "stellar",
+        "amount": 300
+    }
+}

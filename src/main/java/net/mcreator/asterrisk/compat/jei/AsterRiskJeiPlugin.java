@@ -28,7 +28,7 @@ public class AsterRiskJeiPlugin implements IModPlugin {
 
     @Override
     public ResourceLocation getPluginUid() {
-        return new ResourceLocation(AsterRiskMod.MODID, "jei_plugin");
+        return ResourceLocation.fromNamespaceAndPath(AsterRiskMod.MODID, "jei_plugin");
     }
 
     @Override

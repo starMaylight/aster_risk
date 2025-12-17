@@ -17,11 +17,15 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.FriendlyByteBuf;
 
+import net.mcreator.asterrisk.registry.ModSpawnEggs;
+import net.mcreator.asterrisk.registry.ModEntities;
 import net.mcreator.asterrisk.registry.ModEnchantments;
 import net.mcreator.asterrisk.recipe.ModRecipes;
 import net.mcreator.asterrisk.network.AsterRiskNetwork;
 import net.mcreator.asterrisk.init.AsterRiskModTabs;
 import net.mcreator.asterrisk.init.AsterRiskModItems;
+import net.mcreator.asterrisk.init.AsterRiskModFluids;
+import net.mcreator.asterrisk.init.AsterRiskModFluidTypes;
 import net.mcreator.asterrisk.init.AsterRiskModEffects;
 import net.mcreator.asterrisk.init.AsterRiskModBlocks;
 
@@ -50,12 +54,18 @@ public class AsterRiskMod {
 		AsterRiskModEffects.REGISTRY.register(context.getModEventBus());
 		// エンチャント登録（registryパッケージを使用）
 		ModEnchantments.REGISTRY.register(context.getModEventBus());
+		// エンティティ登録（registryパッケージを使用）
+		ModEntities.REGISTRY.register(context.getModEventBus());
+		// スポーンエッグ登録
+		ModSpawnEggs.REGISTRY.register(context.getModEventBus());
 		// End of user code block mod constructor
 		MinecraftForge.EVENT_BUS.register(this);
 		IEventBus bus = context.getModEventBus();
 		AsterRiskModBlocks.REGISTRY.register(bus);
 		AsterRiskModItems.REGISTRY.register(bus);
 		AsterRiskModTabs.REGISTRY.register(bus);
+		AsterRiskModFluids.REGISTRY.register(bus);
+		AsterRiskModFluidTypes.REGISTRY.register(bus);
 		// Start of user code block mod init
 		// プレイヤーマナ同期パケットを登録
 		net.mcreator.asterrisk.mana.ManaSyncPacket.register();

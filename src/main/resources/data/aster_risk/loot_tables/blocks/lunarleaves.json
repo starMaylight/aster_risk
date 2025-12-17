@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "aster_risk:blocks/lunarleaves",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "aster_risk:lunarleaves"
+        }
+      ]
+    }
+  ]
+}

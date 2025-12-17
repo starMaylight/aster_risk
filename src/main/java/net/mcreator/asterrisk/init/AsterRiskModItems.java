@@ -25,6 +25,7 @@ import net.mcreator.asterrisk.item.StardustItem;
 import net.mcreator.asterrisk.item.StardustCandyItem;
 import net.mcreator.asterrisk.item.SilveringotItem;
 import net.mcreator.asterrisk.item.RawsilverItem;
+import net.mcreator.asterrisk.item.MoonwaterItem;
 import net.mcreator.asterrisk.item.MoonstoneItem;
 import net.mcreator.asterrisk.item.MoonlightWandItem;
 import net.mcreator.asterrisk.item.MeteoritefragmentItem;
@@ -64,6 +65,15 @@ public class AsterRiskModItems {
 	public static final RegistryObject<Item> LUNAR_PILLAR = block(AsterRiskModBlocks.LUNAR_PILLAR);
 	public static final RegistryObject<Item> CELESTIAL_TILE = block(AsterRiskModBlocks.CELESTIAL_TILE);
 	public static final RegistryObject<Item> MOONLIGHT_LANTERN = block(AsterRiskModBlocks.MOONLIGHT_LANTERN);
+	public static final RegistryObject<Item> LUNARGRASS = block(AsterRiskModBlocks.LUNARGRASS);
+	public static final RegistryObject<Item> LUNARDIRT = block(AsterRiskModBlocks.LUNARDIRT);
+	public static final RegistryObject<Item> LUNARSTONE = block(AsterRiskModBlocks.LUNARSTONE);
+	public static final RegistryObject<Item> LUNARLOG = block(AsterRiskModBlocks.LUNARLOG);
+	public static final RegistryObject<Item> LUNARLEAVES = block(AsterRiskModBlocks.LUNARLEAVES);
+	public static final RegistryObject<Item> LUNARPLANKS = block(AsterRiskModBlocks.LUNARPLANKS);
+	public static final RegistryObject<Item> STARFALLSAND = block(AsterRiskModBlocks.STARFALLSAND);
+	public static final RegistryObject<Item> ECLIPSESTONE = block(AsterRiskModBlocks.ECLIPSESTONE);
+	public static final RegistryObject<Item> MOONWATER_BUCKET = REGISTRY.register("moonwater_bucket", () -> new MoonwaterItem());
 	// Start of user code block custom items
 	// 魔法道具
 	public static final RegistryObject<Item> MOONLIGHT_WAND = REGISTRY.register("moonlight_wand", () -> new MoonlightWandItem());
@@ -109,6 +119,11 @@ public class AsterRiskModItems {
 	public static final RegistryObject<Item> LUNAR_ELIXIR = REGISTRY.register("lunar_elixir", LunarElixirItem::new);
 	public static final RegistryObject<Item> STARDUST_CANDY = REGISTRY.register("stardust_candy", StardustCandyItem::new);
 	public static final RegistryObject<Item> CELESTIAL_CHARM = REGISTRY.register("celestial_charm", CelestialCharmItem::new);
+	// オベリスク
+	public static final RegistryObject<Item> LUNAR_OBELISK = block(AsterRiskModBlocks.LUNAR_OBELISK);
+	public static final RegistryObject<Item> STELLAR_OBELISK = block(AsterRiskModBlocks.STELLAR_OBELISK);
+	public static final RegistryObject<Item> SOLAR_OBELISK = block(AsterRiskModBlocks.SOLAR_OBELISK);
+	public static final RegistryObject<Item> VOID_OBELISK = block(AsterRiskModBlocks.VOID_OBELISK);
 
 	// End of user code block custom items
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {

@@ -27,12 +27,12 @@ import net.minecraftforge.common.util.LazyOptional;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * 祭壇コアのBlockEntity
  * 周囲の台座を検出し、儀式を実行する
+ * オベリスクとリンクして特殊エネルギーを使用可能
  */
 public class AltarCoreBlockEntity extends BlockEntity {
 
@@ -63,6 +63,9 @@ public class AltarCoreBlockEntity extends BlockEntity {
     // 現在の儀式レシピ（進行中のみ）
     @Nullable
     private RitualRecipe currentRecipe = null;
+    
+    // リンクされたオベリスク
+    private Set<BlockPos> linkedObelisks = new HashSet<>();
 
     public AltarCoreBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
@@ -75,6 +78,103 @@ public class AltarCoreBlockEntity extends BlockEntity {
      */
     public static AltarCoreBlockEntity create(BlockPos pos, BlockState state) {
         return new AltarCoreBlockEntity(ModBlockEntities.ALTAR_CORE.get(), pos, state);
+    }
+    
+    // ===== オベリスクリンク機能 =====
+    
+    public void addLinkedObelisk(BlockPos pos) {
+        linkedObelisks.add(pos);
+        setChanged();
+    }
+    
+    public void removeLinkedObelisk(BlockPos pos) {
+        linkedObelisks.remove(pos);
+        setChanged();
+    }
+    
+    public void clearLinkedObelisks() {
+        linkedObelisks.clear();
+        setChanged();
+    }
+    
+    public Set<BlockPos> getLinkedObelisks() {
+        return linkedObelisks;
+    }
+    
+    public boolean hasLinkedObeliskOfType(ObeliskEnergyType type) {
+        if (level == null) return false;
+        for (BlockPos pos : linkedObelisks) {
+            BlockEntity be = level.getBlockEntity(pos);
+            if (be instanceof ObeliskBlockEntity obelisk) {
+                if (obelisk.getEnergyType() == type) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+    /**
+     * 特定タイプのオベリスクからエネルギーを取得
+     */
+    @Nullable
+    public ObeliskBlockEntity getLinkedObelisk(ObeliskEnergyType type) {
+        if (level == null) return null;
+        for (BlockPos pos : linkedObelisks) {
+            BlockEntity be = level.getBlockEntity(pos);
+            if (be instanceof ObeliskBlockEntity obelisk) {
+                if (obelisk.getEnergyType() == type) {
+                    return obelisk;
+                }
+            }
+        }
+        return null;
+    }
+    
+    /**
+     * リンクされた全オベリスクの情報を取得
+     */
+    public Map<ObeliskEnergyType, Integer> getAvailableEnergies() {
+        Map<ObeliskEnergyType, Integer> energies = new EnumMap<>(ObeliskEnergyType.class);
+        if (level == null) return energies;
+        
+        for (BlockPos pos : linkedObelisks) {
+            BlockEntity be = level.getBlockEntity(pos);
+            if (be instanceof ObeliskBlockEntity obelisk && obelisk.getEnergyType() != null) {
+                energies.merge(obelisk.getEnergyType(), obelisk.getStoredEnergy(), Integer::sum);
+            }
+        }
+        return energies;
+    }
+    
+    /**
+     * 特定タイプのエネルギーを消費
+     */
+    public boolean consumeObeliskEnergy(ObeliskEnergyType type, int amount) {
+        if (level == null) return false;
+        
+        int remaining = amount;
+        for (BlockPos pos : linkedObelisks) {
+            BlockEntity be = level.getBlockEntity(pos);
+            if (be instanceof ObeliskBlockEntity obelisk && obelisk.getEnergyType() == type) {
+                int available = obelisk.getStoredEnergy();
+                int toConsume = Math.min(available, remaining);
+                if (toConsume > 0) {
+                    obelisk.consumeEnergy(toConsume);
+                    remaining -= toConsume;
+                    if (remaining <= 0) return true;
+                }
+            }
+        }
+        return remaining <= 0;
+    }
+    
+    /**
+     * 特定タイプのエネルギーが十分にあるか確認
+     */
+    public boolean hasEnoughObeliskEnergy(ObeliskEnergyType type, int amount) {
+        Map<ObeliskEnergyType, Integer> energies = getAvailableEnergies();
+        return energies.getOrDefault(type, 0) >= amount;
     }
 
     /**
@@ -151,6 +251,23 @@ public class AltarCoreBlockEntity extends BlockEntity {
             );
             return false;
         }
+        
+        // オベリスクエネルギーチェック
+        ObeliskEnergyType requiredType = recipe.getRequiredEnergyType();
+        int requiredAmount = recipe.getRequiredEnergyAmount();
+        
+        if (requiredType != null && requiredAmount > 0) {
+            if (!hasEnoughObeliskEnergy(requiredType, requiredAmount)) {
+                String typeName = requiredType.getName();
+                typeName = typeName.substring(0, 1).toUpperCase() + typeName.substring(1);
+                player.displayClientMessage(
+                    Component.literal("§c Not enough " + typeName + " energy! Need: " + requiredAmount + 
+                        ", Have: " + getAvailableEnergies().getOrDefault(requiredType, 0)),
+                    true
+                );
+                return false;
+            }
+        }
 
         // 儀式開始
         ritualInProgress = true;
@@ -202,6 +319,23 @@ public class AltarCoreBlockEntity extends BlockEntity {
         List<RitualPedestalBlockEntity> pedestalsWithItems = findPedestalsWithItems();
 
         if (manaStorage.getMana() >= currentRecipe.getManaCost()) {
+            // オベリスクエネルギー消費
+            ObeliskEnergyType requiredType = currentRecipe.getRequiredEnergyType();
+            int requiredAmount = currentRecipe.getRequiredEnergyAmount();
+            
+            if (requiredType != null && requiredAmount > 0) {
+                if (!consumeObeliskEnergy(requiredType, requiredAmount)) {
+                    // エネルギー不足で失敗
+                    ritualInProgress = false;
+                    ritualProgress = 0;
+                    currentRecipe = null;
+                    return;
+                }
+                
+                // オベリスクエネルギー消費エフェクト
+                spawnObeliskEnergyEffect(requiredType);
+            }
+            
             // マナ消費
             manaStorage.setMana(manaStorage.getMana() - currentRecipe.getManaCost());
 
@@ -230,6 +364,41 @@ public class AltarCoreBlockEntity extends BlockEntity {
         ritualProgress = 0;
         currentRecipe = null;
         setChanged();
+    }
+    
+    /**
+     * オベリスクエネルギー消費時のエフェクト
+     */
+    private void spawnObeliskEnergyEffect(ObeliskEnergyType type) {
+        if (!(level instanceof ServerLevel serverLevel)) return;
+        
+        var particleType = switch (type) {
+            case LUNAR -> ParticleTypes.END_ROD;
+            case STELLAR -> ParticleTypes.FIREWORK;
+            case SOLAR -> ParticleTypes.FLAME;
+            case VOID -> ParticleTypes.PORTAL;
+        };
+        
+        // リンクされたオベリスクから祭壇への光線
+        for (BlockPos obeliskPos : linkedObelisks) {
+            BlockEntity be = level.getBlockEntity(obeliskPos);
+            if (be instanceof ObeliskBlockEntity obelisk && obelisk.getEnergyType() == type) {
+                double ox = obeliskPos.getX() + 0.5;
+                double oy = obeliskPos.getY() + 1.5;
+                double oz = obeliskPos.getZ() + 0.5;
+                double ax = worldPosition.getX() + 0.5;
+                double ay = worldPosition.getY() + 1.0;
+                double az = worldPosition.getZ() + 0.5;
+                
+                for (int i = 0; i < 10; i++) {
+                    double t = i / 10.0;
+                    double x = ox + (ax - ox) * t;
+                    double y = oy + (ay - oy) * t;
+                    double z = oz + (az - oz) * t;
+                    serverLevel.sendParticles(particleType, x, y, z, 2, 0.1, 0.1, 0.1, 0.02);
+                }
+            }
+        }
     }
 
     /**
@@ -278,6 +447,16 @@ public class AltarCoreBlockEntity extends BlockEntity {
         tag.put("manaStorage", manaStorage.serializeNBT());
         tag.putBoolean("ritualInProgress", ritualInProgress);
         tag.putInt("ritualProgress", ritualProgress);
+        
+        // オベリスクリンク保存
+        int[] obeliskData = new int[linkedObelisks.size() * 3];
+        int i = 0;
+        for (BlockPos pos : linkedObelisks) {
+            obeliskData[i++] = pos.getX();
+            obeliskData[i++] = pos.getY();
+            obeliskData[i++] = pos.getZ();
+        }
+        tag.putIntArray("LinkedObelisks", obeliskData);
     }
 
     @Override
@@ -288,6 +467,15 @@ public class AltarCoreBlockEntity extends BlockEntity {
         }
         ritualInProgress = tag.getBoolean("ritualInProgress");
         ritualProgress = tag.getInt("ritualProgress");
+        
+        // オベリスクリンク読み込み
+        linkedObelisks.clear();
+        if (tag.contains("LinkedObelisks")) {
+            int[] obeliskData = tag.getIntArray("LinkedObelisks");
+            for (int i = 0; i < obeliskData.length; i += 3) {
+                linkedObelisks.add(new BlockPos(obeliskData[i], obeliskData[i + 1], obeliskData[i + 2]));
+            }
+        }
     }
 
     @Override

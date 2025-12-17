@@ -1,6 +1,7 @@
 package net.mcreator.asterrisk.init;
 
 import net.mcreator.asterrisk.AsterRiskMod;
+import net.mcreator.asterrisk.registry.ModSpawnEggs;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -68,6 +69,26 @@ public class CustomCreativeTabHandler {
             event.accept(AsterRiskModItems.LUNAR_ELIXIR.get());
             event.accept(AsterRiskModItems.STARDUST_CANDY.get());
             event.accept(AsterRiskModItems.CELESTIAL_CHARM.get());
+            
+            // === Phase 8: 友好Mobスポーンエッグ ===
+            event.accept(ModSpawnEggs.MOON_RABBIT_SPAWN_EGG.get());
+            event.accept(ModSpawnEggs.STAR_SPIRIT_SPAWN_EGG.get());
+            event.accept(ModSpawnEggs.MOONLIGHT_FAIRY_SPAWN_EGG.get());
+            
+            // === Phase 8: 敵対Mobスポーンエッグ ===
+            event.accept(ModSpawnEggs.ECLIPSE_PHANTOM_SPAWN_EGG.get());
+            event.accept(ModSpawnEggs.VOID_WALKER_SPAWN_EGG.get());
+            event.accept(ModSpawnEggs.CORRUPTED_GOLEM_SPAWN_EGG.get());
+            
+            // === オベリスク ===
+            event.accept(AsterRiskModItems.LUNAR_OBELISK.get());
+            event.accept(AsterRiskModItems.STELLAR_OBELISK.get());
+            event.accept(AsterRiskModItems.SOLAR_OBELISK.get());
+            event.accept(AsterRiskModItems.VOID_OBELISK.get());
+            
+            // === Phase 8: ボススポーンエッグ ===
+            event.accept(ModSpawnEggs.ECLIPSE_MONARCH_SPAWN_EGG.get());
+            event.accept(ModSpawnEggs.STAR_DEVOURER_SPAWN_EGG.get());
         }
     }
 }

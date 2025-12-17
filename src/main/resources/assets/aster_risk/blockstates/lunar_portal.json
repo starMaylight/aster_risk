@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "axis=x": { "model": "aster_risk:block/lunar_portal_ns" },
+    "axis=z": { "model": "aster_risk:block/lunar_portal_ew" }
+  }
+}
