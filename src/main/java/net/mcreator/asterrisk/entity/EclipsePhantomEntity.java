@@ -1,6 +1,7 @@
 package net.mcreator.asterrisk.entity;
 
 import net.mcreator.asterrisk.init.AsterRiskModEffects;
+import net.mcreator.asterrisk.init.AsterRiskModItems;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.monster.Monster;
@@ -143,5 +144,15 @@ public class EclipsePhantomEntity extends Monster {
     @Override
     protected boolean shouldDespawnInPeaceful() {
         return true;
+    }
+    
+    @Override
+    protected void dropCustomDeathLoot(DamageSource source, int looting, boolean recentlyHit) {
+        super.dropCustomDeathLoot(source, looting, recentlyHit);
+        
+        // Shadow Essence - 50%確率で1個
+        if (this.random.nextFloat() < 0.5F + looting * 0.1F) {
+            this.spawnAtLocation(AsterRiskModItems.SHADOW_ESSENCE.get());
+        }
     }
 }

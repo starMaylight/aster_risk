@@ -1,9 +1,9 @@
 {
-  "feature": "aster_risk:test_tree",
+  "feature": "aster_risk:lunar_tree",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 11
+      "count": 8
     },
     {
       "type": "minecraft:in_square"
@@ -24,7 +24,7 @@
       "predicate": {
         "type": "minecraft:would_survive",
         "state": {
-          "Name": "minecraft:oak_sapling",
+          "Name": "aster_risk:lunar_sapling",
           "Properties": {
             "stage": "0"
           }

@@ -458,4 +458,27 @@ public class EclipseMonarchEntity extends Monster {
     public int getPhase() {
         return this.phase;
     }
+    
+    @Override
+    protected void dropCustomDeathLoot(DamageSource source, int looting, boolean recentlyHit) {
+        super.dropCustomDeathLoot(source, looting, recentlyHit);
+        
+        // Eclipse Core - 確定ドロップ 1-2個
+        int coreCount = 1 + this.random.nextInt(2) + looting;
+        for (int i = 0; i < coreCount; i++) {
+            this.spawnAtLocation(AsterRiskModItems.ECLIPSE_CORE.get());
+        }
+        
+        // Meteorite Fragment - 3-5個
+        int fragmentCount = 3 + this.random.nextInt(3) + looting;
+        for (int i = 0; i < fragmentCount; i++) {
+            this.spawnAtLocation(AsterRiskModItems.METEORITE_FRAGMENT.get());
+        }
+        
+        // Shadow Essence - 2-4個
+        int essenceCount = 2 + this.random.nextInt(3);
+        for (int i = 0; i < essenceCount; i++) {
+            this.spawnAtLocation(AsterRiskModItems.SHADOW_ESSENCE.get());
+        }
+    }
 }

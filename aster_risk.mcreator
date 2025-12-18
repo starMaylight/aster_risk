@@ -4,7 +4,7 @@
       "name": "AsterRisk",
       "type": "tab",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "aster_risk",
       "metadata": {
         "files": []
@@ -14,7 +14,7 @@
       "name": "Moonstone",
       "type": "item",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "moonstone",
       "metadata": {
         "files": [
@@ -27,7 +27,7 @@
       "name": "MoonstoneOre",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "moonstone_ore",
       "metadata": {
         "files": [
@@ -45,7 +45,7 @@
       "name": "Moonstoneoreloot",
       "type": "loottable",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "moonstoneoreloot",
       "metadata": {
         "files": [
@@ -57,7 +57,7 @@
       "name": "Rawsilver",
       "type": "item",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "raw_silver",
       "metadata": {
         "files": [
@@ -70,7 +70,7 @@
       "name": "Silveringot",
       "type": "item",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "silver_ingot",
       "metadata": {
         "files": [
@@ -122,7 +122,7 @@
       "name": "Meteoritefragment",
       "type": "item",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "meteorite_fragment",
       "metadata": {
         "files": [
@@ -135,7 +135,7 @@
       "name": "MeteoriteOre",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "meteorite_ore",
       "metadata": {
         "files": [
@@ -153,7 +153,7 @@
       "name": "Meteoriteoreloot",
       "type": "loottable",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "meteoriteoreloot",
       "metadata": {
         "files": [
@@ -165,7 +165,7 @@
       "name": "Silverore",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "silver_ore",
       "metadata": {
         "files": [
@@ -183,7 +183,7 @@
       "name": "Stardustcraft",
       "type": "recipe",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "stardustcraft",
       "metadata": {
         "files": [
@@ -195,7 +195,7 @@
       "name": "Lunardustcraft",
       "type": "recipe",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "lunardustcraft",
       "metadata": {
         "files": [
@@ -207,7 +207,7 @@
       "name": "Silveroreloot",
       "type": "loottable",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "silveroreloot",
       "metadata": {
         "files": [
@@ -219,7 +219,7 @@
       "name": "RawSilversmelt",
       "type": "recipe",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "raw_silversmelt",
       "metadata": {
         "files": [
@@ -232,7 +232,7 @@
       "name": "Moonstoneblock",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "moonstone_block",
       "metadata": {
         "files": [
@@ -248,7 +248,7 @@
       "name": "SilverBlock",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "silver_block",
       "metadata": {
         "files": [
@@ -264,7 +264,7 @@
       "name": "StardustBlock",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "stardust_block",
       "metadata": {
         "files": [
@@ -280,7 +280,7 @@
       "name": "MeteoriteBlock",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "meteorite_block",
       "metadata": {
         "files": [
@@ -296,7 +296,7 @@
       "name": "MoonstoneBricks",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "moonstone_bricks",
       "metadata": {
         "files": [
@@ -312,7 +312,7 @@
       "name": "PolishedMoonstone",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "polished_moonstone",
       "metadata": {
         "files": [
@@ -328,7 +328,7 @@
       "name": "MoonstoneTiles",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "moonstone_tiles",
       "metadata": {
         "files": [
@@ -344,7 +344,7 @@
       "name": "CrackedMoonstoneBricks",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "cracked_moonstone_bricks",
       "metadata": {
         "files": [
@@ -360,7 +360,7 @@
       "name": "MossyMoonstoneBricks",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "mossy_moonstone_bricks",
       "metadata": {
         "files": [
@@ -376,7 +376,7 @@
       "name": "SilverBricks",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "silver_bricks",
       "metadata": {
         "files": [
@@ -392,7 +392,7 @@
       "name": "ChiseledMoonstone",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "chiseled_moonstone",
       "metadata": {
         "files": [
@@ -408,7 +408,7 @@
       "name": "StarryGlass",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "starry_glass",
       "metadata": {
         "files": [
@@ -424,7 +424,7 @@
       "name": "LunarPillar",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "lunar_pillar",
       "metadata": {
         "files": [
@@ -440,7 +440,7 @@
       "name": "CelestialTile",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "celestial_tile",
       "metadata": {
         "files": [
@@ -456,7 +456,7 @@
       "name": "MoonlightLantern",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "moonlight_lantern",
       "metadata": {
         "files": [
@@ -472,7 +472,7 @@
       "name": "Moonstoneblockcraft",
       "type": "recipe",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "moonstoneblockcraft",
       "metadata": {
         "files": [
@@ -485,7 +485,7 @@
       "name": "Moonstonefromblock",
       "type": "recipe",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "moonstonefromblock",
       "metadata": {
         "files": [
@@ -497,7 +497,7 @@
       "name": "Silverblockcraft",
       "type": "recipe",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "silverblockcraft",
       "metadata": {
         "files": [
@@ -509,7 +509,7 @@
       "name": "Moonstonebrick",
       "type": "recipe",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "moonstonebrick",
       "metadata": {
         "files": [
@@ -521,7 +521,7 @@
       "name": "Polishedmoonstonec",
       "type": "recipe",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "polishedmoonstonec",
       "metadata": {
         "files": [
@@ -533,7 +533,7 @@
       "name": "Moonstonetilescraft",
       "type": "recipe",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "moonstonetilescraft",
       "metadata": {
         "files": [
@@ -545,7 +545,7 @@
       "name": "Silverbrick",
       "type": "recipe",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "silverbrick",
       "metadata": {
         "files": [
@@ -557,7 +557,7 @@
       "name": "Crackedmoonstonebrick",
       "type": "recipe",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "crackedmoonstonebrick",
       "metadata": {
         "files": [
@@ -570,7 +570,7 @@
       "name": "Mossymoonstonebrick",
       "type": "recipe",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "mossymoonstonebrick",
       "metadata": {
         "files": [
@@ -582,7 +582,7 @@
       "name": "Chiseledmoonstones",
       "type": "recipe",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "chiseledmoonstones",
       "metadata": {
         "files": [
@@ -594,7 +594,7 @@
       "name": "Starryglasss",
       "type": "recipe",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "starryglasss",
       "metadata": {
         "files": [
@@ -606,7 +606,7 @@
       "name": "Lunarpillars",
       "type": "recipe",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "lunarpillars",
       "metadata": {
         "files": [
@@ -618,7 +618,7 @@
       "name": "Celestialtiles",
       "type": "recipe",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "celestialtiles",
       "metadata": {
         "files": [
@@ -630,7 +630,7 @@
       "name": "Moonlightlanterns",
       "type": "recipe",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "moonlightlanterns",
       "metadata": {
         "files": [
@@ -642,7 +642,7 @@
       "name": "SilverIngotfromBlock",
       "type": "recipe",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "silver_ingotfrom_block",
       "metadata": {
         "files": [
@@ -832,20 +832,6 @@
           "src/main/resources/assets/aster_risk/models/block/moonwater.json",
           "src/main/java/net/mcreator/asterrisk/fluid/MoonwaterFluid.java",
           "src/main/java/net/mcreator/asterrisk/fluid/types/MoonwaterFluidType.java"
-        ]
-      }
-    },
-    {
-      "name": "Test",
-      "type": "biome",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "test",
-      "metadata": {
-        "files": [
-          "src/main/resources/data/aster_risk/worldgen/placed_feature/test_tree.json",
-          "src/main/resources/data/aster_risk/worldgen/configured_feature/test_tree.json",
-          "src/main/resources/data/aster_risk/worldgen/biome/test.json"
         ]
       }
     },
@@ -1087,7 +1073,47 @@
       "biome.aster_risk.lunar_lake": "Lunar Lake",
       "biome.aster_risk.starfall_hills": "Starfall Hills",
       "biome.aster_risk.eclipse_wastes": "Eclipse Wastes",
-      "biome.aster_risk.test": "Test"
+      "block.aster_risk.lunar_sapling": "Lunar Sapling",
+      "item.aster_risk.moonlight_wand": "Moonlight Wand",
+      "item.aster_risk.stargazer_wand": "Stargazer Wand",
+      "item.aster_risk.lunar_compass": "Lunar Compass",
+      "item.aster_risk.meteor_wand": "Meteor Wand",
+      "item.aster_risk.lunar_healing_staff": "Lunar Healing Staff",
+      "item.aster_risk.linking_wand": "Linking Wand",
+      "item.aster_risk.lunar_helmet": "Lunar Helmet",
+      "item.aster_risk.lunar_chestplate": "Lunar Chestplate",
+      "item.aster_risk.lunar_leggings": "Lunar Leggings",
+      "item.aster_risk.lunar_boots": "Lunar Boots",
+      "item.aster_risk.stellar_crown": "Stellar Crown",
+      "item.aster_risk.stellar_robe": "Stellar Robe",
+      "item.aster_risk.stellar_leggings": "Stellar Leggings",
+      "item.aster_risk.stellar_boots": "Stellar Boots",
+      "item.aster_risk.meteorite_helmet": "Meteorite Helmet",
+      "item.aster_risk.meteorite_chestplate": "Meteorite Chestplate",
+      "item.aster_risk.meteorite_leggings": "Meteorite Leggings",
+      "item.aster_risk.meteorite_boots": "Meteorite Boots",
+      "item.aster_risk.lunar_blade": "Lunar Blade",
+      "item.aster_risk.meteor_hammer": "Meteorite Helmet",
+      "item.aster_risk.stardust_dagger": "Stardust Dagger",
+      "item.aster_risk.meteorite_greatsword": "Meteorite Greatsword",
+      "block.aster_risk.moonlight": "Moonlight",
+      "block.aster_risk.eclipse_altar": "Eclipse Altar",
+      "block.aster_risk.stellar_spire_core": "Stellar Spire Core",
+      "item.aster_risk.eclipse_core": "Eclipse Core",
+      "item.aster_risk.stellar_heart": "Stellar Heart",
+      "item.aster_risk.shadow_essence": "Shadow Essence",
+      "item.aster_risk.void_shard": "Void Shard",
+      "item.aster_risk.corrupted_core": "Corrupted Core",
+      "item.aster_risk.eclipse_crown": "Eclipse Crown",
+      "item.aster_risk.eclipse_armor": "Eclipse Armor",
+      "item.aster_risk.eclipse_greaves": "Eclipse Greaves",
+      "item.aster_risk.eclipse_boots": "Eclipse Boots",
+      "item.aster_risk.eclipse_blade": "Eclipse Blade",
+      "item.aster_risk.stellar_diadem": "Stellar Diadem",
+      "item.aster_risk.stellar_vestment": "Stellar Vestment",
+      "item.aster_risk.stellar_pants": "Stellar Pants",
+      "item.aster_risk.stellar_sabatons": "Stellar Sabatons",
+      "item.aster_risk.stellar_scepter": "Stellar Scepter"
     }
   },
   "metadata": {
@@ -1095,9 +1121,7 @@
       "src/main/resources/pack.mcmeta",
       "src/main/java/net/mcreator/asterrisk/AsterRiskMod.java",
       "src/main/java/net/mcreator/asterrisk/init/AsterRiskModTabs.java",
-      "src/main/resources/META-INF/accesstransformer.cfg",
       "src/main/resources/META-INF/mods.toml",
-      "src/main/java/net/mcreator/asterrisk/init/AsterRiskModBiomes.java",
       "src/main/java/net/mcreator/asterrisk/init/AsterRiskModFluidTypes.java",
       "src/main/java/net/mcreator/asterrisk/init/AsterRiskModFluids.java",
       "src/main/java/net/mcreator/asterrisk/init/AsterRiskModBlocks.java",

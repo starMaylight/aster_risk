@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "aster_risk:block/stellar_spire_core" }
+  }
+}

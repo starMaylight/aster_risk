@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:ore",
+  "config": {
+    "size": 6,
+    "discard_chance_on_air_exposure": 0.3,
+    "targets": [
+      {
+        "target": {
+          "predicate_type": "blockstate_match",
+          "block_state": {
+            "Name": "aster_risk:lunarstone"
+          }
+        },
+        "state": {
+          "Name": "aster_risk:meteorite_ore"
+        }
+      }
+    ]
+  }
+}

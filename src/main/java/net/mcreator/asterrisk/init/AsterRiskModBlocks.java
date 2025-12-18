@@ -12,6 +12,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraft.world.level.block.Block;
 
 import net.mcreator.asterrisk.block.entity.ObeliskEnergyType;
+import net.mcreator.asterrisk.block.StellarSpireCoreBlock;
 import net.mcreator.asterrisk.block.StarryGlassBlock;
 import net.mcreator.asterrisk.block.StarfallsandBlock;
 import net.mcreator.asterrisk.block.StardustBlockBlock;
@@ -41,11 +42,13 @@ import net.mcreator.asterrisk.block.LunarlogBlock;
 import net.mcreator.asterrisk.block.LunarleavesBlock;
 import net.mcreator.asterrisk.block.LunargrassBlock;
 import net.mcreator.asterrisk.block.LunardirtBlock;
+import net.mcreator.asterrisk.block.LunarSaplingBlock;
 import net.mcreator.asterrisk.block.LunarPortalBlock;
 import net.mcreator.asterrisk.block.LunarPillarBlock;
 import net.mcreator.asterrisk.block.LunarInfuserBlock;
 import net.mcreator.asterrisk.block.LunarCollectorBlock;
 import net.mcreator.asterrisk.block.EclipsestoneBlock;
+import net.mcreator.asterrisk.block.EclipseAltarBlock;
 import net.mcreator.asterrisk.block.CrackedMoonstoneBricksBlock;
 import net.mcreator.asterrisk.block.ChiseledMoonstoneBlock;
 import net.mcreator.asterrisk.block.CelestialTileBlock;
@@ -106,5 +109,10 @@ public class AsterRiskModBlocks {
 	public static final RegistryObject<Block> VOID_OBELISK = REGISTRY.register("void_obelisk", () -> new ObeliskBlock(Block.Properties.of().strength(3.0F, 6.0F).requiresCorrectToolForDrops().lightLevel(s -> 4).noOcclusion(), ObeliskEnergyType.VOID));
 	// ポータル
 	public static final RegistryObject<Block> LUNAR_PORTAL = REGISTRY.register("lunar_portal", () -> new LunarPortalBlock());
+	// 苗木
+	public static final RegistryObject<Block> LUNAR_SAPLING = REGISTRY.register("lunar_sapling", () -> new LunarSaplingBlock());
+	// ボス召喚祈壇
+	public static final RegistryObject<Block> ECLIPSE_ALTAR = REGISTRY.register("eclipse_altar", () -> new EclipseAltarBlock());
+	public static final RegistryObject<Block> STELLAR_SPIRE_CORE = REGISTRY.register("stellar_spire_core", () -> new StellarSpireCoreBlock());
 	// End of user code block custom blocks
 }

@@ -141,6 +141,11 @@ public class CorruptedGolemEntity extends Monster {
     protected void dropCustomDeathLoot(DamageSource source, int looting, boolean recentlyHit) {
         super.dropCustomDeathLoot(source, looting, recentlyHit);
         
+        // Corrupted Core - 70%確率で1個
+        if (this.random.nextFloat() < 0.7F + looting * 0.1F) {
+            this.spawnAtLocation(AsterRiskModItems.CORRUPTED_CORE.get());
+        }
+        
         // 月光石をドロップ (1-3個)
         int moonstoneCount = 1 + this.random.nextInt(2) + looting;
         for (int i = 0; i < moonstoneCount; i++) {

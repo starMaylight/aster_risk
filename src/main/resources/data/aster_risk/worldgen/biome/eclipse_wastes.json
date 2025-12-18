@@ -40,14 +40,20 @@
   "features": [
     [],
     [],
+    [
+      "aster_risk:lunar_moonstone_ore",
+      "aster_risk:lunar_meteorite_ore",
+      "aster_risk:lunar_silver_ore"
+    ],
     [],
     [],
     [],
     [],
     [],
     [],
-    [],
-    [],
+    [
+      "aster_risk:eclipse_altar_feature"
+    ],
     []
   ]
 }

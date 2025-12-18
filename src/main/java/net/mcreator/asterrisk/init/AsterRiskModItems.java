@@ -12,18 +12,25 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ArmorItem;
 
+import net.mcreator.asterrisk.item.weapon.StellarScepterItem;
 import net.mcreator.asterrisk.item.weapon.StardustDaggerItem;
 import net.mcreator.asterrisk.item.weapon.MeteoriteGreatswordItem;
 import net.mcreator.asterrisk.item.weapon.MeteorHammerItem;
 import net.mcreator.asterrisk.item.weapon.LunarBladeItem;
+import net.mcreator.asterrisk.item.weapon.EclipseBladeItem;
+import net.mcreator.asterrisk.item.armor.StellarEndgameArmorItem;
 import net.mcreator.asterrisk.item.armor.StellarArmorItem;
 import net.mcreator.asterrisk.item.armor.MeteoriteArmorItem;
 import net.mcreator.asterrisk.item.armor.LunarArmorItem;
+import net.mcreator.asterrisk.item.armor.EclipseArmorItem;
+import net.mcreator.asterrisk.item.VoidShardItem;
+import net.mcreator.asterrisk.item.StellarHeartItem;
 import net.mcreator.asterrisk.item.StargazerWandItem;
 import net.mcreator.asterrisk.item.StarflagmentItem;
 import net.mcreator.asterrisk.item.StardustItem;
 import net.mcreator.asterrisk.item.StardustCandyItem;
 import net.mcreator.asterrisk.item.SilveringotItem;
+import net.mcreator.asterrisk.item.ShadowEssenceItem;
 import net.mcreator.asterrisk.item.RawsilverItem;
 import net.mcreator.asterrisk.item.MoonwaterItem;
 import net.mcreator.asterrisk.item.MoonstoneItem;
@@ -35,6 +42,8 @@ import net.mcreator.asterrisk.item.LunarHealingStaffItem;
 import net.mcreator.asterrisk.item.LunarElixirItem;
 import net.mcreator.asterrisk.item.LunarCompassItem;
 import net.mcreator.asterrisk.item.LinkingWandItem;
+import net.mcreator.asterrisk.item.EclipseCoreItem;
+import net.mcreator.asterrisk.item.CorruptedCoreItem;
 import net.mcreator.asterrisk.item.CelestialCharmItem;
 import net.mcreator.asterrisk.AsterRiskMod;
 
@@ -124,6 +133,30 @@ public class AsterRiskModItems {
 	public static final RegistryObject<Item> STELLAR_OBELISK = block(AsterRiskModBlocks.STELLAR_OBELISK);
 	public static final RegistryObject<Item> SOLAR_OBELISK = block(AsterRiskModBlocks.SOLAR_OBELISK);
 	public static final RegistryObject<Item> VOID_OBELISK = block(AsterRiskModBlocks.VOID_OBELISK);
+	// 苗木
+	public static final RegistryObject<Item> LUNAR_SAPLING = block(AsterRiskModBlocks.LUNAR_SAPLING);
+	// ボス召喚祈壇
+	public static final RegistryObject<Item> ECLIPSE_ALTAR = block(AsterRiskModBlocks.ECLIPSE_ALTAR);
+	public static final RegistryObject<Item> STELLAR_SPIRE_CORE = block(AsterRiskModBlocks.STELLAR_SPIRE_CORE);
+	// ボスドロップアイテム
+	public static final RegistryObject<Item> ECLIPSE_CORE = REGISTRY.register("eclipse_core", EclipseCoreItem::new);
+	public static final RegistryObject<Item> STELLAR_HEART = REGISTRY.register("stellar_heart", StellarHeartItem::new);
+	// 敵対Mobドロップアイテム
+	public static final RegistryObject<Item> SHADOW_ESSENCE = REGISTRY.register("shadow_essence", ShadowEssenceItem::new);
+	public static final RegistryObject<Item> VOID_SHARD = REGISTRY.register("void_shard", VoidShardItem::new);
+	public static final RegistryObject<Item> CORRUPTED_CORE = REGISTRY.register("corrupted_core", CorruptedCoreItem::new);
+	// 最終装備 - Eclipse Set
+	public static final RegistryObject<Item> ECLIPSE_CROWN = REGISTRY.register("eclipse_crown", () -> new EclipseArmorItem(ArmorItem.Type.HELMET, new Item.Properties()));
+	public static final RegistryObject<Item> ECLIPSE_ARMOR = REGISTRY.register("eclipse_armor", () -> new EclipseArmorItem(ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+	public static final RegistryObject<Item> ECLIPSE_GREAVES = REGISTRY.register("eclipse_greaves", () -> new EclipseArmorItem(ArmorItem.Type.LEGGINGS, new Item.Properties()));
+	public static final RegistryObject<Item> ECLIPSE_BOOTS = REGISTRY.register("eclipse_boots", () -> new EclipseArmorItem(ArmorItem.Type.BOOTS, new Item.Properties()));
+	public static final RegistryObject<Item> ECLIPSE_BLADE = REGISTRY.register("eclipse_blade", () -> new EclipseBladeItem(new Item.Properties()));
+	// 最終装備 - Stellar Set
+	public static final RegistryObject<Item> STELLAR_DIADEM = REGISTRY.register("stellar_diadem", () -> new StellarEndgameArmorItem(ArmorItem.Type.HELMET, new Item.Properties()));
+	public static final RegistryObject<Item> STELLAR_VESTMENT = REGISTRY.register("stellar_vestment", () -> new StellarEndgameArmorItem(ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+	public static final RegistryObject<Item> STELLAR_PANTS = REGISTRY.register("stellar_pants", () -> new StellarEndgameArmorItem(ArmorItem.Type.LEGGINGS, new Item.Properties()));
+	public static final RegistryObject<Item> STELLAR_SABATONS = REGISTRY.register("stellar_sabatons", () -> new StellarEndgameArmorItem(ArmorItem.Type.BOOTS, new Item.Properties()));
+	public static final RegistryObject<Item> STELLAR_SCEPTER = REGISTRY.register("stellar_scepter", () -> new StellarScepterItem(new Item.Properties()));
 
 	// End of user code block custom items
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {

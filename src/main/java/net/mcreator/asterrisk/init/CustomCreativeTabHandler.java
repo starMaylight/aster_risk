@@ -89,6 +89,34 @@ public class CustomCreativeTabHandler {
             // === Phase 8: ボススポーンエッグ ===
             event.accept(ModSpawnEggs.ECLIPSE_MONARCH_SPAWN_EGG.get());
             event.accept(ModSpawnEggs.STAR_DEVOURER_SPAWN_EGG.get());
+            
+            // === Phase 10: Lunar Realm ===
+            event.accept(AsterRiskModItems.LUNAR_SAPLING.get());
+            
+            // === Phase 11: Boss Structures ===
+            event.accept(AsterRiskModItems.ECLIPSE_ALTAR.get());
+            event.accept(AsterRiskModItems.STELLAR_SPIRE_CORE.get());
+            
+            // === Mob Drop Items ===
+            event.accept(AsterRiskModItems.ECLIPSE_CORE.get());
+            event.accept(AsterRiskModItems.STELLAR_HEART.get());
+            event.accept(AsterRiskModItems.SHADOW_ESSENCE.get());
+            event.accept(AsterRiskModItems.VOID_SHARD.get());
+            event.accept(AsterRiskModItems.CORRUPTED_CORE.get());
+            
+            // === Endgame Equipment - Eclipse Set ===
+            event.accept(AsterRiskModItems.ECLIPSE_CROWN.get());
+            event.accept(AsterRiskModItems.ECLIPSE_ARMOR.get());
+            event.accept(AsterRiskModItems.ECLIPSE_GREAVES.get());
+            event.accept(AsterRiskModItems.ECLIPSE_BOOTS.get());
+            event.accept(AsterRiskModItems.ECLIPSE_BLADE.get());
+            
+            // === Endgame Equipment - Stellar Set ===
+            event.accept(AsterRiskModItems.STELLAR_DIADEM.get());
+            event.accept(AsterRiskModItems.STELLAR_VESTMENT.get());
+            event.accept(AsterRiskModItems.STELLAR_PANTS.get());
+            event.accept(AsterRiskModItems.STELLAR_SABATONS.get());
+            event.accept(AsterRiskModItems.STELLAR_SCEPTER.get());
         }
     }
 }

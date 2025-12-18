@@ -1,6 +1,7 @@
 package net.mcreator.asterrisk.entity;
 
 import net.mcreator.asterrisk.init.AsterRiskModEffects;
+import net.mcreator.asterrisk.init.AsterRiskModItems;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -185,5 +186,15 @@ public class VoidWalkerEntity extends Monster {
     @Override
     protected boolean shouldDespawnInPeaceful() {
         return true;
+    }
+    
+    @Override
+    protected void dropCustomDeathLoot(DamageSource source, int looting, boolean recentlyHit) {
+        super.dropCustomDeathLoot(source, looting, recentlyHit);
+        
+        // Void Shard - 60%確率で1個
+        if (this.random.nextFloat() < 0.6F + looting * 0.1F) {
+            this.spawnAtLocation(AsterRiskModItems.VOID_SHARD.get());
+        }
     }
 }

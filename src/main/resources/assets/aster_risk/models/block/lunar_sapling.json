@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "aster_risk:block/lunar_sapling"
+  },
+  "render_type": "cutout"
+}

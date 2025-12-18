@@ -1,6 +1,7 @@
 package net.mcreator.asterrisk.entity;
 
 import net.mcreator.asterrisk.init.AsterRiskModEffects;
+import net.mcreator.asterrisk.init.AsterRiskModItems;
 import net.mcreator.asterrisk.registry.ModEntities;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.monster.Monster;
@@ -596,5 +597,28 @@ public class StarDevourerEntity extends Monster {
     
     public boolean isCharging() {
         return this.isCharging;
+    }
+    
+    @Override
+    protected void dropCustomDeathLoot(DamageSource source, int looting, boolean recentlyHit) {
+        super.dropCustomDeathLoot(source, looting, recentlyHit);
+        
+        // Stellar Heart - 確定ドロップ 1-2個
+        int heartCount = 1 + this.random.nextInt(2) + looting;
+        for (int i = 0; i < heartCount; i++) {
+            this.spawnAtLocation(AsterRiskModItems.STELLAR_HEART.get());
+        }
+        
+        // Star Fragment - 3-5個
+        int fragmentCount = 3 + this.random.nextInt(3) + looting;
+        for (int i = 0; i < fragmentCount; i++) {
+            this.spawnAtLocation(AsterRiskModItems.STARFLAGMENT.get());
+        }
+        
+        // Stardust - 5-10個
+        int dustCount = 5 + this.random.nextInt(6) + looting;
+        for (int i = 0; i < dustCount; i++) {
+            this.spawnAtLocation(AsterRiskModItems.STARDUST.get());
+        }
     }
 }
