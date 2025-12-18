@@ -1,14 +1,16 @@
 modLoader="javafml"
 loaderVersion="[47,)"
-license="Not specified"
+license="MIT License"
 
 [[mods]]
 modId="aster_risk"
-version="1.0.0"
+version="0.9."
 displayName="Aster Risk"
-displayURL="https://mcreator.net"
+displayURL="https://mcreator.net,"
+logoFile="logo.png"
 credits="Created using mod maker MCreator - https://mcreator.net/about"
-authors="MCreator"
+authors="MCreator,starMaylight"
+description="moonlight,ritual,andmore! ,issue:https://github.com/starMaylight/aster_risk/issues"
 
 # Start of user code block mod configuration
 # End of user code block mod configuration

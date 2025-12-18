@@ -1135,16 +1135,19 @@
   "workspaceSettings": {
     "modid": "aster_risk",
     "modName": "Aster Risk",
-    "version": "1.0.0",
-    "author": "MCreator",
-    "websiteURL": "https://mcreator.net",
-    "license": "Not specified",
+    "version": "0.9.alpha",
+    "description": "moonlight,ritual,andmore! ,issue:https://github.com/starMaylight/aster_risk/issues",
+    "author": "MCreator,starMaylight",
+    "websiteURL": "https://mcreator.net,",
+    "license": "MIT License",
     "serverSideOnly": false,
+    "modPicture": "logo",
     "requiredMods": [],
     "dependencies": [],
     "dependants": [],
     "mcreatorDependencies": [],
     "currentGenerator": "forge-1.20.1",
+    "credits": "Created using mod maker MCreator - https://mcreator.net/about",
     "modElementsPackage": "net.mcreator.asterrisk"
   },
   "mcreatorVersion": 202500228610
