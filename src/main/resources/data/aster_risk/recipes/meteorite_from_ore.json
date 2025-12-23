@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:smelting",
+    "ingredient": {
+        "item": "aster_risk:meteorite_ore"
+    },
+    "result": "aster_risk:meteorite_fragment",
+    "experience": 1.0,
+    "cookingtime": 200
+}

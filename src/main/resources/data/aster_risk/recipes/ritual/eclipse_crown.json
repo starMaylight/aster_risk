@@ -1,0 +1,18 @@
+{
+    "type": "aster_risk:ritual",
+    "ingredients": [
+        { "item": "aster_risk:eclipse_core" },
+        { "item": "aster_risk:meteorite_helmet" },
+        { "item": "aster_risk:shadow_essence" },
+        { "item": "aster_risk:eclipse_altar" }
+    ],
+    "result": {
+        "item": "aster_risk:eclipse_crown",
+        "count": 1
+    },
+    "mana_cost": 1000,
+    "required_energy": {
+        "type": "void",
+        "amount": 500
+    }
+}

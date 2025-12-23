@@ -1,0 +1,28 @@
+{
+    "name": "Weapons",
+    "icon": "aster_risk:lunar_blade",
+    "category": "aster_risk:equipment",
+    "sortnum": 4,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:lunar_blade",
+            "text": "$(lunar)Lunar Blade$()$(br)A swift sword that deals bonus damage at night. Right-click for a mana-powered dash attack."
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:meteor_hammer",
+            "text": "$(stellar)Meteor Hammer$()$(br)A heavy weapon that creates shockwaves on impact. Right-click to slam the ground."
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:stardust_dagger",
+            "text": "$(stellar)Stardust Dagger$()$(br)A fast dagger that teleports you behind enemies on backstab."
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:meteorite_greatsword",
+            "text": "$(stellar)Meteorite Greatsword$()$(br)A massive sword with sweeping attacks that hit multiple enemies."
+        }
+    ]
+}

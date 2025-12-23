@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SDS",
+        "DGD",
+        "SDS"
+    ],
+    "key": {
+        "S": { "item": "aster_risk:stardust" },
+        "D": { "item": "minecraft:diamond" },
+        "G": { "item": "minecraft:glass" }
+    },
+    "result": {
+        "item": "aster_risk:stargazer_wand",
+        "count": 1
+    }
+}

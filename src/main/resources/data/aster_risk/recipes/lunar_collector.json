@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "MGM",
+        "GDG",
+        "SSS"
+    ],
+    "key": {
+        "M": { "item": "aster_risk:moonstone" },
+        "G": { "item": "minecraft:glass" },
+        "D": { "item": "minecraft:diamond" },
+        "S": { "item": "aster_risk:silver_ingot" }
+    },
+    "result": {
+        "item": "aster_risk:lunar_collector",
+        "count": 1
+    }
+}

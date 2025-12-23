@@ -45,6 +45,7 @@ import net.mcreator.asterrisk.item.LinkingWandItem;
 import net.mcreator.asterrisk.item.EclipseCoreItem;
 import net.mcreator.asterrisk.item.CorruptedCoreItem;
 import net.mcreator.asterrisk.item.CelestialCharmItem;
+import net.mcreator.asterrisk.item.AsterGuideItem;
 import net.mcreator.asterrisk.AsterRiskMod;
 
 public class AsterRiskModItems {
@@ -157,6 +158,7 @@ public class AsterRiskModItems {
 	public static final RegistryObject<Item> STELLAR_PANTS = REGISTRY.register("stellar_pants", () -> new StellarEndgameArmorItem(ArmorItem.Type.LEGGINGS, new Item.Properties()));
 	public static final RegistryObject<Item> STELLAR_SABATONS = REGISTRY.register("stellar_sabatons", () -> new StellarEndgameArmorItem(ArmorItem.Type.BOOTS, new Item.Properties()));
 	public static final RegistryObject<Item> STELLAR_SCEPTER = REGISTRY.register("stellar_scepter", () -> new StellarScepterItem(new Item.Properties()));
+	public static final RegistryObject<Item> ASTER_GUIDE = REGISTRY.register("aster_guide", AsterGuideItem::new);
 
 	// End of user code block custom items
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {

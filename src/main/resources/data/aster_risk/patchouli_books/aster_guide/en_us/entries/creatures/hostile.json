@@ -1,0 +1,23 @@
+{
+    "name": "Hostile Creatures",
+    "icon": "aster_risk:shadow_essence",
+    "category": "aster_risk:creatures",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "title": "Eclipse Phantom",
+            "text": "$(void)Eclipse Phantom$()$(br)Ghostly entities that haunt the night. They float through the air and inflict the $(l)Starless Night$() debuff on hit.$(br2)$(l)Spawns:$() Overworld (night), all Lunar Realm biomes$(br)$(l)Drops:$() Shadow Essence"
+        },
+        {
+            "type": "patchouli:text",
+            "title": "Void Walker",
+            "text": "$(void)Void Walker$()$(br)Tall, slender creatures that teleport erratically. Hard to pin down in combat.$(br2)$(l)Spawns:$() Dark areas, Lunar Realm$(br)$(l)Drops:$() Void Shard, Ender Pearl"
+        },
+        {
+            "type": "patchouli:text",
+            "title": "Corrupted Golem",
+            "text": "$(void)Corrupted Golem$()$(br)Once guardians of the Lunar Realm, now twisted by dark energy. Slow but extremely powerful.$(br2)$(l)Spawns:$() Underground (Y<50), Lunar Forest, Eclipse Wastes$(br)$(l)Drops:$() Corrupted Core, Moonstone"
+        }
+    ]
+}

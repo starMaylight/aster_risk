@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SFS",
+        "PDP",
+        "PPP"
+    ],
+    "key": {
+        "S": { "item": "aster_risk:stardust" },
+        "F": { "item": "aster_risk:starflagment" },
+        "P": { "item": "aster_risk:polished_moonstone" },
+        "D": { "item": "minecraft:diamond" }
+    },
+    "result": {
+        "item": "aster_risk:ritual_pedestal",
+        "count": 1
+    }
+}

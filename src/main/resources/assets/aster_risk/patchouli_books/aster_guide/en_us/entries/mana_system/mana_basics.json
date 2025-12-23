@@ -1,0 +1,17 @@
+{
+    "name": "Mana Basics",
+    "icon": "aster_risk:lunar_collector",
+    "category": "aster_risk:mana_system",
+    "sortnum": 0,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "$(mana)Mana$() is the magical energy that powers all Aster Risk equipment and machines.$(br2)Every player has a mana pool (shown in the HUD) that regenerates over time. The regeneration rate depends on the $(l)Moon Phase$():$(br2)$(li)$(l)Full Moon$(): 2x regeneration$(li)$(l)New Moon$(): 0.5x regeneration$(li)$(l)Other phases$(): Normal rate"
+        },
+        {
+            "type": "patchouli:text",
+            "title": "Mana Usage",
+            "text": "Mana is consumed by:$(br2)$(li)Magical wands and staves$(li)Lunar Infuser operations$(li)Ritual crafting at Altar Core$(li)Special armor abilities$(br2)Keep an eye on your mana bar before engaging in combat with magical weapons!"
+        }
+    ]
+}

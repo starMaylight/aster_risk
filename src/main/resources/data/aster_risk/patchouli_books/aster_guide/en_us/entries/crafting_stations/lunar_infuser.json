@@ -1,0 +1,18 @@
+{
+    "name": "Lunar Infuser",
+    "icon": "aster_risk:lunar_infuser",
+    "category": "aster_risk:crafting_stations",
+    "sortnum": 0,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:lunar_infuser",
+            "text": "The $(item)Lunar Infuser$() uses mana to transform items. Place an item on top and supply mana.$(br2)Common recipes:$(br)$(li)Moonstone → Lunar Dust$(li)Meteorite → Stardust$(li)Ender Pearl → Void Shard$(li)Rotten Flesh → Shadow Essence"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:lunar_infuser",
+            "text": "Requires a Brewing Stand as a component."
+        }
+    ]
+}

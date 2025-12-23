@@ -1,0 +1,14 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "EE",
+        "EE"
+    ],
+    "key": {
+        "E": { "item": "aster_risk:eclipsestone" }
+    },
+    "result": {
+        "item": "aster_risk:polished_moonstone",
+        "count": 4
+    }
+}

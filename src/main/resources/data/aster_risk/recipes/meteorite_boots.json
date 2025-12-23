@@ -1,0 +1,14 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "F F",
+        "F F"
+    ],
+    "key": {
+        "F": { "item": "aster_risk:meteorite_fragment" }
+    },
+    "result": {
+        "item": "aster_risk:meteorite_boots",
+        "count": 1
+    }
+}

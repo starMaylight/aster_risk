@@ -1,0 +1,17 @@
+{
+    "name": "Portal to Lunar Realm",
+    "icon": "aster_risk:lunar_portal",
+    "category": "aster_risk:lunar_realm",
+    "sortnum": 0,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "The $(eclipse)Lunar Realm$() is a dimension of eternal night, where celestial materials are abundant.$(br2)To build a portal:$(br)$(li)Create a 4x5 frame using $(item)Moonstone Bricks$()$(li)Use $(item)Lunar Compass$() on the frame$(li)Step through to enter$(br2)The portal works like a Nether portal."
+        },
+        {
+            "type": "patchouli:text",
+            "title": "Biomes",
+            "text": "The Lunar Realm has 4 biomes:$(br2)$(li)$(lunar)Lunar Forest$() - Trees and Moon Rabbits$(li)$(lunar)Lunar Lake$() - Star Spirits$(li)$(stellar)Starfall Hills$() - Star Fragments$(li)$(eclipse)Eclipse Wastes$() - Dangerous, boss arena"
+        }
+    ]
+}

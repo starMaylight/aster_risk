@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " F ",
+        "FPF",
+        "BBB"
+    ],
+    "key": {
+        "F": { "item": "aster_risk:starflagment" },
+        "P": { "item": "aster_risk:lunar_pillar" },
+        "B": { "item": "aster_risk:polished_moonstone" }
+    },
+    "result": {
+        "item": "aster_risk:stellar_obelisk",
+        "count": 1
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "M M",
+        "M M"
+    ],
+    "key": {
+        "M": { "item": "aster_risk:moonstone" }
+    },
+    "result": {
+        "item": "aster_risk:lunar_boots",
+        "count": 1
+    }
+}

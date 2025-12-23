@@ -117,6 +117,8 @@ public class CustomCreativeTabHandler {
             event.accept(AsterRiskModItems.STELLAR_PANTS.get());
             event.accept(AsterRiskModItems.STELLAR_SABATONS.get());
             event.accept(AsterRiskModItems.STELLAR_SCEPTER.get());
+            
+            event.accept(AsterRiskModItems.ASTER_GUIDE.get());
         }
     }
 }

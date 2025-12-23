@@ -11,7 +11,20 @@
     "foliage_color": 4434908
   },
   "spawners": {
-    "monster": [],
+    "monster": [
+      {
+        "type": "aster_risk:eclipse_phantom",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aster_risk:corrupted_golem",
+        "weight": 3,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
     "creature": [
       {
         "type": "aster_risk:moon_rabbit",

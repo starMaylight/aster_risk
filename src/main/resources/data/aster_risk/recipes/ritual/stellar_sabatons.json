@@ -1,0 +1,18 @@
+{
+    "type": "aster_risk:ritual",
+    "ingredients": [
+        { "item": "aster_risk:stellar_heart" },
+        { "item": "aster_risk:stellar_boots" },
+        { "item": "aster_risk:stellar_spire_core" },
+        { "item": "aster_risk:stardust" }
+    ],
+    "result": {
+        "item": "aster_risk:stellar_sabatons",
+        "count": 1
+    },
+    "mana_cost": 800,
+    "required_energy": {
+        "type": "stellar",
+        "amount": 300
+    }
+}

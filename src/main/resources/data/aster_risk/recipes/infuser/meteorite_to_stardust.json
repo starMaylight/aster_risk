@@ -1,0 +1,12 @@
+{
+    "type": "aster_risk:infuser",
+    "input": {
+        "item": "aster_risk:meteorite_fragment"
+    },
+    "result": {
+        "item": "aster_risk:stardust",
+        "count": 3
+    },
+    "mana_cost": 120,
+    "process_time": 1000
+}

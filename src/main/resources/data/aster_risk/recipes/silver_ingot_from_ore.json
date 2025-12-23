@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:smelting",
+    "ingredient": {
+        "item": "aster_risk:silver_ore"
+    },
+    "result": "aster_risk:silver_ingot",
+    "experience": 0.7,
+    "cookingtime": 200
+}

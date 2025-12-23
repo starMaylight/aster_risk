@@ -1,0 +1,18 @@
+{
+    "type": "aster_risk:ritual",
+    "ingredients": [
+        { "item": "aster_risk:eclipse_core" },
+        { "item": "aster_risk:lunar_collector" },
+        { "item": "aster_risk:void_shard" },
+        { "item": "aster_risk:void_shard" }
+    ],
+    "result": {
+        "item": "aster_risk:eclipse_altar",
+        "count": 1
+    },
+    "mana_cost": 1200,
+    "required_energy": {
+        "type": "void",
+        "amount": 500
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " M ",
+        " M ",
+        " S "
+    ],
+    "key": {
+        "M": { "item": "aster_risk:moonstone" },
+        "S": { "item": "aster_risk:silver_ingot" }
+    },
+    "result": {
+        "item": "aster_risk:lunar_blade",
+        "count": 1
+    }
+}

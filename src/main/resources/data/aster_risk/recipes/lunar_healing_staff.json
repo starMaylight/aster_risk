@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " GF",
+        " SG",
+        "S  "
+    ],
+    "key": {
+        "G": { "item": "minecraft:ghast_tear" },
+        "F": { "item": "aster_risk:starflagment" },
+        "S": { "item": "aster_risk:silver_ingot" }
+    },
+    "result": {
+        "item": "aster_risk:lunar_healing_staff",
+        "count": 1
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "name": "Moonstone",
+    "icon": "aster_risk:moonstone",
+    "category": "aster_risk:materials",
+    "sortnum": 0,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:moonstone",
+            "text": "$(lunar)Moonstone$() is the foundational material of Aster Risk. It glows with a soft inner light and resonates with lunar energy.$(br2)Found as ore deep underground (Y: -64 to 64), it can be mined with an iron pickaxe or better."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:moonstone_block",
+            "text": "Moonstone can be compressed into decorative blocks for building."
+        }
+    ]
+}

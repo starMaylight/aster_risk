@@ -1,0 +1,22 @@
+{
+    "name": "Stellar Armor",
+    "icon": "aster_risk:stellar_robe",
+    "category": "aster_risk:equipment",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "The $(stellar)Stellar Armor$() set is crafted from Stardust and Star Fragments, offering enhanced magical capabilities.$(br2)$(l)Set Bonus (4 pieces):$()$(br)$(li)+50 Max Mana$(li)-20% Spell mana cost$(br2)Perfect for heavy magic users who cast frequently."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:stellar_crown",
+            "text": "Stellar Crown recipe."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:stellar_robe",
+            "text": "Stellar Robe recipe."
+        }
+    ]
+}

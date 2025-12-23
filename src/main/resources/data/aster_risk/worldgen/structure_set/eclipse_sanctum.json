@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "aster_risk:eclipse_sanctum",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 24,
+    "separation": 8,
+    "salt": 827364591
+  }
+}

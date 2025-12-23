@@ -1,0 +1,17 @@
+{
+    "name": "Star Devourer",
+    "icon": "aster_risk:stellar_heart",
+    "category": "aster_risk:bosses",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "The $(stellar)Star Devourer$() is a cosmic horror that consumes stellar energy.$(br2)$(l)Summoning:$()$(br)$(li)Find a $(item)Stellar Spire$() in Starfall Hills$(li)Climb to the top$(li)Use $(item)Star Fragment$() on the $(item)Stellar Spire Core$() at $(l)night$()$(li)Ensure 8+ Starfall Sand around the core$(br2)$(l)Attacks:$()$(br)$(li)Star beam$(li)Gravity well$(li)Meteor shower"
+        },
+        {
+            "type": "patchouli:text",
+            "title": "Rewards",
+            "text": "$(l)Drops:$()$(br)$(li)$(item)Stellar Heart$() (guaranteed)$(li)Star Fragments$(li)Stardust$(br2)The Stellar Heart is used to craft the $(stellar)Stellar Endgame Set$() - the ultimate light equipment with enhanced mana regeneration and water walking."
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "name": "Stardust & Star Fragments",
+    "icon": "aster_risk:starflagment",
+    "category": "aster_risk:materials",
+    "sortnum": 3,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:stardust",
+            "text": "$(stellar)Stardust$() is crystallized starlight, used in many magical recipes. It can be obtained by crushing Moonstone in a $(l)Lunar Infuser$().$(br2)Stardust is essential for crafting Stellar armor and magical consumables."
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:starflagment",
+            "text": "$(stellar)Star Fragments$() are more concentrated stellar energy. They are crafted through $(l)Ritual$() at an Altar Core, combining Moonstone and Stardust.$(br2)Required for high-tier equipment and boss summoning."
+        }
+    ]
+}

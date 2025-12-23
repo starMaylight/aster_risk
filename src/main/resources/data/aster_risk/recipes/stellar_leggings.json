@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SFS",
+        "S S",
+        "S S"
+    ],
+    "key": {
+        "S": { "item": "aster_risk:stardust" },
+        "F": { "item": "aster_risk:starflagment" }
+    },
+    "result": {
+        "item": "aster_risk:stellar_leggings",
+        "count": 1
+    }
+}

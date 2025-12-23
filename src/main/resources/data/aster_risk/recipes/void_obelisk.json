@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " E ",
+        "EPE",
+        "OOO"
+    ],
+    "key": {
+        "E": { "item": "minecraft:ender_pearl" },
+        "P": { "item": "aster_risk:lunar_pillar" },
+        "O": { "item": "minecraft:obsidian" }
+    },
+    "result": {
+        "item": "aster_risk:void_obelisk",
+        "count": 1
+    }
+}

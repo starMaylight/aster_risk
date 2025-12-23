@@ -1,0 +1,17 @@
+{
+    "name": "Structures",
+    "icon": "aster_risk:moonstone_bricks",
+    "category": "aster_risk:lunar_realm",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "The Lunar Realm contains unique structures:$(br2)$(l)Lunar Temple$()$(br)Found in Lunar Forest and Lake biomes. Contains chests with valuable loot including armor and magical items.$(br2)$(l)Eclipse Sanctum$()$(br)Found in Eclipse Wastes. Contains the Eclipse Altar for summoning the Eclipse Monarch boss."
+        },
+        {
+            "type": "patchouli:text",
+            "title": "Stellar Spire",
+            "text": "$(l)Stellar Spire$()$(br)Tall towers found in Starfall Hills. At the top is a Stellar Spire Core used to summon the Star Devourer boss.$(br2)Explore carefully - hostile mobs spawn throughout the Lunar Realm, and the bosses are formidable foes!"
+        }
+    ]
+}

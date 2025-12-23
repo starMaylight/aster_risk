@@ -1,0 +1,6 @@
+{
+    "name": "Materials",
+    "description": "Ores, ingots, and magical components found throughout the world.",
+    "icon": "aster_risk:silver_ingot",
+    "sortnum": 1
+}

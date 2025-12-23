@@ -45,7 +45,7 @@ public class EclipseAltarBlock extends Block {
             if (!level.isClientSide()) {
                 ServerLevel serverLevel = (ServerLevel) level;
                 
-                // 構造物チェック（簡易版：周囲にEclipse Stoneがあるか）
+                // 構造物チェック（周囲にEclipse Stoneがあるか）
                 if (!checkStructure(level, pos)) {
                     player.displayClientMessage(
                         Component.literal("§c The altar structure is incomplete! Place Eclipse Stone around it."), true);
@@ -89,8 +89,8 @@ public class EclipseAltarBlock extends Block {
         for (int x = -2; x <= 2; x++) {
             for (int z = -2; z <= 2; z++) {
                 if (x == 0 && z == 0) continue;
-                BlockState state = level.getBlockState(pos.offset(x, -1, z));
-                if (state.is(AsterRiskModBlocks.ECLIPSESTONE.get())) {
+                BlockState checkState = level.getBlockState(pos.offset(x, -1, z));
+                if (checkState.is(AsterRiskModBlocks.ECLIPSESTONE.get())) {
                     eclipseStoneCount++;
                 }
             }

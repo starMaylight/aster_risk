@@ -11,7 +11,14 @@
     "foliage_color": 4500444
   },
   "spawners": {
-    "monster": [],
+    "monster": [
+      {
+        "type": "aster_risk:void_walker",
+        "weight": 6,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
     "creature": [
       {
         "type": "aster_risk:star_spirit",

@@ -1,0 +1,11 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        { "item": "minecraft:book" },
+        { "item": "aster_risk:moonstone" }
+    ],
+    "result": {
+        "item": "aster_risk:aster_guide",
+        "count": 1
+    }
+}

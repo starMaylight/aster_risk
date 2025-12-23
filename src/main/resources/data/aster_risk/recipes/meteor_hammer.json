@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "FFF",
+        "FFF",
+        " S "
+    ],
+    "key": {
+        "F": { "item": "aster_risk:meteorite_fragment" },
+        "S": { "item": "minecraft:stick" }
+    },
+    "result": {
+        "item": "aster_risk:meteor_hammer",
+        "count": 1
+    }
+}

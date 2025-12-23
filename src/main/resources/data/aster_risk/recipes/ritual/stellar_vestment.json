@@ -1,0 +1,18 @@
+{
+    "type": "aster_risk:ritual",
+    "ingredients": [
+        { "item": "aster_risk:stellar_heart" },
+        { "item": "aster_risk:stellar_robe" },
+        { "item": "aster_risk:starflagment" },
+        { "item": "aster_risk:stellar_spire_core" }
+    ],
+    "result": {
+        "item": "aster_risk:stellar_vestment",
+        "count": 1
+    },
+    "mana_cost": 1200,
+    "required_energy": {
+        "type": "stellar",
+        "amount": 300
+    }
+}

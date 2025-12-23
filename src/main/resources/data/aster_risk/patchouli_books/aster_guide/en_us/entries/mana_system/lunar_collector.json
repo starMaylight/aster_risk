@@ -1,0 +1,18 @@
+{
+    "name": "Lunar Collector",
+    "icon": "aster_risk:lunar_collector",
+    "category": "aster_risk:mana_system",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:lunar_collector",
+            "text": "The $(item)Lunar Collector$() gathers ambient mana from moonlight. Place it under the open sky for best results.$(br2)It stores mana internally and can transfer it to nearby players or connected $(l)Resonators$()."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:lunar_collector",
+            "text": "Craft with Moonstone, Glass, Diamond, and Silver."
+        }
+    ]
+}

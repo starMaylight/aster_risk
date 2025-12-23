@@ -1,0 +1,22 @@
+{
+    "name": "Altar Core & Ritual",
+    "icon": "aster_risk:altar_core",
+    "category": "aster_risk:crafting_stations",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "The $(item)Altar Core$() is the centerpiece of the ritual crafting system. Place 4 $(item)Ritual Pedestals$() around it in a cross pattern.$(br2)To perform a ritual:$(br)$(li)Place ingredients on pedestals$(li)Right-click the Altar Core$(li)Mana will be consumed$(li)Result appears on the Altar"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:altar_core",
+            "text": "Altar Core recipe - requires Diamond Block."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:ritual_pedestal",
+            "text": "Craft 4 pedestals for a complete altar setup."
+        }
+    ]
+}

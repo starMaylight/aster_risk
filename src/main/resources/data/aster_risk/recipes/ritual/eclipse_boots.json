@@ -1,0 +1,18 @@
+{
+    "type": "aster_risk:ritual",
+    "ingredients": [
+        { "item": "aster_risk:eclipse_core" },
+        { "item": "aster_risk:meteorite_boots" },
+        { "item": "aster_risk:eclipse_altar" },
+        { "item": "aster_risk:corrupted_core" }
+    ],
+    "result": {
+        "item": "aster_risk:eclipse_boots",
+        "count": 1
+    },
+    "mana_cost": 800,
+    "required_energy": {
+        "type": "void",
+        "amount": 500
+    }
+}

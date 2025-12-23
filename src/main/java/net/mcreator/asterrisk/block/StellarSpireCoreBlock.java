@@ -27,8 +27,6 @@ import net.minecraft.world.phys.BlockHitResult;
  */
 public class StellarSpireCoreBlock extends Block {
     
-    // クールダウンはワールドデータで管理する必要があるが、簡易版として削除
-    
     public StellarSpireCoreBlock() {
         super(BlockBehaviour.Properties.of()
             .strength(50.0F, 1200.0F)
@@ -54,10 +52,10 @@ public class StellarSpireCoreBlock extends Block {
                     return InteractionResult.FAIL;
                 }
                 
-                // 構造物チェック（簡易版：周囲にStarfall Sandがあるか）
+                // 構造物チェック（周囲にStarfall Sandがあるか）
                 if (!checkStructure(level, pos)) {
                     player.displayClientMessage(
-                        Component.literal("§c The spire structure is incomplete!"), true);
+                        Component.literal("§c The spire structure is incomplete! Place Starfall Sand around it."), true);
                     return InteractionResult.FAIL;
                 }
                 
@@ -98,8 +96,8 @@ public class StellarSpireCoreBlock extends Block {
         for (int x = -2; x <= 2; x++) {
             for (int z = -2; z <= 2; z++) {
                 if (x == 0 && z == 0) continue;
-                BlockState state = level.getBlockState(pos.offset(x, -1, z));
-                if (state.is(AsterRiskModBlocks.STARFALLSAND.get())) {
+                BlockState checkState = level.getBlockState(pos.offset(x, -1, z));
+                if (checkState.is(AsterRiskModBlocks.STARFALLSAND.get())) {
                     sandCount++;
                 }
             }

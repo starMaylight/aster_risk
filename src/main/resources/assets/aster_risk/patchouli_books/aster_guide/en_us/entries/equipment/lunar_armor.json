@@ -1,0 +1,22 @@
+{
+    "name": "Lunar Armor",
+    "icon": "aster_risk:lunar_chestplate",
+    "category": "aster_risk:equipment",
+    "sortnum": 0,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "The $(lunar)Lunar Armor$() set is your first magical armor, crafted from Moonstone.$(br2)$(l)Set Bonus (4 pieces):$()$(br)$(li)+25 Max Mana$(li)2x Mana regeneration at night$(br2)A solid choice for mages who prefer nighttime adventures."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:lunar_helmet",
+            "text": "Helmet recipe."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:lunar_chestplate",
+            "text": "Chestplate recipe."
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "MGM",
+        "GRG",
+        "MMM"
+    ],
+    "key": {
+        "M": { "item": "aster_risk:moonstone" },
+        "G": { "item": "minecraft:gold_ingot" },
+        "R": { "item": "minecraft:redstone_block" }
+    },
+    "result": {
+        "item": "aster_risk:mana_battery",
+        "count": 1
+    }
+}

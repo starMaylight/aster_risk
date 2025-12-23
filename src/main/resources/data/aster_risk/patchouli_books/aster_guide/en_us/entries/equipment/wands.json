@@ -1,0 +1,28 @@
+{
+    "name": "Magical Wands",
+    "icon": "aster_risk:moonlight_wand",
+    "category": "aster_risk:equipment",
+    "sortnum": 3,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:moonlight_wand",
+            "text": "$(lunar)Moonlight Wand$()$(br)Creates a light source. Basic utility wand.$(br)Mana Cost: 10"
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:stargazer_wand",
+            "text": "$(stellar)Stargazer Wand$()$(br)Grants night vision temporarily.$(br)Mana Cost: 20"
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:meteor_wand",
+            "text": "$(stellar)Meteor Wand$()$(br)Launches explosive projectiles.$(br)Mana Cost: 40"
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:lunar_healing_staff",
+            "text": "$(lunar)Lunar Healing Staff$()$(br)Heals the user over time.$(br)Mana Cost: 30"
+        }
+    ]
+}

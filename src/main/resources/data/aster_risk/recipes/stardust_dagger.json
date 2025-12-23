@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "  S",
+        " F ",
+        "D  "
+    ],
+    "key": {
+        "S": { "item": "aster_risk:stardust" },
+        "F": { "item": "aster_risk:starflagment" },
+        "D": { "item": "aster_risk:lunar_dust" }
+    },
+    "result": {
+        "item": "aster_risk:stardust_dagger",
+        "count": 1
+    }
+}

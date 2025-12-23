@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "FMF",
+        "IAI",
+        "III"
+    ],
+    "key": {
+        "F": { "item": "aster_risk:meteorite_fragment" },
+        "M": { "item": "aster_risk:meteorite_block" },
+        "I": { "item": "minecraft:iron_block" },
+        "A": { "item": "minecraft:anvil" }
+    },
+    "result": {
+        "item": "aster_risk:star_anvil",
+        "count": 1
+    }
+}

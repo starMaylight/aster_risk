@@ -1,0 +1,17 @@
+{
+    "name": "Eclipse Monarch",
+    "icon": "aster_risk:eclipse_core",
+    "category": "aster_risk:bosses",
+    "sortnum": 0,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "The $(eclipse)Eclipse Monarch$() is the lord of darkness, ruling over the Eclipse Wastes.$(br2)$(l)Summoning:$()$(br)$(li)Find an $(item)Eclipse Sanctum$() in Eclipse Wastes$(li)Use $(item)Meteorite Fragment$() on the $(item)Eclipse Altar$()$(li)Ensure 8+ Eclipse Stone around the altar$(br2)$(l)Attacks:$()$(br)$(li)Dark projectiles$(li)AOE shadow burst$(li)Summons Eclipse Phantoms"
+        },
+        {
+            "type": "patchouli:text",
+            "title": "Rewards",
+            "text": "$(l)Drops:$()$(br)$(li)$(item)Eclipse Core$() (guaranteed)$(li)Shadow Essence$(li)Void Shards$(br2)The Eclipse Core is used to craft the $(eclipse)Eclipse Armor Set$() - the ultimate dark equipment with life steal and enemy debuffs."
+        }
+    ]
+}

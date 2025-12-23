@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "FMF",
+        "MDM",
+        "BMB"
+    ],
+    "key": {
+        "F": { "item": "aster_risk:starflagment" },
+        "M": { "item": "aster_risk:moonstone" },
+        "D": { "item": "minecraft:diamond_block" },
+        "B": { "item": "aster_risk:moonstone_bricks" }
+    },
+    "result": {
+        "item": "aster_risk:altar_core",
+        "count": 1
+    }
+}

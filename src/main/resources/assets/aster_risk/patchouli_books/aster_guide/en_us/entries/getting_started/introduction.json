@@ -1,0 +1,17 @@
+{
+    "name": "Introduction",
+    "icon": "aster_risk:moonstone",
+    "category": "aster_risk:getting_started",
+    "sortnum": 0,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Welcome to $(#9966ff)Aster Risk$()!$(br2)This mod adds a magical system based on the power of the $(lunar)Moon$() and $(stellar)Stars$(). You will gather celestial materials, harness $(mana)Mana$(), craft powerful equipment, and eventually travel to the $(eclipse)Lunar Realm$().$(br2)Your journey begins with finding ores in the depths of the world..."
+        },
+        {
+            "type": "patchouli:text",
+            "title": "Progression",
+            "text": "$(l)1. Gather Materials$()$(br)Mine Moonstone, Silver, and Meteorite ores.$(br2)$(l)2. Build Mana Infrastructure$()$(br)Create Lunar Collectors and Resonators.$(br2)$(l)3. Craft Equipment$()$(br)Make armor sets and magical tools.$(br2)$(l)4. Enter the Lunar Realm$()$(br)Build a portal and explore.$(br2)$(l)5. Defeat Bosses$()$(br)Challenge Eclipse Monarch and Star Devourer for ultimate gear."
+        }
+    ]
+}

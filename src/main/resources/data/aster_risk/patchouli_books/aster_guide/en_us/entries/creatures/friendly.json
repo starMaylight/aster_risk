@@ -1,0 +1,26 @@
+{
+    "name": "Friendly Creatures",
+    "icon": "aster_risk:moon_rabbit_spawn_egg",
+    "category": "aster_risk:creatures",
+    "sortnum": 0,
+    "pages": [
+        {
+            "type": "patchouli:entity",
+            "entity": "aster_risk:moon_rabbit",
+            "text": "$(lunar)Moon Rabbit$()$(br)Adorable lunar creatures found in the Lunar Forest. They drop Moonstone and Lunar Dust when slain.",
+            "scale": 1.0
+        },
+        {
+            "type": "patchouli:entity",
+            "entity": "aster_risk:star_spirit",
+            "text": "$(stellar)Star Spirit$()$(br)Ethereal beings that float above Starfall Hills and Lunar Lakes. They drop Stardust.",
+            "scale": 0.8
+        },
+        {
+            "type": "patchouli:entity",
+            "entity": "aster_risk:moonlight_fairy",
+            "text": "$(lunar)Moonlight Fairy$()$(br)Tiny glowing fairies found throughout the Lunar Realm. They provide light and occasionally drop Star Fragments.",
+            "scale": 1.2
+        }
+    ]
+}

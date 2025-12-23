@@ -1,0 +1,14 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "LL",
+        "LL"
+    ],
+    "key": {
+        "L": { "item": "aster_risk:lunarlog" }
+    },
+    "result": {
+        "item": "aster_risk:lunarplanks",
+        "count": 4
+    }
+}

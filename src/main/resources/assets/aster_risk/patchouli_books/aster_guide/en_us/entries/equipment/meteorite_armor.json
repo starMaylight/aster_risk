@@ -1,0 +1,22 @@
+{
+    "name": "Meteorite Armor",
+    "icon": "aster_risk:meteorite_chestplate",
+    "category": "aster_risk:equipment",
+    "sortnum": 2,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "The $(stellar)Meteorite Armor$() set is crafted from Meteorite Fragments, balancing defense with magical ability.$(br2)$(l)Set Bonus (4 pieces):$()$(br)$(li)+15 Max Mana$(li)+3 Mana on hit$(br2)Ideal for combat-focused players who want mana sustain in battle."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:meteorite_helmet",
+            "text": "Meteorite Helmet recipe."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:meteorite_chestplate",
+            "text": "Meteorite Chestplate recipe."
+        }
+    ]
+}

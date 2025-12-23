@@ -1,0 +1,12 @@
+{
+    "type": "aster_risk:infuser",
+    "input": {
+        "item": "aster_risk:silver_ingot"
+    },
+    "result": {
+        "item": "aster_risk:moonstone",
+        "count": 1
+    },
+    "mana_cost": 100,
+    "process_time": 100
+}

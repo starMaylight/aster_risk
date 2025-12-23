@@ -1,0 +1,19 @@
+{
+    "type": "aster_risk:ritual",
+    "ingredients": [
+        { "item": "aster_risk:stellar_heart" },
+        { "item": "aster_risk:starflagment" },
+        { "item": "minecraft:nether_star" },
+        { "item": "aster_risk:stardust_block" },
+        { "item": "aster_risk:stellar_spire_core" }
+    ],
+    "result": {
+        "item": "aster_risk:stellar_scepter",
+        "count": 1
+    },
+    "mana_cost": 1500,
+    "required_energy": {
+        "type": "stellar",
+        "amount": 300
+    }
+}

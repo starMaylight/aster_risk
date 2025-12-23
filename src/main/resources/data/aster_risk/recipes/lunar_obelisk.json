@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " M ",
+        "MPM",
+        "BBB"
+    ],
+    "key": {
+        "M": { "item": "aster_risk:moonstone" },
+        "P": { "item": "aster_risk:lunar_pillar" },
+        "B": { "item": "aster_risk:moonstone_bricks" }
+    },
+    "result": {
+        "item": "aster_risk:lunar_obelisk",
+        "count": 1
+    }
+}

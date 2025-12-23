@@ -1,0 +1,27 @@
+{
+    "name": "Resonators",
+    "icon": "aster_risk:resonator_tier1",
+    "category": "aster_risk:mana_system",
+    "sortnum": 2,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "$(item)Resonators$() transfer mana between blocks over distance. Use a $(l)Linking Wand$() to connect them.$(br2)There are three tiers with increasing range and transfer rate:$(br2)$(li)$(l)Tier 1$(): 8 block range$(li)$(l)Tier 2$(): 16 block range$(li)$(l)Tier 3$(): 32 block range"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:resonator_tier1",
+            "text": "Basic Resonator recipe."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:resonator_tier2",
+            "text": "Tier 2 upgrades from Tier 1."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:resonator_tier3",
+            "text": "Tier 3 - maximum range and efficiency."
+        }
+    ]
+}

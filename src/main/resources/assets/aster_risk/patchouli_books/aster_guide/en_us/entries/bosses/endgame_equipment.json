@@ -1,0 +1,18 @@
+{
+    "name": "Endgame Equipment",
+    "icon": "aster_risk:eclipse_crown",
+    "category": "aster_risk:bosses",
+    "sortnum": 2,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "title": "Eclipse Set",
+            "text": "Crafted at the $(item)Altar Core$() using $(item)Eclipse Core$() + Meteorite Armor + enemy drops.$(br2)$(l)Set Bonus:$()$(br)$(li)Night Vision$(li)Life Steal on hit$(li)Enemies nearby are weakened$(li)Fall damage immunity$(br2)$(l)Pieces:$() Eclipse Crown, Eclipse Armor, Eclipse Greaves, Eclipse Boots, Eclipse Blade"
+        },
+        {
+            "type": "patchouli:text",
+            "title": "Stellar Endgame Set",
+            "text": "Crafted at the $(item)Altar Core$() using $(item)Stellar Heart$() + Stellar Armor + materials.$(br2)$(l)Set Bonus:$()$(br)$(li)Massive mana pool$(li)Fast regeneration$(li)Water walking$(li)Jump boost$(br2)$(l)Pieces:$() Stellar Diadem, Stellar Vestment, Stellar Pants, Stellar Sabatons, Stellar Scepter"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " M ",
+        "SBS",
+        "PPP"
+    ],
+    "key": {
+        "M": { "item": "aster_risk:moonstone" },
+        "S": { "item": "aster_risk:silver_ingot" },
+        "B": { "item": "minecraft:brewing_stand" },
+        "P": { "item": "aster_risk:polished_moonstone" }
+    },
+    "result": {
+        "item": "aster_risk:lunar_infuser",
+        "count": 1
+    }
+}

@@ -139,5 +139,9 @@
   "item.aster_risk.stellar_vestment": "Stellar Vestment",
   "item.aster_risk.stellar_pants": "Stellar Pants",
   "item.aster_risk.stellar_sabatons": "Stellar Sabatons",
-  "item.aster_risk.stellar_scepter": "Stellar Scepter"
+  "item.aster_risk.stellar_scepter": "Stellar Scepter",
+  "structure.aster_risk.eclipse_sanctum": "Eclipse Sanctum",
+  "structure.aster_risk.stellar_spire": "Stellar Spire",
+  "structure.aster_risk.lunar_temple": "Lunar Temple",
+  "item.aster_risk.aster_guide": "Aster Risk Guide"
 }

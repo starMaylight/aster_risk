@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:smelting",
+    "ingredient": {
+        "item": "aster_risk:moonstone_ore"
+    },
+    "result": "aster_risk:moonstone",
+    "experience": 1.0,
+    "cookingtime": 200
+}

@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " G ",
+        "GPG",
+        "BBB"
+    ],
+    "key": {
+        "G": { "item": "minecraft:gold_ingot" },
+        "P": { "item": "aster_risk:lunar_pillar" },
+        "B": { "item": "minecraft:smooth_stone" }
+    },
+    "result": {
+        "item": "aster_risk:solar_obelisk",
+        "count": 1
+    }
+}

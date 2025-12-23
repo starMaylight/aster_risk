@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "FMF",
+        "FBF",
+        " S "
+    ],
+    "key": {
+        "F": { "item": "aster_risk:meteorite_fragment" },
+        "M": { "item": "aster_risk:moonstone" },
+        "B": { "item": "minecraft:blaze_rod" },
+        "S": { "item": "minecraft:stick" }
+    },
+    "result": {
+        "item": "aster_risk:meteor_wand",
+        "count": 1
+    }
+}

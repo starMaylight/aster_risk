@@ -1,0 +1,12 @@
+{
+    "type": "aster_risk:infuser",
+    "input": {
+        "item": "minecraft:rotten_flesh"
+    },
+    "result": {
+        "item": "aster_risk:shadow_essence",
+        "count": 1
+    },
+    "mana_cost": 50,
+    "process_time": 60
+}

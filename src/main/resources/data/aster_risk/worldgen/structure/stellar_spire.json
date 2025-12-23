@@ -1,0 +1,6 @@
+{
+  "type": "aster_risk:stellar_spire",
+  "biomes": "aster_risk:starfall_hills",
+  "step": "surface_structures",
+  "spawn_overrides": {}
+}

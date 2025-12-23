@@ -1,0 +1,6 @@
+{
+    "name": "Crafting Stations",
+    "description": "Special blocks for advanced crafting and magical infusion.",
+    "icon": "aster_risk:altar_core",
+    "sortnum": 4
+}

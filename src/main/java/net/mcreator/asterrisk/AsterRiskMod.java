@@ -17,6 +17,8 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.FriendlyByteBuf;
 
+import net.mcreator.asterrisk.world.structure.ModStructures;
+import net.mcreator.asterrisk.world.structure.ModStructurePieces;
 import net.mcreator.asterrisk.registry.ModSpawnEggs;
 import net.mcreator.asterrisk.registry.ModEntities;
 import net.mcreator.asterrisk.registry.ModEnchantments;
@@ -58,6 +60,9 @@ public class AsterRiskMod {
 		ModEntities.REGISTRY.register(context.getModEventBus());
 		// スポーンエッグ登録
 		ModSpawnEggs.REGISTRY.register(context.getModEventBus());
+		// 構造物登録
+		ModStructures.register(context.getModEventBus());
+		ModStructurePieces.register(context.getModEventBus());
 		// End of user code block mod constructor
 		MinecraftForge.EVENT_BUS.register(this);
 		IEventBus bus = context.getModEventBus();

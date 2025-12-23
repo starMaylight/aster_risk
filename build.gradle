@@ -22,6 +22,11 @@ repositories {
         name = "ModMaven"
         url = "https://modmaven.dev"
     }
+    // Patchouli用リポジトリ
+    maven {
+        name = "Blamejared Maven"
+        url = "https://maven.blamejared.com"
+    }
 }
 
 legacyForge {
@@ -61,6 +66,10 @@ dependencies {
     // MCreator開発環境ではJEIは動作しません（マッピングの違いのため）
     compileOnly "mezz.jei:jei-1.20.1-common-api:15.3.0.8"
     compileOnly "mezz.jei:jei-1.20.1-forge-api:15.3.0.8"
+    
+    // Patchouli - ガイドブック
+    // 実行時はエクスポート後にPatchouli modと一緒に使用
+    compileOnly "vazkii.patchouli:Patchouli:1.20.1-84-FORGE"
 }
 
 tasks.withType(JavaCompile).configureEach {

@@ -1,0 +1,9 @@
+{
+  "type": "aster_risk:lunar_temple",
+  "biomes": [
+    "aster_risk:lunar_forest",
+    "aster_risk:lunar_lake"
+  ],
+  "step": "surface_structures",
+  "spawn_overrides": {}
+}

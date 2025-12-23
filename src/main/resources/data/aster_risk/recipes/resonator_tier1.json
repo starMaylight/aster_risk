@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " M ",
+        "SRS",
+        "SSS"
+    ],
+    "key": {
+        "M": { "item": "aster_risk:moonstone" },
+        "S": { "item": "minecraft:stone" },
+        "R": { "item": "minecraft:redstone" }
+    },
+    "result": {
+        "item": "aster_risk:resonator_tier1",
+        "count": 1
+    }
+}

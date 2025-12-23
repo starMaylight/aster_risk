@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "aster_risk:lunar_temple",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 16,
+    "separation": 4,
+    "salt": 564738291
+  }
+}

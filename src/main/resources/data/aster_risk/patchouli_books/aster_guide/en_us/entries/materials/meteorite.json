@@ -1,0 +1,18 @@
+{
+    "name": "Meteorite",
+    "icon": "aster_risk:meteorite_fragment",
+    "category": "aster_risk:materials",
+    "sortnum": 2,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:meteorite_fragment",
+            "text": "$(stellar)Meteorite Fragments$() are pieces of fallen stars, imbued with cosmic energy. They are essential for crafting the powerful Meteorite armor set and boss summoning.$(br2)Meteorite Ore is found deep underground and is quite rare."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:meteorite_block",
+            "text": "Fragments can be compressed into solid Meteorite Blocks."
+        }
+    ]
+}
