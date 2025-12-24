@@ -5,6 +5,7 @@ import net.mcreator.asterrisk.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -16,7 +17,6 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -26,6 +26,7 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -38,6 +39,7 @@ import java.util.Random;
 /**
  * 星の金床
  * マナを使って装備を強化・修理
+ * 他modのエンチャントにも対応
  * 
  * 操作方法:
  * - 右クリック（アイテム持ち）: アイテムを置く
@@ -216,82 +218,29 @@ public class StarAnvilBlockEntity extends BlockEntity {
         return true;
     }
 
+    /**
+     * アイテムに適用可能な全エンチャントを取得
+     * Forgeレジストリを使用して他modのエンチャントにも対応
+     */
     private List<Enchantment> getPossibleEnchantments(ItemStack stack) {
         List<Enchantment> enchants = new ArrayList<>();
         
-        if (stack.getItem() instanceof net.minecraft.world.item.SwordItem) {
-            enchants.add(Enchantments.SHARPNESS);
-            enchants.add(Enchantments.FIRE_ASPECT);
-            enchants.add(Enchantments.KNOCKBACK);
-            enchants.add(Enchantments.MOB_LOOTING);
-            enchants.add(Enchantments.SWEEPING_EDGE);
-            enchants.add(Enchantments.UNBREAKING);
-        } else if (stack.getItem() instanceof net.minecraft.world.item.PickaxeItem ||
-                   stack.getItem() instanceof net.minecraft.world.item.ShovelItem ||
-                   stack.getItem() instanceof net.minecraft.world.item.HoeItem) {
-            enchants.add(Enchantments.BLOCK_EFFICIENCY);
-            enchants.add(Enchantments.UNBREAKING);
-            enchants.add(Enchantments.BLOCK_FORTUNE);
-            enchants.add(Enchantments.SILK_TOUCH);
-        } else if (stack.getItem() instanceof net.minecraft.world.item.AxeItem) {
-            enchants.add(Enchantments.BLOCK_EFFICIENCY);
-            enchants.add(Enchantments.UNBREAKING);
-            enchants.add(Enchantments.SHARPNESS);
-            enchants.add(Enchantments.BLOCK_FORTUNE);
-            enchants.add(Enchantments.SILK_TOUCH);
-        } else if (stack.getItem() instanceof net.minecraft.world.item.BowItem) {
-            enchants.add(Enchantments.POWER_ARROWS);
-            enchants.add(Enchantments.PUNCH_ARROWS);
-            enchants.add(Enchantments.FLAMING_ARROWS);
-            enchants.add(Enchantments.INFINITY_ARROWS);
-            enchants.add(Enchantments.UNBREAKING);
-        } else if (stack.getItem() instanceof net.minecraft.world.item.CrossbowItem) {
-            enchants.add(Enchantments.QUICK_CHARGE);
-            enchants.add(Enchantments.PIERCING);
-            enchants.add(Enchantments.MULTISHOT);
-            enchants.add(Enchantments.UNBREAKING);
-        } else if (stack.getItem() instanceof net.minecraft.world.item.TridentItem) {
-            enchants.add(Enchantments.LOYALTY);
-            enchants.add(Enchantments.CHANNELING);
-            enchants.add(Enchantments.IMPALING);
-            enchants.add(Enchantments.RIPTIDE);
-            enchants.add(Enchantments.UNBREAKING);
-        } else if (stack.getItem() instanceof net.minecraft.world.item.ArmorItem armorItem) {
-            enchants.add(Enchantments.ALL_DAMAGE_PROTECTION);
-            enchants.add(Enchantments.UNBREAKING);
-            enchants.add(Enchantments.MENDING);
-            
-            switch (armorItem.getType()) {
-                case HELMET:
-                    enchants.add(Enchantments.RESPIRATION);
-                    enchants.add(Enchantments.AQUA_AFFINITY);
-                    enchants.add(Enchantments.THORNS);
-                    break;
-                case CHESTPLATE:
-                    enchants.add(Enchantments.THORNS);
-                    break;
-                case LEGGINGS:
-                    enchants.add(Enchantments.THORNS);
-                    enchants.add(Enchantments.SWIFT_SNEAK);
-                    break;
-                case BOOTS:
-                    enchants.add(Enchantments.FALL_PROTECTION);
-                    enchants.add(Enchantments.DEPTH_STRIDER);
-                    enchants.add(Enchantments.FROST_WALKER);
-                    enchants.add(Enchantments.SOUL_SPEED);
-                    break;
+        // Forgeのエンチャントレジストリから全エンチャントを取得
+        for (Enchantment enchantment : ForgeRegistries.ENCHANTMENTS) {
+            // このアイテムに適用可能なエンチャントのみ追加
+            if (enchantment.canEnchant(stack)) {
+                // 呪い（Curse）エンチャントは除外
+                if (!enchantment.isCurse()) {
+                    // トレジャーエンチャントは低確率で追加
+                    if (enchantment.isTreasureOnly()) {
+                        if (random.nextFloat() < 0.3f) {
+                            enchants.add(enchantment);
+                        }
+                    } else {
+                        enchants.add(enchantment);
+                    }
+                }
             }
-        } else if (stack.getItem() instanceof net.minecraft.world.item.FishingRodItem) {
-            enchants.add(Enchantments.FISHING_LUCK);
-            enchants.add(Enchantments.FISHING_SPEED);
-            enchants.add(Enchantments.UNBREAKING);
-            enchants.add(Enchantments.MENDING);
-        } else if (stack.getItem() instanceof net.minecraft.world.item.ShieldItem) {
-            enchants.add(Enchantments.UNBREAKING);
-            enchants.add(Enchantments.MENDING);
-        } else {
-            enchants.add(Enchantments.UNBREAKING);
-            enchants.add(Enchantments.MENDING);
         }
         
         return enchants;

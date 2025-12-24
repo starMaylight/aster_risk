@@ -9,6 +9,16 @@
             "text": "$(item)Resonators$() transfer mana between blocks over distance. Use a $(l)Linking Wand$() to connect them.$(br2)There are three tiers with increasing range and transfer rate:$(br2)$(li)$(l)Tier 1$(): 8 block range$(li)$(l)Tier 2$(): 16 block range$(li)$(l)Tier 3$(): 32 block range"
         },
         {
+            "type": "patchouli:text",
+            "title": "Linking Rules",
+            "text": "$(l)Important:$() Resonators can $(bold)only$() link to other Resonators. They cannot link directly to machines or Altar Cores.$(br2)However, Resonators of $(l)different tiers$() can be linked together. This allows you to build flexible mana networks using a mix of tiers."
+        },
+        {
+            "type": "patchouli:text",
+            "title": "How They Work",
+            "text": "Each Resonator operates in $(l)one direction only$() - it cannot input and output mana simultaneously.$(br2)$(li)$(l)Input:$() Automatically extracts mana from adjacent blocks$(li)$(l)Output:$() Automatically supplies mana to blocks adjacent to the linked Resonator$(br2)Place a Resonator next to a $(item)Lunar Collector$(), link it to another Resonator next to a $(item)Lunar Infuser$(), and mana flows automatically!"
+        },
+        {
             "type": "patchouli:crafting",
             "recipe": "aster_risk:resonator_tier1",
             "text": "Basic Resonator recipe."

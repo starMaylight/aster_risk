@@ -4,7 +4,7 @@ license="MIT License"
 
 [[mods]]
 modId="aster_risk"
-version="1.0"
+version="1.0.1"
 displayName="Aster Risk"
 displayURL="https://mcreator.net,"
 logoFile="logo.png"

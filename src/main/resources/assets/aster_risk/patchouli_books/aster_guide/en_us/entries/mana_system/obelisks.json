@@ -1,0 +1,37 @@
+{
+    "name": "Obelisks",
+    "icon": "aster_risk:lunar_obelisk",
+    "category": "aster_risk:mana_system",
+    "sortnum": 3,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "$(item)Obelisks$() are ancient structures that generate specific types of magical energy. There are 4 types, each producing a different energy:$(br2)$(li)$(lunar)Lunar Obelisk$() - Lunar energy$(li)$(stellar)Stellar Obelisk$() - Stellar energy$(li)$(#ffdd44)Solar Obelisk$() - Solar energy$(li)$(void)Void Obelisk$() - Void energy$(br2)These energies are required for different $(l)Ritual$() recipes at the Altar Core."
+        },
+        {
+            "type": "patchouli:text",
+            "title": "Linking to Altar",
+            "text": "Obelisks must be linked directly to an $(item)Altar Core$() using a $(item)Linking Wand$().$(br2)$(l)How to link:$()$(br)$(li)Right-click the Obelisk with Linking Wand$(li)Right-click the Altar Core$(li)A connection is established$(br2)Once linked, the Obelisk will supply its energy to the Altar, enabling rituals that require that energy type."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:lunar_obelisk",
+            "text": "$(lunar)Lunar Obelisk$() - Uses Moonstone and Lunar Pillar."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:stellar_obelisk",
+            "text": "$(stellar)Stellar Obelisk$() - Uses Star Fragments and Polished Moonstone."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:solar_obelisk",
+            "text": "$(#ffdd44)Solar Obelisk$() - Uses Gold Ingots and Smooth Stone."
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:void_obelisk",
+            "text": "$(void)Void Obelisk$() - Uses Ender Pearls and Obsidian."
+        }
+    ]
+}
