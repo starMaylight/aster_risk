@@ -6,7 +6,7 @@
         "BBB"
     ],
     "key": {
-        "M": { "item": "aster_risk:moonstone" },
+        "M": { "tag": "forge:gems/moonstone" },
         "P": { "item": "aster_risk:lunar_pillar" },
         "B": { "item": "aster_risk:moonstone_bricks" }
     },

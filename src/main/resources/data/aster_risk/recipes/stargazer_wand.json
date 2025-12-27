@@ -1,14 +1,13 @@
 {
     "type": "minecraft:crafting_shaped",
     "pattern": [
-        "SDS",
-        "DGD",
-        "SDS"
+        "  F",
+        " S ",
+        "S  "
     ],
     "key": {
-        "S": { "item": "aster_risk:stardust" },
-        "D": { "item": "minecraft:diamond" },
-        "G": { "item": "minecraft:glass" }
+        "F": { "tag": "forge:gems/star_fragment" },
+        "S": { "tag": "forge:ingots/silver" }
     },
     "result": {
         "item": "aster_risk:stargazer_wand",

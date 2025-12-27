@@ -6,9 +6,9 @@
         "BBB"
     ],
     "key": {
-        "G": { "item": "minecraft:gold_ingot" },
+        "G": { "tag": "forge:ingots/gold" },
         "P": { "item": "aster_risk:lunar_pillar" },
-        "B": { "item": "minecraft:smooth_stone" }
+        "B": { "tag": "minecraft:stone_crafting_materials" }
     },
     "result": {
         "item": "aster_risk:solar_obelisk",

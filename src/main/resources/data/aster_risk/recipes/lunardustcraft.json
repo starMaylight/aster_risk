@@ -1,13 +1,11 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "ingredients": [
-    {
-      "item": "aster_risk:moonstone"
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "ingredients": [
+        { "tag": "forge:gems/moonstone" }
+    ],
+    "result": {
+        "item": "aster_risk:lunar_dust",
+        "count": 4
     }
-  ],
-  "result": {
-    "item": "aster_risk:lunar_dust",
-    "count": 4
-  }
 }

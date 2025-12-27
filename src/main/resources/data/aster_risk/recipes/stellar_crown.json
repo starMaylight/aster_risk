@@ -5,8 +5,8 @@
         "F F"
     ],
     "key": {
-        "S": { "item": "aster_risk:stardust" },
-        "F": { "item": "aster_risk:starflagment" }
+        "S": { "tag": "forge:dusts/stardust" },
+        "F": { "tag": "forge:gems/star_fragment" }
     },
     "result": {
         "item": "aster_risk:stellar_crown",

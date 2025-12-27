@@ -6,8 +6,8 @@
         "PPP"
     ],
     "key": {
-        "M": { "item": "aster_risk:moonstone" },
-        "S": { "item": "aster_risk:silver_ingot" },
+        "M": { "tag": "forge:gems/moonstone" },
+        "S": { "tag": "forge:ingots/silver" },
         "B": { "item": "minecraft:brewing_stand" },
         "P": { "item": "aster_risk:polished_moonstone" }
     },

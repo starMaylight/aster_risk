@@ -7,7 +7,7 @@
     ],
     "key": {
         "G": { "item": "aster_risk:starry_glass" },
-        "M": { "item": "aster_risk:moonstone" },
+        "M": { "tag": "forge:gems/moonstone" },
         "B": { "item": "aster_risk:silver_bricks" }
     },
     "result": {

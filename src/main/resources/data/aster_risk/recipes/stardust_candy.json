@@ -1,20 +1,16 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "SSS",
-    "SHS",
-    "SSS"
-  ],
-  "key": {
-    "S": {
-      "item": "aster_risk:stardust"
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SSS",
+        "SHS",
+        "SSS"
+    ],
+    "key": {
+        "S": { "tag": "forge:dusts/stardust" },
+        "H": { "item": "minecraft:honey_bottle" }
     },
-    "H": {
-      "item": "minecraft:honey_bottle"
+    "result": {
+        "item": "aster_risk:stardust_candy",
+        "count": 4
     }
-  },
-  "result": {
-    "item": "aster_risk:stardust_candy",
-    "count": 4
-  }
 }

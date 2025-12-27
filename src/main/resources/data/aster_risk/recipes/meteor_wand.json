@@ -1,15 +1,14 @@
 {
     "type": "minecraft:crafting_shaped",
     "pattern": [
-        "FMF",
-        "FBF",
-        " S "
+        "  M",
+        " F ",
+        "B  "
     ],
     "key": {
-        "F": { "item": "aster_risk:meteorite_fragment" },
-        "M": { "item": "aster_risk:moonstone" },
-        "B": { "item": "minecraft:blaze_rod" },
-        "S": { "item": "minecraft:stick" }
+        "M": { "tag": "forge:gems/meteorite" },
+        "F": { "tag": "forge:gems/star_fragment" },
+        "B": { "tag": "forge:rods/blaze" }
     },
     "result": {
         "item": "aster_risk:meteor_wand",

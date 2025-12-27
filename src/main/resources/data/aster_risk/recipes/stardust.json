@@ -1,13 +1,11 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "ingredients": [
-    {
-      "item": "aster_risk:starflagment"
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "ingredients": [
+        { "tag": "forge:gems/star_fragment" }
+    ],
+    "result": {
+        "item": "aster_risk:stardust",
+        "count": 4
     }
-  ],
-  "result": {
-    "item": "aster_risk:stardust",
-    "count": 4
-  }
 }

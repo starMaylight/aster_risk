@@ -6,9 +6,9 @@
         "BMB"
     ],
     "key": {
-        "F": { "item": "aster_risk:starflagment" },
-        "M": { "item": "aster_risk:moonstone" },
-        "D": { "item": "minecraft:diamond_block" },
+        "F": { "tag": "forge:gems/star_fragment" },
+        "M": { "tag": "forge:gems/moonstone" },
+        "D": { "tag": "forge:storage_blocks/diamond" },
         "B": { "item": "aster_risk:moonstone_bricks" }
     },
     "result": {

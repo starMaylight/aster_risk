@@ -2,7 +2,7 @@
     "type": "minecraft:crafting_shapeless",
     "ingredients": [
         { "item": "minecraft:book" },
-        { "item": "aster_risk:moonstone" }
+        { "tag": "forge:gems/moonstone" }
     ],
     "result": {
         "item": "aster_risk:aster_guide",

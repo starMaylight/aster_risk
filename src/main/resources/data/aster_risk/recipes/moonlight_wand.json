@@ -1,12 +1,13 @@
 {
     "type": "minecraft:crafting_shaped",
     "pattern": [
-        "MMM",
-        "M M",
-        "MMM"
+        "  M",
+        " S ",
+        "S  "
     ],
     "key": {
-        "M": { "item": "aster_risk:moonstone" }
+        "M": { "tag": "forge:gems/moonstone" },
+        "S": { "tag": "forge:rods/wooden" }
     },
     "result": {
         "item": "aster_risk:moonlight_wand",

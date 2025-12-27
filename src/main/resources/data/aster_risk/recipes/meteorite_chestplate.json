@@ -6,7 +6,7 @@
         "FFF"
     ],
     "key": {
-        "F": { "item": "aster_risk:meteorite_fragment" }
+        "F": { "tag": "forge:gems/meteorite" }
     },
     "result": {
         "item": "aster_risk:meteorite_chestplate",

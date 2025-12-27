@@ -6,10 +6,10 @@
         "SSS"
     ],
     "key": {
-        "M": { "item": "aster_risk:moonstone" },
-        "G": { "item": "minecraft:glass" },
-        "D": { "item": "minecraft:diamond" },
-        "S": { "item": "aster_risk:silver_ingot" }
+        "M": { "tag": "forge:gems/moonstone" },
+        "G": { "tag": "forge:glass" },
+        "D": { "tag": "forge:gems/diamond" },
+        "S": { "tag": "forge:ingots/silver" }
     },
     "result": {
         "item": "aster_risk:lunar_collector",

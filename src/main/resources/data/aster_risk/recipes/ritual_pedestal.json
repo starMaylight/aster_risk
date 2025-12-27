@@ -6,10 +6,10 @@
         "PPP"
     ],
     "key": {
-        "S": { "item": "aster_risk:stardust" },
-        "F": { "item": "aster_risk:starflagment" },
+        "S": { "tag": "forge:dusts/stardust" },
+        "F": { "tag": "forge:gems/star_fragment" },
         "P": { "item": "aster_risk:polished_moonstone" },
-        "D": { "item": "minecraft:diamond" }
+        "D": { "tag": "forge:gems/diamond" }
     },
     "result": {
         "item": "aster_risk:ritual_pedestal",

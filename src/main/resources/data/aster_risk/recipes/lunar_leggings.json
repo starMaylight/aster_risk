@@ -6,7 +6,7 @@
         "M M"
     ],
     "key": {
-        "M": { "item": "aster_risk:moonstone" }
+        "M": { "tag": "forge:gems/moonstone" }
     },
     "result": {
         "item": "aster_risk:lunar_leggings",

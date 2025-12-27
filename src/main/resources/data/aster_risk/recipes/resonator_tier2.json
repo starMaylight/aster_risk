@@ -6,8 +6,8 @@
         "BBB"
     ],
     "key": {
-        "F": { "item": "aster_risk:starflagment" },
-        "S": { "item": "aster_risk:silver_ingot" },
+        "F": { "tag": "forge:gems/star_fragment" },
+        "S": { "tag": "forge:ingots/silver" },
         "R": { "item": "aster_risk:resonator_tier1" },
         "B": { "item": "aster_risk:moonstone_bricks" }
     },

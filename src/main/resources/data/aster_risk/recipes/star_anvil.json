@@ -6,9 +6,9 @@
         "III"
     ],
     "key": {
-        "F": { "item": "aster_risk:meteorite_fragment" },
-        "M": { "item": "aster_risk:meteorite_block" },
-        "I": { "item": "minecraft:iron_block" },
+        "F": { "tag": "forge:gems/meteorite" },
+        "M": { "tag": "forge:storage_blocks/meteorite" },
+        "I": { "tag": "forge:storage_blocks/iron" },
         "A": { "item": "minecraft:anvil" }
     },
     "result": {

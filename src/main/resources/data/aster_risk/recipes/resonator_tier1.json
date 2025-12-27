@@ -6,9 +6,9 @@
         "SSS"
     ],
     "key": {
-        "M": { "item": "aster_risk:moonstone" },
-        "S": { "item": "minecraft:stone" },
-        "R": { "item": "minecraft:redstone" }
+        "M": { "tag": "forge:gems/moonstone" },
+        "S": { "tag": "forge:stone" },
+        "R": { "tag": "forge:dusts/redstone" }
     },
     "result": {
         "item": "aster_risk:resonator_tier1",

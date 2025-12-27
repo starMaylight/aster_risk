@@ -6,8 +6,8 @@
         " S "
     ],
     "key": {
-        "M": { "item": "aster_risk:moonstone" },
-        "S": { "item": "aster_risk:silver_ingot" }
+        "M": { "tag": "forge:gems/moonstone" },
+        "S": { "tag": "forge:ingots/silver" }
     },
     "result": {
         "item": "aster_risk:lunar_blade",

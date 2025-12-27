@@ -1,23 +1,17 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    " M ",
-    "GBG",
-    " M "
-  ],
-  "key": {
-    "M": {
-      "item": "aster_risk:moonstone"
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " M ",
+        "GBG",
+        " M "
+    ],
+    "key": {
+        "M": { "tag": "forge:gems/moonstone" },
+        "G": { "item": "minecraft:glass_bottle" },
+        "B": { "tag": "forge:dusts/lunar" }
     },
-    "G": {
-      "item": "minecraft:glass_bottle"
-    },
-    "B": {
-      "item": "aster_risk:lunar_dust"
+    "result": {
+        "item": "aster_risk:lunar_elixir",
+        "count": 2
     }
-  },
-  "result": {
-    "item": "aster_risk:lunar_elixir",
-    "count": 2
-  }
 }

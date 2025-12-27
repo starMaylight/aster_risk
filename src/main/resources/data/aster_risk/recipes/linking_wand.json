@@ -6,9 +6,9 @@
         " S "
     ],
     "key": {
-        "M": { "item": "aster_risk:moonstone" },
-        "S": { "item": "aster_risk:silver_ingot" },
-        "E": { "item": "minecraft:ender_pearl" }
+        "M": { "tag": "forge:gems/moonstone" },
+        "S": { "tag": "forge:ingots/silver" },
+        "E": { "tag": "forge:ender_pearls" }
     },
     "result": {
         "item": "aster_risk:linking_wand",

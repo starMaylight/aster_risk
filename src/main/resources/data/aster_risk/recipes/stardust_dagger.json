@@ -6,9 +6,9 @@
         "D  "
     ],
     "key": {
-        "S": { "item": "aster_risk:stardust" },
-        "F": { "item": "aster_risk:starflagment" },
-        "D": { "item": "aster_risk:lunar_dust" }
+        "S": { "tag": "forge:dusts/stardust" },
+        "F": { "tag": "forge:gems/star_fragment" },
+        "D": { "tag": "forge:dusts/lunar" }
     },
     "result": {
         "item": "aster_risk:stardust_dagger",

@@ -6,9 +6,9 @@
         " S "
     ],
     "key": {
-        "M": { "item": "aster_risk:moonstone" },
+        "M": { "tag": "forge:gems/moonstone" },
         "C": { "item": "minecraft:compass" },
-        "S": { "item": "aster_risk:silver_ingot" }
+        "S": { "tag": "forge:ingots/silver" }
     },
     "result": {
         "item": "aster_risk:lunar_compass",

@@ -6,8 +6,8 @@
         " S "
     ],
     "key": {
-        "F": { "item": "aster_risk:meteorite_fragment" },
-        "S": { "item": "minecraft:stick" }
+        "F": { "tag": "forge:gems/meteorite" },
+        "S": { "tag": "forge:rods/wooden" }
     },
     "result": {
         "item": "aster_risk:meteor_hammer",

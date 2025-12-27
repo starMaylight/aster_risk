@@ -1,26 +1,18 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    " F ",
-    "GMG",
-    " S "
-  ],
-  "key": {
-    "F": {
-      "item": "aster_risk:starflagment"
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " F ",
+        "GMG",
+        " S "
+    ],
+    "key": {
+        "F": { "tag": "forge:gems/star_fragment" },
+        "G": { "tag": "forge:ingots/gold" },
+        "M": { "tag": "forge:gems/moonstone" },
+        "S": { "tag": "forge:ingots/silver" }
     },
-    "G": {
-      "item": "minecraft:gold_ingot"
-    },
-    "M": {
-      "item": "aster_risk:moonstone"
-    },
-    "S": {
-      "item": "aster_risk:silver_ingot"
+    "result": {
+        "item": "aster_risk:celestial_charm",
+        "count": 1
     }
-  },
-  "result": {
-    "item": "aster_risk:celestial_charm",
-    "count": 1
-  }
 }

@@ -6,8 +6,8 @@
         " S "
     ],
     "key": {
-        "F": { "item": "aster_risk:meteorite_fragment" },
-        "S": { "item": "minecraft:blaze_rod" }
+        "F": { "tag": "forge:gems/meteorite" },
+        "S": { "tag": "forge:rods/blaze" }
     },
     "result": {
         "item": "aster_risk:meteorite_greatsword",
