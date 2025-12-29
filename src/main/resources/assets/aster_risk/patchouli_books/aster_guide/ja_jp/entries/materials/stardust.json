@@ -1,0 +1,18 @@
+{
+    "name": "星屑と星の欠片",
+    "icon": "aster_risk:starflagment",
+    "category": "aster_risk:materials",
+    "sortnum": 3,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:stardust",
+            "text": "$(l)星屑$()は結晶化した星の光で、多くの魔法レシピに使用されます。$(l)月光注入機$()で月光石を砕いて入手できます。$(br2)星屑は星屑防具や魔法消費アイテムの作成に不可欠です。"
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:starflagment",
+            "text": "$(l)星の欠片$()はより濃縮された星のエネルギーです。祭壇コアでの$(l)儀式$()で月光石と星屑を組み合わせて作成します。$(br2)上位装備やボス召喚に必要です。"
+        }
+    ]
+}

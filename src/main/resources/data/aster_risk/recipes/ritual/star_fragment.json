@@ -1,10 +1,10 @@
 {
     "type": "aster_risk:ritual",
     "ingredients": [
-        { "item": "aster_risk:moonstone" },
-        { "item": "aster_risk:moonstone" },
-        { "item": "aster_risk:stardust" },
-        { "item": "aster_risk:stardust" }
+        { "tag": "forge:gems/moonstone" },
+        { "tag": "forge:gems/moonstone" },
+        { "tag": "forge:dusts/stardust" },
+        { "tag": "forge:dusts/stardust" }
     ],
     "result": {
         "item": "aster_risk:starflagment",

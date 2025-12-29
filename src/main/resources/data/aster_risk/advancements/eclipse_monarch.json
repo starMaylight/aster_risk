@@ -1,0 +1,31 @@
+{
+    "display": {
+        "icon": {
+            "item": "aster_risk:eclipse_core"
+        },
+        "title": {
+            "translate": "advancement.aster_risk.eclipse_monarch.title"
+        },
+        "description": {
+            "translate": "advancement.aster_risk.eclipse_monarch.description"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": true
+    },
+    "parent": "aster_risk:lunar_realm",
+    "criteria": {
+        "kill_monarch": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "aster_risk:eclipse_monarch"
+                }
+            }
+        }
+    },
+    "rewards": {
+        "experience": 500
+    }
+}

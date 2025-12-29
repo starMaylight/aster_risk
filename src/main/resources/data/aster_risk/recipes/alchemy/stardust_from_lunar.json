@@ -1,0 +1,15 @@
+{
+    "type": "aster_risk:alchemy",
+    "ingredients": [
+        { "item": "aster_risk:lunar_dust" },
+        { "item": "aster_risk:lunar_dust" },
+        { "item": "aster_risk:moonstone" }
+    ],
+    "result": {
+        "item": "aster_risk:stardust",
+        "count": 2
+    },
+    "mana_cost": 100,
+    "process_time": 60,
+    "requires_catalyst": false
+}

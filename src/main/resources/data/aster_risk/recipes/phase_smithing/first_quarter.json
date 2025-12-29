@@ -1,0 +1,6 @@
+{
+    "type": "aster_risk:phase_smithing",
+    "phase": "FIRST_QUARTER",
+    "effect": "+15% Mining Speed",
+    "mana_cost": 200
+}

@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "active=false": { "model": "aster_risk:block/meteor_summoning" },
+        "active=true": { "model": "aster_risk:block/meteor_summoning_active" }
+    }
+}

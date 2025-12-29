@@ -1,0 +1,26 @@
+{
+    "name": "友好的な生き物",
+    "icon": "aster_risk:moon_rabbit_spawn_egg",
+    "category": "aster_risk:creatures",
+    "sortnum": 0,
+    "pages": [
+        {
+            "type": "patchouli:entity",
+            "entity": "aster_risk:moon_rabbit",
+            "text": "$(l)月うさぎ$()$(br)月の森に生息する愛らしい月の生き物。倒すと月光石と月の塵をドロップ。",
+            "scale": 1.0
+        },
+        {
+            "type": "patchouli:entity",
+            "entity": "aster_risk:star_spirit",
+            "text": "$(l)星霊$()$(br)流星丘陵と月の湖の上空を漂う幽玄な存在。星屑をドロップ。",
+            "scale": 0.8
+        },
+        {
+            "type": "patchouli:entity",
+            "entity": "aster_risk:moonlight_fairy",
+            "text": "$(l)月光の妖精$()$(br)月の領域全体に見られる小さな光る妖精。光を提供し、時々星の欠片をドロップ。",
+            "scale": 1.2
+        }
+    ]
+}

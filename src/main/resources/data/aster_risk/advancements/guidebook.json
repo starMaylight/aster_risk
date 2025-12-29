@@ -1,0 +1,28 @@
+{
+    "display": {
+        "icon": {
+            "item": "aster_risk:aster_guide"
+        },
+        "title": {
+            "translate": "advancement.aster_risk.guidebook.title"
+        },
+        "description": {
+            "translate": "advancement.aster_risk.guidebook.description"
+        },
+        "show_toast": true,
+        "announce_to_chat": false
+    },
+    "parent": "aster_risk:root",
+    "criteria": {
+        "has_guide": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:aster_guide"]
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "name": "月光石",
+    "icon": "aster_risk:moonstone",
+    "category": "aster_risk:materials",
+    "sortnum": 0,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:moonstone",
+            "text": "$(l)月光石$()はアスターリスクの基礎素材です。柔らかな内なる光を放ち、月のエネルギーと共鳴します。$(br2)地下深く（Y: -64〜64）で鉱石として見つかり、鉄のツルハシ以上で採掘できます。"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:moonstone_block",
+            "text": "月光石は装飾用ブロックに圧縮して建築に使えます。"
+        }
+    ]
+}

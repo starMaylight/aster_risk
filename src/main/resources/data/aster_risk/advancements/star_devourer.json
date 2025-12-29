@@ -1,0 +1,31 @@
+{
+    "display": {
+        "icon": {
+            "item": "aster_risk:stellar_heart"
+        },
+        "title": {
+            "translate": "advancement.aster_risk.star_devourer.title"
+        },
+        "description": {
+            "translate": "advancement.aster_risk.star_devourer.description"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": true
+    },
+    "parent": "aster_risk:lunar_realm",
+    "criteria": {
+        "kill_devourer": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "aster_risk:star_devourer"
+                }
+            }
+        }
+    },
+    "rewards": {
+        "experience": 1000
+    }
+}

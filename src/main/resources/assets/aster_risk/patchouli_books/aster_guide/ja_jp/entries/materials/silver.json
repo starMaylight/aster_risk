@@ -1,0 +1,18 @@
+{
+    "name": "銀",
+    "icon": "aster_risk:silver_ingot",
+    "category": "aster_risk:materials",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:silver_ingot",
+            "text": "$(item)銀$()は魔法伝導性が高い貴金属です。魔法道具の作成やマナネットワークの接続に不可欠です。$(br2)銀鉱石（Y: 0〜64）を採掘し、かまどで銀の原石を精錬します。"
+        },
+        {
+            "type": "patchouli:smelting",
+            "recipe": "aster_risk:silver_ingot_from_raw",
+            "text": "銀の原石を精錬して銀インゴットを入手。"
+        }
+    ]
+}

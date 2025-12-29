@@ -3,7 +3,7 @@
     "ingredients": [
         { "item": "aster_risk:eclipse_core" },
         { "item": "aster_risk:meteorite_chestplate" },
-        { "item": "aster_risk:void_shard" },
+        { "item": "aster_risk:radiant_diamond" },
         { "item": "aster_risk:eclipse_altar" }
     ],
     "result": {

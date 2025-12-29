@@ -1,0 +1,22 @@
+{
+    "name": "祭壇コアと儀式",
+    "icon": "aster_risk:altar_core",
+    "category": "aster_risk:crafting_stations",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "$(item)祭壇コア$()は儀式クラフトシステムの中心です。周囲に4つの$(item)儀式の台座$()を十字パターンで配置します。$(br2)儀式の実行方法:$(br)$(li)台座に材料を置く$(li)祭壇コアを右クリック$(li)マナが消費される$(li)結果が祭壇に出現"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:altar_core",
+            "text": "祭壇コアのレシピ - ダイヤモンドブロックが必要。"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:ritual_pedestal",
+            "text": "完全な祭壇には4つの台座を作成。"
+        }
+    ]
+}

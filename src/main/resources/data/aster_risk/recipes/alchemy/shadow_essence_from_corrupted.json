@@ -1,0 +1,15 @@
+{
+    "type": "aster_risk:alchemy",
+    "ingredients": [
+        { "item": "aster_risk:corrupted_core" },
+        { "item": "minecraft:coal" },
+        { "item": "minecraft:coal" }
+    ],
+    "result": {
+        "item": "aster_risk:shadow_essence",
+        "count": 3
+    },
+    "mana_cost": 150,
+    "process_time": 80,
+    "requires_catalyst": false
+}

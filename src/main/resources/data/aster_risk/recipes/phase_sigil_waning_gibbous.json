@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " L ",
+        "FMF",
+        " G "
+    ],
+    "key": {
+        "M": { "tag": "forge:gems/moonstone" },
+        "F": { "item": "aster_risk:starflagment" },
+        "L": { "item": "aster_risk:lunar_dust" },
+        "G": { "tag": "forge:ingots/gold" }
+    },
+    "result": {
+        "item": "aster_risk:phase_sigil_waning_gibbous",
+        "count": 1
+    }
+}

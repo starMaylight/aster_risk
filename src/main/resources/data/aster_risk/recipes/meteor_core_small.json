@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " M ",
+        "MSM",
+        " M "
+    ],
+    "key": {
+        "M": { "tag": "forge:gems/meteorite" },
+        "S": { "item": "aster_risk:stardust" }
+    },
+    "result": {
+        "item": "aster_risk:meteor_core_small",
+        "count": 1
+    }
+}

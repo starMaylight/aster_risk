@@ -1,0 +1,36 @@
+{
+    "name": "Stardust Alchemy",
+    "icon": "aster_risk:alchemical_cauldron",
+    "category": "aster_risk:advanced_systems",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:alchemical_cauldron",
+            "title": "Alchemical Cauldron",
+            "text": "The $(item)Alchemical Cauldron$() is a vessel for transmuting materials using Moon Water and mana.$(br2)Fill it with a $(item)Moon Water Bucket$(), add ingredients, and supply mana to begin the alchemical process."
+        },
+        {
+            "type": "patchouli:text",
+            "title": "How to Use",
+            "text": "1. Place the cauldron$(br)2. Right-click with Moon Water Bucket$(br)3. Add up to 4 ingredients$(br)4. Supply mana via Resonators$(br)5. Wait for the transmutation$(br2)The cauldron will glow when active. Results appear above when complete."
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:stardust_catalyst",
+            "title": "Stardust Catalyst",
+            "text": "A $(item)Stardust Catalyst$() improves transmutation efficiency. Some advanced recipes require it as an ingredient.$(br2)Craft from Stardust and Lunar Dust in the cauldron itself."
+        },
+        {
+            "type": "patchouli:text",
+            "title": "Basic Recipes",
+            "text": "$(li)$(item)Enhanced Gold$(): Gold + Stardust$(li)$(item)Radiant Diamond$(): Diamond + 2x Stardust$(li)$(item)Stardust Catalyst$(): 2x Stardust + Lunar Dust$(li)$(item)Celestial Nucleus$(): Star Fragment + Nether Star + Catalyst"
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:celestial_nucleus",
+            "title": "Celestial Nucleus",
+            "text": "The $(item)Celestial Nucleus$() is the pinnacle of alchemical achievement. This powerful material can be used in the most advanced crafting recipes.$(br2)Requires a Stardust Catalyst to create."
+        }
+    ]
+}

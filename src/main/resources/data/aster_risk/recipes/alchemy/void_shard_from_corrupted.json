@@ -1,0 +1,15 @@
+{
+    "type": "aster_risk:alchemy",
+    "ingredients": [
+        { "item": "aster_risk:corrupted_core" },
+        { "item": "aster_risk:shadow_essence" },
+        { "item": "aster_risk:lunar_dust" }
+    ],
+    "result": {
+        "item": "aster_risk:void_shard",
+        "count": 2
+    },
+    "mana_cost": 300,
+    "process_time": 100,
+    "requires_catalyst": false
+}

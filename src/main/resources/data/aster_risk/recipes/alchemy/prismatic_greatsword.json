@@ -1,0 +1,15 @@
+{
+    "type": "aster_risk:alchemy",
+    "ingredients": [
+        { "item": "aster_risk:prismatic_meteorite" },
+        { "item": "aster_risk:prismatic_meteorite" },
+        { "item": "aster_risk:celestial_nucleus" }
+    ],
+    "result": {
+        "item": "aster_risk:prismatic_greatsword",
+        "count": 1
+    },
+    "mana_cost": 800,
+    "process_time": 300,
+    "requires_catalyst": true
+}

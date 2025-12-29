@@ -1,0 +1,28 @@
+{
+    "name": "魔法の杖",
+    "icon": "aster_risk:moonlight_wand",
+    "category": "aster_risk:equipment",
+    "sortnum": 3,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:moonlight_wand",
+            "text": "$(l)月光の杖$()$(br)光源を作成。基本的なユーティリティ杖。$(br)マナコスト: 10"
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:stargazer_wand",
+            "text": "$(l)星見の杖$()$(br)一時的に暗視を付与。$(br)マナコスト: 20"
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:meteor_wand",
+            "text": "$(l)流星の杖$()$(br)爆発する弾を発射。$(br)マナコスト: 40"
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:lunar_healing_staff",
+            "text": "$(l)月の癒しの杖$()$(br)使用者を時間経過で回復。$(br)マナコスト: 30"
+        }
+    ]
+}

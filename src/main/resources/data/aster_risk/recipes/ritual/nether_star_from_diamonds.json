@@ -1,10 +1,10 @@
 {
     "type": "aster_risk:ritual",
     "ingredients": [
-        { "item": "minecraft:diamond" },
-        { "item": "minecraft:diamond" },
-        { "item": "minecraft:diamond" },
-        { "item": "minecraft:diamond" }
+        { "tag": "forge:gems/diamond" },
+        { "tag": "forge:gems/diamond" },
+        { "tag": "forge:gems/diamond" },
+        { "tag": "forge:gems/diamond" }
     ],
     "result": {
         "item": "minecraft:nether_star",

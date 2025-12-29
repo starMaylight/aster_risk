@@ -1,0 +1,22 @@
+{
+    "name": "月光の防具",
+    "icon": "aster_risk:lunar_chestplate",
+    "category": "aster_risk:equipment",
+    "sortnum": 0,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "$(l)月光の防具$()セットは月光石から作られる最初の魔法防具です。$(br2)$(l)セットボーナス（4部位）:$()$(br)$(li)最大マナ+25$(li)夜間マナ回復2倍$(br2)夜の冒険を好む魔法使いに最適な選択。"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:lunar_helmet",
+            "text": "ヘルメットのレシピ。"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:lunar_chestplate",
+            "text": "チェストプレートのレシピ。"
+        }
+    ]
+}

@@ -1,0 +1,37 @@
+{
+    "name": "共振器",
+    "icon": "aster_risk:resonator_tier1",
+    "category": "aster_risk:mana_system",
+    "sortnum": 2,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "$(item)共振器$()は距離を越えてブロック間でマナを転送します。$(l)リンクの杖$()を使って接続します。$(br2)範囲と転送速度が異なる3つのティアがあります:$(br2)$(li)$(l)Tier 1$(): 8ブロック範囲$(li)$(l)Tier 2$(): 16ブロック範囲$(li)$(l)Tier 3$(): 32ブロック範囲"
+        },
+        {
+            "type": "patchouli:text",
+            "title": "リンクのルール",
+            "text": "$(l)重要:$() 共振器は$(bold)他の共振器のみ$()にリンクできます。機械や祭壇コアに直接リンクはできません。$(br2)ただし、$(l)異なるティア$()の共振器同士はリンク可能です。これにより様々なティアを組み合わせた柔軟なマナネットワークを構築できます。"
+        },
+        {
+            "type": "patchouli:text",
+            "title": "動作の仕組み",
+            "text": "各共振器は$(l)一方向のみ$()で動作します - 同時にマナの入出力はできません。$(br2)$(li)$(l)入力:$() 隣接ブロックからマナを自動抽出$(li)$(l)出力:$() リンク先共振器に隣接するブロックへマナを自動供給$(br2)$(item)月光収集器$()の隣に共振器を置き、$(item)月光注入機$()の隣の別の共振器とリンクすれば、マナが自動で流れます！"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:resonator_tier1",
+            "text": "基本共振器のレシピ。"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:resonator_tier2",
+            "text": "Tier 2はTier 1からアップグレード。"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:resonator_tier3",
+            "text": "Tier 3 - 最大範囲と効率。"
+        }
+    ]
+}

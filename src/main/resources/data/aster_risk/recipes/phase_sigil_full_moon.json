@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " S ",
+        "SMS",
+        " G "
+    ],
+    "key": {
+        "S": { "item": "aster_risk:stardust" },
+        "M": { "tag": "forge:gems/moonstone" },
+        "G": { "tag": "forge:ingots/gold" }
+    },
+    "result": {
+        "item": "aster_risk:phase_sigil_full_moon",
+        "count": 1
+    }
+}

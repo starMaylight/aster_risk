@@ -1,0 +1,37 @@
+{
+    "name": "オベリスク",
+    "icon": "aster_risk:lunar_obelisk",
+    "category": "aster_risk:mana_system",
+    "sortnum": 3,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "$(item)オベリスク$()は特定の魔法エネルギーを生成する古代の構造物です。4種類あり、それぞれ異なるエネルギーを生み出します:$(br2)$(li)$(l)月のオベリスク$() - 月エネルギー$(li)$(l)星のオベリスク$() - 星エネルギー$(li)$(#ffdd44)太陽のオベリスク$() - 太陽エネルギー$(li)$(l)虚空のオベリスク$() - 虚空エネルギー$(br2)これらは祭壇コアでの$(l)儀式$()レシピに必要です。"
+        },
+        {
+            "type": "patchouli:text",
+            "title": "祭壇へのリンク",
+            "text": "オベリスクは$(item)リンクの杖$()を使って$(item)祭壇コア$()に直接リンクする必要があります。$(br2)$(l)リンク方法:$()$(br)$(li)リンクの杖でオベリスクを右クリック$(li)祭壇コアを右クリック$(li)接続が確立される$(br2)リンクされると、オベリスクはそのエネルギータイプを必要とする儀式を可能にするため、祭壇にエネルギーを供給します。"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:lunar_obelisk",
+            "text": "$(l)月のオベリスク$() - 月光石と月の柱を使用。"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:stellar_obelisk",
+            "text": "$(l)星のオベリスク$() - 星の欠片と磨かれた月光石を使用。"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:solar_obelisk",
+            "text": "$(#ffdd44)太陽のオベリスク$() - 金インゴットと滑らかな石を使用。"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:void_obelisk",
+            "text": "$(l)虚空のオベリスク$() - エンダーパールと黒曜石を使用。"
+        }
+    ]
+}

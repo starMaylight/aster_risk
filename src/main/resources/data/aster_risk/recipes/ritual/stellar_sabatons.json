@@ -4,7 +4,7 @@
         { "item": "aster_risk:stellar_heart" },
         { "item": "aster_risk:stellar_boots" },
         { "item": "aster_risk:stellar_spire_core" },
-        { "item": "aster_risk:stardust" }
+        { "tag": "forge:dusts/stardust" }
     ],
     "result": {
         "item": "aster_risk:stellar_sabatons",

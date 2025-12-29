@@ -1,0 +1,6 @@
+{
+    "parent": "aster_risk:block/alchemical_cauldron",
+    "textures": {
+        "inside": "aster_risk:block/alchemical_cauldron_inside_active"
+    }
+}

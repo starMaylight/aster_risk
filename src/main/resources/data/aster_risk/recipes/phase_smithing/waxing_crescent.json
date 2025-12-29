@@ -1,0 +1,6 @@
+{
+    "type": "aster_risk:phase_smithing",
+    "phase": "WAXING_CRESCENT",
+    "effect": "+10% Speed",
+    "mana_cost": 200
+}

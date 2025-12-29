@@ -1,0 +1,15 @@
+{
+    "type": "aster_risk:infuser",
+    "input": {
+        "item": "aster_risk:void_shard"
+    },
+    "additional": {
+        "item": "aster_risk:shadow_essence"
+    },
+    "result": {
+        "item": "aster_risk:corrupted_core",
+        "count": 1
+    },
+    "mana_cost": 400,
+    "process_time": 200
+}

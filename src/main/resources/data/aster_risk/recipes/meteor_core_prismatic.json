@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SFS",
+        "FMF",
+        "SFS"
+    ],
+    "key": {
+        "S": { "item": "aster_risk:stardust" },
+        "F": { "item": "aster_risk:starflagment" },
+        "M": { "tag": "forge:gems/meteorite" }
+    },
+    "result": {
+        "item": "aster_risk:meteor_core_prismatic",
+        "count": 1
+    }
+}

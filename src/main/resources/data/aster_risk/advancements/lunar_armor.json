@@ -1,0 +1,61 @@
+{
+    "display": {
+        "icon": {
+            "item": "aster_risk:lunar_helmet"
+        },
+        "title": {
+            "translate": "advancement.aster_risk.lunar_armor.title"
+        },
+        "description": {
+            "translate": "advancement.aster_risk.lunar_armor.description"
+        },
+        "show_toast": true,
+        "announce_to_chat": true
+    },
+    "parent": "aster_risk:root",
+    "criteria": {
+        "has_helmet": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:lunar_helmet"]
+                    }
+                ]
+            }
+        },
+        "has_chestplate": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:lunar_chestplate"]
+                    }
+                ]
+            }
+        },
+        "has_leggings": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:lunar_leggings"]
+                    }
+                ]
+            }
+        },
+        "has_boots": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:lunar_boots"]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        ["has_helmet", "has_chestplate", "has_leggings", "has_boots"]
+    ]
+}

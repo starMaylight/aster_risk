@@ -1,7 +1,7 @@
 {
     "type": "aster_risk:infuser",
     "input": {
-        "item": "aster_risk:stardust"
+        "tag": "forge:dusts/stardust"
     },
     "result": {
         "item": "aster_risk:starflagment",

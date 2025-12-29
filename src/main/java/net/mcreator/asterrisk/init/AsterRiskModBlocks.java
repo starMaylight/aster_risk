@@ -23,6 +23,7 @@ import net.mcreator.asterrisk.block.SilverBlockBlock;
 import net.mcreator.asterrisk.block.RitualPedestalBlock;
 import net.mcreator.asterrisk.block.ResonatorBlock;
 import net.mcreator.asterrisk.block.PolishedMoonstoneBlock;
+import net.mcreator.asterrisk.block.PhaseAnvilBlock;
 import net.mcreator.asterrisk.block.ObeliskBlock;
 import net.mcreator.asterrisk.block.MossyMoonstoneBricksBlock;
 import net.mcreator.asterrisk.block.MoonwaterBlock;
@@ -35,6 +36,7 @@ import net.mcreator.asterrisk.block.MoonlightBlock;
 import net.mcreator.asterrisk.block.MoonlightBeaconBlock;
 import net.mcreator.asterrisk.block.MeteoriteOreBlock;
 import net.mcreator.asterrisk.block.MeteoriteBlockBlock;
+import net.mcreator.asterrisk.block.MeteorSummoningBlock;
 import net.mcreator.asterrisk.block.ManaBatteryBlock;
 import net.mcreator.asterrisk.block.LunarstoneBlock;
 import net.mcreator.asterrisk.block.LunarplanksBlock;
@@ -53,6 +55,7 @@ import net.mcreator.asterrisk.block.CrackedMoonstoneBricksBlock;
 import net.mcreator.asterrisk.block.ChiseledMoonstoneBlock;
 import net.mcreator.asterrisk.block.CelestialTileBlock;
 import net.mcreator.asterrisk.block.AltarCoreBlock;
+import net.mcreator.asterrisk.block.AlchemicalCauldronBlock;
 import net.mcreator.asterrisk.AsterRiskMod;
 
 public class AsterRiskModBlocks {
@@ -114,5 +117,9 @@ public class AsterRiskModBlocks {
 	// ボス召喚祈壇
 	public static final RegistryObject<Block> ECLIPSE_ALTAR = REGISTRY.register("eclipse_altar", () -> new EclipseAltarBlock());
 	public static final RegistryObject<Block> STELLAR_SPIRE_CORE = REGISTRY.register("stellar_spire_core", () -> new StellarSpireCoreBlock());
+	// === 新システム: 流星召喚・月相鍛冶・錬金術 ===
+	public static final RegistryObject<Block> ALCHEMICAL_CAULDRON = REGISTRY.register("alchemical_cauldron", () -> new AlchemicalCauldronBlock());
+	public static final RegistryObject<Block> PHASE_ANVIL = REGISTRY.register("phase_anvil", () -> new PhaseAnvilBlock());
+	public static final RegistryObject<Block> METEOR_SUMMONING = REGISTRY.register("meteor_summoning", () -> new MeteorSummoningBlock());
 	// End of user code block custom blocks
 }

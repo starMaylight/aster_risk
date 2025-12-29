@@ -3,7 +3,7 @@
     "ingredients": [
         { "item": "aster_risk:stellar_heart" },
         { "item": "aster_risk:stellar_crown" },
-        { "item": "aster_risk:stardust" },
+        { "tag": "forge:dusts/stardust" },
         { "item": "aster_risk:stellar_spire_core" }
     ],
     "result": {

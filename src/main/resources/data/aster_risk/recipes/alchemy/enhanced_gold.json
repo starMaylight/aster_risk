@@ -1,0 +1,14 @@
+{
+    "type": "aster_risk:alchemy",
+    "ingredients": [
+        { "tag": "forge:ingots/gold" },
+        { "item": "aster_risk:stardust" }
+    ],
+    "result": {
+        "item": "aster_risk:enhanced_gold",
+        "count": 1
+    },
+    "mana_cost": 100,
+    "process_time": 80,
+    "requires_catalyst": false
+}

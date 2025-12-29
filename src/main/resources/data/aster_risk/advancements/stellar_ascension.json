@@ -1,0 +1,65 @@
+{
+    "display": {
+        "icon": {
+            "item": "aster_risk:stellar_diadem"
+        },
+        "title": {
+            "translate": "advancement.aster_risk.stellar_ascension.title"
+        },
+        "description": {
+            "translate": "advancement.aster_risk.stellar_ascension.description"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true
+    },
+    "parent": "aster_risk:star_devourer",
+    "criteria": {
+        "has_diadem": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:stellar_diadem"]
+                    }
+                ]
+            }
+        },
+        "has_vestment": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:stellar_vestment"]
+                    }
+                ]
+            }
+        },
+        "has_pants": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:stellar_pants"]
+                    }
+                ]
+            }
+        },
+        "has_sabatons": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:stellar_sabatons"]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        ["has_diadem", "has_vestment", "has_pants", "has_sabatons"]
+    ],
+    "rewards": {
+        "experience": 300
+    }
+}

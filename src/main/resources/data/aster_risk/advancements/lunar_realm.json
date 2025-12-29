@@ -1,0 +1,25 @@
+{
+    "display": {
+        "icon": {
+            "item": "aster_risk:lunar_portal"
+        },
+        "title": {
+            "translate": "advancement.aster_risk.lunar_realm.title"
+        },
+        "description": {
+            "translate": "advancement.aster_risk.lunar_realm.description"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true
+    },
+    "parent": "aster_risk:ritual_master",
+    "criteria": {
+        "enter_lunar_realm": {
+            "trigger": "minecraft:changed_dimension",
+            "conditions": {
+                "to": "aster_risk:lunar_realm"
+            }
+        }
+    }
+}

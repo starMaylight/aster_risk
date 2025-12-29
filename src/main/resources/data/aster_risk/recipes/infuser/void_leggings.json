@@ -1,0 +1,12 @@
+{
+    "type": "aster_risk:infuser",
+    "input": {
+        "item": "minecraft:diamond_leggings"
+    },
+    "result": {
+        "item": "aster_risk:void_leggings",
+        "count": 1
+    },
+    "mana_cost": 900,
+    "process_time": 350
+}

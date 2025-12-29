@@ -1,0 +1,16 @@
+{
+    "type": "aster_risk:alchemy",
+    "ingredients": [
+        { "item": "aster_risk:void_shard" },
+        { "item": "aster_risk:void_shard" },
+        { "item": "aster_risk:void_shard" },
+        { "item": "aster_risk:shadow_essence" }
+    ],
+    "result": {
+        "item": "aster_risk:void_leggings",
+        "count": 1
+    },
+    "mana_cost": 700,
+    "process_time": 220,
+    "requires_catalyst": true
+}

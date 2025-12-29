@@ -3,7 +3,7 @@
     "ingredients": [
         { "item": "aster_risk:stellar_heart" },
         { "item": "aster_risk:stellar_robe" },
-        { "item": "aster_risk:starflagment" },
+        { "item": "aster_risk:celestial_nucleus" },
         { "item": "aster_risk:stellar_spire_core" }
     ],
     "result": {

@@ -1,0 +1,17 @@
+{
+    "type": "aster_risk:ritual",
+    "energy_type": "lunar",
+    "center": { "tag": "forge:gems/moonstone" },
+    "pedestals": [
+        { "item": "aster_risk:stardust" },
+        { "item": "aster_risk:lunar_dust" },
+        { "item": "aster_risk:lunar_dust" },
+        { "tag": "forge:ingots/gold" }
+    ],
+    "result": {
+        "item": "aster_risk:phase_sigil_last_quarter",
+        "count": 1
+    },
+    "mana_cost": 120,
+    "process_time": 80
+}

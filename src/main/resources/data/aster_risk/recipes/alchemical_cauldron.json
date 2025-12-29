@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "MSM",
+        "SCS",
+        "MSM"
+    ],
+    "key": {
+        "M": { "tag": "forge:gems/moonstone" },
+        "S": { "item": "aster_risk:stardust" },
+        "C": { "item": "minecraft:cauldron" }
+    },
+    "result": {
+        "item": "aster_risk:alchemical_cauldron",
+        "count": 1
+    }
+}

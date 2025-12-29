@@ -1,0 +1,18 @@
+{
+    "name": "月光注入機",
+    "icon": "aster_risk:lunar_infuser",
+    "category": "aster_risk:crafting_stations",
+    "sortnum": 0,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:lunar_infuser",
+            "text": "$(item)月光注入機$()はマナを使ってアイテムを変換します。上にアイテムを置いてマナを供給してください。$(br2)主なレシピ:$(br)$(li)月光石 → 月の塵$(li)隕石 → 星屑$(li)エンダーパール → 虚空の欠片$(li)腐った肉 → 影のエッセンス"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:lunar_infuser",
+            "text": "醸造台が素材として必要です。"
+        }
+    ]
+}

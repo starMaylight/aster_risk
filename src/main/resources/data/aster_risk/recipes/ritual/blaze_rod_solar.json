@@ -1,8 +1,8 @@
 {
     "type": "aster_risk:ritual",
     "ingredients": [
-        { "item": "aster_risk:meteorite_fragment" },
-        { "item": "aster_risk:meteorite_fragment" },
+        { "tag": "forge:gems/meteorite" },
+        { "tag": "forge:gems/meteorite" },
         { "item": "minecraft:blaze_powder" },
         { "item": "minecraft:blaze_powder" }
     ],

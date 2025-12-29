@@ -1,10 +1,10 @@
 {
     "type": "aster_risk:ritual",
     "ingredients": [
-        { "item": "aster_risk:moonstone" },
-        { "item": "aster_risk:moonstone" },
-        { "item": "aster_risk:starflagment" },
-        { "item": "minecraft:gold_ingot" }
+        { "tag": "forge:gems/moonstone" },
+        { "tag": "forge:gems/moonstone" },
+        { "tag": "forge:gems/star_fragment" },
+        { "tag": "forge:ingots/gold" }
     ],
     "result": {
         "item": "minecraft:nether_star",

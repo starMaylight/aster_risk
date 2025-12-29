@@ -1,0 +1,6 @@
+{
+    "parent": "aster_risk:block/meteor_summoning",
+    "textures": {
+        "top": "aster_risk:block/meteor_summoning_active"
+    }
+}

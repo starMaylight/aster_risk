@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " S ",
+        "EME",
+        " G "
+    ],
+    "key": {
+        "S": { "item": "aster_risk:stardust" },
+        "M": { "tag": "forge:gems/moonstone" },
+        "E": { "tag": "forge:ender_pearls" },
+        "G": { "tag": "forge:ingots/gold" }
+    },
+    "result": {
+        "item": "aster_risk:phase_sigil_new_moon",
+        "count": 1
+    }
+}

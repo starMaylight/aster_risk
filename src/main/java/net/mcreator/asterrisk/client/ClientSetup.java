@@ -12,6 +12,9 @@ import net.mcreator.asterrisk.models.StarDevourerModel;
 import net.mcreator.asterrisk.client.renderer.LunarInfuserRenderer;
 import net.mcreator.asterrisk.client.renderer.RitualPedestalRenderer;
 import net.mcreator.asterrisk.client.renderer.StarAnvilRenderer;
+import net.mcreator.asterrisk.client.renderer.AlchemicalCauldronRenderer;
+import net.mcreator.asterrisk.client.renderer.PhaseAnvilRenderer;
+import net.mcreator.asterrisk.client.renderer.MeteorSummoningRenderer;
 import net.mcreator.asterrisk.client.renderer.MoonRabbitRenderer;
 import net.mcreator.asterrisk.client.renderer.StarSpiritRenderer;
 import net.mcreator.asterrisk.client.renderer.MoonlightFairyRenderer;
@@ -36,6 +39,11 @@ public class ClientSetup {
         event.registerBlockEntityRenderer(ModBlockEntities.RITUAL_PEDESTAL.get(), RitualPedestalRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.LUNAR_INFUSER.get(), LunarInfuserRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.STAR_ANVIL.get(), StarAnvilRenderer::new);
+        
+        // 新システムのBlockEntityレンダラー
+        event.registerBlockEntityRenderer(ModBlockEntities.ALCHEMICAL_CAULDRON.get(), AlchemicalCauldronRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.PHASE_ANVIL.get(), PhaseAnvilRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.METEOR_SUMMONING.get(), MeteorSummoningRenderer::new);
         
         // 友好Mob
         event.registerEntityRenderer(ModEntities.MOON_RABBIT.get(), MoonRabbitRenderer::new);

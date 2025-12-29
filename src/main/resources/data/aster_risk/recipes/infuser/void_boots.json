@@ -1,0 +1,12 @@
+{
+    "type": "aster_risk:infuser",
+    "input": {
+        "item": "minecraft:diamond_boots"
+    },
+    "result": {
+        "item": "aster_risk:void_boots",
+        "count": 1
+    },
+    "mana_cost": 700,
+    "process_time": 250
+}

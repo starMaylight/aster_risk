@@ -1,0 +1,37 @@
+{
+    "name": "新素材",
+    "icon": "aster_risk:prismatic_meteorite",
+    "category": "aster_risk:advanced_systems",
+    "sortnum": 4,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "title": "上級素材",
+            "text": "上級システムでは究極の装備を作るための強力な新素材が登場します。$(br2)これらの素材は錬金術、流星召喚、またはその両方で入手できます。"
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:enhanced_gold",
+            "title": "強化金",
+            "text": "錬金術で星のエネルギーを注入した金。$(br2)$(li)$(7)入手方法$(): 錬金術$(li)$(7)レシピ$(): 金 + 星屑$(br2)高度な魔法装備に使用。"
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:radiant_diamond",
+            "title": "輝くダイヤモンド",
+            "text": "純粋な星の光を吸収したダイヤモンド。$(br2)$(li)$(7)入手方法$(): 錬金術$(li)$(7)レシピ$(): ダイヤ + 星屑×2$(br2)卓越した耐久性と力を持つ。"
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:celestial_nucleus",
+            "title": "天体の核",
+            "text": "錬金術の究極の創造物。$(br2)$(li)$(7)入手方法$(): 錬金術$(li)$(7)レシピ$(): 星の欠片 + ネザースター + 触媒$(br2)宇宙そのものの本質を宿す。"
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:prismatic_meteorite",
+            "title": "虹色の隕石",
+            "text": "虹の流星の欠片。$(br2)$(li)$(7)入手方法$(): 流星召喚$(li)$(7)流星タイプ$(): 虹流星$(br2)天体のスペクトル全色で輝く。"
+        }
+    ]
+}

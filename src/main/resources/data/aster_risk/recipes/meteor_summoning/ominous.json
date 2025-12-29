@@ -1,0 +1,11 @@
+{
+    "type": "aster_risk:meteor_summoning",
+    "meteor_type": "OMINOUS",
+    "mana_cost": 1000,
+    "description": "Spawns enemies!",
+    "dangerous": true,
+    "drops": [
+        {"item": "aster_risk:void_shard", "count": 4},
+        {"item": "aster_risk:shadow_essence", "count": 3}
+    ]
+}

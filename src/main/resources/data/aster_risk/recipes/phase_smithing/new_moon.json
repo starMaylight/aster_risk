@@ -1,0 +1,6 @@
+{
+    "type": "aster_risk:phase_smithing",
+    "phase": "NEW_MOON",
+    "effect": "Stealth Effect",
+    "mana_cost": 200
+}

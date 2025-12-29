@@ -4,7 +4,7 @@
         { "item": "aster_risk:eclipse_core" },
         { "item": "aster_risk:meteorite_boots" },
         { "item": "aster_risk:eclipse_altar" },
-        { "item": "aster_risk:corrupted_core" }
+        { "item": "aster_risk:celestial_nucleus" }
     ],
     "result": {
         "item": "aster_risk:eclipse_boots",

@@ -1,0 +1,36 @@
+{
+    "name": "星屑錬金術",
+    "icon": "aster_risk:alchemical_cauldron",
+    "category": "aster_risk:advanced_systems",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:alchemical_cauldron",
+            "title": "錬金釜",
+            "text": "$(item)錬金釜$()は月水とマナを使って素材を変換する容器です。$(br2)$(item)月水入りバケツ$()で満たし、材料を入れ、マナを供給すると錬金プロセスが始まります。"
+        },
+        {
+            "type": "patchouli:text",
+            "title": "使い方",
+            "text": "1. 錬金釜を設置$(br)2. 月水入りバケツで右クリック$(br)3. 最大4つの材料を投入$(br)4. 共振器でマナを供給$(br)5. 変換完了を待つ$(br2)稼働中は釜が光ります。完成すると上にアイテムが出現します。"
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:stardust_catalyst",
+            "title": "星屑触媒",
+            "text": "$(item)星屑触媒$()は変換効率を向上させます。一部の上級レシピでは材料として必要です。$(br2)星屑と月の塵から錬金釜で作成できます。"
+        },
+        {
+            "type": "patchouli:text",
+            "title": "基本レシピ",
+            "text": "$(li)$(item)強化金$(): 金 + 星屑$(li)$(item)輝くダイヤモンド$(): ダイヤ + 星屑×2$(li)$(item)星屑触媒$(): 星屑×2 + 月の塵$(li)$(item)天体の核$(): 星の欠片 + ネザースター + 触媒"
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:celestial_nucleus",
+            "title": "天体の核",
+            "text": "$(item)天体の核$()は錬金術の頂点に位置する素材です。最も高度なクラフトレシピに使用できます。$(br2)作成には星屑触媒が必要です。"
+        }
+    ]
+}

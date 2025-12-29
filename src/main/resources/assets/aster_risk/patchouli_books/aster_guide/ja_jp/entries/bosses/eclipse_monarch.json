@@ -1,0 +1,17 @@
+{
+    "name": "月蝕の王",
+    "icon": "aster_risk:eclipse_core",
+    "category": "aster_risk:bosses",
+    "sortnum": 0,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "$(l)月蝕の王$()は蝕の荒地を支配する闇の支配者です。$(br2)$(l)召喚方法:$()$(br)$(li)蝕の荒地で$(item)蝕の聖域$()を見つける$(li)$(item)蝕の祭壇$()に$(item)隕石の欠片$()を使用$(li)祭壇の周りに8つ以上の蝕石があることを確認$(br2)$(l)攻撃:$()$(br)$(li)闇の弾$(li)範囲影の爆発$(li)蝕の亡霊を召喚"
+        },
+        {
+            "type": "patchouli:text",
+            "title": "報酬",
+            "text": "$(l)ドロップ:$()$(br)$(li)$(item)蝕の核$()（確定）$(li)影のエッセンス$(li)虚空の欠片$(br2)蝕の核は$(l)蝕の防具セット$()の作成に使用 - ライフスティールと敵へのデバフを持つ究極の闇装備。"
+        }
+    ]
+}

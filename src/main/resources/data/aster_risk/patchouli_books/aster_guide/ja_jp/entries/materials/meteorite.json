@@ -1,0 +1,18 @@
+{
+    "name": "隕石",
+    "icon": "aster_risk:meteorite_fragment",
+    "category": "aster_risk:materials",
+    "sortnum": 2,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:meteorite_fragment",
+            "text": "$(l)隕石の欠片$()は宇宙エネルギーを宿した落ちた星のかけらです。強力な隕石防具セットやボス召喚に必須です。$(br2)隕石鉱石は地下深くにあり、かなり稀少です。"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:meteorite_block",
+            "text": "欠片を圧縮して隕石ブロックにできます。"
+        }
+    ]
+}

@@ -1,0 +1,62 @@
+{
+    "display": {
+        "icon": {
+            "item": "aster_risk:meteorite_chestplate"
+        },
+        "title": {
+            "translate": "advancement.aster_risk.meteorite_armor.title"
+        },
+        "description": {
+            "translate": "advancement.aster_risk.meteorite_armor.description"
+        },
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true
+    },
+    "parent": "aster_risk:meteorite",
+    "criteria": {
+        "has_helmet": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:meteorite_helmet"]
+                    }
+                ]
+            }
+        },
+        "has_chestplate": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:meteorite_chestplate"]
+                    }
+                ]
+            }
+        },
+        "has_leggings": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:meteorite_leggings"]
+                    }
+                ]
+            }
+        },
+        "has_boots": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:meteorite_boots"]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        ["has_helmet", "has_chestplate", "has_leggings", "has_boots"]
+    ]
+}

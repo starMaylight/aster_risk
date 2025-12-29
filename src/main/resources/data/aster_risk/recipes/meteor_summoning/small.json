@@ -1,0 +1,11 @@
+{
+    "type": "aster_risk:meteor_summoning",
+    "meteor_type": "SMALL",
+    "mana_cost": 300,
+    "description": "Basic meteor",
+    "dangerous": false,
+    "drops": [
+        {"item": "aster_risk:meteorite_fragment", "count": 4},
+        {"item": "aster_risk:stardust", "count": 2}
+    ]
+}

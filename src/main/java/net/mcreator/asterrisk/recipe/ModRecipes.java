@@ -41,4 +41,40 @@ public class ModRecipes {
 
     public static final RegistryObject<RecipeSerializer<InfuserRecipe>> INFUSER_SERIALIZER =
         RECIPE_SERIALIZERS.register("infuser", InfuserRecipe.Serializer::new);
+
+    // === 錬金術レシピ ===
+    public static final RegistryObject<RecipeType<AlchemyRecipe>> ALCHEMY_TYPE =
+        RECIPE_TYPES.register("alchemy", () -> new RecipeType<>() {
+            @Override
+            public String toString() {
+                return AsterRiskMod.MODID + ":alchemy";
+            }
+        });
+
+    public static final RegistryObject<RecipeSerializer<AlchemyRecipe>> ALCHEMY_SERIALIZER =
+        RECIPE_SERIALIZERS.register("alchemy", AlchemyRecipe.Serializer::new);
+
+    // === 月相鍛冶レシピ ===
+    public static final RegistryObject<RecipeType<PhaseSmithingRecipe>> PHASE_SMITHING_TYPE =
+        RECIPE_TYPES.register("phase_smithing", () -> new RecipeType<>() {
+            @Override
+            public String toString() {
+                return AsterRiskMod.MODID + ":phase_smithing";
+            }
+        });
+
+    public static final RegistryObject<RecipeSerializer<PhaseSmithingRecipe>> PHASE_SMITHING_SERIALIZER =
+        RECIPE_SERIALIZERS.register("phase_smithing", PhaseSmithingRecipe.Serializer::new);
+
+    // === 流星召喚レシピ ===
+    public static final RegistryObject<RecipeType<MeteorSummoningRecipe>> METEOR_SUMMONING_TYPE =
+        RECIPE_TYPES.register("meteor_summoning", () -> new RecipeType<>() {
+            @Override
+            public String toString() {
+                return AsterRiskMod.MODID + ":meteor_summoning";
+            }
+        });
+
+    public static final RegistryObject<RecipeSerializer<MeteorSummoningRecipe>> METEOR_SUMMONING_SERIALIZER =
+        RECIPE_SERIALIZERS.register("meteor_summoning", MeteorSummoningRecipe.Serializer::new);
 }

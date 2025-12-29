@@ -1,0 +1,29 @@
+{
+    "display": {
+        "icon": {
+            "item": "aster_risk:starflagment"
+        },
+        "title": {
+            "translate": "advancement.aster_risk.star_fragment.title"
+        },
+        "description": {
+            "translate": "advancement.aster_risk.star_fragment.description"
+        },
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true
+    },
+    "parent": "aster_risk:stardust",
+    "criteria": {
+        "has_fragment": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:starflagment"]
+                    }
+                ]
+            }
+        }
+    }
+}

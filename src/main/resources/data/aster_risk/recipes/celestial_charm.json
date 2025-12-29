@@ -6,8 +6,8 @@
         " S "
     ],
     "key": {
-        "F": { "tag": "forge:gems/star_fragment" },
-        "G": { "tag": "forge:ingots/gold" },
+        "F": { "item": "aster_risk:starflagment" },
+        "G": { "item": "aster_risk:enhanced_gold" },
         "M": { "tag": "forge:gems/moonstone" },
         "S": { "tag": "forge:ingots/silver" }
     },

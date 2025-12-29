@@ -1,0 +1,22 @@
+{
+    "name": "星屑の防具",
+    "icon": "aster_risk:stellar_robe",
+    "category": "aster_risk:equipment",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "$(l)星屑の防具$()セットは星屑と星の欠片から作られ、強化された魔法能力を持ちます。$(br2)$(l)セットボーナス（4部位）:$()$(br)$(li)最大マナ+50$(li)呪文マナコスト-20%$(br2)頻繁に魔法を使う重装魔法使いに最適。"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:stellar_crown",
+            "text": "星の冠のレシピ。"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:stellar_robe",
+            "text": "星のローブのレシピ。"
+        }
+    ]
+}

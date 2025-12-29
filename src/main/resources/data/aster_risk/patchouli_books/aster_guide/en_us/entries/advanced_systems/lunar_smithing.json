@@ -1,0 +1,35 @@
+{
+    "name": "Lunar Smithing",
+    "icon": "aster_risk:phase_anvil",
+    "category": "aster_risk:advanced_systems",
+    "sortnum": 2,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:phase_anvil",
+            "title": "Phase Anvil",
+            "text": "The $(item)Phase Anvil$() allows you to imbue equipment with the power of moon phases.$(br2)Each phase grants different bonuses when applied to armor or weapons."
+        },
+        {
+            "type": "patchouli:text",
+            "title": "How to Use",
+            "text": "1. Place the Phase Anvil$(br)2. Right-click with equipment$(br)3. Right-click with a Phase Sigil$(br)4. Supply mana$(br)5. Wait for the imbuing process$(br2)$(l)Shift + Right-click$() to remove the sigil."
+        },
+        {
+            "type": "patchouli:text",
+            "title": "Moon Phases",
+            "text": "$(li)$(6)Full Moon$(): +15% Attack$(li)$(9)Waning Gibbous$(): +10% Magic$(li)$(b)Last Quarter$(): +12% Defense$(li)$(d)Waning Crescent$(): +8% Mana Regen$(li)$(8)New Moon$(): Stealth$(li)$(a)Waxing Crescent$(): +10% Speed$(li)$(e)First Quarter$(): +15% Mining$(li)$(6)Waxing Gibbous$(): +10% XP Gain"
+        },
+        {
+            "type": "patchouli:text",
+            "title": "Phase Sigils",
+            "text": "Craft $(item)Phase Sigils$() using Moonstone, Stardust, and Gold Ingots. Different combinations create sigils for different moon phases.$(br2)Sigils can stack up to level 3 on the same equipment for stronger effects!"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:phase_sigil_full_moon",
+            "title": "Full Moon Sigil",
+            "text": "The most powerful offensive sigil."
+        }
+    ]
+}

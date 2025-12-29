@@ -1,0 +1,14 @@
+{
+    "type": "aster_risk:alchemy",
+    "ingredients": [
+        { "item": "aster_risk:meteorite_fragment" },
+        { "item": "aster_risk:stardust" }
+    ],
+    "result": {
+        "item": "aster_risk:starflagment",
+        "count": 1
+    },
+    "mana_cost": 150,
+    "process_time": 100,
+    "requires_catalyst": false
+}

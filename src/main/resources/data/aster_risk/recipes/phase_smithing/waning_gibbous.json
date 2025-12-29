@@ -1,0 +1,6 @@
+{
+    "type": "aster_risk:phase_smithing",
+    "phase": "WANING_GIBBOUS",
+    "effect": "+10% Magic Damage",
+    "mana_cost": 200
+}

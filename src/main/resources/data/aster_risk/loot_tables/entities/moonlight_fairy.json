@@ -1,0 +1,39 @@
+{
+    "type": "minecraft:entity",
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "aster_risk:lunar_dust",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "min": 0,
+                                "max": 1,
+                                "type": "minecraft:uniform"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "rolls": 1,
+            "bonus_rolls": 0,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:glowstone_dust",
+                    "weight": 3
+                },
+                {
+                    "type": "minecraft:empty",
+                    "weight": 1
+                }
+            ]
+        }
+    ]
+}

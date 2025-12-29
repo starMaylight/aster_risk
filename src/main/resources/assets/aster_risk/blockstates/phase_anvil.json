@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "aster_risk:block/phase_anvil" },
+        "facing=east": { "model": "aster_risk:block/phase_anvil", "y": 90 },
+        "facing=south": { "model": "aster_risk:block/phase_anvil", "y": 180 },
+        "facing=west": { "model": "aster_risk:block/phase_anvil", "y": 270 }
+    }
+}

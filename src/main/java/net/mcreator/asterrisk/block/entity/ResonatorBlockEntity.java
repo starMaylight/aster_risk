@@ -26,6 +26,10 @@ import java.util.Set;
 /**
  * 共振器のBlockEntity
  * 他の共振器とリンクしてマナを転送する
+ * 
+ * 動作:
+ * - 隣接ブロックからマナを抽出可能な場合、リンク先にマナを送る
+ * - 一方向のみ動作（入力と出力は同時に行わない）
  */
 public class ResonatorBlockEntity extends BlockEntity {
 
@@ -144,27 +148,29 @@ public class ResonatorBlockEntity extends BlockEntity {
         if (entity.tickCounter < 10) return; // 0.5秒ごとに処理
         entity.tickCounter = 0;
         
-        // 隣接ブロックからマナを取得
-        BlockManaCapability.IBlockMana sourceStorage = entity.findAdjacentManaStorage();
-        if (sourceStorage == null || sourceStorage.getMana() <= 0) return;
+        // 隣接ブロックからマナを取得できるか確認
+        ManaSourceResult sourceResult = entity.findAdjacentManaSource();
+        if (sourceResult == null) return;
         
         // リンク先にマナを転送
         for (BlockPos linkedPos : entity.linkedPositions) {
             BlockEntity linkedBE = level.getBlockEntity(linkedPos);
             if (linkedBE instanceof ResonatorBlockEntity linkedResonator) {
                 // リンク先共振器の隣接ブロックにマナを送る
-                BlockManaCapability.IBlockMana targetStorage = linkedResonator.findAdjacentManaReceiver();
-                if (targetStorage != null && targetStorage.canReceive()) {
-                    float toTransfer = Math.min(entity.transferRate / 2f, sourceStorage.getMana());
-                    toTransfer = Math.min(toTransfer, targetStorage.getMaxMana() - targetStorage.getMana());
+                ManaReceiverResult receiverResult = linkedResonator.findAdjacentManaReceiver();
+                if (receiverResult != null) {
+                    float toTransfer = Math.min(entity.transferRate / 2f, sourceResult.storage.getMana());
+                    toTransfer = Math.min(toTransfer, receiverResult.storage.getMaxMana() - receiverResult.storage.getMana());
                     
-                    if (toTransfer > 0) {
-                        float extracted = sourceStorage.extractMana(toTransfer);
-                        targetStorage.addMana(extracted);
-                        
-                        // パーティクルエフェクト
-                        if (level instanceof ServerLevel serverLevel) {
-                            spawnTransferParticles(serverLevel, pos, linkedPos);
+                    if (toTransfer > 0.1f) {
+                        float extracted = sourceResult.storage.extractMana(toTransfer);
+                        if (extracted > 0) {
+                            receiverResult.storage.addMana(extracted);
+                            
+                            // パーティクルエフェクト
+                            if (level instanceof ServerLevel serverLevel) {
+                                spawnTransferParticles(serverLevel, pos, linkedPos);
+                            }
                         }
                     }
                 }
@@ -173,21 +179,52 @@ public class ResonatorBlockEntity extends BlockEntity {
     }
 
     /**
+     * マナソース検索結果
+     */
+    private static class ManaSourceResult {
+        final BlockManaCapability.IBlockMana storage;
+        final BlockPos pos;
+        
+        ManaSourceResult(BlockManaCapability.IBlockMana storage, BlockPos pos) {
+            this.storage = storage;
+            this.pos = pos;
+        }
+    }
+
+    /**
+     * マナ受信先検索結果
+     */
+    private static class ManaReceiverResult {
+        final BlockManaCapability.IBlockMana storage;
+        final BlockPos pos;
+        
+        ManaReceiverResult(BlockManaCapability.IBlockMana storage, BlockPos pos) {
+            this.storage = storage;
+            this.pos = pos;
+        }
+    }
+
+    /**
      * 隣接するマナストレージを探す（抽出元）
+     * 他のResonatorは除外
      */
     @Nullable
-    private BlockManaCapability.IBlockMana findAdjacentManaStorage() {
+    private ManaSourceResult findAdjacentManaSource() {
         if (level == null) return null;
         
         for (Direction dir : Direction.values()) {
             BlockPos adjacentPos = worldPosition.relative(dir);
             BlockEntity be = level.getBlockEntity(adjacentPos);
+            
+            // 他のResonatorは除外
+            if (be instanceof ResonatorBlockEntity) continue;
+            
             if (be != null) {
                 LazyOptional<BlockManaCapability.IBlockMana> cap = be.getCapability(BlockManaCapability.BLOCK_MANA, dir.getOpposite());
-                if (cap.isPresent() && cap.resolve().isPresent()) {
-                    BlockManaCapability.IBlockMana storage = cap.resolve().get();
-                    if (storage.canExtract()) {
-                        return storage;
+                if (cap.isPresent()) {
+                    BlockManaCapability.IBlockMana storage = cap.resolve().orElse(null);
+                    if (storage != null && storage.canExtract() && storage.getMana() > 0) {
+                        return new ManaSourceResult(storage, adjacentPos);
                     }
                 }
             }
@@ -197,20 +234,25 @@ public class ResonatorBlockEntity extends BlockEntity {
 
     /**
      * 隣接するマナ受信可能ブロックを探す（転送先）
+     * 他のResonatorは除外
      */
     @Nullable
-    private BlockManaCapability.IBlockMana findAdjacentManaReceiver() {
+    private ManaReceiverResult findAdjacentManaReceiver() {
         if (level == null) return null;
         
         for (Direction dir : Direction.values()) {
             BlockPos adjacentPos = worldPosition.relative(dir);
             BlockEntity be = level.getBlockEntity(adjacentPos);
+            
+            // 他のResonatorは除外
+            if (be instanceof ResonatorBlockEntity) continue;
+            
             if (be != null) {
                 LazyOptional<BlockManaCapability.IBlockMana> cap = be.getCapability(BlockManaCapability.BLOCK_MANA, dir.getOpposite());
-                if (cap.isPresent() && cap.resolve().isPresent()) {
-                    BlockManaCapability.IBlockMana storage = cap.resolve().get();
-                    if (storage.canReceive()) {
-                        return storage;
+                if (cap.isPresent()) {
+                    BlockManaCapability.IBlockMana storage = cap.resolve().orElse(null);
+                    if (storage != null && storage.canReceive() && storage.getMana() < storage.getMaxMana()) {
+                        return new ManaReceiverResult(storage, adjacentPos);
                     }
                 }
             }

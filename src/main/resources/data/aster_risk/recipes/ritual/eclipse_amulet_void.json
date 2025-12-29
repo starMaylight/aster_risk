@@ -1,10 +1,10 @@
 {
     "type": "aster_risk:ritual",
     "ingredients": [
-        { "item": "aster_risk:moonstone" },
-        { "item": "aster_risk:starflagment" },
-        { "item": "minecraft:ender_pearl" },
-        { "item": "minecraft:obsidian" }
+        { "tag": "forge:gems/moonstone" },
+        { "tag": "forge:gems/star_fragment" },
+        { "tag": "forge:ender_pearls" },
+        { "tag": "forge:obsidian" }
     ],
     "result": {
         "item": "minecraft:dragon_breath",

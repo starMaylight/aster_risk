@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " F ",
+        "FMF",
+        " G "
+    ],
+    "key": {
+        "M": { "tag": "forge:gems/moonstone" },
+        "F": { "item": "aster_risk:starflagment" },
+        "G": { "tag": "forge:ingots/gold" }
+    },
+    "result": {
+        "item": "aster_risk:phase_sigil_waxing_gibbous",
+        "count": 1
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "name": "隕石の防具",
+    "icon": "aster_risk:meteorite_chestplate",
+    "category": "aster_risk:equipment",
+    "sortnum": 2,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "$(l)隕石の防具$()セットは隕石の欠片から作られ、防御と魔法能力のバランスを持ちます。$(br2)$(l)セットボーナス（4部位）:$()$(br)$(li)最大マナ+15$(li)攻撃時マナ+3$(br2)戦闘でマナを維持したい戦闘重視プレイヤーに最適。"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:meteorite_helmet",
+            "text": "隕石ヘルメットのレシピ。"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:meteorite_chestplate",
+            "text": "隕石チェストプレートのレシピ。"
+        }
+    ]
+}

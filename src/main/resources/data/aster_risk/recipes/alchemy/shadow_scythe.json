@@ -1,0 +1,16 @@
+{
+    "type": "aster_risk:alchemy",
+    "ingredients": [
+        { "item": "aster_risk:shadow_essence" },
+        { "item": "aster_risk:shadow_essence" },
+        { "item": "aster_risk:corrupted_core" },
+        { "tag": "forge:ingots/iron" }
+    ],
+    "result": {
+        "item": "aster_risk:shadow_scythe",
+        "count": 1
+    },
+    "mana_cost": 500,
+    "process_time": 200,
+    "requires_catalyst": true
+}

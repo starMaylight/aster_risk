@@ -1,0 +1,43 @@
+{
+    "display": {
+        "icon": {
+            "item": "aster_risk:altar_core"
+        },
+        "title": {
+            "translate": "advancement.aster_risk.ritual_master.title"
+        },
+        "description": {
+            "translate": "advancement.aster_risk.ritual_master.description"
+        },
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true
+    },
+    "parent": "aster_risk:mana_collector",
+    "criteria": {
+        "has_altar": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:altar_core"]
+                    }
+                ]
+            }
+        },
+        "has_pedestal": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:ritual_pedestal"]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        ["has_altar"],
+        ["has_pedestal"]
+    ]
+}

@@ -1,0 +1,49 @@
+{
+    "name": "流星召喚",
+    "icon": "aster_risk:meteor_summoning",
+    "category": "aster_risk:advanced_systems",
+    "sortnum": 3,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:meteor_summoning",
+            "title": "流星召喚陣",
+            "text": "$(item)流星召喚陣$()で空から流星を呼び寄せ、レア素材を入手できます。$(br2)$(4)注意: 夜間のみ使用可能！$()"
+        },
+        {
+            "type": "patchouli:text",
+            "title": "使い方",
+            "text": "1. 召喚陣を設置$(br)2. 夜になるまで待つ$(br)3. 流星の核を右クリックで置く$(br)4. 大量のマナを供給$(br)5. 空を見上げよう！$(br2)核の種類によって報酬と危険度が変わります。"
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:meteor_core_small",
+            "title": "小流星の核",
+            "text": "$(li)$(7)マナコスト$(): 300$(li)$(7)ドロップ$(): 隕石の欠片$(li)$(7)ボーナス$(): 星屑の確率$(br2)初心者向けの安全な選択。"
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:meteor_core_stardust",
+            "title": "星屑流星の核",
+            "text": "$(li)$(7)マナコスト$(): 600$(li)$(7)ドロップ$(): 大量の星屑$(li)$(7)ボーナス$(): 星の欠片の確率$(br2)星屑集めに最適。"
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:meteor_core_prismatic",
+            "title": "虹流星の核",
+            "text": "$(li)$(7)マナコスト$(): 1500$(li)$(7)ドロップ$(): $(d)虹色の隕石$()$(li)$(7)ボーナス$(): 星の欠片、星屑$(br2)伝説級の素材を含む最もレアな流星！"
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:meteor_core_ominous",
+            "title": "凶星の核",
+            "text": "$(li)$(7)マナコスト$(): 1000$(li)$(7)ドロップ$(): 虚空の欠片、影のエッセンス$(li)$(4)危険$(): 敵対Mobが出現！$(br2)ハイリスク・ハイリターン。戦闘準備を！"
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:prismatic_meteorite",
+            "title": "虹色の隕石",
+            "text": "$(item)虹色の隕石$()は虹流星からのみ入手できる超レア素材です。$(br2)虹色の輝きは宇宙の力を秘めています。最強の装備に使用されます。"
+        }
+    ]
+}

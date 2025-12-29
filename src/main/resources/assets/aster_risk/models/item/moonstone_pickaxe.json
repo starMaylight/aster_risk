@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "aster_risk:item/moonstone_pickaxe"
+  }
+}

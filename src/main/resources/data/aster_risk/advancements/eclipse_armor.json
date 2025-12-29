@@ -1,0 +1,65 @@
+{
+    "display": {
+        "icon": {
+            "item": "aster_risk:eclipse_crown"
+        },
+        "title": {
+            "translate": "advancement.aster_risk.eclipse_armor.title"
+        },
+        "description": {
+            "translate": "advancement.aster_risk.eclipse_armor.description"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true
+    },
+    "parent": "aster_risk:eclipse_monarch",
+    "criteria": {
+        "has_crown": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:eclipse_crown"]
+                    }
+                ]
+            }
+        },
+        "has_armor": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:eclipse_armor"]
+                    }
+                ]
+            }
+        },
+        "has_greaves": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:eclipse_greaves"]
+                    }
+                ]
+            }
+        },
+        "has_boots": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:eclipse_boots"]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        ["has_crown", "has_armor", "has_greaves", "has_boots"]
+    ],
+    "rewards": {
+        "experience": 200
+    }
+}

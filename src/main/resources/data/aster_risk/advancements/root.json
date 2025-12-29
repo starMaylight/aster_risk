@@ -1,0 +1,28 @@
+{
+    "display": {
+        "icon": {
+            "item": "aster_risk:moonstone"
+        },
+        "title": {
+            "translate": "advancement.aster_risk.root.title"
+        },
+        "description": {
+            "translate": "advancement.aster_risk.root.description"
+        },
+        "background": "aster_risk:textures/gui/advancements_background.png",
+        "show_toast": false,
+        "announce_to_chat": false
+    },
+    "criteria": {
+        "has_moonstone": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:moonstone"]
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,11 +1,11 @@
 {
     "type": "aster_risk:ritual",
     "ingredients": [
-        { "item": "aster_risk:stardust" },
-        { "item": "aster_risk:stardust" },
-        { "item": "aster_risk:stardust" },
-        { "item": "aster_risk:stardust" },
-        { "item": "minecraft:diamond" }
+        { "tag": "forge:dusts/stardust" },
+        { "tag": "forge:dusts/stardust" },
+        { "tag": "forge:dusts/stardust" },
+        { "tag": "forge:dusts/stardust" },
+        { "tag": "forge:gems/diamond" }
     ],
     "result": {
         "item": "minecraft:emerald_block",

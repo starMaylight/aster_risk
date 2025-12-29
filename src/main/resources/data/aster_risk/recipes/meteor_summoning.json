@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SMS",
+        "MOM",
+        "SMS"
+    ],
+    "key": {
+        "S": { "item": "aster_risk:stardust" },
+        "M": { "item": "aster_risk:radiant_diamond" },
+        "O": { "item": "minecraft:obsidian" }
+    },
+    "result": {
+        "item": "aster_risk:meteor_summoning",
+        "count": 1
+    }
+}

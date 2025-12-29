@@ -1,0 +1,28 @@
+{
+    "name": "武器",
+    "icon": "aster_risk:lunar_blade",
+    "category": "aster_risk:equipment",
+    "sortnum": 4,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:lunar_blade",
+            "text": "$(l)月光の剣$()$(br)夜間に追加ダメージを与える素早い剣。右クリックでマナ消費のダッシュ攻撃。"
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:meteor_hammer",
+            "text": "$(l)流星のハンマー$()$(br)衝撃時に衝撃波を発生させる重い武器。右クリックで地面を叩きつける。"
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:stardust_dagger",
+            "text": "$(l)星屑のダガー$()$(br)背後から攻撃すると敵の背後にテレポートする高速ダガー。"
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:meteorite_greatsword",
+            "text": "$(l)隕石の大剣$()$(br)複数の敵を攻撃する薙ぎ払い攻撃を持つ巨大な剣。"
+        }
+    ]
+}

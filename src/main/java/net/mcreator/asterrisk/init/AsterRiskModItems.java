@@ -28,22 +28,29 @@ import net.mcreator.asterrisk.item.StellarHeartItem;
 import net.mcreator.asterrisk.item.StargazerWandItem;
 import net.mcreator.asterrisk.item.StarflagmentItem;
 import net.mcreator.asterrisk.item.StardustItem;
+import net.mcreator.asterrisk.item.StardustCatalystItem;
 import net.mcreator.asterrisk.item.StardustCandyItem;
 import net.mcreator.asterrisk.item.SilveringotItem;
 import net.mcreator.asterrisk.item.ShadowEssenceItem;
 import net.mcreator.asterrisk.item.RawsilverItem;
+import net.mcreator.asterrisk.item.RadiantDiamondItem;
+import net.mcreator.asterrisk.item.PrismaticMeteoriteItem;
+import net.mcreator.asterrisk.item.PhaseSigilItem;
 import net.mcreator.asterrisk.item.MoonwaterItem;
 import net.mcreator.asterrisk.item.MoonstoneItem;
 import net.mcreator.asterrisk.item.MoonlightWandItem;
 import net.mcreator.asterrisk.item.MeteoritefragmentItem;
 import net.mcreator.asterrisk.item.MeteorWandItem;
+import net.mcreator.asterrisk.item.MeteorSummonCoreItem;
 import net.mcreator.asterrisk.item.LunardustItem;
 import net.mcreator.asterrisk.item.LunarHealingStaffItem;
 import net.mcreator.asterrisk.item.LunarElixirItem;
 import net.mcreator.asterrisk.item.LunarCompassItem;
 import net.mcreator.asterrisk.item.LinkingWandItem;
+import net.mcreator.asterrisk.item.EnhancedGoldItem;
 import net.mcreator.asterrisk.item.EclipseCoreItem;
 import net.mcreator.asterrisk.item.CorruptedCoreItem;
+import net.mcreator.asterrisk.item.CelestialNucleusItem;
 import net.mcreator.asterrisk.item.CelestialCharmItem;
 import net.mcreator.asterrisk.item.AsterGuideItem;
 import net.mcreator.asterrisk.AsterRiskMod;
@@ -159,6 +166,58 @@ public class AsterRiskModItems {
 	public static final RegistryObject<Item> STELLAR_SABATONS = REGISTRY.register("stellar_sabatons", () -> new StellarEndgameArmorItem(ArmorItem.Type.BOOTS, new Item.Properties()));
 	public static final RegistryObject<Item> STELLAR_SCEPTER = REGISTRY.register("stellar_scepter", () -> new StellarScepterItem(new Item.Properties()));
 	public static final RegistryObject<Item> ASTER_GUIDE = REGISTRY.register("aster_guide", AsterGuideItem::new);
+	// === 新システム: 流星召喚・月相鍛冶・錬金術 ===
+	// 新素材
+	public static final RegistryObject<Item> PRISMATIC_METEORITE = REGISTRY.register("prismatic_meteorite", PrismaticMeteoriteItem::new);
+	public static final RegistryObject<Item> CELESTIAL_NUCLEUS = REGISTRY.register("celestial_nucleus", CelestialNucleusItem::new);
+	public static final RegistryObject<Item> ENHANCED_GOLD = REGISTRY.register("enhanced_gold", EnhancedGoldItem::new);
+	public static final RegistryObject<Item> RADIANT_DIAMOND = REGISTRY.register("radiant_diamond", RadiantDiamondItem::new);
+	public static final RegistryObject<Item> STARDUST_CATALYST = REGISTRY.register("stardust_catalyst", StardustCatalystItem::new);
+	// 月相の刻印（8種）
+	public static final RegistryObject<Item> PHASE_SIGIL_FULL_MOON = REGISTRY.register("phase_sigil_full_moon", () -> new PhaseSigilItem(PhaseSigilItem.MoonPhase.FULL_MOON));
+	public static final RegistryObject<Item> PHASE_SIGIL_WANING_GIBBOUS = REGISTRY.register("phase_sigil_waning_gibbous", () -> new PhaseSigilItem(PhaseSigilItem.MoonPhase.WANING_GIBBOUS));
+	public static final RegistryObject<Item> PHASE_SIGIL_LAST_QUARTER = REGISTRY.register("phase_sigil_last_quarter", () -> new PhaseSigilItem(PhaseSigilItem.MoonPhase.LAST_QUARTER));
+	public static final RegistryObject<Item> PHASE_SIGIL_WANING_CRESCENT = REGISTRY.register("phase_sigil_waning_crescent", () -> new PhaseSigilItem(PhaseSigilItem.MoonPhase.WANING_CRESCENT));
+	public static final RegistryObject<Item> PHASE_SIGIL_NEW_MOON = REGISTRY.register("phase_sigil_new_moon", () -> new PhaseSigilItem(PhaseSigilItem.MoonPhase.NEW_MOON));
+	public static final RegistryObject<Item> PHASE_SIGIL_WAXING_CRESCENT = REGISTRY.register("phase_sigil_waxing_crescent", () -> new PhaseSigilItem(PhaseSigilItem.MoonPhase.WAXING_CRESCENT));
+	public static final RegistryObject<Item> PHASE_SIGIL_FIRST_QUARTER = REGISTRY.register("phase_sigil_first_quarter", () -> new PhaseSigilItem(PhaseSigilItem.MoonPhase.FIRST_QUARTER));
+	public static final RegistryObject<Item> PHASE_SIGIL_WAXING_GIBBOUS = REGISTRY.register("phase_sigil_waxing_gibbous", () -> new PhaseSigilItem(PhaseSigilItem.MoonPhase.WAXING_GIBBOUS));
+	// 流星召喚の核（4種）
+	public static final RegistryObject<Item> METEOR_CORE_SMALL = REGISTRY.register("meteor_core_small", () -> new MeteorSummonCoreItem(MeteorSummonCoreItem.MeteorType.SMALL));
+	public static final RegistryObject<Item> METEOR_CORE_STARDUST = REGISTRY.register("meteor_core_stardust", () -> new MeteorSummonCoreItem(MeteorSummonCoreItem.MeteorType.STARDUST));
+	public static final RegistryObject<Item> METEOR_CORE_PRISMATIC = REGISTRY.register("meteor_core_prismatic", () -> new MeteorSummonCoreItem(MeteorSummonCoreItem.MeteorType.PRISMATIC));
+	public static final RegistryObject<Item> METEOR_CORE_OMINOUS = REGISTRY.register("meteor_core_ominous", () -> new MeteorSummonCoreItem(MeteorSummonCoreItem.MeteorType.OMINOUS));
+	// 新ブロックアイテム
+	public static final RegistryObject<Item> ALCHEMICAL_CAULDRON = block(AsterRiskModBlocks.ALCHEMICAL_CAULDRON);
+	public static final RegistryObject<Item> PHASE_ANVIL = block(AsterRiskModBlocks.PHASE_ANVIL);
+	public static final RegistryObject<Item> METEOR_SUMMONING = block(AsterRiskModBlocks.METEOR_SUMMONING);
+	// === 新ツール・武器・防具 ===
+	// 銀のツールセット
+	public static final RegistryObject<Item> SILVER_SWORD = REGISTRY.register("silver_sword", () -> new net.mcreator.asterrisk.item.tool.SilverToolItems.SilverSword(new Item.Properties()));
+	public static final RegistryObject<Item> SILVER_PICKAXE = REGISTRY.register("silver_pickaxe", () -> new net.mcreator.asterrisk.item.tool.SilverToolItems.SilverPickaxe(new Item.Properties()));
+	public static final RegistryObject<Item> SILVER_AXE = REGISTRY.register("silver_axe", () -> new net.mcreator.asterrisk.item.tool.SilverToolItems.SilverAxe(new Item.Properties()));
+	public static final RegistryObject<Item> SILVER_SHOVEL = REGISTRY.register("silver_shovel", () -> new net.mcreator.asterrisk.item.tool.SilverToolItems.SilverShovel(new Item.Properties()));
+	public static final RegistryObject<Item> SILVER_HOE = REGISTRY.register("silver_hoe", () -> new net.mcreator.asterrisk.item.tool.SilverToolItems.SilverHoe(new Item.Properties()));
+	// 月光石のツールセット
+	public static final RegistryObject<Item> MOONSTONE_SWORD = REGISTRY.register("moonstone_sword", () -> new net.mcreator.asterrisk.item.tool.MoonstoneToolItems.MoonstoneSword(new Item.Properties()));
+	public static final RegistryObject<Item> MOONSTONE_PICKAXE = REGISTRY.register("moonstone_pickaxe", () -> new net.mcreator.asterrisk.item.tool.MoonstoneToolItems.MoonstonePickaxe(new Item.Properties()));
+	public static final RegistryObject<Item> MOONSTONE_AXE = REGISTRY.register("moonstone_axe", () -> new net.mcreator.asterrisk.item.tool.MoonstoneToolItems.MoonstoneAxe(new Item.Properties()));
+	public static final RegistryObject<Item> MOONSTONE_SHOVEL = REGISTRY.register("moonstone_shovel", () -> new net.mcreator.asterrisk.item.tool.MoonstoneToolItems.MoonstoneShovel(new Item.Properties()));
+	public static final RegistryObject<Item> MOONSTONE_HOE = REGISTRY.register("moonstone_hoe", () -> new net.mcreator.asterrisk.item.tool.MoonstoneToolItems.MoonstoneHoe(new Item.Properties()));
+	// 新武器
+	public static final RegistryObject<Item> PRISMATIC_GREATSWORD = REGISTRY.register("prismatic_greatsword", () -> new net.mcreator.asterrisk.item.weapon.PrismaticGreatswordItem(new Item.Properties()));
+	public static final RegistryObject<Item> VOID_DAGGER = REGISTRY.register("void_dagger", () -> new net.mcreator.asterrisk.item.weapon.VoidDaggerItem(new Item.Properties()));
+	public static final RegistryObject<Item> SHADOW_SCYTHE = REGISTRY.register("shadow_scythe", () -> new net.mcreator.asterrisk.item.weapon.ShadowScytheItem(new Item.Properties()));
+	// 銀の防具セット
+	public static final RegistryObject<Item> SILVER_HELMET = REGISTRY.register("silver_helmet", () -> new net.mcreator.asterrisk.item.armor.SilverArmorItem(ArmorItem.Type.HELMET, new Item.Properties()));
+	public static final RegistryObject<Item> SILVER_CHESTPLATE = REGISTRY.register("silver_chestplate", () -> new net.mcreator.asterrisk.item.armor.SilverArmorItem(ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+	public static final RegistryObject<Item> SILVER_LEGGINGS = REGISTRY.register("silver_leggings", () -> new net.mcreator.asterrisk.item.armor.SilverArmorItem(ArmorItem.Type.LEGGINGS, new Item.Properties()));
+	public static final RegistryObject<Item> SILVER_BOOTS = REGISTRY.register("silver_boots", () -> new net.mcreator.asterrisk.item.armor.SilverArmorItem(ArmorItem.Type.BOOTS, new Item.Properties()));
+	// 虚空の防具セット
+	public static final RegistryObject<Item> VOID_HELMET = REGISTRY.register("void_helmet", () -> new net.mcreator.asterrisk.item.armor.VoidArmorItem(ArmorItem.Type.HELMET, new Item.Properties()));
+	public static final RegistryObject<Item> VOID_CHESTPLATE = REGISTRY.register("void_chestplate", () -> new net.mcreator.asterrisk.item.armor.VoidArmorItem(ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+	public static final RegistryObject<Item> VOID_LEGGINGS = REGISTRY.register("void_leggings", () -> new net.mcreator.asterrisk.item.armor.VoidArmorItem(ArmorItem.Type.LEGGINGS, new Item.Properties()));
+	public static final RegistryObject<Item> VOID_BOOTS = REGISTRY.register("void_boots", () -> new net.mcreator.asterrisk.item.armor.VoidArmorItem(ArmorItem.Type.BOOTS, new Item.Properties()));
 
 	// End of user code block custom items
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {

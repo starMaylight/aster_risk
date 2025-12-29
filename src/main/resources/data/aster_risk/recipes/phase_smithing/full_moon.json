@@ -1,0 +1,6 @@
+{
+    "type": "aster_risk:phase_smithing",
+    "phase": "FULL_MOON",
+    "effect": "+15% Attack Damage",
+    "mana_cost": 200
+}

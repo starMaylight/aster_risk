@@ -1,0 +1,15 @@
+{
+    "type": "aster_risk:alchemy",
+    "ingredients": [
+        { "item": "aster_risk:starflagment" },
+        { "tag": "forge:nether_stars" },
+        { "item": "aster_risk:stardust_catalyst" }
+    ],
+    "result": {
+        "item": "aster_risk:celestial_nucleus",
+        "count": 1
+    },
+    "mana_cost": 500,
+    "process_time": 200,
+    "requires_catalyst": true
+}

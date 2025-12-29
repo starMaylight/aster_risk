@@ -1,0 +1,17 @@
+{
+    "type": "aster_risk:ritual",
+    "energy_type": "void",
+    "center": { "tag": "forge:gems/moonstone" },
+    "pedestals": [
+        { "item": "aster_risk:shadow_essence" },
+        { "item": "aster_risk:shadow_essence" },
+        { "item": "aster_risk:lunar_dust" },
+        { "item": "aster_risk:lunar_dust" }
+    ],
+    "result": {
+        "item": "aster_risk:phase_sigil_new_moon",
+        "count": 1
+    },
+    "mana_cost": 150,
+    "process_time": 100
+}

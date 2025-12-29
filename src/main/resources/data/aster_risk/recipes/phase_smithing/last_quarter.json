@@ -1,0 +1,6 @@
+{
+    "type": "aster_risk:phase_smithing",
+    "phase": "LAST_QUARTER",
+    "effect": "+12% Defense",
+    "mana_cost": 200
+}

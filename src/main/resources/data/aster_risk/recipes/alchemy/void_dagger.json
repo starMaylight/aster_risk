@@ -1,0 +1,15 @@
+{
+    "type": "aster_risk:alchemy",
+    "ingredients": [
+        { "item": "aster_risk:void_shard" },
+        { "item": "aster_risk:void_shard" },
+        { "item": "aster_risk:shadow_essence" }
+    ],
+    "result": {
+        "item": "aster_risk:void_dagger",
+        "count": 1
+    },
+    "mana_cost": 400,
+    "process_time": 150,
+    "requires_catalyst": false
+}

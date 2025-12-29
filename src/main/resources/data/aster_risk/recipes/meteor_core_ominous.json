@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "VEV",
+        "EME",
+        "VEV"
+    ],
+    "key": {
+        "V": { "item": "aster_risk:void_shard" },
+        "E": { "item": "aster_risk:shadow_essence" },
+        "M": { "tag": "forge:gems/meteorite" }
+    },
+    "result": {
+        "item": "aster_risk:meteor_core_ominous",
+        "count": 1
+    }
+}

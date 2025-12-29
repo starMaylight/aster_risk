@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " R ",
+        "SMS",
+        " G "
+    ],
+    "key": {
+        "S": { "item": "aster_risk:stardust" },
+        "M": { "tag": "forge:gems/moonstone" },
+        "R": { "tag": "forge:dusts/redstone" },
+        "G": { "tag": "forge:ingots/gold" }
+    },
+    "result": {
+        "item": "aster_risk:phase_sigil_waning_crescent",
+        "count": 1
+    }
+}

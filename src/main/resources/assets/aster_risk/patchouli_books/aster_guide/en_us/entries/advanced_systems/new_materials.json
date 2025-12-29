@@ -1,0 +1,37 @@
+{
+    "name": "New Materials",
+    "icon": "aster_risk:prismatic_meteorite",
+    "category": "aster_risk:advanced_systems",
+    "sortnum": 4,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "title": "Advanced Materials",
+            "text": "The advanced systems introduce powerful new materials for crafting the ultimate equipment.$(br2)These materials are obtained through alchemy, meteor summoning, or both."
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:enhanced_gold",
+            "title": "Enhanced Gold",
+            "text": "Gold infused with stellar energy through alchemy.$(br2)$(li)$(7)Source$(): Alchemy$(li)$(7)Recipe$(): Gold + Stardust$(br2)Used in advanced magical equipment."
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:radiant_diamond",
+            "title": "Radiant Diamond",
+            "text": "A diamond that has absorbed pure starlight.$(br2)$(li)$(7)Source$(): Alchemy$(li)$(7)Recipe$(): Diamond + 2x Stardust$(br2)Exceptional durability and power."
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:celestial_nucleus",
+            "title": "Celestial Nucleus",
+            "text": "The ultimate alchemical creation.$(br2)$(li)$(7)Source$(): Alchemy$(li)$(7)Recipe$(): Star Fragment + Nether Star + Catalyst$(br2)Contains the essence of the cosmos itself."
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:prismatic_meteorite",
+            "title": "Prismatic Meteorite",
+            "text": "A fragment of a rainbow meteor.$(br2)$(li)$(7)Source$(): Meteor Summoning$(li)$(7)Meteor Type$(): Prismatic$(br2)Shimmers with all colors of the celestial spectrum."
+        }
+    ]
+}

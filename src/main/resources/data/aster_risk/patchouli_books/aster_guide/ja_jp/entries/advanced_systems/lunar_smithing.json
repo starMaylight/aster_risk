@@ -1,0 +1,35 @@
+{
+    "name": "月相鍛冶",
+    "icon": "aster_risk:phase_anvil",
+    "category": "aster_risk:advanced_systems",
+    "sortnum": 2,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:phase_anvil",
+            "title": "月相の金床",
+            "text": "$(item)月相の金床$()で装備に月相の力を刻むことができます。$(br2)各月相は防具や武器に異なるボーナスを与えます。"
+        },
+        {
+            "type": "patchouli:text",
+            "title": "使い方",
+            "text": "1. 月相の金床を設置$(br)2. 装備を右クリックで置く$(br)3. 月相の刻印を右クリックで置く$(br)4. マナを供給$(br)5. 刻印完了を待つ$(br2)$(l)Shift + 右クリック$()で刻印を取り出せます。"
+        },
+        {
+            "type": "patchouli:text",
+            "title": "月相効果一覧",
+            "text": "$(li)$(6)満月$(): 攻撃力+15%$(li)$(9)更待月$(): 魔法+10%$(li)$(b)下弦$(): 防御力+12%$(li)$(d)有明月$(): マナ回復+8%$(li)$(8)新月$(): ステルス$(li)$(a)三日月$(): 移動速度+10%$(li)$(e)上弦$(): 採掘速度+15%$(li)$(6)十三夜$(): 経験値+10%"
+        },
+        {
+            "type": "patchouli:text",
+            "title": "月相の刻印",
+            "text": "$(item)月相の刻印$()は月光石、星屑、金インゴットから作成します。組み合わせによって異なる月相の刻印ができます。$(br2)同じ装備に最大レベル3まで重ね掛けして効果を強化できます！"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:phase_sigil_full_moon",
+            "title": "満月の刻印",
+            "text": "最も強力な攻撃系刻印。"
+        }
+    ]
+}

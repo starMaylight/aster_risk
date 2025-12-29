@@ -1,7 +1,7 @@
 {
     "type": "aster_risk:infuser",
     "input": {
-        "item": "minecraft:coal"
+        "tag": "minecraft:coals"
     },
     "result": {
         "item": "minecraft:diamond",

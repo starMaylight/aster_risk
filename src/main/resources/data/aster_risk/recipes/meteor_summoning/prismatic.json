@@ -1,0 +1,12 @@
+{
+    "type": "aster_risk:meteor_summoning",
+    "meteor_type": "PRISMATIC",
+    "mana_cost": 1500,
+    "description": "Rare rainbow meteor",
+    "dangerous": false,
+    "drops": [
+        {"item": "aster_risk:prismatic_meteorite", "count": 2},
+        {"item": "aster_risk:starflagment", "count": 3},
+        {"item": "aster_risk:stardust", "count": 8}
+    ]
+}

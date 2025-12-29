@@ -1,10 +1,10 @@
 {
     "type": "aster_risk:ritual",
     "ingredients": [
-        { "item": "minecraft:gold_ingot" },
-        { "item": "minecraft:redstone" },
-        { "item": "minecraft:lapis_lazuli" },
-        { "item": "minecraft:emerald" }
+        { "tag": "forge:ingots/gold" },
+        { "tag": "forge:dusts/redstone" },
+        { "tag": "forge:gems/lapis" },
+        { "tag": "forge:gems/emerald" }
     ],
     "result": {
         "item": "minecraft:experience_bottle",

@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SSS",
+        " I ",
+        "MMM"
+    ],
+    "key": {
+        "S": { "item": "aster_risk:starflagment" },
+        "I": { "item": "aster_risk:enhanced_gold" },
+        "M": { "tag": "forge:gems/moonstone" }
+    },
+    "result": {
+        "item": "aster_risk:phase_anvil",
+        "count": 1
+    }
+}

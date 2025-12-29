@@ -1,0 +1,12 @@
+{
+    "type": "aster_risk:infuser",
+    "input": {
+        "item": "minecraft:diamond_chestplate"
+    },
+    "result": {
+        "item": "aster_risk:void_chestplate",
+        "count": 1
+    },
+    "mana_cost": 1000,
+    "process_time": 400
+}

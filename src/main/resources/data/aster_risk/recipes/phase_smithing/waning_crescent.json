@@ -1,0 +1,6 @@
+{
+    "type": "aster_risk:phase_smithing",
+    "phase": "WANING_CRESCENT",
+    "effect": "+8% Mana Regen",
+    "mana_cost": 200
+}

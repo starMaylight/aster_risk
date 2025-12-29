@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " L ",
+        "LML",
+        " G "
+    ],
+    "key": {
+        "M": { "tag": "forge:gems/moonstone" },
+        "L": { "item": "aster_risk:lunar_dust" },
+        "G": { "tag": "forge:ingots/gold" }
+    },
+    "result": {
+        "item": "aster_risk:phase_sigil_last_quarter",
+        "count": 1
+    }
+}

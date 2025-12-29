@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["SS", " T", " T"],
+  "key": {
+    "S": {"tag": "forge:ingots/silver"},
+    "T": {"tag": "forge:rods/wooden"}
+  },
+  "result": {"item": "aster_risk:silver_hoe"}
+}

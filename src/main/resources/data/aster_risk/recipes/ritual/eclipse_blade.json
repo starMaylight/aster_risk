@@ -4,7 +4,7 @@
         { "item": "aster_risk:eclipse_core" },
         { "item": "aster_risk:meteorite_greatsword" },
         { "item": "aster_risk:void_shard" },
-        { "item": "aster_risk:shadow_essence" }
+        { "item": "aster_risk:enhanced_gold" }
     ],
     "result": {
         "item": "aster_risk:eclipse_blade",

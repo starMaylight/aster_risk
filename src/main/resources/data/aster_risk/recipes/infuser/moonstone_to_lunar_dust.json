@@ -1,7 +1,7 @@
 {
     "type": "aster_risk:infuser",
     "input": {
-        "item": "aster_risk:moonstone"
+        "tag": "forge:gems/moonstone"
     },
     "result": {
         "item": "aster_risk:lunar_dust",

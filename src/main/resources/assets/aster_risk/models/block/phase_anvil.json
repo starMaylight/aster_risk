@@ -1,0 +1,49 @@
+{
+    "parent": "minecraft:block/block",
+    "textures": {
+        "particle": "aster_risk:block/phase_anvil_body",
+        "base": "aster_risk:block/phase_anvil_base",
+        "body": "aster_risk:block/phase_anvil_body",
+        "top": "aster_risk:block/phase_anvil_top"
+    },
+    "elements": [
+        {
+            "name": "base",
+            "from": [2, 0, 2],
+            "to": [14, 4, 14],
+            "faces": {
+                "down": {"texture": "#base", "cullface": "down"},
+                "up": {"texture": "#base"},
+                "north": {"texture": "#base"},
+                "south": {"texture": "#base"},
+                "west": {"texture": "#base"},
+                "east": {"texture": "#base"}
+            }
+        },
+        {
+            "name": "middle",
+            "from": [3, 4, 4],
+            "to": [13, 5, 12],
+            "faces": {
+                "up": {"texture": "#body"},
+                "north": {"texture": "#body"},
+                "south": {"texture": "#body"},
+                "west": {"texture": "#body"},
+                "east": {"texture": "#body"}
+            }
+        },
+        {
+            "name": "top",
+            "from": [0, 5, 3],
+            "to": [16, 13, 13],
+            "faces": {
+                "up": {"texture": "#top"},
+                "down": {"texture": "#body"},
+                "north": {"texture": "#body"},
+                "south": {"texture": "#body"},
+                "west": {"texture": "#body", "cullface": "west"},
+                "east": {"texture": "#body", "cullface": "east"}
+            }
+        }
+    ]
+}

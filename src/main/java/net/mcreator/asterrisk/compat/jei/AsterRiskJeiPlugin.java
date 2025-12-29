@@ -7,9 +7,7 @@ import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.mcreator.asterrisk.AsterRiskMod;
 import net.mcreator.asterrisk.init.AsterRiskModBlocks;
-import net.mcreator.asterrisk.recipe.InfuserRecipe;
-import net.mcreator.asterrisk.recipe.ModRecipes;
-import net.mcreator.asterrisk.recipe.RitualRecipe;
+import net.mcreator.asterrisk.recipe.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -42,6 +40,15 @@ public class AsterRiskJeiPlugin implements IModPlugin {
             // Infuserレシピカテゴリ
             registration.addRecipeCategories(new InfuserRecipeCategory(guiHelper));
             
+            // 錬金術レシピカテゴリ
+            registration.addRecipeCategories(new AlchemyRecipeCategory(guiHelper));
+            
+            // 月相鍛冶レシピカテゴリ
+            registration.addRecipeCategories(new PhaseSmithingRecipeCategory(guiHelper));
+            
+            // 流星召喚レシピカテゴリ
+            registration.addRecipeCategories(new MeteorSummoningRecipeCategory(guiHelper));
+            
         } catch (Exception e) {
             AsterRiskMod.LOGGER.warn("Failed to register JEI categories: " + e.getMessage());
         }
@@ -62,6 +69,18 @@ public class AsterRiskJeiPlugin implements IModPlugin {
             List<InfuserRecipe> infuserRecipes = recipeManager.getAllRecipesFor(ModRecipes.INFUSER_TYPE.get());
             registration.addRecipes(InfuserRecipeCategory.RECIPE_TYPE, infuserRecipes);
             
+            // 錬金術レシピを登録
+            List<AlchemyRecipe> alchemyRecipes = recipeManager.getAllRecipesFor(ModRecipes.ALCHEMY_TYPE.get());
+            registration.addRecipes(AlchemyRecipeCategory.RECIPE_TYPE, alchemyRecipes);
+            
+            // 月相鍛冶レシピを登録
+            List<PhaseSmithingRecipe> phaseSmithingRecipes = recipeManager.getAllRecipesFor(ModRecipes.PHASE_SMITHING_TYPE.get());
+            registration.addRecipes(PhaseSmithingRecipeCategory.RECIPE_TYPE, phaseSmithingRecipes);
+            
+            // 流星召喚レシピを登録
+            List<MeteorSummoningRecipe> meteorSummoningRecipes = recipeManager.getAllRecipesFor(ModRecipes.METEOR_SUMMONING_TYPE.get());
+            registration.addRecipes(MeteorSummoningRecipeCategory.RECIPE_TYPE, meteorSummoningRecipes);
+            
         } catch (Exception e) {
             AsterRiskMod.LOGGER.warn("Failed to register JEI recipes: " + e.getMessage());
         }
@@ -71,13 +90,10 @@ public class AsterRiskJeiPlugin implements IModPlugin {
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         try {
             // === 儀式システム ===
-            // Altar Coreをカタリストとして登録
             registration.addRecipeCatalyst(
                 new ItemStack(AsterRiskModBlocks.ALTAR_CORE.get()),
                 RitualRecipeCategory.RECIPE_TYPE
             );
-
-            // Ritual Pedestalも追加
             registration.addRecipeCatalyst(
                 new ItemStack(AsterRiskModBlocks.RITUAL_PEDESTAL.get()),
                 RitualRecipeCategory.RECIPE_TYPE
@@ -87,6 +103,24 @@ public class AsterRiskJeiPlugin implements IModPlugin {
             registration.addRecipeCatalyst(
                 new ItemStack(AsterRiskModBlocks.LUNAR_INFUSER.get()),
                 InfuserRecipeCategory.RECIPE_TYPE
+            );
+            
+            // === 錬金釜 ===
+            registration.addRecipeCatalyst(
+                new ItemStack(AsterRiskModBlocks.ALCHEMICAL_CAULDRON.get()),
+                AlchemyRecipeCategory.RECIPE_TYPE
+            );
+            
+            // === 月相の金床 ===
+            registration.addRecipeCatalyst(
+                new ItemStack(AsterRiskModBlocks.PHASE_ANVIL.get()),
+                PhaseSmithingRecipeCategory.RECIPE_TYPE
+            );
+            
+            // === 流星召喚陣 ===
+            registration.addRecipeCatalyst(
+                new ItemStack(AsterRiskModBlocks.METEOR_SUMMONING.get()),
+                MeteorSummoningRecipeCategory.RECIPE_TYPE
             );
             
         } catch (Exception e) {

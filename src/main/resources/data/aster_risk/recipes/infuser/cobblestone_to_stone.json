@@ -1,7 +1,7 @@
 {
     "type": "aster_risk:infuser",
     "input": {
-        "item": "minecraft:cobblestone"
+        "tag": "forge:cobblestone"
     },
     "result": {
         "item": "minecraft:stone",

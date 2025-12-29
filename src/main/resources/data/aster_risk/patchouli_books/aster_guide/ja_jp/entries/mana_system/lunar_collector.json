@@ -1,0 +1,18 @@
+{
+    "name": "月光収集器",
+    "icon": "aster_risk:lunar_collector",
+    "category": "aster_risk:mana_system",
+    "sortnum": 1,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:lunar_collector",
+            "text": "$(item)月光収集器$()は月光から周囲のマナを集めます。最良の結果を得るには屋外の空の下に設置してください。$(br2)内部にマナを蓄え、近くのプレイヤーや接続された$(l)共振器$()に転送できます。"
+        },
+        {
+            "type": "patchouli:crafting",
+            "recipe": "aster_risk:lunar_collector",
+            "text": "月光石、ガラス、ダイヤモンド、銀で作成。"
+        }
+    ]
+}

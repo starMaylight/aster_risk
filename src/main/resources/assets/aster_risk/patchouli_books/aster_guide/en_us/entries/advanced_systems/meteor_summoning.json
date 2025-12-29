@@ -1,0 +1,49 @@
+{
+    "name": "Meteor Summoning",
+    "icon": "aster_risk:meteor_summoning",
+    "category": "aster_risk:advanced_systems",
+    "sortnum": 3,
+    "pages": [
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:meteor_summoning",
+            "title": "Meteor Summoning Circle",
+            "text": "The $(item)Meteor Summoning Circle$() calls down meteors from the sky, providing rare materials.$(br2)$(4)Warning: Can only be used at night!$()"
+        },
+        {
+            "type": "patchouli:text",
+            "title": "How to Use",
+            "text": "1. Place the Summoning Circle$(br)2. Wait for nightfall$(br)3. Right-click with a Meteor Core$(br)4. Supply large amounts of mana$(br)5. Watch the sky!$(br2)Different cores summon different meteor types with varying rewards and dangers."
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:meteor_core_small",
+            "title": "Small Meteor Core",
+            "text": "$(li)$(7)Mana Cost$(): 300$(li)$(7)Drops$(): Meteorite Fragments$(li)$(7)Bonus$(): Chance for Stardust$(br2)The safest option for beginners."
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:meteor_core_stardust",
+            "title": "Stardust Meteor Core",
+            "text": "$(li)$(7)Mana Cost$(): 600$(li)$(7)Drops$(): Large amounts of Stardust$(li)$(7)Bonus$(): Chance for Star Fragment$(br2)Excellent for gathering Stardust."
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:meteor_core_prismatic",
+            "title": "Prismatic Meteor Core",
+            "text": "$(li)$(7)Mana Cost$(): 1500$(li)$(7)Drops$(): $(d)Prismatic Meteorite$()$(li)$(7)Bonus$(): Star Fragments, Stardust$(br2)The rarest meteor, containing legendary materials!"
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:meteor_core_ominous",
+            "title": "Ominous Meteor Core",
+            "text": "$(li)$(7)Mana Cost$(): 1000$(li)$(7)Drops$(): Void Shards, Shadow Essence$(li)$(4)DANGER$(): Spawns hostile mobs!$(br2)High risk, high reward. Prepare for battle!"
+        },
+        {
+            "type": "patchouli:spotlight",
+            "item": "aster_risk:prismatic_meteorite",
+            "title": "Prismatic Meteorite",
+            "text": "$(item)Prismatic Meteorite$() is an ultra-rare material obtained only from Prismatic Meteors.$(br2)Its rainbow-like appearance hints at the cosmic powers contained within. Used for the most powerful equipment."
+        }
+    ]
+}
