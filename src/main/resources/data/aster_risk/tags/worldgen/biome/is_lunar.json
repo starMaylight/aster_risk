@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "aster_risk:lunar_forest",
+    "aster_risk:lunar_lake",
+    "aster_risk:starfall_hills",
+    "aster_risk:eclipse_wastes"
+  ]
+}

@@ -16,6 +16,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.mcreator.asterrisk.registry.ModParticles;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 
@@ -29,23 +30,23 @@ import javax.annotation.Nullable;
 public class LunarCollectorBlockEntity extends BlockEntity {
 
     // マナ設定
-    public static final float MAX_MANA = 1000f;
+    public static final float MAX_MANA = 2000f;
     public static final float RECEIVE_RATE = 50f;
     public static final float EXTRACT_RATE = 50f;
     
     // 夜間収集量（tick毎）
-    private static final float BASE_COLLECTION_RATE = 0.5f;
+    private static final float BASE_COLLECTION_RATE = 0.1f;
     
     // 月齢ボーナス
     private static final float[] MOON_PHASE_MULTIPLIER = {
-        2.0f,  // 満月
-        1.5f,  // 更待月
-        1.0f,  // 下弦
-        0.5f,  // 有明月
-        0.25f, // 新月
-        0.5f,  // 三日月
-        1.0f,  // 上弦
-        1.5f   // 十三夜
+        20.0f,  // 満月
+        15.0f,  // 更待月
+        7.5f,  // 下弦
+        5.0f,  // 有明月
+        1.0f, // 新月
+        5.0f,  // 三日月
+        7.5f,  // 上弦
+        10.0f   // 十三夜
     };
 
     private final BlockManaCapability.BlockMana manaStorage;
@@ -107,6 +108,15 @@ public class LunarCollectorBlockEntity extends BlockEntity {
             float newMana = Math.min(entity.manaStorage.getMana() + collectionRate, MAX_MANA);
             entity.manaStorage.setMana(newMana);
             entity.setChanged();
+            
+            // パーティクルエフェクト（夜間、収集中のみ）
+            if (isNight && level instanceof ServerLevel serverLevel && level.random.nextFloat() < 0.1f) {
+                double x = pos.getX() + 0.5;
+                double y = pos.getY() + 1.0;
+                double z = pos.getZ() + 0.5;
+                serverLevel.sendParticles(ModParticles.LUNAR_SPARKLE.get(), x, y + 0.5, z, 1, 0.2, 0.3, 0.2, 0.01);
+                serverLevel.sendParticles(ModParticles.MANA_ABSORB.get(), x, y + 1.0, z, 1, 0.3, 0.3, 0.3, 0.02);
+            }
         }
         
         // 定期的にクライアントに同期（1秒毎）

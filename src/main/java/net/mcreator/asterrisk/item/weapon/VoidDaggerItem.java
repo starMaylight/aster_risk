@@ -1,6 +1,9 @@
 package net.mcreator.asterrisk.item.weapon;
 
 import net.minecraft.core.particles.ParticleTypes;
+import net.mcreator.asterrisk.registry.ModParticles;
+import net.mcreator.asterrisk.registry.ModSounds;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
@@ -36,12 +39,19 @@ public class VoidDaggerItem extends SwordItem {
             
             // エフェクト
             if (level instanceof ServerLevel serverLevel) {
+                serverLevel.sendParticles(ModParticles.VOID_SPIRAL.get(),
+                    target.getX(), target.getY() + target.getBbHeight() / 2, target.getZ(),
+                    10, 0.3, 0.3, 0.3, 0.05);
+                serverLevel.sendParticles(ModParticles.CORRUPTION.get(),
+                    target.getX(), target.getY() + target.getBbHeight() / 2, target.getZ(),
+                    8, 0.2, 0.2, 0.2, 0.03);
                 serverLevel.sendParticles(ParticleTypes.CRIT,
                     target.getX(), target.getY() + target.getBbHeight() / 2, target.getZ(),
-                    20, 0.3, 0.3, 0.3, 0.1);
-                serverLevel.sendParticles(ParticleTypes.PORTAL,
-                    target.getX(), target.getY() + target.getBbHeight() / 2, target.getZ(),
-                    15, 0.3, 0.3, 0.3, 0.5);
+                    15, 0.3, 0.3, 0.3, 0.08);
+                    
+                // サウンド
+                serverLevel.playSound(null, target.getX(), target.getY(), target.getZ(),
+                    ModSounds.VOID_STRIKE.get(), SoundSource.PLAYERS, 1.0f, 1.2f);
             }
 
             // アクションバーに表示
@@ -51,9 +61,15 @@ public class VoidDaggerItem extends SwordItem {
         } else {
             // 通常攻撃でもポータルエフェクト
             if (level instanceof ServerLevel serverLevel) {
+                serverLevel.sendParticles(ModParticles.VOID_MIST.get(),
+                    target.getX(), target.getY() + target.getBbHeight() / 2, target.getZ(),
+                    3, 0.2, 0.2, 0.2, 0.02);
                 serverLevel.sendParticles(ParticleTypes.PORTAL,
                     target.getX(), target.getY() + target.getBbHeight() / 2, target.getZ(),
-                    5, 0.2, 0.2, 0.2, 0.3);
+                    3, 0.2, 0.2, 0.2, 0.3);
+                    
+                serverLevel.playSound(null, target.getX(), target.getY(), target.getZ(),
+                    ModSounds.VOID_STRIKE.get(), SoundSource.PLAYERS, 0.5f, 1.0f);
             }
         }
 

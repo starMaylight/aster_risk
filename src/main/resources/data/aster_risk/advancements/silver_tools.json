@@ -1,0 +1,28 @@
+{
+    "display": {
+        "icon": {
+            "item": "aster_risk:silver_pickaxe"
+        },
+        "title": {
+            "translate": "advancement.aster_risk.silver_tools.title"
+        },
+        "description": {
+            "translate": "advancement.aster_risk.silver_tools.description"
+        },
+        "show_toast": true,
+        "announce_to_chat": true
+    },
+    "parent": "aster_risk:silver_age",
+    "criteria": {
+        "has_pickaxe": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:silver_pickaxe"]
+                    }
+                ]
+            }
+        }
+    }
+}

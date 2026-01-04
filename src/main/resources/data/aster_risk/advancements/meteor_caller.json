@@ -1,0 +1,29 @@
+{
+    "display": {
+        "icon": {
+            "item": "aster_risk:meteor_summoning"
+        },
+        "title": {
+            "translate": "advancement.aster_risk.meteor_caller.title"
+        },
+        "description": {
+            "translate": "advancement.aster_risk.meteor_caller.description"
+        },
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true
+    },
+    "parent": "aster_risk:meteorite",
+    "criteria": {
+        "has_summoning": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:meteor_summoning"]
+                    }
+                ]
+            }
+        }
+    }
+}

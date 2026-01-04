@@ -47,7 +47,6 @@ public class LunarInfuserBlock extends BaseEntityBlock {
     public LunarInfuserBlock() {
         super(BlockBehaviour.Properties.of()
             .strength(3.0f, 6.0f)
-            .requiresCorrectToolForDrops()
             .lightLevel(state -> 7)
             .noOcclusion());
     }

@@ -1,0 +1,32 @@
+{
+    "display": {
+        "icon": {
+            "item": "aster_risk:void_dagger"
+        },
+        "title": {
+            "translate": "advancement.aster_risk.void_weapon.title"
+        },
+        "description": {
+            "translate": "advancement.aster_risk.void_weapon.description"
+        },
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true
+    },
+    "parent": "aster_risk:void_touched",
+    "criteria": {
+        "has_dagger": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:void_dagger"]
+                    }
+                ]
+            }
+        }
+    },
+    "rewards": {
+        "experience": 100
+    }
+}

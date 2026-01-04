@@ -26,14 +26,14 @@ public class MeteoriteGreatswordItem extends SwordItem {
 
     private static final float MANA_COST_PER_PROC = 5f;
     private static final float PROC_CHANCE = 0.25f; // 25%の確率
-    private static final float EXPLOSION_DAMAGE = 4.0f;
+    private static final float EXPLOSION_DAMAGE = 8.0f;  // 爆発ダメージ増
 
     private static final Tier METEORITE_TIER = new Tier() {
-        @Override public int getUses() { return 1200; }
-        @Override public float getSpeed() { return 6.0f; }
-        @Override public float getAttackDamageBonus() { return 7.0f; } // 基礎4 + 7 = 11ダメージ
+        @Override public int getUses() { return 1400; }
+        @Override public float getSpeed() { return 6.5f; }
+        @Override public float getAttackDamageBonus() { return 10.0f; } // 基礎4 + 10 = 14ダメージ
         @Override public int getLevel() { return 4; }
-        @Override public int getEnchantmentValue() { return 10; }
+        @Override public int getEnchantmentValue() { return 12; }
         @Override public Ingredient getRepairIngredient() { 
             return Ingredient.of(AsterRiskModItems.METEORITE_FRAGMENT.get()); 
         }

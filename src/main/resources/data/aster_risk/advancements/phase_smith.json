@@ -1,0 +1,29 @@
+{
+    "display": {
+        "icon": {
+            "item": "aster_risk:phase_anvil"
+        },
+        "title": {
+            "translate": "advancement.aster_risk.phase_smith.title"
+        },
+        "description": {
+            "translate": "advancement.aster_risk.phase_smith.description"
+        },
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true
+    },
+    "parent": "aster_risk:alchemist",
+    "criteria": {
+        "has_phase_anvil": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:phase_anvil"]
+                    }
+                ]
+            }
+        }
+    }
+}

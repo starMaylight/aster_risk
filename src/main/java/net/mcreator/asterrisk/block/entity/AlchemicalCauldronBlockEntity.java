@@ -9,6 +9,8 @@ import net.mcreator.asterrisk.block.AlchemicalCauldronBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
+import net.mcreator.asterrisk.registry.ModParticles;
+import net.mcreator.asterrisk.registry.ModSounds;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.protocol.Packet;
@@ -90,7 +92,13 @@ public class AlchemicalCauldronBlockEntity extends BlockEntity {
                     double x = pos.getX() + 0.5;
                     double y = pos.getY() + 0.8;
                     double z = pos.getZ() + 0.5;
-                    serverLevel.sendParticles(ParticleTypes.WITCH, x, y, z, 2, 0.2, 0.1, 0.2, 0.01);
+                    serverLevel.sendParticles(ModParticles.MANA_ABSORB.get(), x, y, z, 3, 0.3, 0.2, 0.3, 0.02);
+                    serverLevel.sendParticles(ParticleTypes.WITCH, x, y, z, 1, 0.1, 0.1, 0.1, 0.01);
+                }
+                
+                // サウンド（泡立ち音）
+                if (entity.processProgress % 20 == 0) {
+                    level.playSound(null, pos, ModSounds.CAULDRON_BUBBLE.get(), SoundSource.BLOCKS, 0.5f, 0.8f + level.random.nextFloat() * 0.4f);
                 }
 
                 // 完了チェック
@@ -146,8 +154,11 @@ public class AlchemicalCauldronBlockEntity extends BlockEntity {
 
         // エフェクト
         if (level instanceof ServerLevel serverLevel) {
-            serverLevel.playSound(null, pos, SoundEvents.BREWING_STAND_BREW, SoundSource.BLOCKS, 1.0f, 1.2f);
-            serverLevel.sendParticles(ParticleTypes.END_ROD, x, y, z, 20, 0.3, 0.3, 0.3, 0.05);
+            serverLevel.playSound(null, pos, ModSounds.RITUAL_COMPLETE.get(), SoundSource.BLOCKS, 1.0f, 1.2f);
+            serverLevel.playSound(null, pos, ModSounds.STELLAR_MAGIC.get(), SoundSource.BLOCKS, 0.8f, 1.0f);
+            serverLevel.sendParticles(ModParticles.STARDUST_SPARKLE.get(), x, y, z, 15, 0.3, 0.3, 0.3, 0.05);
+            serverLevel.sendParticles(ModParticles.STAR_BURST.get(), x, y, z, 10, 0.2, 0.2, 0.2, 0.08);
+            serverLevel.sendParticles(ParticleTypes.END_ROD, x, y, z, 10, 0.3, 0.3, 0.3, 0.03);
         }
 
         // リセット

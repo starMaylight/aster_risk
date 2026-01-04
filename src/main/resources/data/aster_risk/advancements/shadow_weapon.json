@@ -1,0 +1,32 @@
+{
+    "display": {
+        "icon": {
+            "item": "aster_risk:shadow_scythe"
+        },
+        "title": {
+            "translate": "advancement.aster_risk.shadow_weapon.title"
+        },
+        "description": {
+            "translate": "advancement.aster_risk.shadow_weapon.description"
+        },
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true
+    },
+    "parent": "aster_risk:alchemist",
+    "criteria": {
+        "has_scythe": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:shadow_scythe"]
+                    }
+                ]
+            }
+        }
+    },
+    "rewards": {
+        "experience": 100
+    }
+}

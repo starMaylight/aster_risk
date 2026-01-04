@@ -5,6 +5,9 @@ import net.mcreator.asterrisk.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
+import net.mcreator.asterrisk.registry.ModParticles;
+import net.mcreator.asterrisk.registry.ModSounds;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.NbtUtils;
@@ -265,12 +268,15 @@ public class ResonatorBlockEntity extends BlockEntity {
         double dy = (to.getY() - from.getY()) / 10.0;
         double dz = (to.getZ() - from.getZ()) / 10.0;
         
-        for (int i = 0; i < 3; i++) {
-            double x = from.getX() + 0.5 + dx * (i + Math.random());
-            double y = from.getY() + 0.5 + dy * (i + Math.random());
-            double z = from.getZ() + 0.5 + dz * (i + Math.random());
-            level.sendParticles(ParticleTypes.END_ROD, x, y, z, 1, 0, 0, 0, 0);
+        for (int i = 0; i < 5; i++) {
+            double x = from.getX() + 0.5 + dx * (i + Math.random() * 2);
+            double y = from.getY() + 0.5 + dy * (i + Math.random() * 2);
+            double z = from.getZ() + 0.5 + dz * (i + Math.random() * 2);
+            level.sendParticles(ModParticles.MANA_FLOW.get(), x, y, z, 1, dx * 0.5, dy * 0.5, dz * 0.5, 0.02);
         }
+        
+        // 送信元に光
+        level.sendParticles(ModParticles.LUNAR_SPARKLE.get(), from.getX() + 0.5, from.getY() + 0.8, from.getZ() + 0.5, 2, 0.1, 0.1, 0.1, 0.01);
     }
 
     @Override

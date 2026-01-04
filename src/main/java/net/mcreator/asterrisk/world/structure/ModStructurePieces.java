@@ -24,6 +24,9 @@ public class ModStructurePieces {
     public static final RegistryObject<StructurePieceType> LUNAR_TEMPLE_PIECE = 
         PIECE_TYPES.register("lunar_temple_piece", () -> LunarTemplePiece::new);
     
+    public static final RegistryObject<StructurePieceType> METEORITE_CRATER_PIECE = 
+        PIECE_TYPES.register("meteorite_crater_piece", () -> MeteoriteCraterPiece::new);
+    
     public static void register(IEventBus eventBus) {
         PIECE_TYPES.register(eventBus);
     }

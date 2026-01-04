@@ -1,0 +1,64 @@
+{
+    "display": {
+        "icon": {
+            "item": "aster_risk:silver_helmet"
+        },
+        "title": {
+            "translate": "advancement.aster_risk.silver_armor.title"
+        },
+        "description": {
+            "translate": "advancement.aster_risk.silver_armor.description"
+        },
+        "show_toast": true,
+        "announce_to_chat": true
+    },
+    "parent": "aster_risk:silver_tools",
+    "criteria": {
+        "has_helmet": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:silver_helmet"]
+                    }
+                ]
+            }
+        },
+        "has_chestplate": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:silver_chestplate"]
+                    }
+                ]
+            }
+        },
+        "has_leggings": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:silver_leggings"]
+                    }
+                ]
+            }
+        },
+        "has_boots": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:silver_boots"]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        ["has_helmet"],
+        ["has_chestplate"],
+        ["has_leggings"],
+        ["has_boots"]
+    ]
+}

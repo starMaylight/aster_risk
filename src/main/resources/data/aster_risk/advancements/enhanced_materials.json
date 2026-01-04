@@ -1,0 +1,41 @@
+{
+    "display": {
+        "icon": {
+            "item": "aster_risk:enhanced_gold"
+        },
+        "title": {
+            "translate": "advancement.aster_risk.enhanced_materials.title"
+        },
+        "description": {
+            "translate": "advancement.aster_risk.enhanced_materials.description"
+        },
+        "show_toast": true,
+        "announce_to_chat": true
+    },
+    "parent": "aster_risk:alchemist",
+    "criteria": {
+        "has_enhanced_gold": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:enhanced_gold"]
+                    }
+                ]
+            }
+        },
+        "has_radiant_diamond": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:radiant_diamond"]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        ["has_enhanced_gold", "has_radiant_diamond"]
+    ]
+}

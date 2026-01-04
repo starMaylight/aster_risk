@@ -3,6 +3,8 @@ package net.mcreator.asterrisk.item.weapon;
 import net.mcreator.asterrisk.init.AsterRiskModItems;
 import net.mcreator.asterrisk.mana.ManaProcedures;
 import net.minecraft.core.particles.ParticleTypes;
+import net.mcreator.asterrisk.registry.ModParticles;
+import net.mcreator.asterrisk.registry.ModSounds;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -32,14 +34,14 @@ public class LunarBladeItem extends SwordItem {
     private static final float MANA_COST = 20f;
     private static final int COOLDOWN_TICKS = 30; // 1.5秒
     private static final double RANGE = 5.0;
-    private static final float DAMAGE = 6.0f;
+    private static final float DAMAGE = 10.0f;  // 範囲攻撃ダメージ増
 
     private static final Tier LUNAR_TIER = new Tier() {
-        @Override public int getUses() { return 750; }
-        @Override public float getSpeed() { return 7.0f; }
-        @Override public float getAttackDamageBonus() { return 3.0f; } // 基礎4 + 3 = 7ダメージ
+        @Override public int getUses() { return 850; }
+        @Override public float getSpeed() { return 7.5f; }
+        @Override public float getAttackDamageBonus() { return 6.0f; } // 基礎4 + 6 = 10ダメージ
         @Override public int getLevel() { return 3; }
-        @Override public int getEnchantmentValue() { return 18; }
+        @Override public int getEnchantmentValue() { return 20; }
         @Override public Ingredient getRepairIngredient() { 
             return Ingredient.of(AsterRiskModItems.MOONSTONE.get()); 
         }
@@ -76,21 +78,28 @@ public class LunarBladeItem extends SwordItem {
 
             // エフェクト
             if (level instanceof ServerLevel serverLevel) {
+                // 月光パーティクル
                 for (int i = 0; i < 30; i++) {
                     double offsetX = (Math.random() - 0.5) * RANGE * 2;
                     double offsetY = Math.random() * 2;
                     double offsetZ = (Math.random() - 0.5) * RANGE * 2;
+                    serverLevel.sendParticles(ModParticles.LUNAR_SPARKLE.get(),
+                        player.getX() + offsetX, player.getY() + offsetY, player.getZ() + offsetZ,
+                        1, 0, 0.1, 0, 0.05);
                     serverLevel.sendParticles(ParticleTypes.END_ROD,
                         player.getX() + offsetX, player.getY() + offsetY, player.getZ() + offsetZ,
                         1, 0, 0.1, 0, 0.05);
                 }
+                // マナ消費エフェクト
+                serverLevel.sendParticles(ModParticles.MANA_RELEASE.get(),
+                    player.getX(), player.getY() + 1, player.getZ(), 10, 0.5, 0.3, 0.5, 0.1);
             }
 
             // 音
             level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.PLAYERS, 1.0f, 0.8f);
+                ModSounds.SPELL_CAST.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
             level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.PLAYERS, 1.0f, 1.2f);
+                ModSounds.LUNAR_MAGIC.get(), SoundSource.PLAYERS, 0.8f, 1.2f);
 
             // クールダウン
             player.getCooldowns().addCooldown(this, COOLDOWN_TICKS);

@@ -1,0 +1,29 @@
+{
+    "display": {
+        "icon": {
+            "item": "aster_risk:corrupted_core"
+        },
+        "title": {
+            "translate": "advancement.aster_risk.corrupted_hunter.title"
+        },
+        "description": {
+            "translate": "advancement.aster_risk.corrupted_hunter.description"
+        },
+        "show_toast": true,
+        "announce_to_chat": true
+    },
+    "parent": "aster_risk:lunar_realm",
+    "criteria": {
+        "kill_golem": {
+            "trigger": "minecraft:player_killed_entity",
+            "conditions": {
+                "entity": {
+                    "type": "aster_risk:corrupted_golem"
+                }
+            }
+        }
+    },
+    "rewards": {
+        "experience": 50
+    }
+}

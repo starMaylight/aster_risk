@@ -47,7 +47,6 @@ public class MoonlightBeaconBlock extends BaseEntityBlock {
     public MoonlightBeaconBlock() {
         super(BlockBehaviour.Properties.of()
             .strength(3.0f, 6.0f)
-            .requiresCorrectToolForDrops()
             .lightLevel(state -> 10)
             .noOcclusion());
     }

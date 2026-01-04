@@ -6,6 +6,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.server.level.ServerLevel;
+import net.mcreator.asterrisk.registry.ModParticles;
+import net.mcreator.asterrisk.registry.ModSounds;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -61,9 +64,20 @@ public class MoonlightWandItem extends Item {
                         BlockState moonlight = AsterRiskModBlocks.MOONLIGHT.get().defaultBlockState();
                         level.setBlock(targetPos, moonlight, 3);
                         
-                        // 効果音
-                        level.playSound(null, targetPos, SoundEvents.EXPERIENCE_ORB_PICKUP, 
-                            SoundSource.PLAYERS, 0.5f, 1.5f);
+                        // 効果音とパーティクル
+                        level.playSound(null, targetPos, ModSounds.LUNAR_MAGIC.get(), 
+                            SoundSource.PLAYERS, 0.8f, 1.2f);
+                        level.playSound(null, targetPos, ModSounds.MANA_CONSUME.get(), 
+                            SoundSource.PLAYERS, 0.5f, 1.0f);
+                        
+                        if (level instanceof ServerLevel serverLevel) {
+                            serverLevel.sendParticles(ModParticles.LUNAR_SPARKLE.get(),
+                                targetPos.getX() + 0.5, targetPos.getY() + 0.5, targetPos.getZ() + 0.5,
+                                10, 0.3, 0.3, 0.3, 0.05);
+                            serverLevel.sendParticles(ModParticles.MANA_RELEASE.get(),
+                                player.getX(), player.getY() + 1, player.getZ(),
+                                5, 0.2, 0.2, 0.2, 0.05);
+                        }
                         
                         // 耐久値を減らす（クリエイティブ以外）
                         if (!player.isCreative()) {

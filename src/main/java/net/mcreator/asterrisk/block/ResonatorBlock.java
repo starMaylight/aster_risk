@@ -35,7 +35,6 @@ public class ResonatorBlock extends BaseEntityBlock {
         super(BlockBehaviour.Properties.of()
             .mapColor(color)
             .strength(2.5f, 5.0f)
-            .requiresCorrectToolForDrops()
             .lightLevel(state -> 5 + tier * 2)
             .noOcclusion());
         this.tier = tier;

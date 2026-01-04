@@ -39,7 +39,6 @@ public class ManaBatteryBlock extends BaseEntityBlock {
         super(BlockBehaviour.Properties.of()
             .mapColor(MapColor.COLOR_CYAN)
             .strength(4.0f, 8.0f)
-            .requiresCorrectToolForDrops()
             .lightLevel(state -> 8)
             .noOcclusion());
     }

@@ -1,6 +1,8 @@
 package net.mcreator.asterrisk.item.weapon;
 
 import net.minecraft.core.particles.ParticleTypes;
+import net.mcreator.asterrisk.registry.ModParticles;
+import net.mcreator.asterrisk.registry.ModSounds;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -73,7 +75,14 @@ public class PrismaticGreatswordItem extends SwordItem {
             }
         }
 
-        // 常に虹色パーティクル
+        // 常に虹色パーティクルとサウンド
+        if (level instanceof ServerLevel serverLevel) {
+            serverLevel.sendParticles(ModParticles.PRISMATIC_SPARKLE.get(),
+                target.getX(), target.getY() + target.getBbHeight() / 2, target.getZ(),
+                5, 0.3, 0.3, 0.3, 0.05);
+            serverLevel.playSound(null, target.getX(), target.getY(), target.getZ(),
+                ModSounds.PRISMATIC_HIT.get(), SoundSource.PLAYERS, 0.8f, 1.0f + random.nextFloat() * 0.2f);
+        }
         spawnParticles(level, target, ParticleTypes.END_ROD);
 
         return super.hurtEnemy(stack, target, attacker);

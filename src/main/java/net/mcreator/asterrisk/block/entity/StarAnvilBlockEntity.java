@@ -57,6 +57,7 @@ public class StarAnvilBlockEntity extends BlockEntity {
     private final BlockManaCapability.BlockMana manaStorage;
     private final LazyOptional<BlockManaCapability.IBlockMana> manaHandler;
     
+    
     // インベントリ（1スロット）
     private final ItemStackHandler inventory = new ItemStackHandler(1) {
         @Override
@@ -155,68 +156,73 @@ public class StarAnvilBlockEntity extends BlockEntity {
     }
 
     private boolean applyEnchantment(ItemStack stack) {
-        List<Enchantment> possibleEnchants = getPossibleEnchantments(stack);
-        if (possibleEnchants.isEmpty()) return false;
-        
-        Map<Enchantment, Integer> currentEnchants = EnchantmentHelper.getEnchantments(stack);
-        
-        // 適用可能なエンチャントをフィルタリング
-        List<Enchantment> validEnchants = new ArrayList<>();
-        for (Enchantment ench : possibleEnchants) {
-            if (canApplyEnchantment(stack, ench, currentEnchants)) {
-                validEnchants.add(ench);
-            }
-        }
-        
-        if (validEnchants.isEmpty()) return false;
-        
-        // 既存エンチャントでレベルアップ可能なものを探す
-        List<Enchantment> upgradeable = new ArrayList<>();
-        for (Enchantment ench : validEnchants) {
-            int currentLevel = currentEnchants.getOrDefault(ench, 0);
-            if (currentLevel > 0 && currentLevel < ench.getMaxLevel()) {
-                upgradeable.add(ench);
-            }
-        }
-        
-        Enchantment chosen;
-        if (!upgradeable.isEmpty() && random.nextFloat() < 0.6f) {
-            chosen = upgradeable.get(random.nextInt(upgradeable.size()));
-        } else {
-            chosen = validEnchants.get(random.nextInt(validEnchants.size()));
-        }
-        
-        int currentLevel = currentEnchants.getOrDefault(chosen, 0);
-        int newLevel = Math.min(currentLevel + 1, chosen.getMaxLevel());
-        
-        Map<Enchantment, Integer> newEnchants = new HashMap<>(currentEnchants);
-        newEnchants.put(chosen, newLevel);
-        EnchantmentHelper.setEnchantments(newEnchants, stack);
-        
-        return true;
-    }
+    	List<Enchantment> possibleEnchants = getPossibleEnchantments(stack);
+    	if (possibleEnchants.isEmpty()) return false;
 
-    private boolean canApplyEnchantment(ItemStack stack, Enchantment enchantment, Map<Enchantment, Integer> currentEnchants) {
-        // アイテムに適用可能か（既に持っているものはOK）
-        if (!enchantment.canEnchant(stack) && !currentEnchants.containsKey(enchantment)) {
-            return false;
-        }
-        
-        // 既存のエンチャントとの互換性チェック
-        for (Enchantment existing : currentEnchants.keySet()) {
-            if (existing != enchantment && !enchantment.isCompatibleWith(existing)) {
-                return false;
-            }
-        }
-        
-        // 既に最大レベルならスキップ
-        int currentLevel = currentEnchants.getOrDefault(enchantment, 0);
-        if (currentLevel >= enchantment.getMaxLevel()) {
-            return false;
-        }
-        
-        return true;
-    }
+    	Map<Enchantment, Integer> currentEnchants = EnchantmentHelper.getEnchantments(stack);
+
+    	List<Enchantment> validEnchants = new ArrayList<>();
+    	for (Enchantment ench : possibleEnchants) {
+        	if (canApplyEnchantment(stack, ench, currentEnchants)) {
+            	validEnchants.add(ench);
+        	}
+    	}
+    	if (validEnchants.isEmpty()) return false;
+
+    // 既存エンチャントでレベルアップ可能なものを探す（拡張上限まで）
+    	List<Enchantment> upgradeable = new ArrayList<>();
+    	for (Enchantment ench : validEnchants) {
+        	int currentLevel = currentEnchants.getOrDefault(ench, 0);
+        	int cap = getMaxLevelWithOvercap(ench);
+        	if (currentLevel > 0 && currentLevel < cap) {
+            	upgradeable.add(ench);
+        	}
+    	}
+
+    	Enchantment chosen;
+    	if (!upgradeable.isEmpty() && random.nextFloat() < 0.6f) {
+        	chosen = upgradeable.get(random.nextInt(upgradeable.size()));
+    	} else {
+        	chosen = validEnchants.get(random.nextInt(validEnchants.size()));
+    	}
+
+    	int currentLevel = currentEnchants.getOrDefault(chosen, 0);
+    	int cap = getMaxLevelWithOvercap(chosen);
+    	int newLevel = Math.min(currentLevel + 1, cap);
+
+    	Map<Enchantment, Integer> newEnchants = new HashMap<>(currentEnchants);
+    	newEnchants.put(chosen, newLevel);
+    	EnchantmentHelper.setEnchantments(newEnchants, stack);
+
+    	return true;
+	}
+
+	public static final int ENCHANTABILITY_OVER_CAP = 5;
+
+	private int getMaxLevelWithOvercap(Enchantment ench) {
+    	return ench.getMaxLevel() + ENCHANTABILITY_OVER_CAP;
+	}
+
+	private boolean canApplyEnchantment(ItemStack stack, Enchantment enchantment, Map<Enchantment, Integer> currentEnchants) {
+	    if (!enchantment.canEnchant(stack) && !currentEnchants.containsKey(enchantment)) {
+	        return false;
+	    }
+	
+	    for (Enchantment existing : currentEnchants.keySet()) {
+	        if (existing != enchantment && !enchantment.isCompatibleWith(existing)) {
+	            return false;
+	        }
+	    }
+	
+	    int currentLevel = currentEnchants.getOrDefault(enchantment, 0);
+	    int cap = getMaxLevelWithOvercap(enchantment);
+	    if (currentLevel >= cap) {
+	        return false;
+	    }
+	
+	    return true;
+	}
+
 
     /**
      * アイテムに適用可能な全エンチャントを取得

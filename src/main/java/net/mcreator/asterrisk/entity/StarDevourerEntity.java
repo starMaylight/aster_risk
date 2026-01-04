@@ -19,6 +19,9 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.core.particles.ParticleTypes;
+import net.mcreator.asterrisk.registry.ModParticles;
+import net.mcreator.asterrisk.registry.ModSounds;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -72,12 +75,12 @@ public class StarDevourerEntity extends Monster {
 
     public static AttributeSupplier.Builder createAttributes() {
         return Monster.createMonsterAttributes()
-            .add(Attributes.MAX_HEALTH, 500.0D)
-            .add(Attributes.MOVEMENT_SPEED, 0.5D)
-            .add(Attributes.ATTACK_DAMAGE, 40.0D)
+            .add(Attributes.MAX_HEALTH, 500.0D)  // ボスはHP維持
+            .add(Attributes.MOVEMENT_SPEED, 0.55D)  // 速度増
+            .add(Attributes.ATTACK_DAMAGE, 50.0D)  // 攻撃力増
             .add(Attributes.FOLLOW_RANGE, 64.0D)
-            .add(Attributes.ARMOR, 12.0D)
-            .add(Attributes.ARMOR_TOUGHNESS, 8.0D)
+            .add(Attributes.ARMOR, 10.0D)  // 防御弱体化
+            .add(Attributes.ARMOR_TOUGHNESS, 6.0D)
             .add(Attributes.KNOCKBACK_RESISTANCE, 1.0D);
     }
 
@@ -175,10 +178,10 @@ public class StarDevourerEntity extends Monster {
     
     private int getSpecialAttackInterval() {
         return switch (phase) {
-            case 1 -> 90;
-            case 2 -> 50;
-            case 3 -> 30;
-            default -> 120;
+            case 1 -> 60;  // 3秒（高速化）
+            case 2 -> 40;  // 2秒
+            case 3 -> 25;  // 1.25秒
+            default -> 80;
         };
     }
     
@@ -523,17 +526,17 @@ public class StarDevourerEntity extends Monster {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.ENDER_DRAGON_AMBIENT;
+        return ModSounds.STELLAR_MAGIC.get();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource source) {
-        return SoundEvents.ENDER_DRAGON_HURT;
+        return ModSounds.BOSS_ATTACK.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return SoundEvents.ENDER_DRAGON_DEATH;
+        return ModSounds.BOSS_DEATH.get();
     }
 
     @Override

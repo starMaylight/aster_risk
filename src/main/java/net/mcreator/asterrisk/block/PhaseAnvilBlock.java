@@ -56,7 +56,6 @@ public class PhaseAnvilBlock extends BaseEntityBlock {
     public PhaseAnvilBlock() {
         super(BlockBehaviour.Properties.of()
             .strength(5.0f, 1200.0f)
-            .requiresCorrectToolForDrops()
             .lightLevel(state -> 6)
             .noOcclusion());
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));

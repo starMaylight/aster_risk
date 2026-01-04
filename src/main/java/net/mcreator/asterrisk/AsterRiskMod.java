@@ -20,6 +20,9 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.mcreator.asterrisk.world.structure.ModStructures;
 import net.mcreator.asterrisk.world.structure.ModStructurePieces;
 import net.mcreator.asterrisk.registry.ModSpawnEggs;
+import net.mcreator.asterrisk.registry.ModSounds;
+import net.mcreator.asterrisk.registry.ModPotions;
+import net.mcreator.asterrisk.registry.ModParticles;
 import net.mcreator.asterrisk.registry.ModEntities;
 import net.mcreator.asterrisk.registry.ModEnchantments;
 import net.mcreator.asterrisk.recipe.ModRecipes;
@@ -54,12 +57,18 @@ public class AsterRiskMod {
 		ModRecipes.RECIPE_SERIALIZERS.register(context.getModEventBus());
 		// エフェクト登録（initフォルダのものを使用）
 		AsterRiskModEffects.REGISTRY.register(context.getModEventBus());
+		// ポーション登録（registryパッケージを使用）
+		ModPotions.REGISTRY.register(context.getModEventBus());
 		// エンチャント登録（registryパッケージを使用）
 		ModEnchantments.REGISTRY.register(context.getModEventBus());
 		// エンティティ登録（registryパッケージを使用）
 		ModEntities.REGISTRY.register(context.getModEventBus());
 		// スポーンエッグ登録
 		ModSpawnEggs.REGISTRY.register(context.getModEventBus());
+		// サウンド登録
+		ModSounds.REGISTRY.register(context.getModEventBus());
+		// パーティクル登録
+		ModParticles.REGISTRY.register(context.getModEventBus());
 		// 構造物登録
 		ModStructures.register(context.getModEventBus());
 		ModStructurePieces.register(context.getModEventBus());

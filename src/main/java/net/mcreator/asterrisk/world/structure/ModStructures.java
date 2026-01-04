@@ -24,6 +24,9 @@ public class ModStructures {
     public static final RegistryObject<StructureType<LunarTempleStructure>> LUNAR_TEMPLE = 
         STRUCTURE_TYPES.register("lunar_temple", () -> () -> LunarTempleStructure.CODEC);
     
+    public static final RegistryObject<StructureType<MeteoriteCraterStructure>> METEORITE_CRATER = 
+        STRUCTURE_TYPES.register("meteorite_crater", () -> () -> MeteoriteCraterStructure.CODEC);
+    
     public static void register(IEventBus eventBus) {
         STRUCTURE_TYPES.register(eventBus);
     }

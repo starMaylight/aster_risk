@@ -1,0 +1,64 @@
+{
+    "display": {
+        "icon": {
+            "item": "aster_risk:lunar_obelisk"
+        },
+        "title": {
+            "translate": "advancement.aster_risk.obelisk_builder.title"
+        },
+        "description": {
+            "translate": "advancement.aster_risk.obelisk_builder.description"
+        },
+        "show_toast": true,
+        "announce_to_chat": true
+    },
+    "parent": "aster_risk:ritual_master",
+    "criteria": {
+        "has_lunar": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:lunar_obelisk"]
+                    }
+                ]
+            }
+        },
+        "has_stellar": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:stellar_obelisk"]
+                    }
+                ]
+            }
+        },
+        "has_solar": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:solar_obelisk"]
+                    }
+                ]
+            }
+        },
+        "has_void": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:void_obelisk"]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        ["has_lunar", "has_stellar", "has_solar", "has_void"]
+    ],
+    "rewards": {
+        "experience": 100
+    }
+}

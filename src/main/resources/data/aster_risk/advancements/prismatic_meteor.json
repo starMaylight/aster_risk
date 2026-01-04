@@ -1,0 +1,32 @@
+{
+    "display": {
+        "icon": {
+            "item": "aster_risk:prismatic_meteorite"
+        },
+        "title": {
+            "translate": "advancement.aster_risk.prismatic_meteor.title"
+        },
+        "description": {
+            "translate": "advancement.aster_risk.prismatic_meteor.description"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true
+    },
+    "parent": "aster_risk:meteor_caller",
+    "criteria": {
+        "has_prismatic": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:prismatic_meteorite"]
+                    }
+                ]
+            }
+        }
+    },
+    "rewards": {
+        "experience": 100
+    }
+}

@@ -45,7 +45,6 @@ public class StarAnvilBlock extends BaseEntityBlock {
     public StarAnvilBlock() {
         super(BlockBehaviour.Properties.of()
             .strength(5.0f, 1200.0f)
-            .requiresCorrectToolForDrops()
             .lightLevel(state -> 5)
             .noOcclusion());
     }

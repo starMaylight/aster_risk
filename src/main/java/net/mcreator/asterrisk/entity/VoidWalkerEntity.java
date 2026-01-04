@@ -29,7 +29,7 @@ public class VoidWalkerEntity extends Monster {
     
     private int teleportCooldown = 0;
     private int particleTimer = 0;
-    private static final int TELEPORT_COOLDOWN_MAX = 60; // 3秒
+    private static final int TELEPORT_COOLDOWN_MAX = 40; // 2秒（高速化）
 
     public VoidWalkerEntity(EntityType<? extends VoidWalkerEntity> type, Level level) {
         super(type, level);
@@ -49,11 +49,11 @@ public class VoidWalkerEntity extends Monster {
 
     public static AttributeSupplier.Builder createAttributes() {
         return Monster.createMonsterAttributes()
-            .add(Attributes.MAX_HEALTH, 40.0D)
-            .add(Attributes.MOVEMENT_SPEED, 0.32D)
-            .add(Attributes.ATTACK_DAMAGE, 10.0D)
-            .add(Attributes.FOLLOW_RANGE, 32.0D)
-            .add(Attributes.ARMOR, 4.0D);
+            .add(Attributes.MAX_HEALTH, 28.0D)  // HP減
+            .add(Attributes.MOVEMENT_SPEED, 0.42D)  // 速度増
+            .add(Attributes.ATTACK_DAMAGE, 16.0D)  // 攻撃力増
+            .add(Attributes.FOLLOW_RANGE, 40.0D)  // 索敵範囲増
+            .add(Attributes.ARMOR, 2.0D);  // 防御減
     }
 
     @Override

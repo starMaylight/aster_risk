@@ -42,7 +42,6 @@ public class RitualPedestalBlock extends BaseEntityBlock {
         super(BlockBehaviour.Properties.of()
             .mapColor(MapColor.COLOR_LIGHT_BLUE)
             .strength(3.0f, 6.0f)
-            .requiresCorrectToolForDrops()
             .lightLevel(state -> 5)
             .noOcclusion());
     }

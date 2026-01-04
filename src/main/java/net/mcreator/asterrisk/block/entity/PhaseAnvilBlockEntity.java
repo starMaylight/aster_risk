@@ -6,6 +6,8 @@ import net.mcreator.asterrisk.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
+import net.mcreator.asterrisk.registry.ModParticles;
+import net.mcreator.asterrisk.registry.ModSounds;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -77,7 +79,13 @@ public class PhaseAnvilBlockEntity extends BlockEntity {
                     double x = pos.getX() + 0.5;
                     double y = pos.getY() + 1.0;
                     double z = pos.getZ() + 0.5;
-                    serverLevel.sendParticles(ParticleTypes.ENCHANT, x, y, z, 5, 0.3, 0.2, 0.3, 0.1);
+                    serverLevel.sendParticles(ModParticles.LUNAR_SPARKLE.get(), x, y, z, 3, 0.2, 0.2, 0.2, 0.02);
+                    serverLevel.sendParticles(ParticleTypes.ENCHANT, x, y, z, 3, 0.3, 0.2, 0.3, 0.08);
+                }
+                
+                // 金床打撃音
+                if (entity.processProgress % 25 == 0) {
+                    level.playSound(null, pos, ModSounds.PHASE_ANVIL_USE.get(), SoundSource.BLOCKS, 0.8f, 1.0f + level.random.nextFloat() * 0.2f);
                 }
 
                 // 完了
@@ -122,8 +130,11 @@ public class PhaseAnvilBlockEntity extends BlockEntity {
             double x = pos.getX() + 0.5;
             double y = pos.getY() + 1.0;
             double z = pos.getZ() + 0.5;
-            serverLevel.playSound(null, pos, SoundEvents.ANVIL_USE, SoundSource.BLOCKS, 1.0f, 1.5f);
-            serverLevel.sendParticles(ParticleTypes.END_ROD, x, y, z, 30, 0.3, 0.3, 0.3, 0.1);
+            serverLevel.playSound(null, pos, ModSounds.RITUAL_COMPLETE.get(), SoundSource.BLOCKS, 1.0f, 1.2f);
+            serverLevel.playSound(null, pos, ModSounds.LUNAR_MAGIC.get(), SoundSource.BLOCKS, 0.8f, 1.0f);
+            serverLevel.sendParticles(ModParticles.LUNAR_SPARKLE.get(), x, y, z, 20, 0.3, 0.3, 0.3, 0.05);
+            serverLevel.sendParticles(ModParticles.STAR_BURST.get(), x, y, z, 15, 0.2, 0.2, 0.2, 0.1);
+            serverLevel.sendParticles(ParticleTypes.END_ROD, x, y, z, 15, 0.3, 0.3, 0.3, 0.05);
         }
 
         // リセット

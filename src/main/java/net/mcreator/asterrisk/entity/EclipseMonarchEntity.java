@@ -20,6 +20,9 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.core.particles.ParticleTypes;
+import net.mcreator.asterrisk.registry.ModParticles;
+import net.mcreator.asterrisk.registry.ModSounds;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -70,13 +73,13 @@ public class EclipseMonarchEntity extends Monster {
 
     public static AttributeSupplier.Builder createAttributes() {
         return Monster.createMonsterAttributes()
-            .add(Attributes.MAX_HEALTH, 450.0D)
-            .add(Attributes.MOVEMENT_SPEED, 0.8D)
-            .add(Attributes.ATTACK_DAMAGE, 40.0D)
-            .add(Attributes.FOLLOW_RANGE, 48.0D)
-            .add(Attributes.ARMOR, 12.0D)
-            .add(Attributes.ARMOR_TOUGHNESS, 8.0D)
-            .add(Attributes.KNOCKBACK_RESISTANCE, 0.8D);
+            .add(Attributes.MAX_HEALTH, 450.0D)  // ボスはHP維持
+            .add(Attributes.MOVEMENT_SPEED, 0.85D)  // 速度増
+            .add(Attributes.ATTACK_DAMAGE, 50.0D)  // 攻撃力増
+            .add(Attributes.FOLLOW_RANGE, 56.0D)  // 索敵範囲増
+            .add(Attributes.ARMOR, 10.0D)  // 防御弱体化
+            .add(Attributes.ARMOR_TOUGHNESS, 6.0D)
+            .add(Attributes.KNOCKBACK_RESISTANCE, 0.9D);
     }
 
     @Override
@@ -108,10 +111,10 @@ public class EclipseMonarchEntity extends Monster {
                 specialAttackTimer = 0;
             }
             
-            // フェーズ2以降：召喚
+            // フェーズ2以降：召喚（頻度増）
             if (phase >= 2 && summonCooldown <= 0) {
                 summonMinions();
-                summonCooldown = 100; // 20秒
+                summonCooldown = 300; // 15秒
             }
         }
     }
@@ -150,10 +153,10 @@ public class EclipseMonarchEntity extends Monster {
     
     private int getSpecialAttackInterval() {
         return switch (phase) {
-            case 1 -> 100; // 5秒
-            case 2 -> 80;  // 4秒
-            case 3 -> 60;  // 3秒
-            default -> 100;
+            case 1 -> 70;  // 3.5秒（高速化）
+            case 2 -> 50;  // 2.5秒
+            case 3 -> 35;  // 1.75秒
+            default -> 70;
         };
     }
     
@@ -395,17 +398,17 @@ public class EclipseMonarchEntity extends Monster {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.WITHER_AMBIENT;
+        return ModSounds.VOID_WHISPER.get();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource source) {
-        return SoundEvents.WITHER_HURT;
+        return ModSounds.BOSS_ATTACK.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return SoundEvents.WITHER_DEATH;
+        return ModSounds.BOSS_DEATH.get();
     }
 
     @Override

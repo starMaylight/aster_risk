@@ -31,15 +31,15 @@ public class MeteorHammerItem extends AxeItem {
     private static final float MANA_COST = 30f;
     private static final int COOLDOWN_TICKS = 50; // 2.5秒
     private static final double RANGE = 4.0;
-    private static final float DAMAGE = 8.0f;
+    private static final float DAMAGE = 14.0f;  // 衝撃波ダメージ増
     private static final double KNOCKBACK_STRENGTH = 1.5;
 
     private static final Tier METEOR_TIER = new Tier() {
-        @Override public int getUses() { return 1000; }
-        @Override public float getSpeed() { return 6.0f; }
-        @Override public float getAttackDamageBonus() { return 5.0f; } // 基礎4 + 5 = 9ダメージ
+        @Override public int getUses() { return 1200; }
+        @Override public float getSpeed() { return 6.5f; }
+        @Override public float getAttackDamageBonus() { return 8.0f; } // 基礎4 + 8 = 12ダメージ
         @Override public int getLevel() { return 3; }
-        @Override public int getEnchantmentValue() { return 12; }
+        @Override public int getEnchantmentValue() { return 14; }
         @Override public Ingredient getRepairIngredient() { 
             return Ingredient.of(AsterRiskModItems.METEORITE_FRAGMENT.get()); 
         }

@@ -9,6 +9,8 @@ import net.mcreator.asterrisk.registry.ModEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
+import net.mcreator.asterrisk.registry.ModParticles;
+import net.mcreator.asterrisk.registry.ModSounds;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -83,12 +85,28 @@ public class MeteorSummoningBlockEntity extends BlockEntity {
                     double x = pos.getX() + 0.5;
                     double y = pos.getY() + 1.0;
                     double z = pos.getZ() + 0.5;
-                    serverLevel.sendParticles(ParticleTypes.PORTAL, x, y, z, 10, 0.5, 0.5, 0.5, 0.1);
                     
-                    // 上空にもパーティクル
+                    // 儀式ルーン
+                    float rotation = entity.summonProgress * 0.1f;
+                    for (int i = 0; i < 8; i++) {
+                        double angle = rotation + (i / 8.0) * Math.PI * 2;
+                        double rx = x + Math.cos(angle) * 2.0;
+                        double rz = z + Math.sin(angle) * 2.0;
+                        serverLevel.sendParticles(ModParticles.RITUAL_RUNE.get(), rx, y + 0.1, rz, 1, 0, 0.02, 0, 0.01);
+                    }
+                    
+                    serverLevel.sendParticles(ModParticles.STARDUST_SPARKLE.get(), x, y, z, 5, 0.5, 0.3, 0.5, 0.02);
+                    serverLevel.sendParticles(ParticleTypes.PORTAL, x, y, z, 5, 0.5, 0.5, 0.5, 0.1);
+                    
+                    // 上空にもパーティクル（流星の軌跡）
                     if (entity.summonProgress % 20 == 0) {
+                        serverLevel.sendParticles(ModParticles.METEOR_TRAIL.get(), x, y + 15 + entity.random.nextInt(15), z, 
+                            3, 3, 0, 3, 0.05);
                         serverLevel.sendParticles(ParticleTypes.END_ROD, x, y + 10 + entity.random.nextInt(20), z, 
-                            5, 2, 0, 2, 0.05);
+                            3, 2, 0, 2, 0.05);
+                        
+                        // サウンド
+                        level.playSound(null, pos, ModSounds.METEOR_FALL.get(), SoundSource.BLOCKS, 0.5f, 0.8f + entity.random.nextFloat() * 0.4f);
                     }
                 }
 
@@ -155,8 +173,11 @@ public class MeteorSummoningBlockEntity extends BlockEntity {
         double z = pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 4;
 
         // エフェクト
-        serverLevel.playSound(null, pos, SoundEvents.LIGHTNING_BOLT_THUNDER, SoundSource.WEATHER, 2.0f, 0.8f);
-        serverLevel.sendParticles(ParticleTypes.EXPLOSION_EMITTER, x, y + 5, z, 3, 1, 1, 1, 0);
+        serverLevel.playSound(null, pos, ModSounds.METEOR_IMPACT.get(), SoundSource.WEATHER, 2.0f, 0.8f);
+        serverLevel.playSound(null, pos, ModSounds.RITUAL_COMPLETE.get(), SoundSource.BLOCKS, 1.5f, 1.0f);
+        serverLevel.sendParticles(ModParticles.STAR_BURST.get(), x, y + 2, z, 30, 1, 1, 1, 0.15);
+        serverLevel.sendParticles(ModParticles.METEOR_TRAIL.get(), x, y + 3, z, 20, 0.5, 0.5, 0.5, 0.1);
+        serverLevel.sendParticles(ParticleTypes.EXPLOSION_EMITTER, x, y + 5, z, 2, 1, 1, 1, 0);
         
         // ドロップアイテム
         switch (type) {

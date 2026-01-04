@@ -1,6 +1,8 @@
 {
   "type": "aster_risk:eclipse_sanctum",
-  "biomes": "aster_risk:eclipse_wastes",
-  "step": "surface_structures",
-  "spawn_overrides": {}
+  "biomes": [
+    "aster_risk:eclipse_wastes"
+  ],
+  "spawn_overrides": {},
+  "step": "surface_structures"
 }

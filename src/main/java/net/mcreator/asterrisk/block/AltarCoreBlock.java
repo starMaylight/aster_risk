@@ -44,7 +44,6 @@ public class AltarCoreBlock extends BaseEntityBlock {
         super(BlockBehaviour.Properties.of()
             .mapColor(MapColor.COLOR_PURPLE)
             .strength(5.0f, 10.0f)
-            .requiresCorrectToolForDrops()
             .lightLevel(state -> 10)
             .noOcclusion());
     }

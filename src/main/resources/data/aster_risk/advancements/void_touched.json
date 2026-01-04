@@ -1,0 +1,28 @@
+{
+    "display": {
+        "icon": {
+            "item": "aster_risk:void_shard"
+        },
+        "title": {
+            "translate": "advancement.aster_risk.void_touched.title"
+        },
+        "description": {
+            "translate": "advancement.aster_risk.void_touched.description"
+        },
+        "show_toast": true,
+        "announce_to_chat": true
+    },
+    "parent": "aster_risk:lunar_realm",
+    "criteria": {
+        "has_void_shard": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:void_shard"]
+                    }
+                ]
+            }
+        }
+    }
+}

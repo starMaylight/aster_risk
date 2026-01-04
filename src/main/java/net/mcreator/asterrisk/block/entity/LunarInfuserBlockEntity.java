@@ -7,6 +7,8 @@ import net.mcreator.asterrisk.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
+import net.mcreator.asterrisk.registry.ModParticles;
+import net.mcreator.asterrisk.registry.ModSounds;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -37,7 +39,7 @@ import java.util.Optional;
 public class LunarInfuserBlockEntity extends BlockEntity {
 
     // マナ設定
-    public static final float MAX_MANA = 500f;
+    public static final float MAX_MANA = 2000f;
     public static final float RECEIVE_RATE = 30f;
 
     // デフォルト変換時間
@@ -113,6 +115,8 @@ public class LunarInfuserBlockEntity extends BlockEntity {
             double x = pos.getX() + 0.5;
             double y = pos.getY() + 1.0;
             double z = pos.getZ() + 0.5;
+            serverLevel.sendParticles(ModParticles.MANA_ABSORB.get(), x, y, z, 3, 0.3, 0.2, 0.3, 0.03);
+            serverLevel.sendParticles(ModParticles.LUNAR_SPARKLE.get(), x, y + 0.5, z, 2, 0.2, 0.2, 0.2, 0.02);
             serverLevel.sendParticles(ParticleTypes.ENCHANT, x, y, z, 5, 0.3, 0.2, 0.3, 0.1);
         }
 
@@ -154,7 +158,9 @@ public class LunarInfuserBlockEntity extends BlockEntity {
 
         // エフェクト
         if (level instanceof ServerLevel serverLevel) {
-            serverLevel.playSound(null, pos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1.0f, 1.2f);
+            serverLevel.playSound(null, pos, ModSounds.RITUAL_COMPLETE.get(), SoundSource.BLOCKS, 1.0f, 1.2f);
+            serverLevel.playSound(null, pos, ModSounds.LUNAR_MAGIC.get(), SoundSource.BLOCKS, 0.7f, 1.0f);
+            serverLevel.sendParticles(ModParticles.STAR_BURST.get(), x, y, z, 10, 0.2, 0.2, 0.2, 0.1);
             serverLevel.sendParticles(ParticleTypes.END_ROD, x, y, z, 15, 0.3, 0.3, 0.3, 0.05);
         }
 

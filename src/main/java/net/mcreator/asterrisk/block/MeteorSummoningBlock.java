@@ -40,7 +40,6 @@ public class MeteorSummoningBlock extends BaseEntityBlock {
     public MeteorSummoningBlock() {
         super(BlockBehaviour.Properties.of()
             .strength(4.0f, 6.0f)
-            .requiresCorrectToolForDrops()
             .lightLevel(state -> state.getValue(ACTIVE) ? 12 : 4)
             .noOcclusion());
         this.registerDefaultState(this.stateDefinition.any().setValue(ACTIVE, false));

@@ -47,12 +47,12 @@ public class EclipsePhantomEntity extends Monster {
 
     public static AttributeSupplier.Builder createAttributes() {
         return Monster.createMonsterAttributes()
-            .add(Attributes.MAX_HEALTH, 30.0D)
-            .add(Attributes.MOVEMENT_SPEED, 0.28D)
-            .add(Attributes.ATTACK_DAMAGE, 6.0D)
-            .add(Attributes.FOLLOW_RANGE, 24.0D)
-            .add(Attributes.FLYING_SPEED, 0.35D)
-            .add(Attributes.KNOCKBACK_RESISTANCE, 0.3D);
+            .add(Attributes.MAX_HEALTH, 20.0D)  // HP減
+            .add(Attributes.MOVEMENT_SPEED, 0.4D)  // 速度増
+            .add(Attributes.ATTACK_DAMAGE, 12.0D)  // 攻撃力増
+            .add(Attributes.FOLLOW_RANGE, 32.0D)  // 索敵範囲増
+            .add(Attributes.FLYING_SPEED, 0.45D)  // 飛行速度増
+            .add(Attributes.KNOCKBACK_RESISTANCE, 0.2D);
     }
 
     @Override

@@ -46,13 +46,13 @@ public class CorruptedGolemEntity extends Monster {
 
     public static AttributeSupplier.Builder createAttributes() {
         return Monster.createMonsterAttributes()
-            .add(Attributes.MAX_HEALTH, 80.0D)
-            .add(Attributes.MOVEMENT_SPEED, 0.22D)
-            .add(Attributes.ATTACK_DAMAGE, 24.0D)
-            .add(Attributes.FOLLOW_RANGE, 20.0D)
-            .add(Attributes.ARMOR, 8.0D)
-            .add(Attributes.KNOCKBACK_RESISTANCE, 0.8D)
-            .add(Attributes.ATTACK_KNOCKBACK, 1.5D);
+            .add(Attributes.MAX_HEALTH, 55.0D)  // HP減
+            .add(Attributes.MOVEMENT_SPEED, 0.3D)  // 速度増
+            .add(Attributes.ATTACK_DAMAGE, 20.0D)  // 攻撃力調整
+            .add(Attributes.FOLLOW_RANGE, 24.0D)
+            .add(Attributes.ARMOR, 6.0D)  // 防御減
+            .add(Attributes.KNOCKBACK_RESISTANCE, 0.7D)
+            .add(Attributes.ATTACK_KNOCKBACK, 2.0D);  // ノックバック増
     }
 
     @Override
@@ -69,8 +69,8 @@ public class CorruptedGolemEntity extends Monster {
             if (shouldBeEnraged && !isEnraged) {
                 isEnraged = true;
                 // 激昂時にステータス上昇
-                this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.28D);
-                this.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(16.0D);
+                this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.38D);  // 激昂時はさらに速く
+                this.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(26.0D);  // 激昂時はさらに強く
             }
         }
         

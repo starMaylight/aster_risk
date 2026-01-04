@@ -23,11 +23,11 @@ import java.util.List;
 public class EclipseBladeItem extends SwordItem {
     
     private static final Tier ECLIPSE_TIER = new Tier() {
-        @Override public int getUses() { return 3000; }
-        @Override public float getSpeed() { return 10.0F; }
-        @Override public float getAttackDamageBonus() { return 8.0F; }
+        @Override public int getUses() { return 3500; }
+        @Override public float getSpeed() { return 11.0F; }
+        @Override public float getAttackDamageBonus() { return 12.0F; }  // 基礎4 + 12 = 16ダメージ
         @Override public int getLevel() { return 5; }
-        @Override public int getEnchantmentValue() { return 20; }
+        @Override public int getEnchantmentValue() { return 25; }
         @Override public Ingredient getRepairIngredient() { return Ingredient.EMPTY; }
     };
     
@@ -41,7 +41,7 @@ public class EclipseBladeItem extends SwordItem {
         
         if (result) {
             // HP吸収（与ダメージの20%）
-            float healAmount = 2.0F;
+            float healAmount = 3.0F;  // 回復量増
             attacker.heal(healAmount);
             
             // 敵に闇属性デバフ

@@ -46,7 +46,6 @@ public class AlchemicalCauldronBlock extends BaseEntityBlock {
     public AlchemicalCauldronBlock() {
         super(BlockBehaviour.Properties.of()
             .strength(3.0f, 6.0f)
-            .requiresCorrectToolForDrops()
             .lightLevel(state -> state.getValue(ACTIVE) ? 8 : 0)
             .noOcclusion());
         this.registerDefaultState(this.stateDefinition.any()

@@ -1,0 +1,28 @@
+{
+    "display": {
+        "icon": {
+            "item": "aster_risk:alchemical_cauldron"
+        },
+        "title": {
+            "translate": "advancement.aster_risk.alchemist.title"
+        },
+        "description": {
+            "translate": "advancement.aster_risk.alchemist.description"
+        },
+        "show_toast": true,
+        "announce_to_chat": true
+    },
+    "parent": "aster_risk:stardust",
+    "criteria": {
+        "has_cauldron": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:alchemical_cauldron"]
+                    }
+                ]
+            }
+        }
+    }
+}

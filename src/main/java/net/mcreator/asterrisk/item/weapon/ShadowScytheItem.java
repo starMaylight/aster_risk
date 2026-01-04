@@ -1,6 +1,9 @@
 package net.mcreator.asterrisk.item.weapon;
 
 import net.minecraft.core.particles.ParticleTypes;
+import net.mcreator.asterrisk.registry.ModParticles;
+import net.mcreator.asterrisk.registry.ModSounds;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
@@ -52,12 +55,20 @@ public class ShadowScytheItem extends SwordItem {
 
         // 攻撃エフェクト
         if (level instanceof ServerLevel serverLevel) {
-            serverLevel.sendParticles(ParticleTypes.SMOKE,
+            // 影のパーティクル
+            serverLevel.sendParticles(ModParticles.SHADOW_TRAIL.get(),
                 target.getX(), target.getY() + target.getBbHeight() / 2, target.getZ(),
-                10, 0.3, 0.3, 0.3, 0.05);
+                8, 0.3, 0.3, 0.3, 0.03);
+            serverLevel.sendParticles(ModParticles.SHADOW_BURST.get(),
+                target.getX(), target.getY() + target.getBbHeight() / 2, target.getZ(),
+                5, 0.2, 0.2, 0.2, 0.05);
             serverLevel.sendParticles(ParticleTypes.SOUL,
                 target.getX(), target.getY() + target.getBbHeight() / 2, target.getZ(),
-                5, 0.2, 0.2, 0.2, 0.1);
+                3, 0.2, 0.2, 0.2, 0.08);
+            
+            // サウンド
+            serverLevel.playSound(null, target.getX(), target.getY(), target.getZ(),
+                ModSounds.SHADOW_SWING.get(), SoundSource.PLAYERS, 0.7f, 0.8f);
         }
 
         return super.hurtEnemy(stack, target, attacker);

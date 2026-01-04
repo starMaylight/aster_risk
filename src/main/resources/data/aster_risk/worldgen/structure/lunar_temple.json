@@ -4,6 +4,6 @@
     "aster_risk:lunar_forest",
     "aster_risk:lunar_lake"
   ],
-  "step": "surface_structures",
-  "spawn_overrides": {}
+  "spawn_overrides": {},
+  "step": "surface_structures"
 }

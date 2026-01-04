@@ -1,0 +1,32 @@
+{
+    "display": {
+        "icon": {
+            "item": "aster_risk:prismatic_greatsword"
+        },
+        "title": {
+            "translate": "advancement.aster_risk.prismatic_weapon.title"
+        },
+        "description": {
+            "translate": "advancement.aster_risk.prismatic_weapon.description"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true
+    },
+    "parent": "aster_risk:prismatic_meteor",
+    "criteria": {
+        "has_greatsword": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["aster_risk:prismatic_greatsword"]
+                    }
+                ]
+            }
+        }
+    },
+    "rewards": {
+        "experience": 200
+    }
+}

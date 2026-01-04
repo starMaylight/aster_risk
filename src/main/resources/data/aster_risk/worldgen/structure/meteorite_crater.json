@@ -1,0 +1,6 @@
+{
+  "type": "aster_risk:meteorite_crater",
+  "biomes": "#minecraft:is_overworld",
+  "spawn_overrides": {},
+  "step": "surface_structures"
+}
