@@ -1,0 +1,20 @@
+{
+    "type": "aster_risk:ritual_circle",
+    "pattern": "STAR",
+    "ingredients": [
+        { "item": "aster_risk:eclipse_core" },
+        { "item": "aster_risk:stellar_heart" },
+        { "item": "aster_risk:radiant_diamond" },
+        { "item": "aster_risk:radiant_diamond" },
+        { "item": "aster_risk:celestial_nucleus" },
+        { "item": "aster_risk:enhanced_gold" },
+        { "item": "aster_risk:enhanced_gold" },
+        { "item": "minecraft:enchanting_table" }
+    ],
+    "result": {
+        "item": "aster_risk:celestial_enchanting_table",
+        "count": 1
+    },
+    "mana_cost": 4500,
+    "description": "Transcend mortal enchanting by combining both boss cores with an enchanting table"
+}

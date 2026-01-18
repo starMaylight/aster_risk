@@ -1,0 +1,11 @@
+{
+    "type": "aster_risk:celestial_enchant",
+    "pattern": "CONSTELLATION",
+    "input": {
+        "tag": "forge:tools"
+    },
+    "enchantment": "minecraft:mending",
+    "level": 1,
+    "moonlight_cost": 2000,
+    "description": "Self-repair through celestial energy"
+}

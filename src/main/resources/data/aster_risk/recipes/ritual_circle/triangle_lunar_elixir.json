@@ -1,0 +1,15 @@
+{
+    "type": "aster_risk:ritual_circle",
+    "pattern": "TRIANGLE",
+    "ingredients": [
+        { "item": "aster_risk:moonstone" },
+        { "item": "aster_risk:silver_ingot" },
+        { "item": "aster_risk:lunar_dust" }
+    ],
+    "result": {
+        "item": "aster_risk:lunar_elixir",
+        "count": 3
+    },
+    "mana_cost": 200,
+    "description": "Simple triangle ritual for lunar elixirs"
+}

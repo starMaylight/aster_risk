@@ -1,0 +1,16 @@
+{
+    "type": "aster_risk:ritual_circle",
+    "pattern": "CROSS",
+    "ingredients": [
+        { "item": "aster_risk:moonstone" },
+        { "item": "aster_risk:moonstone" },
+        { "item": "aster_risk:stardust" },
+        { "item": "aster_risk:stardust" }
+    ],
+    "result": {
+        "item": "aster_risk:starflagment",
+        "count": 2
+    },
+    "mana_cost": 300,
+    "description": "Combine moonstone and stardust in a cross pattern"
+}

@@ -1,0 +1,11 @@
+{
+    "type": "aster_risk:celestial_enchant",
+    "pattern": "STELLAR_CORE",
+    "input": {
+        "tag": "forge:tools/swords"
+    },
+    "enchantment": "minecraft:fire_aspect",
+    "level": 2,
+    "moonlight_cost": 1100,
+    "description": "Ignite with stellar heat"
+}

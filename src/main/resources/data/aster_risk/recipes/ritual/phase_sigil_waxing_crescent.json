@@ -1,17 +1,16 @@
 {
     "type": "aster_risk:ritual",
     "energy_type": "lunar",
-    "center": { "tag": "forge:gems/moonstone" },
-    "pedestals": [
+    "ingredients": [
+        { "tag": "forge:gems/moonstone" },
         { "item": "aster_risk:stardust" },
-        { "item": "aster_risk:lunar_dust" },
-        { "item": "minecraft:feather" },
-        { "item": "minecraft:feather" }
+        { "item": "aster_risk:stardust" },
+        { "item": "aster_risk:stardust" },
+        { "item": "aster_risk:lunar_dust" }
     ],
     "result": {
         "item": "aster_risk:phase_sigil_waxing_crescent",
         "count": 1
     },
-    "mana_cost": 100,
-    "process_time": 80
+    "mana_cost": 150
 }

@@ -1,0 +1,11 @@
+{
+    "type": "pedestal",
+    "name": "DIAMOND",
+    "description": "Four corners pattern",
+    "positions": [
+        {"x": 2, "y": 0, "z": 2},
+        {"x": -2, "y": 0, "z": 2},
+        {"x": 2, "y": 0, "z": -2},
+        {"x": -2, "y": 0, "z": -2}
+    ]
+}

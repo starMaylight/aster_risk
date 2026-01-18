@@ -1,0 +1,11 @@
+{
+    "type": "aster_risk:celestial_enchant",
+    "pattern": "VOID_SPIRAL",
+    "input": {
+        "tag": "forge:armors/boots"
+    },
+    "enchantment": "aster_risk:lunar_stride",
+    "level": 3,
+    "moonlight_cost": 550,
+    "description": "Enhance boots with lunar stride"
+}

@@ -1,0 +1,11 @@
+{
+    "type": "aster_risk:celestial_enchant",
+    "pattern": "HEAVENS_HAMMER",
+    "input": {
+        "tag": "forge:tools/swords"
+    },
+    "enchantment": "minecraft:smite",
+    "level": 5,
+    "moonlight_cost": 700,
+    "description": "Holy power against undead"
+}

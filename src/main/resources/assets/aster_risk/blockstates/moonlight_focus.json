@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "facing=down": { "model": "aster_risk:block/moonlight_focus" },
+        "facing=up": { "model": "aster_risk:block/moonlight_focus", "x": 180 },
+        "facing=north": { "model": "aster_risk:block/moonlight_focus", "x": 90 },
+        "facing=south": { "model": "aster_risk:block/moonlight_focus", "x": 90, "y": 180 },
+        "facing=west": { "model": "aster_risk:block/moonlight_focus", "x": 90, "y": 270 },
+        "facing=east": { "model": "aster_risk:block/moonlight_focus", "x": 90, "y": 90 }
+    }
+}

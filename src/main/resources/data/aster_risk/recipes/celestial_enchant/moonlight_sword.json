@@ -1,0 +1,11 @@
+{
+    "type": "aster_risk:celestial_enchant",
+    "pattern": "LUNAR_CRESCENT",
+    "input": {
+        "tag": "forge:tools/swords"
+    },
+    "enchantment": "aster_risk:moonlight",
+    "level": 5,
+    "moonlight_cost": 500,
+    "description": "Enhance sword with powerful moonlight energy"
+}

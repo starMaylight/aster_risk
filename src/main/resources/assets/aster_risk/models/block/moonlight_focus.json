@@ -1,0 +1,21 @@
+{
+    "parent": "minecraft:block/block",
+    "textures": {
+        "particle": "aster_risk:block/moonlight_focus",
+        "texture": "aster_risk:block/moonlight_focus"
+    },
+    "elements": [
+        {
+            "from": [2, 2, 2],
+            "to": [14, 14, 14],
+            "faces": {
+                "down": {"texture": "#texture"},
+                "up": {"texture": "#texture"},
+                "north": {"texture": "#texture"},
+                "south": {"texture": "#texture"},
+                "west": {"texture": "#texture"},
+                "east": {"texture": "#texture"}
+            }
+        }
+    ]
+}

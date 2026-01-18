@@ -1,0 +1,11 @@
+{
+    "type": "aster_risk:celestial_enchant",
+    "pattern": "MANA_FOCUS",
+    "input": {
+        "tag": "forge:tools"
+    },
+    "enchantment": "minecraft:efficiency",
+    "level": 5,
+    "moonlight_cost": 800,
+    "description": "Increase tool efficiency"
+}

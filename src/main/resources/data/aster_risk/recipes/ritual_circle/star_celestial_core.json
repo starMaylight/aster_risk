@@ -1,0 +1,20 @@
+{
+    "type": "aster_risk:ritual_circle",
+    "pattern": "STAR",
+    "ingredients": [
+        { "item": "aster_risk:moonstone" },
+        { "item": "aster_risk:moonstone" },
+        { "item": "aster_risk:stardust" },
+        { "item": "aster_risk:stardust" },
+        { "item": "aster_risk:starflagment" },
+        { "item": "aster_risk:starflagment" },
+        { "item": "aster_risk:meteorite_fragment" },
+        { "item": "aster_risk:meteorite_fragment" }
+    ],
+    "result": {
+        "item": "aster_risk:celestial_nucleus",
+        "count": 1
+    },
+    "mana_cost": 1000,
+    "description": "A powerful ritual requiring the full star pattern"
+}

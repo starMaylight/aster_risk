@@ -1,0 +1,11 @@
+{
+    "type": "aster_risk:celestial_enchant",
+    "pattern": "ECLIPSE_RING",
+    "input": {
+        "tag": "forge:tools/swords"
+    },
+    "enchantment": "aster_risk:void_touch",
+    "level": 3,
+    "moonlight_cost": 800,
+    "description": "Infuse weapon with void corruption"
+}

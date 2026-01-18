@@ -77,4 +77,40 @@ public class ModRecipes {
 
     public static final RegistryObject<RecipeSerializer<MeteorSummoningRecipe>> METEOR_SUMMONING_SERIALIZER =
         RECIPE_SERIALIZERS.register("meteor_summoning", MeteorSummoningRecipe.Serializer::new);
+
+    // === 魔法陣クラフトレシピ ===
+    public static final RegistryObject<RecipeType<RitualCircleRecipe>> RITUAL_CIRCLE_TYPE =
+        RECIPE_TYPES.register("ritual_circle", () -> new RecipeType<>() {
+            @Override
+            public String toString() {
+                return AsterRiskMod.MODID + ":ritual_circle";
+            }
+        });
+
+    public static final RegistryObject<RecipeSerializer<RitualCircleRecipe>> RITUAL_CIRCLE_SERIALIZER =
+        RECIPE_SERIALIZERS.register("ritual_circle", RitualCircleRecipe.Serializer::new);
+
+    // === 集光チャンバーレシピ ===
+    public static final RegistryObject<RecipeType<FocusChamberRecipe>> FOCUS_CHAMBER_TYPE =
+        RECIPE_TYPES.register("focus_chamber", () -> new RecipeType<>() {
+            @Override
+            public String toString() {
+                return AsterRiskMod.MODID + ":focus_chamber";
+            }
+        });
+
+    public static final RegistryObject<RecipeSerializer<FocusChamberRecipe>> FOCUS_CHAMBER_SERIALIZER =
+        RECIPE_SERIALIZERS.register("focus_chamber", FocusChamberRecipe.Serializer::new);
+
+    // === 天体エンチャントレシピ ===
+    public static final RegistryObject<RecipeType<CelestialEnchantRecipe>> CELESTIAL_ENCHANT_TYPE =
+        RECIPE_TYPES.register("celestial_enchant", () -> new RecipeType<>() {
+            @Override
+            public String toString() {
+                return AsterRiskMod.MODID + ":celestial_enchant";
+            }
+        });
+
+    public static final RegistryObject<RecipeSerializer<CelestialEnchantRecipe>> CELESTIAL_ENCHANT_SERIALIZER =
+        RECIPE_SERIALIZERS.register("celestial_enchant", CelestialEnchantRecipe.Serializer::new);
 }

@@ -1,0 +1,11 @@
+{
+    "type": "aster_risk:celestial_enchant",
+    "pattern": "LUNAR_CRESCENT",
+    "input": {
+        "tag": "forge:tools/axes"
+    },
+    "enchantment": "aster_risk:moonlight",
+    "level": 3,
+    "moonlight_cost": 400,
+    "description": "Infuse axe with lunar power"
+}

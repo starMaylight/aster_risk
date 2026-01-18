@@ -1,0 +1,11 @@
+{
+    "type": "aster_risk:celestial_enchant",
+    "pattern": "LUCKY_NOVA",
+    "input": {
+        "item": "minecraft:bow"
+    },
+    "enchantment": "minecraft:infinity",
+    "level": 1,
+    "moonlight_cost": 1800,
+    "description": "Infinite arrows from the stars"
+}

@@ -1,0 +1,15 @@
+{
+    "type": "aster_risk:focus_chamber",
+    "ingredients": [
+        { "item": "aster_risk:moonstone" },
+        { "item": "aster_risk:moonstone" },
+        { "item": "aster_risk:moonstone" },
+        { "item": "aster_risk:stardust" }
+    ],
+    "result": {
+        "item": "aster_risk:lunar_dust",
+        "count": 8
+    },
+    "moonlight_cost": 150,
+    "description": "Refine moonstone into lunar dust using focused moonlight"
+}

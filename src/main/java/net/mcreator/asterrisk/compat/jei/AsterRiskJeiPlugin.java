@@ -7,7 +7,9 @@ import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.mcreator.asterrisk.AsterRiskMod;
 import net.mcreator.asterrisk.init.AsterRiskModBlocks;
+import net.mcreator.asterrisk.compat.jei.MultiblockStructureGuideCategory;
 import net.mcreator.asterrisk.recipe.*;
+import net.mcreator.asterrisk.registry.ModBlocks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -34,20 +36,20 @@ public class AsterRiskJeiPlugin implements IModPlugin {
         try {
             var guiHelper = registration.getJeiHelpers().getGuiHelper();
             
-            // 儀式レシピカテゴリ
+            // 既存カテゴリ
             registration.addRecipeCategories(new RitualRecipeCategory(guiHelper));
-            
-            // Infuserレシピカテゴリ
             registration.addRecipeCategories(new InfuserRecipeCategory(guiHelper));
-            
-            // 錬金術レシピカテゴリ
             registration.addRecipeCategories(new AlchemyRecipeCategory(guiHelper));
-            
-            // 月相鍛冶レシピカテゴリ
             registration.addRecipeCategories(new PhaseSmithingRecipeCategory(guiHelper));
-            
-            // 流星召喚レシピカテゴリ
             registration.addRecipeCategories(new MeteorSummoningRecipeCategory(guiHelper));
+            
+            // 新システムカテゴリ
+            registration.addRecipeCategories(new RitualCircleRecipeCategory(guiHelper));
+            registration.addRecipeCategories(new FocusChamberRecipeCategory(guiHelper));
+            registration.addRecipeCategories(new CelestialEnchantRecipeCategory(guiHelper));
+            
+            // マルチブロック構造ガイドカテゴリ（全構造を統合）
+            registration.addRecipeCategories(new MultiblockStructureGuideCategory(guiHelper));
             
         } catch (Exception e) {
             AsterRiskMod.LOGGER.warn("Failed to register JEI categories: " + e.getMessage());
@@ -61,25 +63,34 @@ public class AsterRiskJeiPlugin implements IModPlugin {
             
             RecipeManager recipeManager = Minecraft.getInstance().level.getRecipeManager();
 
-            // 儀式レシピを登録
+            // 既存レシピ
             List<RitualRecipe> ritualRecipes = recipeManager.getAllRecipesFor(ModRecipes.RITUAL_TYPE.get());
             registration.addRecipes(RitualRecipeCategory.RECIPE_TYPE, ritualRecipes);
             
-            // Infuserレシピを登録
             List<InfuserRecipe> infuserRecipes = recipeManager.getAllRecipesFor(ModRecipes.INFUSER_TYPE.get());
             registration.addRecipes(InfuserRecipeCategory.RECIPE_TYPE, infuserRecipes);
             
-            // 錬金術レシピを登録
             List<AlchemyRecipe> alchemyRecipes = recipeManager.getAllRecipesFor(ModRecipes.ALCHEMY_TYPE.get());
             registration.addRecipes(AlchemyRecipeCategory.RECIPE_TYPE, alchemyRecipes);
             
-            // 月相鍛冶レシピを登録
             List<PhaseSmithingRecipe> phaseSmithingRecipes = recipeManager.getAllRecipesFor(ModRecipes.PHASE_SMITHING_TYPE.get());
             registration.addRecipes(PhaseSmithingRecipeCategory.RECIPE_TYPE, phaseSmithingRecipes);
             
-            // 流星召喚レシピを登録
             List<MeteorSummoningRecipe> meteorSummoningRecipes = recipeManager.getAllRecipesFor(ModRecipes.METEOR_SUMMONING_TYPE.get());
             registration.addRecipes(MeteorSummoningRecipeCategory.RECIPE_TYPE, meteorSummoningRecipes);
+            
+            // 新システムレシピ
+            List<RitualCircleRecipe> ritualCircleRecipes = recipeManager.getAllRecipesFor(ModRecipes.RITUAL_CIRCLE_TYPE.get());
+            registration.addRecipes(RitualCircleRecipeCategory.RECIPE_TYPE, ritualCircleRecipes);
+            
+            List<FocusChamberRecipe> focusChamberRecipes = recipeManager.getAllRecipesFor(ModRecipes.FOCUS_CHAMBER_TYPE.get());
+            registration.addRecipes(FocusChamberRecipeCategory.RECIPE_TYPE, focusChamberRecipes);
+            
+            List<CelestialEnchantRecipe> celestialEnchantRecipes = recipeManager.getAllRecipesFor(ModRecipes.CELESTIAL_ENCHANT_TYPE.get());
+            registration.addRecipes(CelestialEnchantRecipeCategory.RECIPE_TYPE, celestialEnchantRecipes);
+            
+            // マルチブロック構造ガイド（静的データ）
+            registration.addRecipes(MultiblockStructureGuideCategory.RECIPE_TYPE, MultiblockStructureGuideCategory.getAllGuides());
             
         } catch (Exception e) {
             AsterRiskMod.LOGGER.warn("Failed to register JEI recipes: " + e.getMessage());
@@ -89,7 +100,7 @@ public class AsterRiskJeiPlugin implements IModPlugin {
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         try {
-            // === 儀式システム ===
+            // === 既存システム ===
             registration.addRecipeCatalyst(
                 new ItemStack(AsterRiskModBlocks.ALTAR_CORE.get()),
                 RitualRecipeCategory.RECIPE_TYPE
@@ -98,29 +109,66 @@ public class AsterRiskJeiPlugin implements IModPlugin {
                 new ItemStack(AsterRiskModBlocks.RITUAL_PEDESTAL.get()),
                 RitualRecipeCategory.RECIPE_TYPE
             );
-            
-            // === Lunar Infuser ===
             registration.addRecipeCatalyst(
                 new ItemStack(AsterRiskModBlocks.LUNAR_INFUSER.get()),
                 InfuserRecipeCategory.RECIPE_TYPE
             );
-            
-            // === 錬金釜 ===
             registration.addRecipeCatalyst(
                 new ItemStack(AsterRiskModBlocks.ALCHEMICAL_CAULDRON.get()),
                 AlchemyRecipeCategory.RECIPE_TYPE
             );
-            
-            // === 月相の金床 ===
             registration.addRecipeCatalyst(
                 new ItemStack(AsterRiskModBlocks.PHASE_ANVIL.get()),
                 PhaseSmithingRecipeCategory.RECIPE_TYPE
             );
-            
-            // === 流星召喚陣 ===
             registration.addRecipeCatalyst(
                 new ItemStack(AsterRiskModBlocks.METEOR_SUMMONING.get()),
                 MeteorSummoningRecipeCategory.RECIPE_TYPE
+            );
+            
+            // === 新システム ===
+            // 魔法陣クラフト
+            registration.addRecipeCatalyst(
+                new ItemStack(ModBlocks.RITUAL_CIRCLE.get()),
+                RitualCircleRecipeCategory.RECIPE_TYPE
+            );
+            
+            // 月光集光
+            registration.addRecipeCatalyst(
+                new ItemStack(ModBlocks.MOONLIGHT_FOCUS.get()),
+                FocusChamberRecipeCategory.RECIPE_TYPE
+            );
+            registration.addRecipeCatalyst(
+                new ItemStack(ModBlocks.FOCUS_CHAMBER_CORE.get()),
+                FocusChamberRecipeCategory.RECIPE_TYPE
+            );
+            
+            // 天体エンチャント
+            registration.addRecipeCatalyst(
+                new ItemStack(ModBlocks.CELESTIAL_ENCHANTING_TABLE.get()),
+                CelestialEnchantRecipeCategory.RECIPE_TYPE
+            );
+            
+            // マルチブロック構造ガイド
+            registration.addRecipeCatalyst(
+                new ItemStack(ModBlocks.RITUAL_CIRCLE.get()),
+                MultiblockStructureGuideCategory.RECIPE_TYPE
+            );
+            registration.addRecipeCatalyst(
+                new ItemStack(AsterRiskModBlocks.RITUAL_PEDESTAL.get()),
+                MultiblockStructureGuideCategory.RECIPE_TYPE
+            );
+            registration.addRecipeCatalyst(
+                new ItemStack(ModBlocks.FOCUS_CHAMBER_CORE.get()),
+                MultiblockStructureGuideCategory.RECIPE_TYPE
+            );
+            registration.addRecipeCatalyst(
+                new ItemStack(ModBlocks.CELESTIAL_ENCHANTING_TABLE.get()),
+                MultiblockStructureGuideCategory.RECIPE_TYPE
+            );
+            registration.addRecipeCatalyst(
+                new ItemStack(ModBlocks.MOONLIGHT_FOCUS.get()),
+                MultiblockStructureGuideCategory.RECIPE_TYPE
             );
             
         } catch (Exception e) {

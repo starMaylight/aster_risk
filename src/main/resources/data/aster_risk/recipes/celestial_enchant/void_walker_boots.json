@@ -1,0 +1,11 @@
+{
+    "type": "aster_risk:celestial_enchant",
+    "pattern": "VOID_SPIRAL",
+    "input": {
+        "tag": "forge:armors/boots"
+    },
+    "enchantment": "minecraft:feather_falling",
+    "level": 4,
+    "moonlight_cost": 800,
+    "description": "Walk safely through the void"
+}

@@ -1,0 +1,13 @@
+{
+    "type": "pedestal",
+    "name": "HEXAGON",
+    "description": "Six-point hexagonal pattern",
+    "positions": [
+        {"x": 2, "y": 0, "z": 0},
+        {"x": -2, "y": 0, "z": 0},
+        {"x": 1, "y": 0, "z": 2},
+        {"x": -1, "y": 0, "z": 2},
+        {"x": 1, "y": 0, "z": -2},
+        {"x": -1, "y": 0, "z": -2}
+    ]
+}

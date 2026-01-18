@@ -227,6 +227,7 @@ public class StarAnvilBlockEntity extends BlockEntity {
     /**
      * アイテムに適用可能な全エンチャントを取得
      * Forgeレジストリを使用して他modのエンチャントにも対応
+     * ※ CelestialEnchantingTable専用エンチャントは除外（isDiscoverable=false）
      */
     private List<Enchantment> getPossibleEnchantments(ItemStack stack) {
         List<Enchantment> enchants = new ArrayList<>();
@@ -236,15 +237,18 @@ public class StarAnvilBlockEntity extends BlockEntity {
             // このアイテムに適用可能なエンチャントのみ追加
             if (enchantment.canEnchant(stack)) {
                 // 呪い（Curse）エンチャントは除外
-                if (!enchantment.isCurse()) {
-                    // トレジャーエンチャントは低確率で追加
-                    if (enchantment.isTreasureOnly()) {
-                        if (random.nextFloat() < 0.3f) {
-                            enchants.add(enchantment);
-                        }
-                    } else {
+                if (enchantment.isCurse()) continue;
+                
+                // isDiscoverable=falseのエンチャントは除外（CelestialEnchantingTable専用）
+                if (!enchantment.isDiscoverable()) continue;
+                
+                // トレジャーエンチャントは低確率で追加
+                if (enchantment.isTreasureOnly()) {
+                    if (random.nextFloat() < 0.3f) {
                         enchants.add(enchantment);
                     }
+                } else {
+                    enchants.add(enchantment);
                 }
             }
         }

@@ -1,0 +1,16 @@
+{
+    "type": "aster_risk:focus_chamber",
+    "ingredients": [
+        { "item": "minecraft:iron_ingot" },
+        { "item": "minecraft:iron_ingot" },
+        { "item": "minecraft:iron_ingot" },
+        { "item": "aster_risk:lunar_dust" },
+        { "item": "aster_risk:lunar_dust" }
+    ],
+    "result": {
+        "item": "aster_risk:silver_ingot",
+        "count": 3
+    },
+    "moonlight_cost": 100,
+    "description": "Transmute iron into silver with moonlight"
+}

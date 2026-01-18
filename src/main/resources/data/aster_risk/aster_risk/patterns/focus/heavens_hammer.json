@@ -1,0 +1,11 @@
+{
+    "type": "focus",
+    "name": "HEAVENS_HAMMER",
+    "description": "Cross pattern for Heaven's Hammer enchant (avoids pillars)",
+    "positions": [
+        {"x": 0, "y": 2, "z": 3},
+        {"x": 0, "y": 2, "z": -3},
+        {"x": 3, "y": 2, "z": 0},
+        {"x": -3, "y": 2, "z": 0}
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "type": "aster_risk:ritual_circle",
+    "pattern": "DIAMOND",
+    "ingredients": [
+        { "item": "aster_risk:eclipse_core" },
+        { "item": "aster_risk:celestial_nucleus" },
+        { "item": "aster_risk:void_shard" },
+        { "item": "aster_risk:shadow_essence" }
+    ],
+    "result": {
+        "item": "aster_risk:focus_chamber_core",
+        "count": 1
+    },
+    "mana_cost": 3500,
+    "description": "Forge the Focus Chamber Core using Eclipse Monarch's dark essence"
+}

@@ -1,0 +1,11 @@
+{
+    "type": "aster_risk:celestial_enchant",
+    "pattern": "STAR_CROSS",
+    "input": {
+        "tag": "forge:armors/chestplates"
+    },
+    "enchantment": "aster_risk:celestial_protection",
+    "level": 5,
+    "moonlight_cost": 600,
+    "description": "Grant maximum celestial protection"
+}

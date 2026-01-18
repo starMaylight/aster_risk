@@ -13,6 +13,10 @@ import net.mcreator.asterrisk.block.entity.PhaseAnvilBlockEntity;
 import net.mcreator.asterrisk.block.entity.ResonatorBlockEntity;
 import net.mcreator.asterrisk.block.entity.RitualPedestalBlockEntity;
 import net.mcreator.asterrisk.block.entity.StarAnvilBlockEntity;
+import net.mcreator.asterrisk.block.entity.RitualCircleBlockEntity;
+import net.mcreator.asterrisk.block.entity.MoonlightFocusBlockEntity;
+import net.mcreator.asterrisk.block.entity.FocusChamberCoreBlockEntity;
+import net.mcreator.asterrisk.block.entity.CelestialEnchantingTableBlockEntity;
 import net.mcreator.asterrisk.init.AsterRiskModBlocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.registries.DeferredRegister;
@@ -112,4 +116,30 @@ public class ModBlockEntities {
         REGISTRY.register("meteor_summoning", () -> 
             BlockEntityType.Builder.of(MeteorSummoningBlockEntity::new,
                 AsterRiskModBlocks.METEOR_SUMMONING.get()).build(null));
+
+    // === 新システム Phase 2 ===
+
+    @SuppressWarnings("ConstantConditions")
+    public static final RegistryObject<BlockEntityType<RitualCircleBlockEntity>> RITUAL_CIRCLE = 
+        REGISTRY.register("ritual_circle", () -> 
+            BlockEntityType.Builder.of(RitualCircleBlockEntity::new,
+                ModBlocks.RITUAL_CIRCLE.get()).build(null));
+
+    @SuppressWarnings("ConstantConditions")
+    public static final RegistryObject<BlockEntityType<MoonlightFocusBlockEntity>> MOONLIGHT_FOCUS = 
+        REGISTRY.register("moonlight_focus", () -> 
+            BlockEntityType.Builder.of(MoonlightFocusBlockEntity::new,
+                ModBlocks.MOONLIGHT_FOCUS.get()).build(null));
+
+    @SuppressWarnings("ConstantConditions")
+    public static final RegistryObject<BlockEntityType<FocusChamberCoreBlockEntity>> FOCUS_CHAMBER_CORE = 
+        REGISTRY.register("focus_chamber_core", () -> 
+            BlockEntityType.Builder.of(FocusChamberCoreBlockEntity::new,
+                ModBlocks.FOCUS_CHAMBER_CORE.get()).build(null));
+
+    @SuppressWarnings("ConstantConditions")
+    public static final RegistryObject<BlockEntityType<CelestialEnchantingTableBlockEntity>> CELESTIAL_ENCHANTING_TABLE = 
+        REGISTRY.register("celestial_enchanting_table", () -> 
+            BlockEntityType.Builder.of(CelestialEnchantingTableBlockEntity::new,
+                ModBlocks.CELESTIAL_ENCHANTING_TABLE.get()).build(null));
 }

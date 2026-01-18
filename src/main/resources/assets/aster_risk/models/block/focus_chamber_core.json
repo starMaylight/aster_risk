@@ -1,0 +1,21 @@
+{
+    "parent": "minecraft:block/block",
+    "textures": {
+        "particle": "aster_risk:block/focus_chamber_core",
+        "all": "aster_risk:block/focus_chamber_core"
+    },
+    "elements": [
+        {
+            "from": [1, 1, 1],
+            "to": [15, 15, 15],
+            "faces": {
+                "down": {"texture": "#all"},
+                "up": {"texture": "#all"},
+                "north": {"texture": "#all"},
+                "south": {"texture": "#all"},
+                "west": {"texture": "#all"},
+                "east": {"texture": "#all"}
+            }
+        }
+    ]
+}

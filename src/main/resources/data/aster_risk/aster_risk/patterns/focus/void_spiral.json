@@ -1,0 +1,13 @@
+{
+    "type": "focus",
+    "name": "VOID_SPIRAL",
+    "description": "Ascending spiral pattern",
+    "positions": [
+        {"x": 1, "y": 1, "z": 0},
+        {"x": 1, "y": 1, "z": 1},
+        {"x": 0, "y": 2, "z": 2},
+        {"x": -1, "y": 2, "z": 1},
+        {"x": -1, "y": 3, "z": 0},
+        {"x": 0, "y": 3, "z": -1}
+    ]
+}

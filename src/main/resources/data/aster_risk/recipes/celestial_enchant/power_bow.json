@@ -1,0 +1,11 @@
+{
+    "type": "aster_risk:celestial_enchant",
+    "pattern": "STELLAR_CORE",
+    "input": {
+        "item": "minecraft:bow"
+    },
+    "enchantment": "minecraft:power",
+    "level": 5,
+    "moonlight_cost": 1000,
+    "description": "Empower arrows with stellar energy"
+}

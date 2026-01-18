@@ -1,0 +1,11 @@
+{
+    "type": "aster_risk:celestial_enchant",
+    "pattern": "STAR_CROSS",
+    "input": {
+        "tag": "forge:tools/shovels"
+    },
+    "enchantment": "minecraft:fortune",
+    "level": 3,
+    "moonlight_cost": 500,
+    "description": "Grant shovel fortune through stellar alignment"
+}

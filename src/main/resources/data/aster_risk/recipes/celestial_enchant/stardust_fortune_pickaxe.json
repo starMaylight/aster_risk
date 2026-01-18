@@ -1,0 +1,11 @@
+{
+    "type": "aster_risk:celestial_enchant",
+    "pattern": "CONSTELLATION",
+    "input": {
+        "tag": "forge:tools/pickaxes"
+    },
+    "enchantment": "aster_risk:stardust_fortune",
+    "level": 5,
+    "moonlight_cost": 700,
+    "description": "Maximize fortune with constellation pattern"
+}

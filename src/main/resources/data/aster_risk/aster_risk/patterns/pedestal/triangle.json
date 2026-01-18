@@ -1,0 +1,10 @@
+{
+    "type": "pedestal",
+    "name": "TRIANGLE",
+    "description": "Three-point triangle pattern",
+    "positions": [
+        {"x": 0, "y": 0, "z": -2},
+        {"x": 2, "y": 0, "z": 2},
+        {"x": -2, "y": 0, "z": 2}
+    ]
+}

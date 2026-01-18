@@ -1,0 +1,11 @@
+{
+    "type": "aster_risk:celestial_enchant",
+    "pattern": "LUCKY_NOVA",
+    "input": {
+        "tag": "forge:tools/swords"
+    },
+    "enchantment": "minecraft:looting",
+    "level": 3,
+    "moonlight_cost": 1000,
+    "description": "Increase drops with stellar luck"
+}

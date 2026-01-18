@@ -1,6 +1,7 @@
 package net.mcreator.asterrisk.init;
 
 import net.mcreator.asterrisk.AsterRiskMod;
+import net.mcreator.asterrisk.registry.ModBlocks;
 import net.mcreator.asterrisk.registry.ModSpawnEggs;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -119,6 +120,71 @@ public class CustomCreativeTabHandler {
             event.accept(AsterRiskModItems.STELLAR_SCEPTER.get());
             
             event.accept(AsterRiskModItems.ASTER_GUIDE.get());
+            
+            // === 新クラフトシステムブロック ===
+            event.accept(ModBlocks.RITUAL_CIRCLE.get());
+            event.accept(ModBlocks.MOONLIGHT_FOCUS.get());
+            event.accept(ModBlocks.FOCUS_CHAMBER_CORE.get());
+            event.accept(ModBlocks.CELESTIAL_ENCHANTING_TABLE.get());
+            
+            // === 新システム: 流星召喚・月相鍛冶・錬金術 ===
+            event.accept(AsterRiskModItems.ALCHEMICAL_CAULDRON.get());
+            event.accept(AsterRiskModItems.PHASE_ANVIL.get());
+            event.accept(AsterRiskModItems.METEOR_SUMMONING.get());
+            
+            // === 新素材 ===
+            event.accept(AsterRiskModItems.PRISMATIC_METEORITE.get());
+            event.accept(AsterRiskModItems.CELESTIAL_NUCLEUS.get());
+            event.accept(AsterRiskModItems.ENHANCED_GOLD.get());
+            event.accept(AsterRiskModItems.RADIANT_DIAMOND.get());
+            event.accept(AsterRiskModItems.STARDUST_CATALYST.get());
+            
+            // === 月相の刻印（8種） ===
+            event.accept(AsterRiskModItems.PHASE_SIGIL_FULL_MOON.get());
+            event.accept(AsterRiskModItems.PHASE_SIGIL_WANING_GIBBOUS.get());
+            event.accept(AsterRiskModItems.PHASE_SIGIL_LAST_QUARTER.get());
+            event.accept(AsterRiskModItems.PHASE_SIGIL_WANING_CRESCENT.get());
+            event.accept(AsterRiskModItems.PHASE_SIGIL_NEW_MOON.get());
+            event.accept(AsterRiskModItems.PHASE_SIGIL_WAXING_CRESCENT.get());
+            event.accept(AsterRiskModItems.PHASE_SIGIL_FIRST_QUARTER.get());
+            event.accept(AsterRiskModItems.PHASE_SIGIL_WAXING_GIBBOUS.get());
+            
+            // === 流星召喚の核（4種） ===
+            event.accept(AsterRiskModItems.METEOR_CORE_SMALL.get());
+            event.accept(AsterRiskModItems.METEOR_CORE_STARDUST.get());
+            event.accept(AsterRiskModItems.METEOR_CORE_PRISMATIC.get());
+            event.accept(AsterRiskModItems.METEOR_CORE_OMINOUS.get());
+            
+            // === 銀のツールセット ===
+            event.accept(AsterRiskModItems.SILVER_SWORD.get());
+            event.accept(AsterRiskModItems.SILVER_PICKAXE.get());
+            event.accept(AsterRiskModItems.SILVER_AXE.get());
+            event.accept(AsterRiskModItems.SILVER_SHOVEL.get());
+            event.accept(AsterRiskModItems.SILVER_HOE.get());
+            
+            // === 月光石のツールセット ===
+            event.accept(AsterRiskModItems.MOONSTONE_SWORD.get());
+            event.accept(AsterRiskModItems.MOONSTONE_PICKAXE.get());
+            event.accept(AsterRiskModItems.MOONSTONE_AXE.get());
+            event.accept(AsterRiskModItems.MOONSTONE_SHOVEL.get());
+            event.accept(AsterRiskModItems.MOONSTONE_HOE.get());
+            
+            // === 新武器 ===
+            event.accept(AsterRiskModItems.PRISMATIC_GREATSWORD.get());
+            event.accept(AsterRiskModItems.VOID_DAGGER.get());
+            event.accept(AsterRiskModItems.SHADOW_SCYTHE.get());
+            
+            // === 銀の防具セット ===
+            event.accept(AsterRiskModItems.SILVER_HELMET.get());
+            event.accept(AsterRiskModItems.SILVER_CHESTPLATE.get());
+            event.accept(AsterRiskModItems.SILVER_LEGGINGS.get());
+            event.accept(AsterRiskModItems.SILVER_BOOTS.get());
+            
+            // === 虚空の防具セット ===
+            event.accept(AsterRiskModItems.VOID_HELMET.get());
+            event.accept(AsterRiskModItems.VOID_CHESTPLATE.get());
+            event.accept(AsterRiskModItems.VOID_LEGGINGS.get());
+            event.accept(AsterRiskModItems.VOID_BOOTS.get());
         }
     }
 }

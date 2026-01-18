@@ -36,8 +36,8 @@ import java.util.*;
  */
 public class AltarCoreBlockEntity extends BlockEntity {
 
-    // マナ設定
-    public static final float MAX_MANA = 2000f;
+    // マナ設定 - 高コストレシピ対応のため増加
+    public static final float MAX_MANA = 5000f;
     public static final float RECEIVE_RATE = 100f;
 
     // 台座の検出位置（十字 + 斜め = 8方向、距離2）
@@ -115,6 +115,50 @@ public class AltarCoreBlockEntity extends BlockEntity {
     }
     
     /**
+     * 4種すべてのオベリスクがリンクされているか確認
+     */
+    public boolean hasAllObeliskTypes() {
+        Set<ObeliskEnergyType> linkedTypes = new HashSet<>();
+        if (level == null) return false;
+        
+        for (BlockPos pos : linkedObelisks) {
+            BlockEntity be = level.getBlockEntity(pos);
+            if (be instanceof ObeliskBlockEntity obelisk && obelisk.getEnergyType() != null) {
+                linkedTypes.add(obelisk.getEnergyType());
+            }
+        }
+        
+        // 4種すべて揃っているか
+        return linkedTypes.contains(ObeliskEnergyType.LUNAR) &&
+               linkedTypes.contains(ObeliskEnergyType.STELLAR) &&
+               linkedTypes.contains(ObeliskEnergyType.SOLAR) &&
+               linkedTypes.contains(ObeliskEnergyType.VOID);
+    }
+    
+    /**
+     * 不足しているオベリスクタイプのリストを取得
+     */
+    public List<ObeliskEnergyType> getMissingObeliskTypes() {
+        Set<ObeliskEnergyType> linkedTypes = new HashSet<>();
+        if (level != null) {
+            for (BlockPos pos : linkedObelisks) {
+                BlockEntity be = level.getBlockEntity(pos);
+                if (be instanceof ObeliskBlockEntity obelisk && obelisk.getEnergyType() != null) {
+                    linkedTypes.add(obelisk.getEnergyType());
+                }
+            }
+        }
+        
+        List<ObeliskEnergyType> missing = new ArrayList<>();
+        for (ObeliskEnergyType type : ObeliskEnergyType.values()) {
+            if (!linkedTypes.contains(type)) {
+                missing.add(type);
+            }
+        }
+        return missing;
+    }
+    
+    /**
      * 特定タイプのオベリスクからエネルギーを取得
      */
     @Nullable
@@ -170,11 +214,43 @@ public class AltarCoreBlockEntity extends BlockEntity {
     }
     
     /**
+     * 複数タイプのエネルギーを一括消費
+     */
+    public boolean consumeMultipleObeliskEnergies(Map<ObeliskEnergyType, Integer> required) {
+        // まず全て足りているかチェック
+        Map<ObeliskEnergyType, Integer> available = getAvailableEnergies();
+        for (Map.Entry<ObeliskEnergyType, Integer> entry : required.entrySet()) {
+            if (available.getOrDefault(entry.getKey(), 0) < entry.getValue()) {
+                return false;
+            }
+        }
+        
+        // 消費実行
+        for (Map.Entry<ObeliskEnergyType, Integer> entry : required.entrySet()) {
+            consumeObeliskEnergy(entry.getKey(), entry.getValue());
+        }
+        return true;
+    }
+    
+    /**
      * 特定タイプのエネルギーが十分にあるか確認
      */
     public boolean hasEnoughObeliskEnergy(ObeliskEnergyType type, int amount) {
         Map<ObeliskEnergyType, Integer> energies = getAvailableEnergies();
         return energies.getOrDefault(type, 0) >= amount;
+    }
+    
+    /**
+     * 複数タイプのエネルギーが十分にあるか確認
+     */
+    public boolean hasEnoughMultipleEnergies(Map<ObeliskEnergyType, Integer> required) {
+        Map<ObeliskEnergyType, Integer> available = getAvailableEnergies();
+        for (Map.Entry<ObeliskEnergyType, Integer> entry : required.entrySet()) {
+            if (available.getOrDefault(entry.getKey(), 0) < entry.getValue()) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -252,20 +328,41 @@ public class AltarCoreBlockEntity extends BlockEntity {
             return false;
         }
         
-        // オベリスクエネルギーチェック
-        ObeliskEnergyType requiredType = recipe.getRequiredEnergyType();
-        int requiredAmount = recipe.getRequiredEnergyAmount();
-        
-        if (requiredType != null && requiredAmount > 0) {
-            if (!hasEnoughObeliskEnergy(requiredType, requiredAmount)) {
-                String typeName = requiredType.getName();
-                typeName = typeName.substring(0, 1).toUpperCase() + typeName.substring(1);
+        // 全オベリスク必須チェック
+        if (recipe.requiresAllObelisks()) {
+            if (!hasAllObeliskTypes()) {
+                List<ObeliskEnergyType> missing = getMissingObeliskTypes();
+                StringBuilder missingStr = new StringBuilder();
+                for (int i = 0; i < missing.size(); i++) {
+                    if (i > 0) missingStr.append(", ");
+                    String name = missing.get(i).getName();
+                    missingStr.append(name.substring(0, 1).toUpperCase()).append(name.substring(1));
+                }
                 player.displayClientMessage(
-                    Component.literal("§c Not enough " + typeName + " energy! Need: " + requiredAmount + 
-                        ", Have: " + getAvailableEnergies().getOrDefault(requiredType, 0)),
+                    Component.literal("§c Requires ALL 4 obelisks linked! Missing: §e" + missingStr),
                     true
                 );
                 return false;
+            }
+        }
+        
+        // 複数オベリスクエネルギーチェック
+        Map<ObeliskEnergyType, Integer> requiredEnergies = recipe.getRequiredEnergies();
+        if (!requiredEnergies.isEmpty()) {
+            if (!hasEnoughMultipleEnergies(requiredEnergies)) {
+                Map<ObeliskEnergyType, Integer> available = getAvailableEnergies();
+                for (Map.Entry<ObeliskEnergyType, Integer> entry : requiredEnergies.entrySet()) {
+                    int have = available.getOrDefault(entry.getKey(), 0);
+                    if (have < entry.getValue()) {
+                        String typeName = entry.getKey().getName();
+                        typeName = typeName.substring(0, 1).toUpperCase() + typeName.substring(1);
+                        player.displayClientMessage(
+                            Component.literal("§c Not enough " + typeName + " energy! Need: " + entry.getValue() + ", Have: " + have),
+                            true
+                        );
+                        return false;
+                    }
+                }
             }
         }
 
@@ -319,12 +416,10 @@ public class AltarCoreBlockEntity extends BlockEntity {
         List<RitualPedestalBlockEntity> pedestalsWithItems = findPedestalsWithItems();
 
         if (manaStorage.getMana() >= currentRecipe.getManaCost()) {
-            // オベリスクエネルギー消費
-            ObeliskEnergyType requiredType = currentRecipe.getRequiredEnergyType();
-            int requiredAmount = currentRecipe.getRequiredEnergyAmount();
-            
-            if (requiredType != null && requiredAmount > 0) {
-                if (!consumeObeliskEnergy(requiredType, requiredAmount)) {
+            // 複数オベリスクエネルギー消費
+            Map<ObeliskEnergyType, Integer> requiredEnergies = currentRecipe.getRequiredEnergies();
+            if (!requiredEnergies.isEmpty()) {
+                if (!consumeMultipleObeliskEnergies(requiredEnergies)) {
                     // エネルギー不足で失敗
                     ritualInProgress = false;
                     ritualProgress = 0;
@@ -332,8 +427,10 @@ public class AltarCoreBlockEntity extends BlockEntity {
                     return;
                 }
                 
-                // オベリスクエネルギー消費エフェクト
-                spawnObeliskEnergyEffect(requiredType);
+                // オベリスクエネルギー消費エフェクト（全タイプ）
+                for (ObeliskEnergyType type : requiredEnergies.keySet()) {
+                    spawnObeliskEnergyEffect(type);
+                }
             }
             
             // マナ消費

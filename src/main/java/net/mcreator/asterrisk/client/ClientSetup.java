@@ -15,6 +15,8 @@ import net.mcreator.asterrisk.client.renderer.StarAnvilRenderer;
 import net.mcreator.asterrisk.client.renderer.AlchemicalCauldronRenderer;
 import net.mcreator.asterrisk.client.renderer.PhaseAnvilRenderer;
 import net.mcreator.asterrisk.client.renderer.MeteorSummoningRenderer;
+import net.mcreator.asterrisk.client.renderer.FocusChamberCoreRenderer;
+import net.mcreator.asterrisk.client.renderer.CelestialEnchantingTableRenderer;
 import net.mcreator.asterrisk.client.renderer.MoonRabbitRenderer;
 import net.mcreator.asterrisk.client.renderer.StarSpiritRenderer;
 import net.mcreator.asterrisk.client.renderer.MoonlightFairyRenderer;
@@ -23,6 +25,8 @@ import net.mcreator.asterrisk.client.renderer.VoidWalkerRenderer;
 import net.mcreator.asterrisk.client.renderer.CorruptedGolemRenderer;
 import net.mcreator.asterrisk.client.renderer.EclipseMonarchRenderer;
 import net.mcreator.asterrisk.client.renderer.StarDevourerRenderer;
+import net.mcreator.asterrisk.client.renderer.HeavenlyAnvilRenderer;
+import net.mcreator.asterrisk.entity.ModEntityTypes;
 import net.mcreator.asterrisk.registry.ModBlockEntities;
 import net.mcreator.asterrisk.registry.ModEntities;
 import net.minecraftforge.api.distmarker.Dist;
@@ -45,6 +49,10 @@ public class ClientSetup {
         event.registerBlockEntityRenderer(ModBlockEntities.PHASE_ANVIL.get(), PhaseAnvilRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.METEOR_SUMMONING.get(), MeteorSummoningRenderer::new);
         
+        // 新システム: Focus Chamber と Celestial Enchanting Table
+        event.registerBlockEntityRenderer(ModBlockEntities.FOCUS_CHAMBER_CORE.get(), FocusChamberCoreRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.CELESTIAL_ENCHANTING_TABLE.get(), CelestialEnchantingTableRenderer::new);
+        
         // 友好Mob
         event.registerEntityRenderer(ModEntities.MOON_RABBIT.get(), MoonRabbitRenderer::new);
         event.registerEntityRenderer(ModEntities.STAR_SPIRIT.get(), StarSpiritRenderer::new);
@@ -58,6 +66,9 @@ public class ClientSetup {
         // ボス
         event.registerEntityRenderer(ModEntities.ECLIPSE_MONARCH.get(), EclipseMonarchRenderer::new);
         event.registerEntityRenderer(ModEntities.STAR_DEVOURER.get(), StarDevourerRenderer::new);
+        
+        // その他エンティティ
+        event.registerEntityRenderer(ModEntityTypes.HEAVENLY_ANVIL.get(), HeavenlyAnvilRenderer::new);
     }
     
     @SubscribeEvent

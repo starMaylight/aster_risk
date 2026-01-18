@@ -1,7 +1,7 @@
 {
     "display": {
         "icon": {
-            "item": "aster_risk:lunar_portal"
+            "item": "aster_risk:moonstone"
         },
         "title": {
             "translate": "advancement.aster_risk.lunar_realm.title"

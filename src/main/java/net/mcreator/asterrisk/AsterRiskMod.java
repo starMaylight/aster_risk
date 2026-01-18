@@ -25,6 +25,7 @@ import net.mcreator.asterrisk.registry.ModPotions;
 import net.mcreator.asterrisk.registry.ModParticles;
 import net.mcreator.asterrisk.registry.ModEntities;
 import net.mcreator.asterrisk.registry.ModEnchantments;
+import net.mcreator.asterrisk.registry.ModBlocks;
 import net.mcreator.asterrisk.recipe.ModRecipes;
 import net.mcreator.asterrisk.network.AsterRiskNetwork;
 import net.mcreator.asterrisk.init.AsterRiskModTabs;
@@ -72,6 +73,12 @@ public class AsterRiskMod {
 		// 構造物登録
 		ModStructures.register(context.getModEventBus());
 		ModStructurePieces.register(context.getModEventBus());
+		// 新クラフトシステムブロック登録
+		ModBlocks.register(context.getModEventBus());
+		// カスタムエンティティ登録（enchantment用）
+		net.mcreator.asterrisk.entity.ModEntityTypes.REGISTRY.register(context.getModEventBus());
+		// Config登録
+		net.mcreator.asterrisk.config.AsterRiskConfig.register();
 		// End of user code block mod constructor
 		MinecraftForge.EVENT_BUS.register(this);
 		IEventBus bus = context.getModEventBus();

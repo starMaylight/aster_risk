@@ -1,0 +1,18 @@
+{
+    "type": "aster_risk:ritual_circle",
+    "pattern": "HEXAGON",
+    "ingredients": [
+        { "item": "aster_risk:stellar_heart" },
+        { "item": "aster_risk:prismatic_meteorite" },
+        { "item": "aster_risk:prismatic_meteorite" },
+        { "item": "aster_risk:radiant_diamond" },
+        { "item": "aster_risk:starflagment" },
+        { "item": "aster_risk:starflagment" }
+    ],
+    "result": {
+        "item": "aster_risk:moonlight_focus",
+        "count": 1
+    },
+    "mana_cost": 3000,
+    "description": "Create a Moonlight Focus lens using the heart of Star Devourer and prismatic essence"
+}

@@ -1,0 +1,11 @@
+{
+    "type": "aster_risk:celestial_enchant",
+    "pattern": "ECLIPSE_RING",
+    "input": {
+        "tag": "forge:tools/swords"
+    },
+    "enchantment": "minecraft:sharpness",
+    "level": 5,
+    "moonlight_cost": 900,
+    "description": "Sharpen with eclipse energy"
+}

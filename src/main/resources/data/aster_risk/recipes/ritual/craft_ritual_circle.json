@@ -1,0 +1,25 @@
+{
+    "type": "aster_risk:ritual",
+    "ingredients": [
+        { "item": "aster_risk:eclipse_core" },
+        { "item": "aster_risk:stellar_heart" },
+        { "item": "aster_risk:celestial_nucleus" },
+        { "item": "aster_risk:celestial_nucleus" },
+        { "item": "aster_risk:moonstone_block" },
+        { "item": "aster_risk:moonstone_block" },
+        { "item": "aster_risk:stardust_block" },
+        { "item": "aster_risk:stardust_block" }
+    ],
+    "result": {
+        "item": "aster_risk:ritual_circle",
+        "count": 1
+    },
+    "mana_cost": 4500,
+    "requires_all_obelisks": true,
+    "required_energies": [
+        { "type": "lunar", "amount": 100 },
+        { "type": "stellar", "amount": 100 },
+        { "type": "solar", "amount": 100 },
+        { "type": "void", "amount": 100 }
+    ]
+}

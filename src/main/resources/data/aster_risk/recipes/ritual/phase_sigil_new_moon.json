@@ -1,17 +1,16 @@
 {
     "type": "aster_risk:ritual",
-    "energy_type": "void",
-    "center": { "tag": "forge:gems/moonstone" },
-    "pedestals": [
-        { "item": "aster_risk:shadow_essence" },
-        { "item": "aster_risk:shadow_essence" },
-        { "item": "aster_risk:lunar_dust" },
-        { "item": "aster_risk:lunar_dust" }
+    "energy_type": "lunar",
+    "ingredients": [
+        { "tag": "forge:gems/moonstone" },
+        { "item": "aster_risk:stardust" },
+        { "item": "aster_risk:stardust" },
+        { "item": "aster_risk:void_shard" },
+        { "item": "aster_risk:void_shard" }
     ],
     "result": {
         "item": "aster_risk:phase_sigil_new_moon",
         "count": 1
     },
-    "mana_cost": 150,
-    "process_time": 100
+    "mana_cost": 150
 }

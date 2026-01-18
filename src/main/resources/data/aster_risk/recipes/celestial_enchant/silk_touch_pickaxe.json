@@ -1,0 +1,11 @@
+{
+    "type": "aster_risk:celestial_enchant",
+    "pattern": "STAR_CROSS",
+    "input": {
+        "tag": "forge:tools/pickaxes"
+    },
+    "enchantment": "minecraft:silk_touch",
+    "level": 1,
+    "moonlight_cost": 1500,
+    "description": "Gently harvest with starlight"
+}
