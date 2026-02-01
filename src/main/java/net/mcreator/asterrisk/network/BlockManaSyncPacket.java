@@ -9,6 +9,7 @@ import net.mcreator.asterrisk.block.entity.LunarCollectorBlockEntity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.network.NetworkEvent;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.function.Supplier;
 
@@ -36,14 +37,18 @@ public class BlockManaSyncPacket {
     public static BlockManaSyncPacket decode(FriendlyByteBuf buf) {
         return new BlockManaSyncPacket(buf.readBlockPos(), buf.readFloat(), buf.readFloat());
     }
-
+    
     public static void handle(BlockManaSyncPacket msg, Supplier<NetworkEvent.Context> ctx) {
-        ctx.get().enqueueWork(() -> {
-            DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> handleClient(msg));
-        });
-        ctx.get().setPacketHandled(true);
-    }
+    	NetworkEvent.Context c = ctx.get();
+    	c.enqueueWork(() -> {
+        	if (c.getDirection().getReceptionSide().isClient()) { // ← 追加（安全柵）
+            	DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> handleClient(msg));
+        	}
+    	});
+    	c.setPacketHandled(true);
+	}
 
+	@OnlyIn(Dist.CLIENT)
     private static void handleClient(BlockManaSyncPacket msg) {
         Level level = Minecraft.getInstance().level;
         if (level != null) {

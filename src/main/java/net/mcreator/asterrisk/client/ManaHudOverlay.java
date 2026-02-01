@@ -2,6 +2,8 @@ package net.mcreator.asterrisk.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.mcreator.asterrisk.AsterRiskMod;
+import net.mcreator.asterrisk.config.AsterRiskConfig;
+import net.mcreator.asterrisk.config.AsterRiskConfig.ManaHudPosition;
 import net.mcreator.asterrisk.mana.LunarManaCapability;
 import net.mcreator.asterrisk.mana.ManaUtils;
 import net.minecraft.client.Minecraft;
@@ -23,25 +25,30 @@ public class ManaHudOverlay {
         AsterRiskMod.MODID, "textures/gui/mana_bar.png"
     );
 
-    // HUDの位置設定
-    private static final int BAR_X = 10;
-    private static final int BAR_Y = 10;
+    // HUDのサイズ設定
     private static final int BAR_WIDTH = 80;
     private static final int BAR_HEIGHT = 8;
+    private static final int PADDING = 10;
+    private static final int TOTAL_WIDTH = BAR_WIDTH + 70; // バー + テキスト + 月齢アイコン
 
     @SubscribeEvent
     public static void onRenderGui(RenderGuiOverlayEvent.Post event) {
         // エクスペリエンスバーの後に描画
         if (event.getOverlay() == VanillaGuiOverlay.EXPERIENCE_BAR.type()) {
             Minecraft mc = Minecraft.getInstance();
-            
+
             if (mc.player == null || mc.options.hideGui) {
+                return;
+            }
+
+            // HUDが無効の場合はスキップ
+            if (!AsterRiskConfig.CLIENT.manaHudEnabled.get()) {
                 return;
             }
 
             mc.player.getCapability(LunarManaCapability.LUNAR_MANA).ifPresent(mana -> {
                 GuiGraphics guiGraphics = event.getGuiGraphics();
-                
+
                 float currentMana = mana.getMana();
                 float maxMana = mana.getMaxMana();
                 float manaPercent = currentMana / maxMana;
@@ -49,9 +56,21 @@ public class ManaHudOverlay {
                 int screenWidth = mc.getWindow().getGuiScaledWidth();
                 int screenHeight = mc.getWindow().getGuiScaledHeight();
 
-                // 画面左上に表示
-                int x = BAR_X;
-                int y = BAR_Y;
+                // 設定から位置を計算
+                int[] pos = calculatePosition(screenWidth, screenHeight);
+                int x = pos[0];
+                int y = pos[1];
+
+                // スケールを取得
+                float scale = AsterRiskConfig.CLIENT.manaHudScale.get().floatValue();
+
+                // スケール適用
+                if (scale != 1.0f) {
+                    guiGraphics.pose().pushPose();
+                    guiGraphics.pose().translate(x, y, 0);
+                    guiGraphics.pose().scale(scale, scale, 1.0f);
+                    guiGraphics.pose().translate(-x, -y, 0);
+                }
 
                 // 背景（暗い青）
                 guiGraphics.fill(x - 1, y - 1, x + BAR_WIDTH + 1, y + BAR_HEIGHT + 1, 0xFF000033);
@@ -87,8 +106,32 @@ public class ManaHudOverlay {
                 // 月齢アイコン表示
                 String moonIcon = getMoonPhaseIcon(moonPhase);
                 guiGraphics.drawString(mc.font, moonIcon, x + BAR_WIDTH + 55, y, 0xFFFFDD, true);
+
+                // スケール復元
+                if (scale != 1.0f) {
+                    guiGraphics.pose().popPose();
+                }
             });
         }
+    }
+
+    /**
+     * 設定に基づいてHUDの位置を計算
+     */
+    private static int[] calculatePosition(int screenWidth, int screenHeight) {
+        ManaHudPosition position = AsterRiskConfig.CLIENT.manaHudPosition.get();
+
+        return switch (position) {
+            case TOP_LEFT -> new int[]{PADDING, PADDING};
+            case TOP_RIGHT -> new int[]{screenWidth - TOTAL_WIDTH - PADDING, PADDING};
+            case BOTTOM_LEFT -> new int[]{PADDING, screenHeight - BAR_HEIGHT - PADDING - 20};
+            case BOTTOM_RIGHT -> new int[]{screenWidth - TOTAL_WIDTH - PADDING, screenHeight - BAR_HEIGHT - PADDING - 20};
+            case TOP_CENTER -> new int[]{(screenWidth - TOTAL_WIDTH) / 2, PADDING};
+            case CUSTOM -> new int[]{
+                AsterRiskConfig.CLIENT.manaHudCustomX.get(),
+                AsterRiskConfig.CLIENT.manaHudCustomY.get()
+            };
+        };
     }
 
     /**

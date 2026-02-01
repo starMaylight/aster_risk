@@ -1,6 +1,8 @@
 package net.mcreator.asterrisk.event;
 
 import net.mcreator.asterrisk.AsterRiskMod;
+import net.mcreator.asterrisk.network.AsterRiskNetwork;
+import net.mcreator.asterrisk.network.ExclusiveEnchantSyncPacket;
 import net.mcreator.asterrisk.recipe.*;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.crafting.RecipeManager;
@@ -26,6 +28,23 @@ public class ServerRecipeLoaderEvent {
             // サーバー全体の同期
             RecipeManager recipeManager = ServerLifecycleHooks.getCurrentServer().getRecipeManager();
             loadServerRecipes(recipeManager);
+
+            // 全プレイヤーにExclusiveEnchantレシピを同期
+            ServerLifecycleHooks.getCurrentServer().execute(() -> {
+                ExclusiveEnchantSyncPacket packet = new ExclusiveEnchantSyncPacket(
+                    ExclusiveEnchantRecipeManager.getInstance().getAllRecipes()
+                );
+                AsterRiskNetwork.sendToAll(packet);
+                AsterRiskMod.LOGGER.debug("Sent ExclusiveEnchant recipes to all players");
+            });
+        } else {
+            // 特定プレイヤーへの同期
+            ServerPlayer player = event.getPlayer();
+            ExclusiveEnchantSyncPacket packet = new ExclusiveEnchantSyncPacket(
+                ExclusiveEnchantRecipeManager.getInstance().getAllRecipes()
+            );
+            AsterRiskNetwork.sendToPlayer(packet, player);
+            AsterRiskMod.LOGGER.debug("Sent ExclusiveEnchant recipes to player: {}", player.getName().getString());
         }
     }
     
@@ -34,9 +53,16 @@ public class ServerRecipeLoaderEvent {
      */
     @SubscribeEvent
     public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
-        if (event.getEntity() instanceof ServerPlayer) {
+        if (event.getEntity() instanceof ServerPlayer player) {
             RecipeManager recipeManager = ServerLifecycleHooks.getCurrentServer().getRecipeManager();
             loadServerRecipes(recipeManager);
+
+            // ログインしたプレイヤーにExclusiveEnchantレシピを同期
+            ExclusiveEnchantSyncPacket packet = new ExclusiveEnchantSyncPacket(
+                ExclusiveEnchantRecipeManager.getInstance().getAllRecipes()
+            );
+            AsterRiskNetwork.sendToPlayer(packet, player);
+            AsterRiskMod.LOGGER.debug("Sent ExclusiveEnchant recipes to logged in player: {}", player.getName().getString());
         }
     }
     

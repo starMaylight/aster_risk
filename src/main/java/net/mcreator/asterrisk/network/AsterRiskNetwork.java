@@ -33,6 +33,11 @@ public class AsterRiskNetwork {
             BlockManaSyncPacket::encode,
             BlockManaSyncPacket::decode,
             BlockManaSyncPacket::handle);
+
+        CHANNEL.registerMessage(packetId++, ExclusiveEnchantSyncPacket.class,
+            ExclusiveEnchantSyncPacket::encode,
+            ExclusiveEnchantSyncPacket::decode,
+            ExclusiveEnchantSyncPacket::handle);
     }
 
     public static void sendToServer(Object msg) {
@@ -45,5 +50,9 @@ public class AsterRiskNetwork {
 
     public static void sendToAllTracking(Object msg, ServerPlayer player) {
         CHANNEL.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> player), msg);
+    }
+
+    public static void sendToAll(Object msg) {
+        CHANNEL.send(PacketDistributor.ALL.noArg(), msg);
     }
 }

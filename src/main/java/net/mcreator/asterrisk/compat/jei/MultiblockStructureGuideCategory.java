@@ -162,7 +162,7 @@ public class MultiblockStructureGuideCategory implements IRecipeCategory<Multibl
         guiGraphics.drawString(font, "Y=0 (Bottom)", 5, layerStartY - 12, 0x555555, false);
         drawChamberLayer(guiGraphics, 5, layerStartY, cellSize, new String[]{
             "CCC",
-            "C C",
+            "CCC",
             "CCC"
         }, false);
         
@@ -178,7 +178,7 @@ public class MultiblockStructureGuideCategory implements IRecipeCategory<Multibl
         guiGraphics.drawString(font, "Y=2 (Top)", 5 + layerGap * 2, layerStartY - 12, 0x555555, false);
         drawChamberLayer(guiGraphics, 5 + layerGap * 2, layerStartY, cellSize, new String[]{
             "CCC",
-            "C C",
+            "CCC",
             "CCC"
         }, false);
         

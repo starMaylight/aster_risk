@@ -103,8 +103,8 @@ public class ExclusiveEnchantRecipeManager extends SimpleJsonResourceReloadListe
         }
         
         Predicate<ItemStack> canApply = getItemPredicate(itemType);
-        
-        return new ExclusiveEnchantData(id, enchantment, pattern, baseCost, maxLevel, canApply, description);
+
+        return new ExclusiveEnchantData(id, enchantment, pattern, baseCost, maxLevel, itemType, canApply, description);
     }
     
     /**
@@ -189,6 +189,53 @@ public class ExclusiveEnchantRecipeManager extends SimpleJsonResourceReloadListe
     public List<ExclusiveEnchantData> getAllRecipes() {
         return Collections.unmodifiableList(allRecipes);
     }
+
+    /**
+     * クライアント側でレシピを同期するためにクリアして再読み込み
+     * サーバーから受信したデータを使用
+     */
+    public void clearAndReloadFromSync(List<SyncData> syncDataList) {
+        recipesByPattern.clear();
+        allRecipes.clear();
+
+        for (SyncData data : syncDataList) {
+            Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(data.enchantmentId);
+            if (enchantment == null) {
+                LOGGER.warn("Client sync: Enchantment not found: {}", data.enchantmentId);
+                continue;
+            }
+
+            Predicate<ItemStack> canApply = getItemPredicate(data.itemType);
+            ExclusiveEnchantData recipeData = new ExclusiveEnchantData(
+                data.id,
+                enchantment,
+                data.pattern,
+                data.baseCost,
+                data.maxLevel,
+                data.itemType,
+                canApply,
+                data.description
+            );
+
+            recipesByPattern.put(data.pattern, recipeData);
+            allRecipes.add(recipeData);
+        }
+
+        LOGGER.info("Client: Synced {} exclusive enchant recipes", allRecipes.size());
+    }
+
+    /**
+     * 同期用のデータクラス
+     */
+    public record SyncData(
+        ResourceLocation id,
+        ResourceLocation enchantmentId,
+        String pattern,
+        int baseCost,
+        int maxLevel,
+        String itemType,
+        String description
+    ) {}
     
     /**
      * 専用エンチャントデータクラス
@@ -199,20 +246,22 @@ public class ExclusiveEnchantRecipeManager extends SimpleJsonResourceReloadListe
         public final String pattern;
         public final int baseCost;
         public final int maxLevel;
+        public final String itemType;
         public final Predicate<ItemStack> canApply;
         public final String description;
-        
+
         public ExclusiveEnchantData(ResourceLocation id, Enchantment enchantment, String pattern,
-                                    int baseCost, int maxLevel, Predicate<ItemStack> canApply, String description) {
+                                    int baseCost, int maxLevel, String itemType, Predicate<ItemStack> canApply, String description) {
             this.id = id;
             this.enchantment = enchantment;
             this.pattern = pattern;
             this.baseCost = baseCost;
             this.maxLevel = maxLevel;
+            this.itemType = itemType;
             this.canApply = canApply;
             this.description = description;
         }
-        
+
         /**
          * コストを計算（指数関数的に増加）
          * cost = baseCost * 3^currentLevel
