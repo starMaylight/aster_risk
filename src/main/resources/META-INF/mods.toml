@@ -6,14 +6,11 @@ license="MIT License"
 modId="aster_risk"
 version="1.3.0"
 displayName="Aster Risk"
-displayURL="https://mcreator.net,"
+displayURL="https://github.com/starMaylight/aster_risk"
 logoFile="logo.png"
-credits="Created using mod maker MCreator - https://mcreator.net/about"
-authors="MCreator,starMaylight"
-description="moonlight,ritual,andmore! ,issue:https://github.com/starMaylight/aster_risk/issues"
-
-# Start of user code block mod configuration
-# End of user code block mod configuration
+credits="starMaylight"
+authors="starMaylight"
+description="Moonlight, ritual, and more! A celestial magic mod for Minecraft."
 
 [[dependencies.aster_risk]]
     modId="minecraft"
@@ -22,8 +19,9 @@ description="moonlight,ritual,andmore! ,issue:https://github.com/starMaylight/as
     ordering="AFTER"
     side="BOTH"
 
-
-
-
-# Start of user code block dependencies configuration
-# End of user code block dependencies configuration
+[[dependencies.aster_risk]]
+    modId="forge"
+    mandatory=true
+    versionRange="[47,)"
+    ordering="NONE"
+    side="BOTH"
