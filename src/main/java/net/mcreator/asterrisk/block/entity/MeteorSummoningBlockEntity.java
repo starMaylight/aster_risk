@@ -1,7 +1,7 @@
 package net.mcreator.asterrisk.block.entity;
 
 import net.mcreator.asterrisk.block.MeteorSummoningBlock;
-import net.mcreator.asterrisk.init.AsterRiskModItems;
+import net.mcreator.asterrisk.registry.ModItems;
 import net.mcreator.asterrisk.item.MeteorSummonCoreItem;
 import net.mcreator.asterrisk.mana.BlockManaCapability;
 import net.mcreator.asterrisk.registry.ModBlockEntities;
@@ -182,22 +182,22 @@ public class MeteorSummoningBlockEntity extends BlockEntity {
         // ドロップアイテム
         switch (type) {
             case SMALL -> {
-                dropItem(serverLevel, x, y, z, new ItemStack(AsterRiskModItems.METEORITE_FRAGMENT.get(), 3 + random.nextInt(4)));
+                dropItem(serverLevel, x, y, z, new ItemStack(ModItems.METEORITE_FRAGMENT.get(), 3 + random.nextInt(4)));
                 if (random.nextFloat() < 0.3f) {
-                    dropItem(serverLevel, x, y, z, new ItemStack(AsterRiskModItems.STARDUST.get(), 1 + random.nextInt(2)));
+                    dropItem(serverLevel, x, y, z, new ItemStack(ModItems.STARDUST.get(), 1 + random.nextInt(2)));
                 }
             }
             case STARDUST -> {
-                dropItem(serverLevel, x, y, z, new ItemStack(AsterRiskModItems.STARDUST.get(), 8 + random.nextInt(8)));
-                dropItem(serverLevel, x, y, z, new ItemStack(AsterRiskModItems.METEORITE_FRAGMENT.get(), 2 + random.nextInt(3)));
+                dropItem(serverLevel, x, y, z, new ItemStack(ModItems.STARDUST.get(), 8 + random.nextInt(8)));
+                dropItem(serverLevel, x, y, z, new ItemStack(ModItems.METEORITE_FRAGMENT.get(), 2 + random.nextInt(3)));
                 if (random.nextFloat() < 0.2f) {
-                    dropItem(serverLevel, x, y, z, new ItemStack(AsterRiskModItems.STARFLAGMENT.get(), 1));
+                    dropItem(serverLevel, x, y, z, new ItemStack(ModItems.STARFLAGMENT.get(), 1));
                 }
             }
             case PRISMATIC -> {
-                dropItem(serverLevel, x, y, z, new ItemStack(AsterRiskModItems.PRISMATIC_METEORITE.get(), 1 + random.nextInt(2)));
-                dropItem(serverLevel, x, y, z, new ItemStack(AsterRiskModItems.STARFLAGMENT.get(), 2 + random.nextInt(3)));
-                dropItem(serverLevel, x, y, z, new ItemStack(AsterRiskModItems.STARDUST.get(), 5 + random.nextInt(5)));
+                dropItem(serverLevel, x, y, z, new ItemStack(ModItems.PRISMATIC_METEORITE.get(), 1 + random.nextInt(2)));
+                dropItem(serverLevel, x, y, z, new ItemStack(ModItems.STARFLAGMENT.get(), 2 + random.nextInt(3)));
+                dropItem(serverLevel, x, y, z, new ItemStack(ModItems.STARDUST.get(), 5 + random.nextInt(5)));
                 // 虹色のパーティクル
                 for (int i = 0; i < 50; i++) {
                     serverLevel.sendParticles(ParticleTypes.END_ROD, 
@@ -223,10 +223,10 @@ public class MeteorSummoningBlockEntity extends BlockEntity {
                     }
                 }
                 // 高レアドロップ
-                dropItem(serverLevel, x, y, z, new ItemStack(AsterRiskModItems.VOID_SHARD.get(), 3 + random.nextInt(3)));
-                dropItem(serverLevel, x, y, z, new ItemStack(AsterRiskModItems.SHADOW_ESSENCE.get(), 2 + random.nextInt(3)));
+                dropItem(serverLevel, x, y, z, new ItemStack(ModItems.VOID_SHARD.get(), 3 + random.nextInt(3)));
+                dropItem(serverLevel, x, y, z, new ItemStack(ModItems.SHADOW_ESSENCE.get(), 2 + random.nextInt(3)));
                 if (random.nextFloat() < 0.15f) {
-                    dropItem(serverLevel, x, y, z, new ItemStack(AsterRiskModItems.PRISMATIC_METEORITE.get(), 1));
+                    dropItem(serverLevel, x, y, z, new ItemStack(ModItems.PRISMATIC_METEORITE.get(), 1));
                 }
             }
         }

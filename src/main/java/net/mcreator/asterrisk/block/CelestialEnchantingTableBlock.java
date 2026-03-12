@@ -3,7 +3,7 @@ package net.mcreator.asterrisk.block;
 import net.mcreator.asterrisk.block.entity.CelestialEnchantingTableBlockEntity;
 import net.mcreator.asterrisk.block.entity.MoonlightFocusBlockEntity;
 import net.mcreator.asterrisk.config.AsterRiskConfig;
-import net.mcreator.asterrisk.init.AsterRiskModBlocks;
+import net.mcreator.asterrisk.registry.ModBlocks;
 import net.mcreator.asterrisk.pattern.FocusPattern;
 import net.mcreator.asterrisk.pattern.PatternManager;
 import net.mcreator.asterrisk.registry.ModBlockEntities;
@@ -125,8 +125,8 @@ public class CelestialEnchantingTableBlock extends BaseEntityBlock {
         player.displayClientMessage(Component.literal("§e=== Celestial Enchant Debug ==="), false);
         player.displayClientMessage(Component.literal("§7Mana: §b" + (int)table.getStoredMana() + "/" + (int)table.getMaxMana()), false);
         
-        Block lunarPillar = AsterRiskModBlocks.LUNAR_PILLAR.get();
-        Block celestialTile = AsterRiskModBlocks.CELESTIAL_TILE.get();
+        Block lunarPillar = ModBlocks.LUNAR_PILLAR.get();
+        Block celestialTile = ModBlocks.CELESTIAL_TILE.get();
         
         player.displayClientMessage(Component.literal("§7--- Pillar Structure ---"), false);
         for (int i = 0; i < CelestialEnchantingTableBlockEntity.PILLAR_BASES.length; i++) {

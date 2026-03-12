@@ -1,6 +1,6 @@
 package net.mcreator.asterrisk.world.structure;
 
-import net.mcreator.asterrisk.init.AsterRiskModBlocks;
+import net.mcreator.asterrisk.registry.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -50,8 +50,8 @@ public class MeteoriteCraterPiece extends StructurePiece {
     public void postProcess(WorldGenLevel level, StructureManager structureManager, ChunkGenerator generator,
                            RandomSource random, BoundingBox box, ChunkPos chunkPos, BlockPos pos) {
         
-        BlockState meteoriteBlock = AsterRiskModBlocks.METEORITE_BLOCK.get().defaultBlockState();
-        BlockState meteoriteOre = AsterRiskModBlocks.METEORITE_ORE.get().defaultBlockState();
+        BlockState meteoriteBlock = ModBlocks.METEORITE_BLOCK.get().defaultBlockState();
+        BlockState meteoriteOre = ModBlocks.METEORITE_ORE.get().defaultBlockState();
         BlockState air = Blocks.AIR.defaultBlockState();
         BlockState magma = Blocks.MAGMA_BLOCK.defaultBlockState();
         BlockState obsidian = Blocks.OBSIDIAN.defaultBlockState();

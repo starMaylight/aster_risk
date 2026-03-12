@@ -1,6 +1,6 @@
 package net.mcreator.asterrisk.enchantment;
 
-import net.mcreator.asterrisk.init.AsterRiskModEffects;
+import net.mcreator.asterrisk.registry.ModEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -49,7 +49,7 @@ public class StellarWardEnchantment extends Enchantment {
         if (totalLevel > 0 && !entity.level().isClientSide()) {
             // 確率でStellar Blessingを付与
             if (entity.getRandom().nextFloat() < 0.15f * totalLevel) {
-                entity.addEffect(new MobEffectInstance(AsterRiskModEffects.STELLAR_BLESSING.get(), 100, 0));
+                entity.addEffect(new MobEffectInstance(ModEffects.STELLAR_BLESSING.get(), 100, 0));
             }
         }
     }

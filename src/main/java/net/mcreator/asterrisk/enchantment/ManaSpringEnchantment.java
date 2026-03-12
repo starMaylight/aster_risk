@@ -1,6 +1,6 @@
 package net.mcreator.asterrisk.enchantment;
 
-import net.mcreator.asterrisk.init.AsterRiskModEffects;
+import net.mcreator.asterrisk.registry.ModEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;

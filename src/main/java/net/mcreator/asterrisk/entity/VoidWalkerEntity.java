@@ -1,7 +1,7 @@
 package net.mcreator.asterrisk.entity;
 
-import net.mcreator.asterrisk.init.AsterRiskModEffects;
-import net.mcreator.asterrisk.init.AsterRiskModItems;
+import net.mcreator.asterrisk.registry.ModEffects;
+import net.mcreator.asterrisk.registry.ModItems;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -145,7 +145,7 @@ public class VoidWalkerEntity extends Monster {
         if (result && target instanceof LivingEntity living) {
             // 月蝕の呪いを付与
             living.addEffect(new MobEffectInstance(
-                AsterRiskModEffects.LUNAR_ECLIPSE_CURSE.get(),
+                ModEffects.LUNAR_ECLIPSE_CURSE.get(),
                 20 * 8, // 8秒
                 0
             ));
@@ -194,7 +194,7 @@ public class VoidWalkerEntity extends Monster {
         
         // Void Shard - 60%確率で1個
         if (this.random.nextFloat() < 0.6F + looting * 0.1F) {
-            this.spawnAtLocation(AsterRiskModItems.VOID_SHARD.get());
+            this.spawnAtLocation(ModItems.VOID_SHARD.get());
         }
     }
 }

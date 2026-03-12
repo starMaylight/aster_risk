@@ -1,7 +1,7 @@
 package net.mcreator.asterrisk.entity;
 
-import net.mcreator.asterrisk.init.AsterRiskModEffects;
-import net.mcreator.asterrisk.init.AsterRiskModItems;
+import net.mcreator.asterrisk.registry.ModEffects;
+import net.mcreator.asterrisk.registry.ModItems;
 import net.mcreator.asterrisk.registry.ModEntities;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
@@ -227,7 +227,7 @@ public class EclipseMonarchEntity extends Monster {
                 e -> e != this);
             for (LivingEntity entity : hit) {
                 entity.hurt(this.damageSources().mobAttack(this), 8.0F + phase * 2);
-                entity.addEffect(new MobEffectInstance(AsterRiskModEffects.STARLESS_NIGHT.get(), 200, 0));
+                entity.addEffect(new MobEffectInstance(ModEffects.STARLESS_NIGHT.get(), 200, 0));
             }
         }
     }
@@ -282,7 +282,7 @@ public class EclipseMonarchEntity extends Monster {
         LivingEntity target = this.getTarget();
         if (target == null) return;
         
-        target.addEffect(new MobEffectInstance(AsterRiskModEffects.LUNAR_ECLIPSE_CURSE.get(), 300, 1));
+        target.addEffect(new MobEffectInstance(ModEffects.LUNAR_ECLIPSE_CURSE.get(), 300, 1));
         target.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 60, 0));
         target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 1));
         
@@ -372,7 +372,7 @@ public class EclipseMonarchEntity extends Monster {
         
         if (result && target instanceof LivingEntity living) {
             living.addEffect(new MobEffectInstance(
-                AsterRiskModEffects.LUNAR_ECLIPSE_CURSE.get(),
+                ModEffects.LUNAR_ECLIPSE_CURSE.get(),
                 100,
                 0
             ));
@@ -469,19 +469,19 @@ public class EclipseMonarchEntity extends Monster {
         // Eclipse Core - 確定ドロップ 1-2個
         int coreCount = 1 + this.random.nextInt(2) + looting;
         for (int i = 0; i < coreCount; i++) {
-            this.spawnAtLocation(AsterRiskModItems.ECLIPSE_CORE.get());
+            this.spawnAtLocation(ModItems.ECLIPSE_CORE.get());
         }
         
         // Meteorite Fragment - 3-5個
         int fragmentCount = 3 + this.random.nextInt(3) + looting;
         for (int i = 0; i < fragmentCount; i++) {
-            this.spawnAtLocation(AsterRiskModItems.METEORITE_FRAGMENT.get());
+            this.spawnAtLocation(ModItems.METEORITE_FRAGMENT.get());
         }
         
         // Shadow Essence - 2-4個
         int essenceCount = 2 + this.random.nextInt(3);
         for (int i = 0; i < essenceCount; i++) {
-            this.spawnAtLocation(AsterRiskModItems.SHADOW_ESSENCE.get());
+            this.spawnAtLocation(ModItems.SHADOW_ESSENCE.get());
         }
     }
 }

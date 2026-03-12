@@ -1,6 +1,6 @@
 package net.mcreator.asterrisk.world.structure;
 
-import net.mcreator.asterrisk.init.AsterRiskModBlocks;
+import net.mcreator.asterrisk.registry.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -64,12 +64,12 @@ public class EclipseSanctumPiece extends StructurePiece {
     public void postProcess(WorldGenLevel level, StructureManager structureManager, ChunkGenerator generator,
                            RandomSource random, BoundingBox box, ChunkPos chunkPos, BlockPos pos) {
         
-        BlockState eclipseStone = AsterRiskModBlocks.ECLIPSESTONE.get().defaultBlockState();
-        BlockState moonstoneBricks = AsterRiskModBlocks.MOONSTONE_BRICKS.get().defaultBlockState();
-        BlockState polishedMoonstone = AsterRiskModBlocks.POLISHED_MOONSTONE.get().defaultBlockState();
-        BlockState chiseledMoonstone = AsterRiskModBlocks.CHISELED_MOONSTONE.get().defaultBlockState();
-        BlockState eclipseAltar = AsterRiskModBlocks.ECLIPSE_ALTAR.get().defaultBlockState();
-        BlockState moonlightLantern = AsterRiskModBlocks.MOONLIGHT_LANTERN.get().defaultBlockState();
+        BlockState eclipseStone = ModBlocks.ECLIPSESTONE.get().defaultBlockState();
+        BlockState moonstoneBricks = ModBlocks.MOONSTONE_BRICKS.get().defaultBlockState();
+        BlockState polishedMoonstone = ModBlocks.POLISHED_MOONSTONE.get().defaultBlockState();
+        BlockState chiseledMoonstone = ModBlocks.CHISELED_MOONSTONE.get().defaultBlockState();
+        BlockState eclipseAltar = ModBlocks.ECLIPSE_ALTAR.get().defaultBlockState();
+        BlockState moonlightLantern = ModBlocks.MOONLIGHT_LANTERN.get().defaultBlockState();
         BlockState ironBars = Blocks.IRON_BARS.defaultBlockState();
         BlockState air = Blocks.AIR.defaultBlockState();
         BlockState ladder = Blocks.LADDER.defaultBlockState().setValue(LadderBlock.FACING, Direction.SOUTH);

@@ -1,6 +1,6 @@
 package net.mcreator.asterrisk.item;
 
-import net.mcreator.asterrisk.init.AsterRiskModEffects;
+import net.mcreator.asterrisk.registry.ModEffects;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.InteractionResultHolder;
@@ -36,7 +36,7 @@ public class CelestialCharmItem extends Item {
             if (!player.getCooldowns().isOnCooldown(this)) {
                 // 天体の守り効果を付与
                 player.addEffect(new MobEffectInstance(
-                    AsterRiskModEffects.CELESTIAL_GUARD.get(), 
+                    ModEffects.CELESTIAL_GUARD.get(), 
                     EFFECT_DURATION,
                     0
                 ));

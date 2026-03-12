@@ -1,7 +1,7 @@
 package net.mcreator.asterrisk.world;
 
 import net.mcreator.asterrisk.block.LunarPortalBlock;
-import net.mcreator.asterrisk.init.AsterRiskModBlocks;
+import net.mcreator.asterrisk.registry.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -88,7 +88,7 @@ public class LunarRealmTeleporter implements ITeleporter {
                 for (int y = minY; y < maxY; y++) {
                     mutablePos.set(x, y, z);
                     
-                    if (this.level.getBlockState(mutablePos).is(AsterRiskModBlocks.LUNAR_PORTAL.get())) {
+                    if (this.level.getBlockState(mutablePos).is(ModBlocks.LUNAR_PORTAL.get())) {
                         // ポータルの安全なスポーン地点を見つける
                         BlockPos safePos = findSafeSpawnInPortal(mutablePos.immutable());
                         if (safePos != null) {
@@ -120,7 +120,7 @@ public class LunarRealmTeleporter implements ITeleporter {
         BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
         mutablePos.set(portalPos);
         
-        while (this.level.getBlockState(mutablePos.below()).is(AsterRiskModBlocks.LUNAR_PORTAL.get())) {
+        while (this.level.getBlockState(mutablePos.below()).is(ModBlocks.LUNAR_PORTAL.get())) {
             mutablePos.move(Direction.DOWN);
         }
         
@@ -211,7 +211,7 @@ public class LunarRealmTeleporter implements ITeleporter {
     private BlockPos buildPortalStructure(BlockPos basePos) {
         Block frameBlock = LunarPortalBlock.getFrameBlock();
         BlockState frameState = frameBlock.defaultBlockState();
-        BlockState portalState = AsterRiskModBlocks.LUNAR_PORTAL.get().defaultBlockState()
+        BlockState portalState = ModBlocks.LUNAR_PORTAL.get().defaultBlockState()
             .setValue(LunarPortalBlock.AXIS, Direction.Axis.X);
         
         // 設置場所を確保（空気に置き換え）
@@ -220,7 +220,7 @@ public class LunarRealmTeleporter implements ITeleporter {
                 for (int dz = -2; dz <= 2; dz++) {
                     BlockPos clearPos = basePos.offset(dx, dy, dz);
                     BlockState currentState = this.level.getBlockState(clearPos);
-                    if (!currentState.is(frameBlock) && !currentState.is(AsterRiskModBlocks.LUNAR_PORTAL.get())) {
+                    if (!currentState.is(frameBlock) && !currentState.is(ModBlocks.LUNAR_PORTAL.get())) {
                         this.level.setBlock(clearPos, Blocks.AIR.defaultBlockState(), 3);
                     }
                 }

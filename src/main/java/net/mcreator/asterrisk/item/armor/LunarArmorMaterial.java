@@ -6,7 +6,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.mcreator.asterrisk.init.AsterRiskModItems;
+import net.mcreator.asterrisk.registry.ModItems;
 
 /**
  * 月光の防具素材
@@ -42,7 +42,7 @@ public class LunarArmorMaterial implements ArmorMaterial {
 
     @Override
     public Ingredient getRepairIngredient() {
-        return Ingredient.of(AsterRiskModItems.MOONSTONE.get());
+        return Ingredient.of(ModItems.MOONSTONE.get());
     }
 
     @Override

@@ -1,8 +1,8 @@
 package net.mcreator.asterrisk.entity;
 
 import net.mcreator.asterrisk.registry.ModEntities;
-import net.mcreator.asterrisk.init.AsterRiskModItems;
-import net.mcreator.asterrisk.init.AsterRiskModEffects;
+import net.mcreator.asterrisk.registry.ModItems;
+import net.mcreator.asterrisk.registry.ModEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.PathfinderMob;
@@ -98,7 +98,7 @@ public class StarSpiritEntity extends PathfinderMob {
         for (Player player : players) {
             // 星屑の加護を30秒付与
             player.addEffect(new MobEffectInstance(
-                AsterRiskModEffects.STARDUST_PROTECTION.get(),
+                ModEffects.STARDUST_PROTECTION.get(),
                 20 * 30, // 30秒
                 0
             ));
@@ -141,11 +141,11 @@ public class StarSpiritEntity extends PathfinderMob {
         ItemStack stack = player.getItemInHand(hand);
         
         // 星の欠片を与えると即座にバフ
-        if (stack.is(AsterRiskModItems.STARFLAGMENT.get())) {
+        if (stack.is(ModItems.STARFLAGMENT.get())) {
             if (!this.level().isClientSide()) {
                 // 強化されたバフを付与
                 player.addEffect(new MobEffectInstance(
-                    AsterRiskModEffects.STARDUST_PROTECTION.get(),
+                    ModEffects.STARDUST_PROTECTION.get(),
                     20 * 60 * 3, // 3分
                     1 // レベル2
                 ));

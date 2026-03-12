@@ -1,6 +1,6 @@
 package net.mcreator.asterrisk.enchantment;
 
-import net.mcreator.asterrisk.init.AsterRiskModEffects;
+import net.mcreator.asterrisk.registry.ModEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -49,7 +49,7 @@ public class PrismaticStrikeEnchantment extends Enchantment {
             float chance = 0.08f + (level * 0.04f); // レベル1: 12%, レベル2: 16%, レベル3: 20%
             if (attacker.getRandom().nextFloat() < chance) {
                 int duration = 100 + (level * 40); // 5秒 + レベルごとに2秒
-                attacker.addEffect(new MobEffectInstance(AsterRiskModEffects.PRISMATIC_GLOW.get(), duration, level - 1));
+                attacker.addEffect(new MobEffectInstance(ModEffects.PRISMATIC_GLOW.get(), duration, level - 1));
             }
         }
     }

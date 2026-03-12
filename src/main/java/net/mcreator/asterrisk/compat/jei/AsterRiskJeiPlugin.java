@@ -6,7 +6,7 @@ import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.mcreator.asterrisk.AsterRiskMod;
-import net.mcreator.asterrisk.init.AsterRiskModBlocks;
+import net.mcreator.asterrisk.registry.ModBlocks;
 import net.mcreator.asterrisk.compat.jei.MultiblockStructureGuideCategory;
 import net.mcreator.asterrisk.recipe.*;
 import net.mcreator.asterrisk.registry.ModBlocks;
@@ -102,27 +102,27 @@ public class AsterRiskJeiPlugin implements IModPlugin {
         try {
             // === 既存システム ===
             registration.addRecipeCatalyst(
-                new ItemStack(AsterRiskModBlocks.ALTAR_CORE.get()),
+                new ItemStack(ModBlocks.ALTAR_CORE.get()),
                 RitualRecipeCategory.RECIPE_TYPE
             );
             registration.addRecipeCatalyst(
-                new ItemStack(AsterRiskModBlocks.RITUAL_PEDESTAL.get()),
+                new ItemStack(ModBlocks.RITUAL_PEDESTAL.get()),
                 RitualRecipeCategory.RECIPE_TYPE
             );
             registration.addRecipeCatalyst(
-                new ItemStack(AsterRiskModBlocks.LUNAR_INFUSER.get()),
+                new ItemStack(ModBlocks.LUNAR_INFUSER.get()),
                 InfuserRecipeCategory.RECIPE_TYPE
             );
             registration.addRecipeCatalyst(
-                new ItemStack(AsterRiskModBlocks.ALCHEMICAL_CAULDRON.get()),
+                new ItemStack(ModBlocks.ALCHEMICAL_CAULDRON.get()),
                 AlchemyRecipeCategory.RECIPE_TYPE
             );
             registration.addRecipeCatalyst(
-                new ItemStack(AsterRiskModBlocks.PHASE_ANVIL.get()),
+                new ItemStack(ModBlocks.PHASE_ANVIL.get()),
                 PhaseSmithingRecipeCategory.RECIPE_TYPE
             );
             registration.addRecipeCatalyst(
-                new ItemStack(AsterRiskModBlocks.METEOR_SUMMONING.get()),
+                new ItemStack(ModBlocks.METEOR_SUMMONING.get()),
                 MeteorSummoningRecipeCategory.RECIPE_TYPE
             );
             
@@ -155,7 +155,7 @@ public class AsterRiskJeiPlugin implements IModPlugin {
                 MultiblockStructureGuideCategory.RECIPE_TYPE
             );
             registration.addRecipeCatalyst(
-                new ItemStack(AsterRiskModBlocks.RITUAL_PEDESTAL.get()),
+                new ItemStack(ModBlocks.RITUAL_PEDESTAL.get()),
                 MultiblockStructureGuideCategory.RECIPE_TYPE
             );
             registration.addRecipeCatalyst(

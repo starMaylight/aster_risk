@@ -35,13 +35,6 @@ legacyForge {
     runs {
         client {
             client()
-
-            def mcreatorJvmOptions = System.getenv('MCREATOR_JVM_OPTIONS')
-            if (mcreatorJvmOptions) {
-                mcreatorJvmOptions.split("\\s+").findAll { it.trim() }.each { arg ->
-                    jvmArgument(arg)
-                }
-            }
         }
         server {
             server()
@@ -54,7 +47,7 @@ legacyForge {
     }
 
     mods {
-        mcreator {
+        aster_risk {
             sourceSet sourceSets.main
         }
     }
@@ -75,5 +68,3 @@ dependencies {
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
-
-apply from: 'mcreator.gradle'

@@ -1,7 +1,7 @@
 package net.mcreator.asterrisk.entity;
 
 import net.mcreator.asterrisk.registry.ModEntities;
-import net.mcreator.asterrisk.init.AsterRiskModItems;
+import net.mcreator.asterrisk.registry.ModItems;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.PathfinderMob;
@@ -45,7 +45,7 @@ public class MoonRabbitEntity extends Animal {
         this.goalSelector.addGoal(3, new TemptGoal(this, 1.25D, Ingredient.of(
             net.minecraft.world.item.Items.CARROT,
             net.minecraft.world.item.Items.GOLDEN_CARROT,
-            AsterRiskModItems.MOONSTONE.get()
+            ModItems.MOONSTONE.get()
         ), false));
         this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.1D));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
@@ -89,7 +89,7 @@ public class MoonRabbitEntity extends Animal {
     public boolean isFood(ItemStack stack) {
         return stack.is(net.minecraft.world.item.Items.CARROT) || 
                stack.is(net.minecraft.world.item.Items.GOLDEN_CARROT) ||
-               stack.is(AsterRiskModItems.MOONSTONE.get());
+               stack.is(ModItems.MOONSTONE.get());
     }
 
     @Nullable
@@ -118,7 +118,7 @@ public class MoonRabbitEntity extends Animal {
         ItemStack stack = player.getItemInHand(hand);
         
         // 月光石を与えると少量のマナを回復
-        if (stack.is(AsterRiskModItems.MOONSTONE.get())) {
+        if (stack.is(ModItems.MOONSTONE.get())) {
             if (!this.level().isClientSide()) {
                 player.getCapability(net.mcreator.asterrisk.mana.LunarManaCapability.LUNAR_MANA).ifPresent(mana -> {
                     mana.addMana(5.0f);

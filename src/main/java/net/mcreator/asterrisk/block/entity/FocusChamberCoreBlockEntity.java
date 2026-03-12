@@ -1,6 +1,6 @@
 package net.mcreator.asterrisk.block.entity;
 
-import net.mcreator.asterrisk.init.AsterRiskModBlocks;
+import net.mcreator.asterrisk.registry.ModBlocks;
 import net.mcreator.asterrisk.registry.ModBlockEntities;
 import net.mcreator.asterrisk.registry.ModBlocks;
 import net.mcreator.asterrisk.recipe.FocusChamberRecipe;

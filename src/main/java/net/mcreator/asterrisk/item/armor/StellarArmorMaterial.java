@@ -6,7 +6,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.mcreator.asterrisk.init.AsterRiskModItems;
+import net.mcreator.asterrisk.registry.ModItems;
 
 /**
  * 星屑の防具素材 - 魔法特化
@@ -42,7 +42,7 @@ public class StellarArmorMaterial implements ArmorMaterial {
 
     @Override
     public Ingredient getRepairIngredient() {
-        return Ingredient.of(AsterRiskModItems.STARFLAGMENT.get());
+        return Ingredient.of(ModItems.STARFLAGMENT.get());
     }
 
     @Override

@@ -1,6 +1,6 @@
 package net.mcreator.asterrisk.enchantment;
 
-import net.mcreator.asterrisk.init.AsterRiskModEffects;
+import net.mcreator.asterrisk.registry.ModEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -51,7 +51,7 @@ public class ShadowDrainEnchantment extends Enchantment {
                 attacker.heal(healAmount);
                 
                 // 自分に短時間の影の抱擁を付与（速度ボーナス）
-                attacker.addEffect(new MobEffectInstance(AsterRiskModEffects.SHADOW_EMBRACE.get(), 60, 0));
+                attacker.addEffect(new MobEffectInstance(ModEffects.SHADOW_EMBRACE.get(), 60, 0));
             }
         }
     }

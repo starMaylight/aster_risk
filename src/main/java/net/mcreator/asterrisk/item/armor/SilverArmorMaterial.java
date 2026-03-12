@@ -6,7 +6,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.mcreator.asterrisk.init.AsterRiskModItems;
+import net.mcreator.asterrisk.registry.ModItems;
 
 import java.util.function.Supplier;
 
@@ -43,7 +43,7 @@ public class SilverArmorMaterial implements ArmorMaterial {
 
     @Override
     public Ingredient getRepairIngredient() {
-        return Ingredient.of(AsterRiskModItems.SILVER_INGOT.get());
+        return Ingredient.of(ModItems.SILVER_INGOT.get());
     }
 
     @Override

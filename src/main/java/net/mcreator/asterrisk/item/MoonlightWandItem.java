@@ -1,6 +1,6 @@
 package net.mcreator.asterrisk.item;
 
-import net.mcreator.asterrisk.init.AsterRiskModBlocks;
+import net.mcreator.asterrisk.registry.ModBlocks;
 import net.mcreator.asterrisk.mana.ManaProcedures;
 import net.minecraft.network.chat.Component;
 import net.minecraft.core.BlockPos;
@@ -61,7 +61,7 @@ public class MoonlightWandItem extends Item {
                     // 魔力を消費
                     if (ManaProcedures.castSpell(player, MANA_COST)) {
                         // 光源ブロックを設置
-                        BlockState moonlight = AsterRiskModBlocks.MOONLIGHT.get().defaultBlockState();
+                        BlockState moonlight = ModBlocks.MOONLIGHT.get().defaultBlockState();
                         level.setBlock(targetPos, moonlight, 3);
                         
                         // 効果音とパーティクル

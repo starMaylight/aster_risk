@@ -1,6 +1,6 @@
 package net.mcreator.asterrisk.item.weapon;
 
-import net.mcreator.asterrisk.init.AsterRiskModItems;
+import net.mcreator.asterrisk.registry.ModItems;
 import net.mcreator.asterrisk.mana.ManaProcedures;
 import net.minecraft.core.particles.ParticleTypes;
 import net.mcreator.asterrisk.registry.ModParticles;
@@ -43,7 +43,7 @@ public class LunarBladeItem extends SwordItem {
         @Override public int getLevel() { return 3; }
         @Override public int getEnchantmentValue() { return 20; }
         @Override public Ingredient getRepairIngredient() { 
-            return Ingredient.of(AsterRiskModItems.MOONSTONE.get()); 
+            return Ingredient.of(ModItems.MOONSTONE.get()); 
         }
     };
 

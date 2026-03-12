@@ -8,7 +8,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.InteractionHand;
 
-import net.mcreator.asterrisk.procedures.StardustYoukuritukusitatokiProcedure;
+import net.mcreator.asterrisk.mana.ManaProcedures;
 
 public class StardustItem extends Item {
 	public StardustItem() {
@@ -19,7 +19,10 @@ public class StardustItem extends Item {
 	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
 		ItemStack itemstack = entity.getItemInHand(hand);
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		StardustYoukuritukusitatokiProcedure.execute(entity, itemstack);
+		ManaProcedures.restoreMana(entity, 10f);
+		if (!entity.isCreative()) {
+			itemstack.shrink(1);
+		}
 		return ar;
 	}
 }

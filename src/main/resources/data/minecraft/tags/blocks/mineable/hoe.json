@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "aster_risk:lunarleaves"
+    "aster_risk:lunarleaves",
+    "aster_risk:lunargrass"
   ]
 }

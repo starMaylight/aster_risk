@@ -10,8 +10,8 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.mcreator.asterrisk.AsterRiskMod;
-import net.mcreator.asterrisk.init.AsterRiskModBlocks;
-import net.mcreator.asterrisk.init.AsterRiskModItems;
+import net.mcreator.asterrisk.registry.ModBlocks;
+import net.mcreator.asterrisk.registry.ModItems;
 import net.mcreator.asterrisk.item.MeteorSummonCoreItem;
 import net.mcreator.asterrisk.recipe.MeteorSummoningRecipe;
 import net.minecraft.client.Minecraft;
@@ -38,7 +38,7 @@ public class MeteorSummoningRecipeCategory implements IRecipeCategory<MeteorSumm
     public MeteorSummoningRecipeCategory(IGuiHelper helper) {
         this.background = helper.createBlankDrawable(WIDTH, HEIGHT);
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, 
-            new ItemStack(AsterRiskModBlocks.METEOR_SUMMONING.get()));
+            new ItemStack(ModBlocks.METEOR_SUMMONING.get()));
     }
 
     @Override
@@ -79,10 +79,10 @@ public class MeteorSummoningRecipeCategory implements IRecipeCategory<MeteorSumm
 
     private ItemStack getCoreForType(MeteorSummonCoreItem.MeteorType type) {
         return switch (type) {
-            case SMALL -> new ItemStack(AsterRiskModItems.METEOR_CORE_SMALL.get());
-            case STARDUST -> new ItemStack(AsterRiskModItems.METEOR_CORE_STARDUST.get());
-            case PRISMATIC -> new ItemStack(AsterRiskModItems.METEOR_CORE_PRISMATIC.get());
-            case OMINOUS -> new ItemStack(AsterRiskModItems.METEOR_CORE_OMINOUS.get());
+            case SMALL -> new ItemStack(ModItems.METEOR_CORE_SMALL.get());
+            case STARDUST -> new ItemStack(ModItems.METEOR_CORE_STARDUST.get());
+            case PRISMATIC -> new ItemStack(ModItems.METEOR_CORE_PRISMATIC.get());
+            case OMINOUS -> new ItemStack(ModItems.METEOR_CORE_OMINOUS.get());
         };
     }
 

@@ -1,6 +1,6 @@
 package net.mcreator.asterrisk.item.armor;
 
-import net.mcreator.asterrisk.init.AsterRiskModItems;
+import net.mcreator.asterrisk.registry.ModItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;

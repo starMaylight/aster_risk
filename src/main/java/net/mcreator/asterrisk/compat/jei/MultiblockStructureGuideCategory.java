@@ -10,7 +10,7 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.mcreator.asterrisk.AsterRiskMod;
 import net.mcreator.asterrisk.block.entity.CelestialEnchantingTableBlockEntity;
-import net.mcreator.asterrisk.init.AsterRiskModBlocks;
+import net.mcreator.asterrisk.registry.ModBlocks;
 import net.mcreator.asterrisk.pattern.FocusPattern;
 import net.mcreator.asterrisk.pattern.PatternManager;
 import net.mcreator.asterrisk.pattern.PedestalPattern;
@@ -341,7 +341,7 @@ public class MultiblockStructureGuideCategory implements IRecipeCategory<Multibl
         
         // Ritual Circle パターン（PatternManagerから）
         ItemStack ritualCircle = new ItemStack(ModBlocks.RITUAL_CIRCLE.get());
-        ItemStack pedestal = new ItemStack(AsterRiskModBlocks.RITUAL_PEDESTAL.get());
+        ItemStack pedestal = new ItemStack(ModBlocks.RITUAL_PEDESTAL.get());
         for (PedestalPattern pattern : pm.getAllPedestalPatterns()) {
             List<ItemStack> materials = new ArrayList<>();
             materials.add(ritualCircle.copy());
@@ -362,7 +362,7 @@ public class MultiblockStructureGuideCategory implements IRecipeCategory<Multibl
         // Focus Chamber Core
         List<ItemStack> chamberMaterials = new ArrayList<>();
         chamberMaterials.add(new ItemStack(ModBlocks.FOCUS_CHAMBER_CORE.get()));
-        ItemStack celestialTiles = new ItemStack(AsterRiskModBlocks.CELESTIAL_TILE.get());
+        ItemStack celestialTiles = new ItemStack(ModBlocks.CELESTIAL_TILE.get());
         celestialTiles.setCount(22);
         chamberMaterials.add(celestialTiles);
         
@@ -378,10 +378,10 @@ public class MultiblockStructureGuideCategory implements IRecipeCategory<Multibl
         // Celestial Enchanting Table - Pillar Structure
         List<ItemStack> pillarMaterials = new ArrayList<>();
         pillarMaterials.add(new ItemStack(ModBlocks.CELESTIAL_ENCHANTING_TABLE.get()));
-        ItemStack lunarPillars = new ItemStack(AsterRiskModBlocks.LUNAR_PILLAR.get());
+        ItemStack lunarPillars = new ItemStack(ModBlocks.LUNAR_PILLAR.get());
         lunarPillars.setCount(8);
         pillarMaterials.add(lunarPillars);
-        ItemStack celestialCrowns = new ItemStack(AsterRiskModBlocks.CELESTIAL_TILE.get());
+        ItemStack celestialCrowns = new ItemStack(ModBlocks.CELESTIAL_TILE.get());
         celestialCrowns.setCount(4);
         pillarMaterials.add(celestialCrowns);
         

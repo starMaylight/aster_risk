@@ -1,6 +1,6 @@
 package net.mcreator.asterrisk.enchantment;
 
-import net.mcreator.asterrisk.init.AsterRiskModEffects;
+import net.mcreator.asterrisk.registry.ModEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -47,7 +47,7 @@ public class VoidTouchEnchantment extends Enchantment {
         if (target instanceof LivingEntity living && !attacker.level().isClientSide()) {
             // 虚空の腐食を付与（レベルに応じて持続時間増加）
             int duration = 100 + (level * 60); // 5秒 + レベルごとに3秒
-            living.addEffect(new MobEffectInstance(AsterRiskModEffects.VOID_CORRUPTION.get(), duration, level - 1));
+            living.addEffect(new MobEffectInstance(ModEffects.VOID_CORRUPTION.get(), duration, level - 1));
         }
     }
 }

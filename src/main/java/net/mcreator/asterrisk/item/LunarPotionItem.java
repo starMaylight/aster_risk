@@ -1,6 +1,6 @@
 package net.mcreator.asterrisk.item;
 
-import net.mcreator.asterrisk.init.AsterRiskModEffects;
+import net.mcreator.asterrisk.registry.ModEffects;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
@@ -42,7 +42,7 @@ public class LunarPotionItem extends Item {
         if (!level.isClientSide()) {
             // 月光の祝福を3分間付与
             entity.addEffect(new MobEffectInstance(
-                AsterRiskModEffects.LUNAR_BLESSING.get(), 
+                ModEffects.LUNAR_BLESSING.get(), 
                 20 * 60 * 3,  // 3分 = 3600 tick
                 0  // レベル1
             ));

@@ -1,8 +1,8 @@
 package net.mcreator.asterrisk.entity;
 
 import net.mcreator.asterrisk.registry.ModEntities;
-import net.mcreator.asterrisk.init.AsterRiskModItems;
-import net.mcreator.asterrisk.init.AsterRiskModEffects;
+import net.mcreator.asterrisk.registry.ModItems;
+import net.mcreator.asterrisk.registry.ModEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.PathfinderMob;
@@ -115,7 +115,7 @@ public class MoonlightFairyEntity extends PathfinderMob {
                     boolean isNight = dayTime >= 13000 && dayTime < 23000;
                     if (isNight) {
                         owner.addEffect(new MobEffectInstance(
-                            AsterRiskModEffects.LUNAR_BLESSING.get(),
+                            ModEffects.LUNAR_BLESSING.get(),
                             20 * 10, // 10秒
                             0
                         ));
@@ -185,7 +185,7 @@ public class MoonlightFairyEntity extends PathfinderMob {
         ItemStack stack = player.getItemInHand(hand);
         
         // ルナーダストで懐かせる
-        if (stack.is(AsterRiskModItems.LUNAR_DUST.get()) && !isTamed()) {
+        if (stack.is(ModItems.LUNAR_DUST.get()) && !isTamed()) {
             if (!this.level().isClientSide()) {
                 if (this.random.nextFloat() < 0.33F) { // 33%の確率で懐く
                     this.setTamed(true);
@@ -222,10 +222,10 @@ public class MoonlightFairyEntity extends PathfinderMob {
         }
         
         // 懐いている妖精にスターダストを与えると一時的に強化
-        if (stack.is(AsterRiskModItems.STARDUST.get()) && isTamed()) {
+        if (stack.is(ModItems.STARDUST.get()) && isTamed()) {
             if (!this.level().isClientSide()) {
                 player.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 20 * 60 * 3, 0)); // 3分
-                player.addEffect(new MobEffectInstance(AsterRiskModEffects.LUNAR_BLESSING.get(), 20 * 60, 1)); // 1分、レベル2
+                player.addEffect(new MobEffectInstance(ModEffects.LUNAR_BLESSING.get(), 20 * 60, 1)); // 1分、レベル2
                 
                 for (int i = 0; i < 15; i++) {
                     this.level().addParticle(

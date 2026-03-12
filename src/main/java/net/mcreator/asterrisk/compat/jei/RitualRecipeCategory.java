@@ -11,7 +11,7 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.mcreator.asterrisk.AsterRiskMod;
 import net.mcreator.asterrisk.block.entity.ObeliskEnergyType;
-import net.mcreator.asterrisk.init.AsterRiskModBlocks;
+import net.mcreator.asterrisk.registry.ModBlocks;
 import net.mcreator.asterrisk.recipe.RitualRecipe;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
@@ -38,7 +38,7 @@ public class RitualRecipeCategory implements IRecipeCategory<RitualRecipe> {
 
     public RitualRecipeCategory(IGuiHelper helper) {
         this.background = helper.createBlankDrawable(WIDTH, HEIGHT);
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(AsterRiskModBlocks.ALTAR_CORE.get()));
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.ALTAR_CORE.get()));
     }
 
     @Override
