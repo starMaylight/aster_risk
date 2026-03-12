@@ -1,6 +1,6 @@
 package net.mcreator.asterrisk.item.armor;
 
-import net.mcreator.asterrisk.init.AsterRiskModItems;
+import net.mcreator.asterrisk.registry.ModItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
@@ -48,10 +48,10 @@ public class MeteoriteArmorItem extends ArmorItem {
         ItemStack legs = player.getItemBySlot(EquipmentSlot.LEGS);
         ItemStack boots = player.getItemBySlot(EquipmentSlot.FEET);
         
-        return helmet.getItem() == AsterRiskModItems.METEORITE_HELMET.get()
-            && chest.getItem() == AsterRiskModItems.METEORITE_CHESTPLATE.get()
-            && legs.getItem() == AsterRiskModItems.METEORITE_LEGGINGS.get()
-            && boots.getItem() == AsterRiskModItems.METEORITE_BOOTS.get();
+        return helmet.getItem() == ModItems.METEORITE_HELMET.get()
+            && chest.getItem() == ModItems.METEORITE_CHESTPLATE.get()
+            && legs.getItem() == ModItems.METEORITE_LEGGINGS.get()
+            && boots.getItem() == ModItems.METEORITE_BOOTS.get();
     }
 
     @Override

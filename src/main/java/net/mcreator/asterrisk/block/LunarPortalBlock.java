@@ -1,6 +1,6 @@
 package net.mcreator.asterrisk.block;
 
-import net.mcreator.asterrisk.init.AsterRiskModBlocks;
+import net.mcreator.asterrisk.registry.ModBlocks;
 import net.mcreator.asterrisk.world.LunarRealmTeleporter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -136,7 +136,7 @@ public class LunarPortalBlock extends Block {
     }
     
     public static Block getFrameBlock() {
-        return AsterRiskModBlocks.MOONSTONE_BRICKS.get();
+        return ModBlocks.MOONSTONE_BRICKS.get();
     }
     
     /**
@@ -265,7 +265,7 @@ public class LunarPortalBlock extends Block {
         }
         
         private static boolean isEmpty(BlockState state) {
-            return state.isAir() || state.is(AsterRiskModBlocks.LUNAR_PORTAL.get());
+            return state.isAir() || state.is(ModBlocks.LUNAR_PORTAL.get());
         }
         
         private static boolean isFrame(BlockState state) {
@@ -282,7 +282,7 @@ public class LunarPortalBlock extends Block {
             for (int y = 0; y < height; y++) {
                 for (int x = 0; x < width; x++) {
                     BlockPos pos = bottomLeft.above(y).relative(rightDir, x);
-                    if (!level.getBlockState(pos).is(AsterRiskModBlocks.LUNAR_PORTAL.get())) {
+                    if (!level.getBlockState(pos).is(ModBlocks.LUNAR_PORTAL.get())) {
                         return false;
                     }
                 }
@@ -293,7 +293,7 @@ public class LunarPortalBlock extends Block {
         public void createPortalBlocks() {
             if (!isValid()) return;
             Direction rightDir = getRightDir();
-            BlockState portalState = AsterRiskModBlocks.LUNAR_PORTAL.get().defaultBlockState().setValue(AXIS, this.portalAxis);
+            BlockState portalState = ModBlocks.LUNAR_PORTAL.get().defaultBlockState().setValue(AXIS, this.portalAxis);
             
             for (int y = 0; y < height; y++) {
                 for (int x = 0; x < width; x++) {

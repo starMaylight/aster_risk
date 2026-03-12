@@ -1,6 +1,6 @@
 package net.mcreator.asterrisk.world.structure;
 
-import net.mcreator.asterrisk.init.AsterRiskModBlocks;
+import net.mcreator.asterrisk.registry.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -65,15 +65,15 @@ public class StellarSpirePiece extends StructurePiece {
     public void postProcess(WorldGenLevel level, StructureManager structureManager, ChunkGenerator generator,
                            RandomSource random, BoundingBox box, ChunkPos chunkPos, BlockPos pos) {
         
-        BlockState moonstoneBricks = AsterRiskModBlocks.MOONSTONE_BRICKS.get().defaultBlockState();
-        BlockState polishedMoonstone = AsterRiskModBlocks.POLISHED_MOONSTONE.get().defaultBlockState();
-        BlockState chiseledMoonstone = AsterRiskModBlocks.CHISELED_MOONSTONE.get().defaultBlockState();
-        BlockState stardustBlock = AsterRiskModBlocks.STARDUST_BLOCK.get().defaultBlockState();
-        BlockState starfallSand = AsterRiskModBlocks.STARFALLSAND.get().defaultBlockState();
-        BlockState stellarSpireCore = AsterRiskModBlocks.STELLAR_SPIRE_CORE.get().defaultBlockState();
-        BlockState starryGlass = AsterRiskModBlocks.STARRY_GLASS.get().defaultBlockState();
-        BlockState moonlightLantern = AsterRiskModBlocks.MOONLIGHT_LANTERN.get().defaultBlockState();
-        BlockState lunarPillar = AsterRiskModBlocks.LUNAR_PILLAR.get().defaultBlockState();
+        BlockState moonstoneBricks = ModBlocks.MOONSTONE_BRICKS.get().defaultBlockState();
+        BlockState polishedMoonstone = ModBlocks.POLISHED_MOONSTONE.get().defaultBlockState();
+        BlockState chiseledMoonstone = ModBlocks.CHISELED_MOONSTONE.get().defaultBlockState();
+        BlockState stardustBlock = ModBlocks.STARDUST_BLOCK.get().defaultBlockState();
+        BlockState starfallSand = ModBlocks.STARFALLSAND.get().defaultBlockState();
+        BlockState stellarSpireCore = ModBlocks.STELLAR_SPIRE_CORE.get().defaultBlockState();
+        BlockState starryGlass = ModBlocks.STARRY_GLASS.get().defaultBlockState();
+        BlockState moonlightLantern = ModBlocks.MOONLIGHT_LANTERN.get().defaultBlockState();
+        BlockState lunarPillar = ModBlocks.LUNAR_PILLAR.get().defaultBlockState();
         BlockState air = Blocks.AIR.defaultBlockState();
         BlockState ladder = Blocks.LADDER.defaultBlockState().setValue(LadderBlock.FACING, Direction.SOUTH);
         

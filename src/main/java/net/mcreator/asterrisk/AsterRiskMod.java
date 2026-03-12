@@ -26,14 +26,12 @@ import net.mcreator.asterrisk.registry.ModParticles;
 import net.mcreator.asterrisk.registry.ModEntities;
 import net.mcreator.asterrisk.registry.ModEnchantments;
 import net.mcreator.asterrisk.registry.ModBlocks;
+import net.mcreator.asterrisk.registry.ModItems;
+import net.mcreator.asterrisk.registry.ModEffects;
+import net.mcreator.asterrisk.registry.ModFluids;
+import net.mcreator.asterrisk.registry.ModTabs;
 import net.mcreator.asterrisk.recipe.ModRecipes;
 import net.mcreator.asterrisk.network.AsterRiskNetwork;
-import net.mcreator.asterrisk.init.AsterRiskModTabs;
-import net.mcreator.asterrisk.init.AsterRiskModItems;
-import net.mcreator.asterrisk.init.AsterRiskModFluids;
-import net.mcreator.asterrisk.init.AsterRiskModFluidTypes;
-import net.mcreator.asterrisk.init.AsterRiskModEffects;
-import net.mcreator.asterrisk.init.AsterRiskModBlocks;
 
 import java.util.function.Supplier;
 import java.util.function.Function;
@@ -50,53 +48,34 @@ public class AsterRiskMod {
 	public static final String MODID = "aster_risk";
 
 	public AsterRiskMod(FMLJavaModLoadingContext context) {
-		// Start of user code block mod constructor
-		// BlockEntity登録（この行はuser code block内に配置）
-		net.mcreator.asterrisk.registry.ModBlockEntities.REGISTRY.register(context.getModEventBus());
-		// カスタムレシピ登録
-		ModRecipes.RECIPE_TYPES.register(context.getModEventBus());
-		ModRecipes.RECIPE_SERIALIZERS.register(context.getModEventBus());
-		// エフェクト登録（initフォルダのものを使用）
-		AsterRiskModEffects.REGISTRY.register(context.getModEventBus());
-		// ポーション登録（registryパッケージを使用）
-		ModPotions.REGISTRY.register(context.getModEventBus());
-		// エンチャント登録（registryパッケージを使用）
-		ModEnchantments.REGISTRY.register(context.getModEventBus());
-		// エンティティ登録（registryパッケージを使用）
-		ModEntities.REGISTRY.register(context.getModEventBus());
-		// スポーンエッグ登録
-		ModSpawnEggs.REGISTRY.register(context.getModEventBus());
-		// サウンド登録
-		ModSounds.REGISTRY.register(context.getModEventBus());
-		// パーティクル登録
-		ModParticles.REGISTRY.register(context.getModEventBus());
-		// 構造物登録
-		ModStructures.register(context.getModEventBus());
-		ModStructurePieces.register(context.getModEventBus());
-		// 新クラフトシステムブロック登録
-		ModBlocks.register(context.getModEventBus());
-		// カスタムエンティティ登録（enchantment用）
-		net.mcreator.asterrisk.entity.ModEntityTypes.REGISTRY.register(context.getModEventBus());
-		// Config登録
-		net.mcreator.asterrisk.config.AsterRiskConfig.register();
-		// End of user code block mod constructor
-		MinecraftForge.EVENT_BUS.register(this);
 		IEventBus bus = context.getModEventBus();
-		AsterRiskModBlocks.REGISTRY.register(bus);
-		AsterRiskModItems.REGISTRY.register(bus);
-		AsterRiskModTabs.REGISTRY.register(bus);
-		AsterRiskModFluids.REGISTRY.register(bus);
-		AsterRiskModFluidTypes.REGISTRY.register(bus);
-		// Start of user code block mod init
-		// プレイヤーマナ同期パケットを登録
+
+		net.mcreator.asterrisk.registry.ModBlockEntities.REGISTRY.register(bus);
+		ModRecipes.RECIPE_TYPES.register(bus);
+		ModRecipes.RECIPE_SERIALIZERS.register(bus);
+		ModEffects.REGISTRY.register(bus);
+		ModPotions.REGISTRY.register(bus);
+		ModEnchantments.REGISTRY.register(bus);
+		ModEntities.REGISTRY.register(bus);
+		ModSpawnEggs.REGISTRY.register(bus);
+		ModSounds.REGISTRY.register(bus);
+		ModParticles.REGISTRY.register(bus);
+		ModStructures.register(bus);
+		ModStructurePieces.register(bus);
+		ModBlocks.register(bus);
+		ModItems.REGISTRY.register(bus);
+		ModTabs.REGISTRY.register(bus);
+		ModFluids.FLUIDS.register(bus);
+		ModFluids.FLUID_TYPES.register(bus);
+		net.mcreator.asterrisk.entity.ModEntityTypes.REGISTRY.register(bus);
+		net.mcreator.asterrisk.config.AsterRiskConfig.register();
+
+		MinecraftForge.EVENT_BUS.register(this);
+
 		net.mcreator.asterrisk.mana.ManaSyncPacket.register();
-		// ネットワーク登録
 		AsterRiskNetwork.register();
-		// End of user code block mod init
 	}
 
-	// Start of user code block mod methods
-	// End of user code block mod methods
 	private static final String PROTOCOL_VERSION = "1";
 	public static final SimpleChannel PACKET_HANDLER = NetworkRegistry.newSimpleChannel(ResourceLocation.fromNamespaceAndPath(MODID, MODID), () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, PROTOCOL_VERSION::equals);
 	private static int messageID = 0;

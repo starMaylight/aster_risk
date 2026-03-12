@@ -7,14 +7,13 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.LiquidBlock;
 
-import net.mcreator.asterrisk.init.AsterRiskModItems;
-import net.mcreator.asterrisk.init.AsterRiskModFluids;
-import net.mcreator.asterrisk.init.AsterRiskModFluidTypes;
-import net.mcreator.asterrisk.init.AsterRiskModBlocks;
+import net.mcreator.asterrisk.registry.ModItems;
+import net.mcreator.asterrisk.registry.ModFluids;
+import net.mcreator.asterrisk.registry.ModBlocks;
 
 public abstract class MoonwaterFluid extends ForgeFlowingFluid {
-	public static final ForgeFlowingFluid.Properties PROPERTIES = new ForgeFlowingFluid.Properties(() -> AsterRiskModFluidTypes.MOONWATER_TYPE.get(), () -> AsterRiskModFluids.MOONWATER.get(), () -> AsterRiskModFluids.FLOWING_MOONWATER.get())
-			.explosionResistance(100f).bucket(() -> AsterRiskModItems.MOONWATER_BUCKET.get()).block(() -> (LiquidBlock) AsterRiskModBlocks.MOONWATER.get());
+	public static final ForgeFlowingFluid.Properties PROPERTIES = new ForgeFlowingFluid.Properties(() -> ModFluids.MOONWATER_TYPE.get(), () -> ModFluids.MOONWATER.get(), () -> ModFluids.FLOWING_MOONWATER.get())
+			.explosionResistance(100f).bucket(() -> ModItems.MOONWATER_BUCKET.get()).block(() -> (LiquidBlock) ModBlocks.MOONWATER.get());
 
 	private MoonwaterFluid() {
 		super(PROPERTIES);

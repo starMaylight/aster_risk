@@ -1,6 +1,6 @@
 package net.mcreator.asterrisk.item.weapon;
 
-import net.mcreator.asterrisk.init.AsterRiskModItems;
+import net.mcreator.asterrisk.registry.ModItems;
 import net.mcreator.asterrisk.mana.ManaProcedures;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -41,7 +41,7 @@ public class MeteorHammerItem extends AxeItem {
         @Override public int getLevel() { return 3; }
         @Override public int getEnchantmentValue() { return 14; }
         @Override public Ingredient getRepairIngredient() { 
-            return Ingredient.of(AsterRiskModItems.METEORITE_FRAGMENT.get()); 
+            return Ingredient.of(ModItems.METEORITE_FRAGMENT.get()); 
         }
     };
 

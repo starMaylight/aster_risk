@@ -1,6 +1,6 @@
 package net.mcreator.asterrisk.item.armor;
 
-import net.mcreator.asterrisk.init.AsterRiskModItems;
+import net.mcreator.asterrisk.registry.ModItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
@@ -48,10 +48,10 @@ public class StellarArmorItem extends ArmorItem {
         ItemStack legs = player.getItemBySlot(EquipmentSlot.LEGS);
         ItemStack boots = player.getItemBySlot(EquipmentSlot.FEET);
         
-        return helmet.getItem() == AsterRiskModItems.STELLAR_CROWN.get()
-            && chest.getItem() == AsterRiskModItems.STELLAR_ROBE.get()
-            && legs.getItem() == AsterRiskModItems.STELLAR_LEGGINGS.get()
-            && boots.getItem() == AsterRiskModItems.STELLAR_BOOTS.get();
+        return helmet.getItem() == ModItems.STELLAR_CROWN.get()
+            && chest.getItem() == ModItems.STELLAR_ROBE.get()
+            && legs.getItem() == ModItems.STELLAR_LEGGINGS.get()
+            && boots.getItem() == ModItems.STELLAR_BOOTS.get();
     }
 
     @Override

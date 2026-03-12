@@ -1,6 +1,6 @@
 package net.mcreator.asterrisk.entity;
 
-import net.mcreator.asterrisk.init.AsterRiskModItems;
+import net.mcreator.asterrisk.registry.ModItems;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -143,24 +143,24 @@ public class CorruptedGolemEntity extends Monster {
         
         // Corrupted Core - 70%確率で1個
         if (this.random.nextFloat() < 0.7F + looting * 0.1F) {
-            this.spawnAtLocation(AsterRiskModItems.CORRUPTED_CORE.get());
+            this.spawnAtLocation(ModItems.CORRUPTED_CORE.get());
         }
         
         // 月光石をドロップ (1-3個)
         int moonstoneCount = 1 + this.random.nextInt(2) + looting;
         for (int i = 0; i < moonstoneCount; i++) {
-            this.spawnAtLocation(new ItemStack(AsterRiskModItems.MOONSTONE.get()));
+            this.spawnAtLocation(new ItemStack(ModItems.MOONSTONE.get()));
         }
         
         // 隕石の欠片をドロップ (0-2個)
         int meteoriteCount = this.random.nextInt(2 + looting);
         for (int i = 0; i < meteoriteCount; i++) {
-            this.spawnAtLocation(new ItemStack(AsterRiskModItems.METEORITE_FRAGMENT.get()));
+            this.spawnAtLocation(new ItemStack(ModItems.METEORITE_FRAGMENT.get()));
         }
         
         // 低確率で星の欠片 (10% + looting*5%)
         if (this.random.nextFloat() < 0.1F + looting * 0.05F) {
-            this.spawnAtLocation(new ItemStack(AsterRiskModItems.STARFLAGMENT.get()));
+            this.spawnAtLocation(new ItemStack(ModItems.STARFLAGMENT.get()));
         }
     }
 

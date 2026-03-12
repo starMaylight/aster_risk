@@ -1,6 +1,6 @@
 package net.mcreator.asterrisk.block.entity;
 
-import net.mcreator.asterrisk.init.AsterRiskModBlocks;
+import net.mcreator.asterrisk.registry.ModBlocks;
 import net.mcreator.asterrisk.pattern.FocusPattern;
 import net.mcreator.asterrisk.pattern.PatternManager;
 import net.mcreator.asterrisk.registry.ModBlockEntities;
@@ -121,8 +121,8 @@ public class CelestialEnchantingTableBlockEntity extends BlockEntity {
      * 各隅: LunarPillar x2 + CelestialTile(頂上)
      */
     private boolean checkPillarStructure(Level level) {
-        Block lunarPillarBlock = AsterRiskModBlocks.LUNAR_PILLAR.get();
-        Block celestialTileBlock = AsterRiskModBlocks.CELESTIAL_TILE.get();
+        Block lunarPillarBlock = ModBlocks.LUNAR_PILLAR.get();
+        Block celestialTileBlock = ModBlocks.CELESTIAL_TILE.get();
         
         StringBuilder debug = new StringBuilder();
         

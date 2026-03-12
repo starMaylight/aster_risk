@@ -8,7 +8,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.InteractionHand;
 
-import net.mcreator.asterrisk.procedures.When_right_clicked_in_airProcedure;
+import net.mcreator.asterrisk.mana.ManaProcedures;
 
 public class LunardustItem extends Item {
 	public LunardustItem() {
@@ -19,7 +19,10 @@ public class LunardustItem extends Item {
 	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
 		ItemStack itemstack = entity.getItemInHand(hand);
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		When_right_clicked_in_airProcedure.execute(entity, itemstack);
+		ManaProcedures.restoreMana(entity, 25f);
+		if (!entity.isCreative()) {
+			itemstack.shrink(1);
+		}
 		return ar;
 	}
 }

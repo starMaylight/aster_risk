@@ -1,6 +1,6 @@
 package net.mcreator.asterrisk.block;
 
-import net.mcreator.asterrisk.init.AsterRiskModBlocks;
+import net.mcreator.asterrisk.registry.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
@@ -87,8 +87,8 @@ public class LunarSaplingBlock extends BushBlock implements BonemealableBlock {
     
     @Override
     protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
-        return state.is(AsterRiskModBlocks.LUNARGRASS.get()) 
-            || state.is(AsterRiskModBlocks.LUNARDIRT.get())
+        return state.is(ModBlocks.LUNARGRASS.get()) 
+            || state.is(ModBlocks.LUNARDIRT.get())
             || state.is(Blocks.GRASS_BLOCK)
             || state.is(Blocks.DIRT)
             || state.is(Blocks.COARSE_DIRT)

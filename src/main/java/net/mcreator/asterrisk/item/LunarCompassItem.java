@@ -1,7 +1,7 @@
 package net.mcreator.asterrisk.item;
 
 import net.mcreator.asterrisk.block.LunarPortalBlock;
-import net.mcreator.asterrisk.init.AsterRiskModBlocks;
+import net.mcreator.asterrisk.registry.ModBlocks;
 import net.mcreator.asterrisk.mana.ManaProcedures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -49,7 +49,7 @@ public class LunarCompassItem extends Item {
         BlockState state = level.getBlockState(pos);
         
         // Moonstone Bricksをクリックした場合、ポータル点火を試みる
-        if (state.is(AsterRiskModBlocks.MOONSTONE_BRICKS.get())) {
+        if (state.is(ModBlocks.MOONSTONE_BRICKS.get())) {
             if (!level.isClientSide()) {
                 // マナコスト確認
                 if (!ManaProcedures.castSpell(player, PORTAL_MANA_COST)) {

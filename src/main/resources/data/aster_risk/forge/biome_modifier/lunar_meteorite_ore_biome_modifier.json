@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#aster_risk:is_lunar_realm",
+  "features": "aster_risk:lunar_meteorite_ore",
+  "step": "underground_ores"
+}

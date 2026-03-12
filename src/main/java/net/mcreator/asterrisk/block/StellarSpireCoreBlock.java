@@ -1,9 +1,9 @@
 package net.mcreator.asterrisk.block;
 
 import net.mcreator.asterrisk.entity.StarDevourerEntity;
-import net.mcreator.asterrisk.init.AsterRiskModBlocks;
+import net.mcreator.asterrisk.registry.ModBlocks;
 import net.mcreator.asterrisk.registry.ModEntities;
-import net.mcreator.asterrisk.init.AsterRiskModItems;
+import net.mcreator.asterrisk.registry.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -41,7 +41,7 @@ public class StellarSpireCoreBlock extends Block {
         ItemStack heldItem = player.getItemInHand(hand);
         
         // Star Fragmentで召喚
-        if (heldItem.is(AsterRiskModItems.STARFLAGMENT.get())) {
+        if (heldItem.is(ModItems.STARFLAGMENT.get())) {
             if (!level.isClientSide()) {
                 ServerLevel serverLevel = (ServerLevel) level;
                 
@@ -97,7 +97,7 @@ public class StellarSpireCoreBlock extends Block {
             for (int z = -2; z <= 2; z++) {
                 if (x == 0 && z == 0) continue;
                 BlockState checkState = level.getBlockState(pos.offset(x, -1, z));
-                if (checkState.is(AsterRiskModBlocks.STARFALLSAND.get())) {
+                if (checkState.is(ModBlocks.STARFALLSAND.get())) {
                     sandCount++;
                 }
             }

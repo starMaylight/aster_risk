@@ -10,8 +10,8 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.mcreator.asterrisk.AsterRiskMod;
-import net.mcreator.asterrisk.init.AsterRiskModBlocks;
-import net.mcreator.asterrisk.init.AsterRiskModItems;
+import net.mcreator.asterrisk.registry.ModBlocks;
+import net.mcreator.asterrisk.registry.ModItems;
 import net.mcreator.asterrisk.item.PhaseSigilItem;
 import net.mcreator.asterrisk.recipe.PhaseSmithingRecipe;
 import net.minecraft.client.Minecraft;
@@ -38,7 +38,7 @@ public class PhaseSmithingRecipeCategory implements IRecipeCategory<PhaseSmithin
     public PhaseSmithingRecipeCategory(IGuiHelper helper) {
         this.background = helper.createBlankDrawable(WIDTH, HEIGHT);
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, 
-            new ItemStack(AsterRiskModBlocks.PHASE_ANVIL.get()));
+            new ItemStack(ModBlocks.PHASE_ANVIL.get()));
     }
 
     @Override
@@ -70,19 +70,19 @@ public class PhaseSmithingRecipeCategory implements IRecipeCategory<PhaseSmithin
 
         // 装備スロット（例示用）
         builder.addSlot(RecipeIngredientRole.CATALYST, 40, 20)
-            .addItemStack(new ItemStack(AsterRiskModItems.LUNAR_CHESTPLATE.get()));
+            .addItemStack(new ItemStack(ModItems.LUNAR_CHESTPLATE.get()));
     }
 
     private ItemStack getSigilForPhase(PhaseSigilItem.MoonPhase phase) {
         return switch (phase) {
-            case FULL_MOON -> new ItemStack(AsterRiskModItems.PHASE_SIGIL_FULL_MOON.get());
-            case WANING_GIBBOUS -> new ItemStack(AsterRiskModItems.PHASE_SIGIL_WANING_GIBBOUS.get());
-            case LAST_QUARTER -> new ItemStack(AsterRiskModItems.PHASE_SIGIL_LAST_QUARTER.get());
-            case WANING_CRESCENT -> new ItemStack(AsterRiskModItems.PHASE_SIGIL_WANING_CRESCENT.get());
-            case NEW_MOON -> new ItemStack(AsterRiskModItems.PHASE_SIGIL_NEW_MOON.get());
-            case WAXING_CRESCENT -> new ItemStack(AsterRiskModItems.PHASE_SIGIL_WAXING_CRESCENT.get());
-            case FIRST_QUARTER -> new ItemStack(AsterRiskModItems.PHASE_SIGIL_FIRST_QUARTER.get());
-            case WAXING_GIBBOUS -> new ItemStack(AsterRiskModItems.PHASE_SIGIL_WAXING_GIBBOUS.get());
+            case FULL_MOON -> new ItemStack(ModItems.PHASE_SIGIL_FULL_MOON.get());
+            case WANING_GIBBOUS -> new ItemStack(ModItems.PHASE_SIGIL_WANING_GIBBOUS.get());
+            case LAST_QUARTER -> new ItemStack(ModItems.PHASE_SIGIL_LAST_QUARTER.get());
+            case WANING_CRESCENT -> new ItemStack(ModItems.PHASE_SIGIL_WANING_CRESCENT.get());
+            case NEW_MOON -> new ItemStack(ModItems.PHASE_SIGIL_NEW_MOON.get());
+            case WAXING_CRESCENT -> new ItemStack(ModItems.PHASE_SIGIL_WAXING_CRESCENT.get());
+            case FIRST_QUARTER -> new ItemStack(ModItems.PHASE_SIGIL_FIRST_QUARTER.get());
+            case WAXING_GIBBOUS -> new ItemStack(ModItems.PHASE_SIGIL_WAXING_GIBBOUS.get());
         };
     }
 

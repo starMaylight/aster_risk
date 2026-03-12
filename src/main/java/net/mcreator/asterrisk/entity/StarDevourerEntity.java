@@ -1,7 +1,7 @@
 package net.mcreator.asterrisk.entity;
 
-import net.mcreator.asterrisk.init.AsterRiskModEffects;
-import net.mcreator.asterrisk.init.AsterRiskModItems;
+import net.mcreator.asterrisk.registry.ModEffects;
+import net.mcreator.asterrisk.registry.ModItems;
 import net.mcreator.asterrisk.registry.ModEntities;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.monster.Monster;
@@ -239,7 +239,7 @@ public class StarDevourerEntity extends Monster {
         for (LivingEntity target : targets) {
             Vec3 pull = this.position().subtract(target.position()).normalize().scale(0.8D);
             target.setDeltaMovement(target.getDeltaMovement().add(pull));
-            target.addEffect(new MobEffectInstance(AsterRiskModEffects.STARLESS_NIGHT.get(), 100, 0));
+            target.addEffect(new MobEffectInstance(ModEffects.STARLESS_NIGHT.get(), 100, 0));
         }
         
         // 渦のパーティクル
@@ -317,7 +317,7 @@ public class StarDevourerEntity extends Monster {
         
         for (LivingEntity target : targets) {
             target.hurt(this.damageSources().mobAttack(this), 20.0F);
-            target.addEffect(new MobEffectInstance(AsterRiskModEffects.LUNAR_ECLIPSE_CURSE.get(), 200, 1));
+            target.addEffect(new MobEffectInstance(ModEffects.LUNAR_ECLIPSE_CURSE.get(), 200, 1));
             target.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 40, 1));
             
             Vec3 knockback = target.position().subtract(this.position()).normalize().scale(3.0D);
@@ -502,7 +502,7 @@ public class StarDevourerEntity extends Monster {
         if (result && target instanceof LivingEntity living) {
             living.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 1));
             if (phase >= 2) {
-                living.addEffect(new MobEffectInstance(AsterRiskModEffects.STARLESS_NIGHT.get(), 100, 0));
+                living.addEffect(new MobEffectInstance(ModEffects.STARLESS_NIGHT.get(), 100, 0));
             }
         }
         
@@ -609,19 +609,19 @@ public class StarDevourerEntity extends Monster {
         // Stellar Heart - 確定ドロップ 1-2個
         int heartCount = 1 + this.random.nextInt(2) + looting;
         for (int i = 0; i < heartCount; i++) {
-            this.spawnAtLocation(AsterRiskModItems.STELLAR_HEART.get());
+            this.spawnAtLocation(ModItems.STELLAR_HEART.get());
         }
         
         // Star Fragment - 3-5個
         int fragmentCount = 3 + this.random.nextInt(3) + looting;
         for (int i = 0; i < fragmentCount; i++) {
-            this.spawnAtLocation(AsterRiskModItems.STARFLAGMENT.get());
+            this.spawnAtLocation(ModItems.STARFLAGMENT.get());
         }
         
         // Stardust - 5-10個
         int dustCount = 5 + this.random.nextInt(6) + looting;
         for (int i = 0; i < dustCount; i++) {
-            this.spawnAtLocation(AsterRiskModItems.STARDUST.get());
+            this.spawnAtLocation(ModItems.STARDUST.get());
         }
     }
 }

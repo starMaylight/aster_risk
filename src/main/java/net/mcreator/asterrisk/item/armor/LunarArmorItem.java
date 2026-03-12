@@ -1,6 +1,6 @@
 package net.mcreator.asterrisk.item.armor;
 
-import net.mcreator.asterrisk.init.AsterRiskModItems;
+import net.mcreator.asterrisk.registry.ModItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
@@ -48,10 +48,10 @@ public class LunarArmorItem extends ArmorItem {
         ItemStack legs = player.getItemBySlot(EquipmentSlot.LEGS);
         ItemStack boots = player.getItemBySlot(EquipmentSlot.FEET);
         
-        return helmet.getItem() == AsterRiskModItems.LUNAR_HELMET.get()
-            && chest.getItem() == AsterRiskModItems.LUNAR_CHESTPLATE.get()
-            && legs.getItem() == AsterRiskModItems.LUNAR_LEGGINGS.get()
-            && boots.getItem() == AsterRiskModItems.LUNAR_BOOTS.get();
+        return helmet.getItem() == ModItems.LUNAR_HELMET.get()
+            && chest.getItem() == ModItems.LUNAR_CHESTPLATE.get()
+            && legs.getItem() == ModItems.LUNAR_LEGGINGS.get()
+            && boots.getItem() == ModItems.LUNAR_BOOTS.get();
     }
 
     @Override

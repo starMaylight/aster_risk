@@ -1,6 +1,6 @@
 package net.mcreator.asterrisk.block.entity;
 
-import net.mcreator.asterrisk.init.AsterRiskModItems;
+import net.mcreator.asterrisk.registry.ModItems;
 import net.mcreator.asterrisk.mana.BlockManaCapability;
 import net.mcreator.asterrisk.recipe.AlchemyRecipe;
 import net.mcreator.asterrisk.recipe.ModRecipes;
@@ -172,7 +172,7 @@ public class AlchemicalCauldronBlockEntity extends BlockEntity {
 
     public boolean addItem(ItemStack stack) {
         // 月水バケツの処理
-        if (stack.is(AsterRiskModItems.MOONWATER_BUCKET.get())) {
+        if (stack.is(ModItems.MOONWATER_BUCKET.get())) {
             if (waterLevel < 1.0f) {
                 waterLevel = 1.0f;
                 setChanged();

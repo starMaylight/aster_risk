@@ -1,7 +1,7 @@
 package net.mcreator.asterrisk.entity;
 
-import net.mcreator.asterrisk.init.AsterRiskModEffects;
-import net.mcreator.asterrisk.init.AsterRiskModItems;
+import net.mcreator.asterrisk.registry.ModEffects;
+import net.mcreator.asterrisk.registry.ModItems;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.monster.Monster;
@@ -96,7 +96,7 @@ public class EclipsePhantomEntity extends Monster {
         if (result && target instanceof LivingEntity living) {
             // 星なき夜のデバフを付与
             living.addEffect(new MobEffectInstance(
-                AsterRiskModEffects.STARLESS_NIGHT.get(),
+                ModEffects.STARLESS_NIGHT.get(),
                 20 * 10, // 10秒
                 0
             ));
@@ -152,7 +152,7 @@ public class EclipsePhantomEntity extends Monster {
         
         // Shadow Essence - 50%確率で1個
         if (this.random.nextFloat() < 0.5F + looting * 0.1F) {
-            this.spawnAtLocation(AsterRiskModItems.SHADOW_ESSENCE.get());
+            this.spawnAtLocation(ModItems.SHADOW_ESSENCE.get());
         }
     }
 }

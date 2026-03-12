@@ -1,6 +1,6 @@
 package net.mcreator.asterrisk.item;
 
-import net.mcreator.asterrisk.init.AsterRiskModEffects;
+import net.mcreator.asterrisk.registry.ModEffects;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
@@ -42,7 +42,7 @@ public class StardustElixirItem extends Item {
         if (!level.isClientSide()) {
             // 星屑の加護を5分間付与
             entity.addEffect(new MobEffectInstance(
-                AsterRiskModEffects.STARDUST_PROTECTION.get(), 
+                ModEffects.STARDUST_PROTECTION.get(), 
                 20 * 60 * 5,  // 5分
                 0
             ));
