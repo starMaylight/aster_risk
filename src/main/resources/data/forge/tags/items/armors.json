@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {"id": "#forge:armors/helmets", "required": false},
+    {"id": "#forge:armors/chestplates", "required": false},
+    {"id": "#forge:armors/leggings", "required": false},
+    {"id": "#forge:armors/boots", "required": false}
+  ]
+}

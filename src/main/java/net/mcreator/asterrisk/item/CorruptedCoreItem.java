@@ -1,5 +1,7 @@
 package net.mcreator.asterrisk.item;
 
+import net.mcreator.asterrisk.util.TooltipHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -14,15 +16,16 @@ import java.util.List;
  * Corrupted Core - Corrupted Golemのドロップ
  */
 public class CorruptedCoreItem extends Item {
-    
+
     public CorruptedCoreItem() {
         super(new Item.Properties()
             .stacksTo(64)
             .rarity(Rarity.UNCOMMON));
     }
-    
+
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal("§4A corrupted energy core"));
+        super.appendHoverText(stack, level, tooltip, flag);
+        TooltipHelper.addInfo(tooltip, ChatFormatting.DARK_RED, "tooltip.aster_risk.corrupted_core.flavor");
     }
 }

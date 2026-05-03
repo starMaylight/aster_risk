@@ -38,6 +38,11 @@ public class AsterRiskNetwork {
             ExclusiveEnchantSyncPacket::encode,
             ExclusiveEnchantSyncPacket::decode,
             ExclusiveEnchantSyncPacket::handle);
+
+        CHANNEL.registerMessage(packetId++, PatternSyncPacket.class,
+            PatternSyncPacket::encode,
+            PatternSyncPacket::decode,
+            PatternSyncPacket::handle);
     }
 
     public static void sendToServer(Object msg) {

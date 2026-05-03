@@ -69,9 +69,4 @@ public class StargazerWandItem extends Item {
     public boolean isFoil(ItemStack stack) {
         return true;
     }
-
-    @Override
-    public Component getName(ItemStack stack) {
-        return Component.literal("Stargazer Wand");
-    }
 }

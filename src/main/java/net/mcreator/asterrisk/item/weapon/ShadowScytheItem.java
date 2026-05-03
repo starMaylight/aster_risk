@@ -3,6 +3,8 @@ package net.mcreator.asterrisk.item.weapon;
 import net.minecraft.core.particles.ParticleTypes;
 import net.mcreator.asterrisk.registry.ModParticles;
 import net.mcreator.asterrisk.registry.ModSounds;
+import net.mcreator.asterrisk.util.TooltipHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -75,10 +77,12 @@ public class ShadowScytheItem extends SwordItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, 
+    public void appendHoverText(ItemStack stack, @Nullable Level level,
                                 List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal("§8✦ Shadow Scythe"));
-        tooltip.add(Component.literal("§7Lifesteal: §c+" + (int)(LIFESTEAL_PERCENT * 100) + "%"));
-        tooltip.add(Component.literal("§7Heal from damage dealt"));
+        super.appendHoverText(stack, level, tooltip, flag);
+        TooltipHelper.addBlank(tooltip);
+        TooltipHelper.addHeader(tooltip, ChatFormatting.DARK_GRAY, "tooltip.aster_risk.shadow_scythe.header");
+        TooltipHelper.addStat(tooltip, ChatFormatting.RED, "tooltip.aster_risk.stat.lifesteal", (int) (LIFESTEAL_PERCENT * 100));
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.shadow_scythe.flavor");
     }
 }

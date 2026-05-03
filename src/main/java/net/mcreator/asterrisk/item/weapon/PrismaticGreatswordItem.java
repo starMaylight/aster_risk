@@ -3,6 +3,8 @@ package net.mcreator.asterrisk.item.weapon;
 import net.minecraft.core.particles.ParticleTypes;
 import net.mcreator.asterrisk.registry.ModParticles;
 import net.mcreator.asterrisk.registry.ModSounds;
+import net.mcreator.asterrisk.util.TooltipHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -102,10 +104,12 @@ public class PrismaticGreatswordItem extends SwordItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, 
+    public void appendHoverText(ItemStack stack, @Nullable Level level,
                                 List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal("§d✦ Prismatic Blade"));
-        tooltip.add(Component.literal("§720% chance for random effect:"));
-        tooltip.add(Component.literal("§c  Fire §7/ §bIce §7/ §2Poison §7/ §eLightning §7/ §fKnockback"));
+        super.appendHoverText(stack, level, tooltip, flag);
+        TooltipHelper.addBlank(tooltip);
+        TooltipHelper.addHeader(tooltip, ChatFormatting.LIGHT_PURPLE, "tooltip.aster_risk.prismatic_greatsword.header");
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.prismatic_greatsword.chance");
+        TooltipHelper.addStat(tooltip, ChatFormatting.WHITE, "tooltip.aster_risk.prismatic_greatsword.effects");
     }
 }

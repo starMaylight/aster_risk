@@ -1,5 +1,7 @@
 package net.mcreator.asterrisk.item.armor;
 
+import net.mcreator.asterrisk.util.TooltipHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
@@ -23,11 +25,12 @@ public class VoidArmorItem extends ArmorItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, 
+    public void appendHoverText(ItemStack stack, @Nullable Level level,
                                 List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("§5[Void Set]"));
-        tooltip.add(Component.literal("§d  10% chance to negate damage"));
-        tooltip.add(Component.literal("§8[Full Set] §dPhase shift (brief invulnerability on hit)"));
+        super.appendHoverText(stack, level, tooltip, flag);
+        TooltipHelper.addBlank(tooltip);
+        TooltipHelper.addHeader(tooltip, ChatFormatting.DARK_PURPLE, "tooltip.aster_risk.void_armor.header");
+        TooltipHelper.addStat(tooltip, ChatFormatting.LIGHT_PURPLE, "tooltip.aster_risk.void_armor.bonus_negate");
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.void_armor.set_bonus");
     }
 }

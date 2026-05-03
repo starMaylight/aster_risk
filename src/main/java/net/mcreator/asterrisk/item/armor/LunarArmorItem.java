@@ -1,6 +1,8 @@
 package net.mcreator.asterrisk.item.armor;
 
 import net.mcreator.asterrisk.registry.ModItems;
+import net.mcreator.asterrisk.util.TooltipHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
@@ -16,27 +18,19 @@ import java.util.List;
  * 月光の防具アイテム
  */
 public class LunarArmorItem extends ArmorItem {
-    
-    private final String customName;
 
-    public LunarArmorItem(Type type, Properties properties, String customName) {
+    public LunarArmorItem(Type type, Properties properties) {
         super(LunarArmorMaterial.INSTANCE, type, properties);
-        this.customName = customName;
-    }
-
-    @Override
-    public Component getName(ItemStack stack) {
-        return Component.literal(customName);
     }
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, level, tooltip, flag);
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("§9Lunar Armor Set"));
-        tooltip.add(Component.literal("§7Full set bonus:"));
-        tooltip.add(Component.literal("§b +25 Max Mana"));
-        tooltip.add(Component.literal("§b 2x Mana regen at night"));
+        TooltipHelper.addBlank(tooltip);
+        TooltipHelper.addHeader(tooltip, ChatFormatting.BLUE, "tooltip.aster_risk.lunar_armor.header");
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.set_bonus");
+        TooltipHelper.addStat(tooltip, ChatFormatting.AQUA, "tooltip.aster_risk.lunar_armor.bonus_mana");
+        TooltipHelper.addStat(tooltip, ChatFormatting.AQUA, "tooltip.aster_risk.lunar_armor.bonus_regen");
     }
 
     /**

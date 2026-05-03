@@ -1,0 +1,20 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:wooden_sword",
+    "minecraft:stone_sword",
+    "minecraft:iron_sword",
+    "minecraft:golden_sword",
+    "minecraft:diamond_sword",
+    "minecraft:netherite_sword",
+    "aster_risk:silver_sword",
+    "aster_risk:moonstone_sword",
+    "aster_risk:lunar_blade",
+    "aster_risk:meteorite_greatsword",
+    "aster_risk:stardust_dagger",
+    "aster_risk:eclipse_blade",
+    "aster_risk:prismatic_greatsword",
+    "aster_risk:void_dagger",
+    "aster_risk:shadow_scythe"
+  ]
+}

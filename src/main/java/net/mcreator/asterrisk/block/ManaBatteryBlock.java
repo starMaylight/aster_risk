@@ -1,6 +1,7 @@
 package net.mcreator.asterrisk.block;
 
 import net.mcreator.asterrisk.block.entity.ManaBatteryBlockEntity;
+import net.mcreator.asterrisk.util.TooltipHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -75,7 +76,7 @@ public class ManaBatteryBlock extends BaseEntityBlock {
                     // Shift+右クリック: モード切替
                     battery.cycleMode();
                     player.displayClientMessage(
-                        Component.literal("Mode: ").withStyle(ChatFormatting.GRAY)
+                        Component.translatable("message.aster_risk.mana_battery.mode").withStyle(ChatFormatting.GRAY)
                             .append(battery.getModeDisplayName()),
                         true
                     );
@@ -84,15 +85,16 @@ public class ManaBatteryBlock extends BaseEntityBlock {
                     float mana = battery.getMana();
                     float maxMana = battery.getMaxMana();
                     int percent = (int) ((mana / maxMana) * 100);
-                    
+
                     String modeColor = switch (battery.getMode()) {
                         case INPUT_ONLY -> "§a";
                         case OUTPUT_ONLY -> "§c";
                         case BIDIRECTIONAL -> "§b";
                     };
-                    
+
                     player.displayClientMessage(
-                        Component.literal(modeColor + "Mana: " + String.format("%.0f", mana) + " / " + String.format("%.0f", maxMana) + " (" + percent + "%)"),
+                        Component.translatable("message.aster_risk.mana_battery.status",
+                            modeColor, String.format("%.0f", mana), String.format("%.0f", maxMana), percent),
                         true
                     );
                 }
@@ -103,14 +105,16 @@ public class ManaBatteryBlock extends BaseEntityBlock {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("§b⚡ Mana Battery"));
-        tooltip.add(Component.literal("§7Large mana storage block"));
-        tooltip.add(Component.literal("§b  Capacity: 5000 Mana"));
-        tooltip.add(Component.literal("§b  Transfer: 100 mana/s"));
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("§7Right-click: View mana"));
-        tooltip.add(Component.literal("§7Shift+Right-click: Change mode"));
-        tooltip.add(Component.literal("§7Modes: §aInput §7/ §cOutput §7/ §bBoth"));
+        TooltipHelper.addBlank(tooltip);
+        TooltipHelper.addHeader(tooltip, ChatFormatting.AQUA, "tooltip.aster_risk.mana_battery.header");
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.mana_battery.line1");
+        TooltipHelper.addStat(tooltip, ChatFormatting.AQUA, "tooltip.aster_risk.stat.capacity",
+            TooltipHelper.formatNumber(ManaBatteryBlockEntity.MAX_MANA));
+        TooltipHelper.addStat(tooltip, ChatFormatting.AQUA, "tooltip.aster_risk.stat.transfer_rate",
+            TooltipHelper.formatNumber(ManaBatteryBlockEntity.TRANSFER_RATE));
+        TooltipHelper.addBlank(tooltip);
+        TooltipHelper.addInfo(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.mana_battery.use_view");
+        TooltipHelper.addInfo(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.mana_battery.use_mode");
+        TooltipHelper.addInfo(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.mana_battery.modes");
     }
 }

@@ -212,31 +212,31 @@ public class MoonlightFocusBlockEntity extends BlockEntity {
         if (level == null) return false;
         if (targetPos.equals(worldPosition)) return false; // 自分自身
         if (linkedPositions.contains(targetPos)) {
-            player.displayClientMessage(Component.literal("§cAlready linked to this position"), true);
+            player.displayClientMessage(Component.translatable("message.aster_risk.focus.already_linked"), true);
             return false;
         }
-        
+
         BlockEntity be = level.getBlockEntity(targetPos);
-        
+
         // リンク可能なブロックかチェック
         if (be instanceof MoonlightFocusBlockEntity ||
             be instanceof FocusChamberCoreBlockEntity ||
             be instanceof RitualCircleBlockEntity ||
             be instanceof CelestialEnchantingTableBlockEntity) {
-            
+
             linkedPositions.add(targetPos);
             setChanged();
-            
+
             String blockName = be.getClass().getSimpleName().replace("BlockEntity", "");
             player.displayClientMessage(
-                Component.literal("§a✓ Linked to " + blockName + " at " + 
-                    targetPos.getX() + ", " + targetPos.getY() + ", " + targetPos.getZ()),
+                Component.translatable("message.aster_risk.focus.linked",
+                    blockName, targetPos.getX(), targetPos.getY(), targetPos.getZ()),
                 true
             );
             return true;
         }
-        
-        player.displayClientMessage(Component.literal("§cCannot link to this block type"), true);
+
+        player.displayClientMessage(Component.translatable("message.aster_risk.focus.cannot_link"), true);
         return false;
     }
     
@@ -247,8 +247,8 @@ public class MoonlightFocusBlockEntity extends BlockEntity {
         if (linkedPositions.remove(targetPos)) {
             setChanged();
             player.displayClientMessage(
-                Component.literal("§e✗ Unlinked from " + 
-                    targetPos.getX() + ", " + targetPos.getY() + ", " + targetPos.getZ()),
+                Component.translatable("message.aster_risk.focus.unlinked",
+                    targetPos.getX(), targetPos.getY(), targetPos.getZ()),
                 true
             );
         }
@@ -261,7 +261,7 @@ public class MoonlightFocusBlockEntity extends BlockEntity {
         int count = linkedPositions.size();
         linkedPositions.clear();
         setChanged();
-        player.displayClientMessage(Component.literal("§e✗ Cleared " + count + " links"), true);
+        player.displayClientMessage(Component.translatable("message.aster_risk.focus.cleared", count), true);
     }
     
     /**
@@ -269,11 +269,11 @@ public class MoonlightFocusBlockEntity extends BlockEntity {
      */
     public void showLinkInfo(Player player) {
         if (linkedPositions.isEmpty()) {
-            player.displayClientMessage(Component.literal("§7No links"), true);
+            player.displayClientMessage(Component.translatable("message.aster_risk.focus.no_links"), true);
         } else {
             player.displayClientMessage(
-                Component.literal("§b[Focus] §7Mana: §e" + (int)storedMana + "/" + (int)MAX_MANA + 
-                    " §7| Links: §a" + linkedPositions.size()),
+                Component.translatable("message.aster_risk.focus.status",
+                    (int)storedMana, (int)MAX_MANA, linkedPositions.size()),
                 true
             );
         }

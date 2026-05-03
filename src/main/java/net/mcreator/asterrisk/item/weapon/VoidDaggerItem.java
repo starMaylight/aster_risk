@@ -3,6 +3,8 @@ package net.mcreator.asterrisk.item.weapon;
 import net.minecraft.core.particles.ParticleTypes;
 import net.mcreator.asterrisk.registry.ModParticles;
 import net.mcreator.asterrisk.registry.ModSounds;
+import net.mcreator.asterrisk.util.TooltipHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -56,7 +58,10 @@ public class VoidDaggerItem extends SwordItem {
 
             // アクションバーに表示
             if (attacker instanceof Player player) {
-                player.displayClientMessage(Component.literal("§5⚔ Backstab! §7(2x damage)"), true);
+                player.displayClientMessage(
+                    Component.translatable("message.aster_risk.void_dagger.backstab")
+                        .withStyle(ChatFormatting.DARK_PURPLE),
+                    true);
             }
         } else {
             // 通常攻撃でもポータルエフェクト
@@ -95,10 +100,12 @@ public class VoidDaggerItem extends SwordItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, 
+    public void appendHoverText(ItemStack stack, @Nullable Level level,
                                 List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal("§5✦ Void Dagger"));
-        tooltip.add(Component.literal("§7Fast attack speed"));
-        tooltip.add(Component.literal("§7Backstab: §c2x damage"));
+        super.appendHoverText(stack, level, tooltip, flag);
+        TooltipHelper.addBlank(tooltip);
+        TooltipHelper.addHeader(tooltip, ChatFormatting.DARK_PURPLE, "tooltip.aster_risk.void_dagger.header");
+        TooltipHelper.addStat(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.void_dagger.fast_attack");
+        TooltipHelper.addStat(tooltip, ChatFormatting.RED, "tooltip.aster_risk.void_dagger.backstab");
     }
 }

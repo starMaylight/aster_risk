@@ -2,6 +2,8 @@ package net.mcreator.asterrisk.item.weapon;
 
 import net.mcreator.asterrisk.registry.ModItems;
 import net.mcreator.asterrisk.mana.ManaProcedures;
+import net.mcreator.asterrisk.util.TooltipHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -46,12 +48,7 @@ public class MeteorHammerItem extends AxeItem {
     };
 
     public MeteorHammerItem(Properties properties) {
-        super(METEOR_TIER, 5.0f, -3.2f, properties); // 遅いが高火力
-    }
-
-    @Override
-    public Component getName(ItemStack stack) {
-        return Component.literal("Meteor Hammer");
+        super(METEOR_TIER, 5.0f, -3.2f, properties);
     }
 
     @Override
@@ -121,12 +118,13 @@ public class MeteorHammerItem extends AxeItem {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("§c☄ Meteor Hammer"));
-        tooltip.add(Component.literal("§7Right-click: Shockwave"));
-        tooltip.add(Component.literal("§c  Deals " + (int)DAMAGE + " damage in area"));
-        tooltip.add(Component.literal("§c  Strong knockback"));
-        tooltip.add(Component.literal("§3  Mana Cost: " + (int)MANA_COST));
+        super.appendHoverText(stack, level, tooltip, flag);
+        TooltipHelper.addBlank(tooltip);
+        TooltipHelper.addHeader(tooltip, ChatFormatting.RED, "tooltip.aster_risk.meteor_hammer.header");
+        TooltipHelper.addStat(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.meteor_hammer.action");
+        TooltipHelper.addStat(tooltip, ChatFormatting.RED, "tooltip.aster_risk.meteor_hammer.aoe_damage", (int) DAMAGE);
+        TooltipHelper.addStat(tooltip, ChatFormatting.RED, "tooltip.aster_risk.meteor_hammer.knockback");
+        TooltipHelper.addStat(tooltip, ChatFormatting.DARK_AQUA, "tooltip.aster_risk.stat.mana_cost", (int) MANA_COST);
     }
 
     @Override

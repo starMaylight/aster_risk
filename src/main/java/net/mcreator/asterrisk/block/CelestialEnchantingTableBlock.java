@@ -91,30 +91,32 @@ public class CelestialEnchantingTableBlock extends BaseEntityBlock {
                 toPlace.setCount(1);
                 table.setItem(toPlace);
                 heldItem.shrink(1);
-                player.displayClientMessage(Component.literal("§d[Celestial] §7Placed: " + toPlace.getHoverName().getString()), true);
+                player.displayClientMessage(Component.translatable("message.aster_risk.celestial.placed", toPlace.getHoverName()), true);
             } else if (!tableItem.isEmpty() && !table.isEnchanting()) {
                 if (player.getInventory().add(tableItem)) {
                     table.removeItem();
                 } else {
                     player.drop(table.removeItem(), false);
                 }
-                player.displayClientMessage(Component.literal("§d[Celestial] §7Removed item."), true);
+                player.displayClientMessage(Component.translatable("message.aster_risk.celestial.removed"), true);
             } else {
-                String status;
+                Component status;
                 if (table.isEnchanting()) {
                     int percent = (int)((float)table.getEnchantProgress() / table.getEnchantTime() * 100);
-                    status = "§eEnchanting " + percent + "%";
+                    status = Component.translatable("message.aster_risk.celestial.status_enchanting", percent);
                 } else if (!table.isStructureValid()) {
-                    status = "§cPillars incomplete";
+                    status = Component.translatable("message.aster_risk.celestial.status_pillars");
                 } else {
-                    status = "§aReady";
+                    status = Component.translatable("message.aster_risk.celestial.status_ready");
                 }
-                
+
                 String pattern = table.getDetectedPattern();
-                String patternStr = pattern != null ? "§e" + pattern : "§cNone";
-                
-                player.displayClientMessage(Component.literal("§d[Celestial] §7" + status + 
-                    " §7| Pattern: " + patternStr + " §7| Mana: §b" + (int)table.getStoredMana()), true);
+                Component patternStr = pattern != null
+                    ? Component.literal("§e" + pattern)
+                    : Component.translatable("message.aster_risk.celestial.pattern_none");
+
+                player.displayClientMessage(Component.translatable("message.aster_risk.celestial.status",
+                    status, patternStr, (int)table.getStoredMana()), true);
             }
         }
         
@@ -122,36 +124,38 @@ public class CelestialEnchantingTableBlock extends BaseEntityBlock {
     }
     
     private void showDebugInfo(Level level, BlockPos tablePos, CelestialEnchantingTableBlockEntity table, Player player) {
-        player.displayClientMessage(Component.literal("§e=== Celestial Enchant Debug ==="), false);
-        player.displayClientMessage(Component.literal("§7Mana: §b" + (int)table.getStoredMana() + "/" + (int)table.getMaxMana()), false);
-        
+        player.displayClientMessage(Component.translatable("message.aster_risk.celestial.debug_header"), false);
+        player.displayClientMessage(Component.translatable("message.aster_risk.celestial.debug_mana",
+            (int)table.getStoredMana(), (int)table.getMaxMana()), false);
+
         Block lunarPillar = ModBlocks.LUNAR_PILLAR.get();
         Block celestialTile = ModBlocks.CELESTIAL_TILE.get();
-        
-        player.displayClientMessage(Component.literal("§7--- Pillar Structure ---"), false);
+
+        player.displayClientMessage(Component.translatable("message.aster_risk.celestial.debug_pillars"), false);
         for (int i = 0; i < CelestialEnchantingTableBlockEntity.PILLAR_BASES.length; i++) {
             BlockPos base = tablePos.offset(CelestialEnchantingTableBlockEntity.PILLAR_BASES[i]);
-            
+
             boolean p1ok = level.getBlockState(base).is(lunarPillar);
             boolean p2ok = level.getBlockState(base.above(1)).is(lunarPillar);
             boolean crownok = level.getBlockState(base.above(2)).is(celestialTile);
-            
+
             String status = (p1ok && p2ok && crownok) ? "§a✓" : "§c✗";
-            player.displayClientMessage(Component.literal("  Corner" + i + ": " + status + 
-                " §7P1:" + (p1ok ? "§a✓" : "§c✗") +
-                " §7P2:" + (p2ok ? "§a✓" : "§c✗") +
-                " §7Crown:" + (crownok ? "§a✓" : "§c✗")), false);
+            player.displayClientMessage(Component.translatable("message.aster_risk.celestial.debug_corner",
+                i, status,
+                (p1ok ? "§a✓" : "§c✗"),
+                (p2ok ? "§a✓" : "§c✗"),
+                (crownok ? "§a✓" : "§c✗")), false);
         }
-        
-        player.displayClientMessage(Component.literal("§7--- Focus Patterns ---"), false);
+
+        player.displayClientMessage(Component.translatable("message.aster_risk.celestial.debug_focus"), false);
         for (FocusPattern pattern : PatternManager.getInstance().getAllFocusPatterns()) {
             int foundCount = 0;
             int linkedCount = 0;
-            
+
             for (BlockPos relPos : pattern.getPositions()) {
                 BlockPos focusPos = tablePos.offset(relPos);
                 BlockEntity focusBe = level.getBlockEntity(focusPos);
-                
+
                 if (focusBe instanceof MoonlightFocusBlockEntity focus) {
                     foundCount++;
                     if (focus.hasLinkTo(tablePos)) {
@@ -159,11 +163,11 @@ public class CelestialEnchantingTableBlock extends BaseEntityBlock {
                     }
                 }
             }
-            
+
             int total = pattern.getPositions().size();
             String status = (foundCount == total && linkedCount == total) ? "§a✓" : "§c✗";
-            player.displayClientMessage(Component.literal("  " + pattern.getName() + ": " + status + 
-                " §7(Focus: " + foundCount + "/" + total + ", Linked: " + linkedCount + "/" + total + ")"), false);
+            player.displayClientMessage(Component.translatable("message.aster_risk.celestial.debug_focus_entry",
+                pattern.getName(), status, foundCount, total, linkedCount, total), false);
         }
     }
     

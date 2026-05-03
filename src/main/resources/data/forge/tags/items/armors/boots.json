@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:leather_boots",
+    "minecraft:chainmail_boots",
+    "minecraft:iron_boots",
+    "minecraft:golden_boots",
+    "minecraft:diamond_boots",
+    "minecraft:netherite_boots",
+    "aster_risk:lunar_boots",
+    "aster_risk:stellar_boots",
+    "aster_risk:meteorite_boots",
+    "aster_risk:silver_boots",
+    "aster_risk:void_boots",
+    "aster_risk:eclipse_boots",
+    "aster_risk:stellar_sabatons"
+  ]
+}

@@ -300,13 +300,13 @@ public class AltarCoreBlockEntity extends BlockEntity {
     public boolean startRitual(Player player) {
         if (level == null || level.isClientSide()) return false;
         if (ritualInProgress) {
-            player.displayClientMessage(Component.literal("§c Ritual already in progress!"), true);
+            player.displayClientMessage(Component.translatable("message.aster_risk.altar_core.ritual_already"), true);
             return false;
         }
 
         List<RitualPedestalBlockEntity> pedestalsWithItems = findPedestalsWithItems();
         if (pedestalsWithItems.isEmpty()) {
-            player.displayClientMessage(Component.literal("§c No items on pedestals!"), true);
+            player.displayClientMessage(Component.translatable("message.aster_risk.altar_core.no_items"), true);
             return false;
         }
 
@@ -315,14 +315,15 @@ public class AltarCoreBlockEntity extends BlockEntity {
         RitualRecipe recipe = RitualRecipeManager.findRecipe(level, ingredients);
 
         if (recipe == null) {
-            player.displayClientMessage(Component.literal("§c Invalid ritual combination!"), true);
+            player.displayClientMessage(Component.translatable("message.aster_risk.altar_core.invalid_combination"), true);
             return false;
         }
 
         // マナチェック
         if (manaStorage.getMana() < recipe.getManaCost()) {
             player.displayClientMessage(
-                Component.literal("§c Not enough mana! Need: " + (int)recipe.getManaCost() + ", Have: " + (int)manaStorage.getMana()),
+                Component.translatable("message.aster_risk.altar_core.not_enough_mana",
+                    (int)recipe.getManaCost(), (int)manaStorage.getMana()),
                 true
             );
             return false;
@@ -339,7 +340,7 @@ public class AltarCoreBlockEntity extends BlockEntity {
                     missingStr.append(name.substring(0, 1).toUpperCase()).append(name.substring(1));
                 }
                 player.displayClientMessage(
-                    Component.literal("§c Requires ALL 4 obelisks linked! Missing: §e" + missingStr),
+                    Component.translatable("message.aster_risk.altar_core.missing_obelisks", missingStr.toString()),
                     true
                 );
                 return false;
@@ -357,7 +358,8 @@ public class AltarCoreBlockEntity extends BlockEntity {
                         String typeName = entry.getKey().getName();
                         typeName = typeName.substring(0, 1).toUpperCase() + typeName.substring(1);
                         player.displayClientMessage(
-                            Component.literal("§c Not enough " + typeName + " energy! Need: " + entry.getValue() + ", Have: " + have),
+                            Component.translatable("message.aster_risk.altar_core.not_enough_energy",
+                                typeName, entry.getValue(), have),
                             true
                         );
                         return false;
@@ -370,7 +372,7 @@ public class AltarCoreBlockEntity extends BlockEntity {
         ritualInProgress = true;
         ritualProgress = 0;
         currentRecipe = recipe;
-        player.displayClientMessage(Component.literal("§d✦ Ritual started..."), true);
+        player.displayClientMessage(Component.translatable("message.aster_risk.altar_core.ritual_started"), true);
         
         // 開始エフェクト
         if (level instanceof ServerLevel serverLevel) {

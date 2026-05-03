@@ -85,11 +85,6 @@
           "weight": 8
         },
         {
-          "type": "minecraft:item",
-          "name": "aster_risk:stellar_heart",
-          "weight": 5
-        },
-        {
           "type": "minecraft:empty",
           "weight": 22
         }

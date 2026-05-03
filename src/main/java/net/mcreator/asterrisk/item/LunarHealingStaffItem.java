@@ -1,6 +1,7 @@
 package net.mcreator.asterrisk.item;
 
 import net.mcreator.asterrisk.mana.ManaProcedures;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -47,7 +48,7 @@ public class LunarHealingStaffItem extends Item {
         if (player.getHealth() >= player.getMaxHealth()) {
             if (level.isClientSide()) {
                 player.displayClientMessage(
-                    Component.literal("§aYour health is already full!"),
+                    Component.translatable("message.aster_risk.healing_staff.full_health").withStyle(ChatFormatting.GREEN),
                     true
                 );
             }
@@ -101,10 +102,5 @@ public class LunarHealingStaffItem extends Item {
     @Override
     public boolean isFoil(ItemStack stack) {
         return true;
-    }
-
-    @Override
-    public Component getName(ItemStack stack) {
-        return Component.literal("Lunar Healing Staff");
     }
 }

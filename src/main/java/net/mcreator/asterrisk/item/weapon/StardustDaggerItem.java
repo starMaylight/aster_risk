@@ -2,6 +2,8 @@ package net.mcreator.asterrisk.item.weapon;
 
 import net.mcreator.asterrisk.registry.ModItems;
 import net.mcreator.asterrisk.mana.ManaProcedures;
+import net.mcreator.asterrisk.util.TooltipHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -45,12 +47,7 @@ public class StardustDaggerItem extends SwordItem {
     };
 
     public StardustDaggerItem(Properties properties) {
-        super(STARDUST_TIER, 1, -1.8f, properties); // 速い攻撃速度
-    }
-
-    @Override
-    public Component getName(ItemStack stack) {
-        return Component.literal("Stardust Dagger");
+        super(STARDUST_TIER, 1, -1.8f, properties);
     }
 
     @Override
@@ -116,11 +113,12 @@ public class StardustDaggerItem extends SwordItem {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("§d✦ Stardust Dagger"));
-        tooltip.add(Component.literal("§7Right-click: Blink"));
-        tooltip.add(Component.literal("§d  Teleport " + (int)TELEPORT_DISTANCE + " blocks forward"));
-        tooltip.add(Component.literal("§3  Mana Cost: " + (int)MANA_COST));
+        super.appendHoverText(stack, level, tooltip, flag);
+        TooltipHelper.addBlank(tooltip);
+        TooltipHelper.addHeader(tooltip, ChatFormatting.LIGHT_PURPLE, "tooltip.aster_risk.stardust_dagger.header");
+        TooltipHelper.addStat(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.stardust_dagger.action");
+        TooltipHelper.addStat(tooltip, ChatFormatting.LIGHT_PURPLE, "tooltip.aster_risk.stardust_dagger.distance", (int) TELEPORT_DISTANCE);
+        TooltipHelper.addStat(tooltip, ChatFormatting.DARK_AQUA, "tooltip.aster_risk.stat.mana_cost", (int) MANA_COST);
     }
 
     @Override

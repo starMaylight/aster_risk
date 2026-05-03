@@ -1,5 +1,7 @@
 package net.mcreator.asterrisk.item;
 
+import net.mcreator.asterrisk.util.TooltipHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -15,22 +17,23 @@ import java.util.List;
  * 最強装備の素材
  */
 public class StellarHeartItem extends Item {
-    
+
     public StellarHeartItem() {
         super(new Item.Properties()
             .stacksTo(16)
             .rarity(Rarity.EPIC)
             .fireResistant());
     }
-    
+
     @Override
     public boolean isFoil(ItemStack stack) {
         return true;
     }
-    
+
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal("§6The core of a Star Devourer"));
-        tooltip.add(Component.literal("§eRadiating immense stellar power"));
+        super.appendHoverText(stack, level, tooltip, flag);
+        TooltipHelper.addInfo(tooltip, ChatFormatting.GOLD, "tooltip.aster_risk.stellar_heart.flavor1");
+        TooltipHelper.addInfo(tooltip, ChatFormatting.YELLOW, "tooltip.aster_risk.stellar_heart.flavor2");
     }
 }

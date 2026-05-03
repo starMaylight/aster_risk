@@ -1,5 +1,7 @@
 package net.mcreator.asterrisk.item.weapon;
 
+import net.mcreator.asterrisk.util.TooltipHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -67,10 +69,12 @@ public class EclipseBladeItem extends SwordItem {
     
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal("§5§l[Eclipse Blade]"));
-        tooltip.add(Component.literal("§7Lifesteal: Heals on hit"));
-        tooltip.add(Component.literal("§7Dark Curse: Applies Wither"));
-        tooltip.add(Component.literal("§8Forged from the heart of darkness"));
+        super.appendHoverText(stack, level, tooltip, flag);
+        TooltipHelper.addBlank(tooltip);
+        TooltipHelper.addHeader(tooltip, ChatFormatting.DARK_PURPLE, "tooltip.aster_risk.eclipse_blade.header");
+        TooltipHelper.addStat(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.eclipse_blade.lifesteal");
+        TooltipHelper.addStat(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.eclipse_blade.curse");
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.eclipse_blade.flavor");
     }
     
     @Override

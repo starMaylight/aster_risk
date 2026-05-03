@@ -89,9 +89,4 @@ public class MeteorWandItem extends Item {
     public boolean isFoil(ItemStack stack) {
         return true;
     }
-
-    @Override
-    public Component getName(ItemStack stack) {
-        return Component.literal("Meteor Wand");
-    }
 }

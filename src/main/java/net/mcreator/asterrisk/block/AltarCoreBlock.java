@@ -1,6 +1,7 @@
 package net.mcreator.asterrisk.block;
 
 import net.mcreator.asterrisk.block.entity.AltarCoreBlockEntity;
+import net.mcreator.asterrisk.util.TooltipHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -102,16 +103,18 @@ public class AltarCoreBlock extends BaseEntityBlock {
             int itemCount = altar.findPedestalsWithItems().size();
 
             player.displayClientMessage(
-                Component.literal("§d✦ Altar Core")
-                    .append(Component.literal(" | Mana: " + String.format("%.0f", mana) + "/" + String.format("%.0f", maxMana)).withStyle(ChatFormatting.AQUA))
-                    .append(Component.literal(" | Pedestals: " + itemCount + "/" + pedestalCount).withStyle(ChatFormatting.GRAY)),
+                Component.translatable("message.aster_risk.altar_core.header")
+                    .append(Component.translatable("message.aster_risk.altar_core.mana_part",
+                        String.format("%.0f", mana), String.format("%.0f", maxMana)).withStyle(ChatFormatting.AQUA))
+                    .append(Component.translatable("message.aster_risk.altar_core.pedestals_part",
+                        itemCount, pedestalCount).withStyle(ChatFormatting.GRAY)),
                 true
             );
         } else {
             // 右クリック: 儀式開始
             if (altar.isRitualInProgress()) {
                 player.displayClientMessage(
-                    Component.literal("§e Ritual in progress..."),
+                    Component.translatable("message.aster_risk.altar_core.in_progress"),
                     true
                 );
             } else {
@@ -124,15 +127,13 @@ public class AltarCoreBlock extends BaseEntityBlock {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("§5✧ Altar Core"));
-        tooltip.add(Component.literal("§7Center of ritual crafting"));
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("§7Place Ritual Pedestals around"));
-        tooltip.add(Component.literal("§7at distance of 2 blocks"));
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("§7Right-click: Start ritual"));
-        tooltip.add(Component.literal("§7Shift+Right-click: View status"));
-        tooltip.add(Component.literal("§b  Max Mana: 2000"));
+        TooltipHelper.addBlank(tooltip);
+        TooltipHelper.addHeader(tooltip, ChatFormatting.DARK_PURPLE, "tooltip.aster_risk.altar_core.header");
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.altar_core.line1");
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.altar_core.line2");
+        TooltipHelper.addStat(tooltip, ChatFormatting.AQUA, "tooltip.aster_risk.stat.capacity",
+            TooltipHelper.formatNumber(AltarCoreBlockEntity.MAX_MANA));
+        TooltipHelper.addInfo(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.altar_core.use_start");
+        TooltipHelper.addInfo(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.altar_core.use_status");
     }
 }

@@ -30,21 +30,21 @@ public class ManaBatteryBlockEntity extends BlockEntity {
 
     // モード定義
     public enum TransferMode {
-        INPUT_ONLY("Input Only", true, false),
-        OUTPUT_ONLY("Output Only", false, true),
-        BIDIRECTIONAL("Bidirectional", true, true);
+        INPUT_ONLY("mana_battery.aster_risk.mode.input_only", true, false),
+        OUTPUT_ONLY("mana_battery.aster_risk.mode.output_only", false, true),
+        BIDIRECTIONAL("mana_battery.aster_risk.mode.bidirectional", true, true);
 
-        private final String displayName;
+        private final String translationKey;
         private final boolean canReceive;
         private final boolean canExtract;
 
-        TransferMode(String displayName, boolean canReceive, boolean canExtract) {
-            this.displayName = displayName;
+        TransferMode(String translationKey, boolean canReceive, boolean canExtract) {
+            this.translationKey = translationKey;
             this.canReceive = canReceive;
             this.canExtract = canExtract;
         }
 
-        public String getDisplayName() { return displayName; }
+        public String getTranslationKey() { return translationKey; }
         public boolean canReceive() { return canReceive; }
         public boolean canExtract() { return canExtract; }
 
@@ -94,7 +94,7 @@ public class ManaBatteryBlockEntity extends BlockEntity {
             case OUTPUT_ONLY -> "§c";   // 赤
             case BIDIRECTIONAL -> "§b"; // 水色
         };
-        return Component.literal(color + mode.getDisplayName());
+        return Component.literal(color).append(Component.translatable(mode.getTranslationKey()));
     }
 
     public float getMana() {

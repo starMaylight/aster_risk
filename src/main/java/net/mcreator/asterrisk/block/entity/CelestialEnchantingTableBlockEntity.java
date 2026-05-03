@@ -223,15 +223,15 @@ public class CelestialEnchantingTableBlockEntity extends BlockEntity {
     public boolean tryStartEnchanting(Player player) {
         if (level == null || level.isClientSide || isEnchanting) return false;
         if (heldItem.isEmpty()) {
-            player.displayClientMessage(Component.literal("§cNo item on the table"), true);
+            player.displayClientMessage(Component.translatable("message.aster_risk.celestial.no_item"), true);
             return false;
         }
         if (!isStructureValid) {
-            player.displayClientMessage(Component.literal("§cPillar structure incomplete: " + debugPillarInfo), true);
+            player.displayClientMessage(Component.translatable("message.aster_risk.celestial.pillar_incomplete", debugPillarInfo), true);
             return false;
         }
         if (currentPattern.isEmpty()) {
-            player.displayClientMessage(Component.literal("§cNo valid Focus pattern detected"), true);
+            player.displayClientMessage(Component.translatable("message.aster_risk.celestial.no_pattern"), true);
             return false;
         }
         
@@ -243,7 +243,7 @@ public class CelestialEnchantingTableBlockEntity extends BlockEntity {
             
             if (storedMana < cost) {
                 player.displayClientMessage(
-                    Component.literal("§cNot enough mana! Need: " + cost + ", Have: " + (int)storedMana),
+                    Component.translatable("message.aster_risk.celestial.not_enough_mana", cost, (int)storedMana),
                     true
                 );
                 return false;
@@ -259,21 +259,21 @@ public class CelestialEnchantingTableBlockEntity extends BlockEntity {
             int newLevel = currentLevel + 1;
             
             level.playSound(null, worldPosition, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1.0f, 1.0f);
-            player.displayClientMessage(Component.literal("§d✦ Celestial Enchanting: " + 
-                exclusiveData.enchantment.getDescriptionId() + " Lv." + newLevel + " (Cost: " + cost + ")"), true);
+            player.displayClientMessage(Component.translatable("message.aster_risk.celestial.enchanting",
+                exclusiveData.enchantment.getDescriptionId(), newLevel, cost), true);
             return true;
         }
         
         // 通常レシピ検索
         CelestialEnchantRecipe recipe = CelestialEnchantRecipeManager.findRecipe(currentPattern, heldItem);
         if (recipe == null) {
-            player.displayClientMessage(Component.literal("§cNo valid enchantment for this item and pattern"), true);
+            player.displayClientMessage(Component.translatable("message.aster_risk.celestial.no_recipe"), true);
             return false;
         }
-        
+
         if (storedMana < recipe.getMoonlightCost()) {
             player.displayClientMessage(
-                Component.literal("§cNot enough mana! Need: " + recipe.getMoonlightCost() + ", Have: " + (int)storedMana),
+                Component.translatable("message.aster_risk.celestial.not_enough_mana", recipe.getMoonlightCost(), (int)storedMana),
                 true
             );
             return false;
@@ -286,7 +286,7 @@ public class CelestialEnchantingTableBlockEntity extends BlockEntity {
         enchantProgress = 0;
         
         level.playSound(null, worldPosition, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1.0f, 1.0f);
-        player.displayClientMessage(Component.literal("§d✦ Enchanting started..."), true);
+        player.displayClientMessage(Component.translatable("message.aster_risk.celestial.started"), true);
         return true;
     }
     

@@ -1,6 +1,7 @@
 package net.mcreator.asterrisk.block;
 
 import net.mcreator.asterrisk.block.entity.RitualPedestalBlockEntity;
+import net.mcreator.asterrisk.util.TooltipHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -83,7 +84,7 @@ public class RitualPedestalBlock extends BaseEntityBlock {
                 player.drop(pedestalItem, false);
             }
             player.displayClientMessage(
-                Component.literal("Retrieved: ").withStyle(ChatFormatting.GRAY)
+                Component.translatable("message.aster_risk.ritual_pedestal.retrieved").withStyle(ChatFormatting.GRAY)
                     .append(pedestalItem.getHoverName()),
                 true
             );
@@ -95,7 +96,7 @@ public class RitualPedestalBlock extends BaseEntityBlock {
             pedestal.setItem(toPlace);
             heldItem.shrink(1);
             player.displayClientMessage(
-                Component.literal("Placed: ").withStyle(ChatFormatting.AQUA)
+                Component.translatable("message.aster_risk.ritual_pedestal.placed").withStyle(ChatFormatting.AQUA)
                     .append(toPlace.getHoverName()),
                 true
             );
@@ -118,11 +119,10 @@ public class RitualPedestalBlock extends BaseEntityBlock {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("§9✦ Ritual Pedestal"));
-        tooltip.add(Component.literal("§7Place items for rituals"));
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("§7Right-click: Place/Retrieve item"));
-        tooltip.add(Component.literal("§7Use with Altar Core"));
+        TooltipHelper.addBlank(tooltip);
+        TooltipHelper.addHeader(tooltip, ChatFormatting.BLUE, "tooltip.aster_risk.ritual_pedestal.header");
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.ritual_pedestal.line1");
+        TooltipHelper.addInfo(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.ritual_pedestal.use_place");
+        TooltipHelper.addInfo(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.ritual_pedestal.use_with");
     }
 }

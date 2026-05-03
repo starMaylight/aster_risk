@@ -1,5 +1,7 @@
 package net.mcreator.asterrisk.item.armor;
 
+import net.mcreator.asterrisk.util.TooltipHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
@@ -22,11 +24,12 @@ public class SilverArmorItem extends ArmorItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, 
+    public void appendHoverText(ItemStack stack, @Nullable Level level,
                                 List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("§7[Silver Set]"));
-        tooltip.add(Component.literal("§e  +25% damage to undead"));
-        tooltip.add(Component.literal("§8[Full Set] §eSmite aura (damages nearby undead)"));
+        super.appendHoverText(stack, level, tooltip, flag);
+        TooltipHelper.addBlank(tooltip);
+        TooltipHelper.addHeader(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.silver_armor.header");
+        TooltipHelper.addStat(tooltip, ChatFormatting.YELLOW, "tooltip.aster_risk.silver_armor.bonus_undead");
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.silver_armor.set_bonus");
     }
 }

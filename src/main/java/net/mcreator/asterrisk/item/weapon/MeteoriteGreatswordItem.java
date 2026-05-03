@@ -2,6 +2,8 @@ package net.mcreator.asterrisk.item.weapon;
 
 import net.mcreator.asterrisk.registry.ModItems;
 import net.mcreator.asterrisk.mana.ManaUtils;
+import net.mcreator.asterrisk.util.TooltipHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -40,12 +42,7 @@ public class MeteoriteGreatswordItem extends SwordItem {
     };
 
     public MeteoriteGreatswordItem(Properties properties) {
-        super(METEORITE_TIER, 7, -3.0f, properties); // 遅いが高火力
-    }
-
-    @Override
-    public Component getName(ItemStack stack) {
-        return Component.literal("Meteorite Greatsword");
+        super(METEORITE_TIER, 7, -3.0f, properties);
     }
 
     @Override
@@ -86,12 +83,14 @@ public class MeteoriteGreatswordItem extends SwordItem {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("§c☄ Meteorite Greatsword"));
-        tooltip.add(Component.literal("§7On Hit: Meteor Strike"));
-        tooltip.add(Component.literal("§c  " + (int)(PROC_CHANCE * 100) + "% chance for +" + (int)EXPLOSION_DAMAGE + " explosion damage"));
-        tooltip.add(Component.literal("§c  Sets target on fire"));
-        tooltip.add(Component.literal("§3  Mana Cost: " + (int)MANA_COST_PER_PROC + " (on proc)"));
+        super.appendHoverText(stack, level, tooltip, flag);
+        TooltipHelper.addBlank(tooltip);
+        TooltipHelper.addHeader(tooltip, ChatFormatting.RED, "tooltip.aster_risk.meteorite_greatsword.header");
+        TooltipHelper.addStat(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.meteorite_greatsword.action");
+        TooltipHelper.addStat(tooltip, ChatFormatting.RED, "tooltip.aster_risk.meteorite_greatsword.proc",
+            (int) (PROC_CHANCE * 100), (int) EXPLOSION_DAMAGE);
+        TooltipHelper.addStat(tooltip, ChatFormatting.RED, "tooltip.aster_risk.meteorite_greatsword.fire");
+        TooltipHelper.addStat(tooltip, ChatFormatting.DARK_AQUA, "tooltip.aster_risk.stat.mana_cost_proc", (int) MANA_COST_PER_PROC);
     }
 
     @Override

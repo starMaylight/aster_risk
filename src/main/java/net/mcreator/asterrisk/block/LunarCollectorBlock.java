@@ -1,6 +1,7 @@
 package net.mcreator.asterrisk.block;
 
 import net.mcreator.asterrisk.block.entity.LunarCollectorBlockEntity;
+import net.mcreator.asterrisk.util.TooltipHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -83,7 +84,8 @@ public class LunarCollectorBlock extends BaseEntityBlock {
                 int percent = (int) ((mana / maxMana) * 100);
                 
                 player.displayClientMessage(
-                    Component.literal("Lunar Mana: " + String.format("%.1f", mana) + " / " + String.format("%.0f", maxMana) + " (" + percent + "%)")
+                    Component.translatable("message.aster_risk.lunar_collector.mana",
+                        String.format("%.1f", mana), String.format("%.0f", maxMana), percent)
                         .withStyle(ChatFormatting.AQUA),
                     true
                 );
@@ -94,10 +96,11 @@ public class LunarCollectorBlock extends BaseEntityBlock {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("§9☽ Lunar Collector"));
-        tooltip.add(Component.literal("§7Collects Lunar Mana at night"));
-        tooltip.add(Component.literal("§7More efficient during full moon"));
-        tooltip.add(Component.literal("§b  Max Storage: 1000 Mana"));
+        TooltipHelper.addBlank(tooltip);
+        TooltipHelper.addHeader(tooltip, ChatFormatting.BLUE, "tooltip.aster_risk.lunar_collector.header");
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.lunar_collector.line1");
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.lunar_collector.line2");
+        TooltipHelper.addStat(tooltip, ChatFormatting.AQUA, "tooltip.aster_risk.stat.max_storage",
+            TooltipHelper.formatNumber(LunarCollectorBlockEntity.MAX_MANA));
     }
 }

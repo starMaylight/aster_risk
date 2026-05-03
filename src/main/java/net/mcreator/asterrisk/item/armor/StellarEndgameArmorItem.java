@@ -1,6 +1,8 @@
 package net.mcreator.asterrisk.item.armor;
 
 import net.mcreator.asterrisk.mana.LunarManaCapability;
+import net.mcreator.asterrisk.util.TooltipHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -88,26 +90,16 @@ public class StellarEndgameArmorItem extends ArmorItem {
     
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal("§6§l[Stellar Set]"));
-        
+        super.appendHoverText(stack, level, tooltip, flag);
+        TooltipHelper.addBlank(tooltip);
+        TooltipHelper.addHeader(tooltip, ChatFormatting.GOLD, "tooltip.aster_risk.stellar_endgame.header");
         switch (this.type) {
-            case HELMET -> {
-                tooltip.add(Component.literal("§e Increases mana regeneration"));
-                tooltip.add(Component.literal("§8[Full Set] Double mana regen"));
-            }
-            case CHESTPLATE -> {
-                tooltip.add(Component.literal("§e Recover mana when hit"));
-                tooltip.add(Component.literal("§8[Full Set] Double mana regen"));
-            }
-            case LEGGINGS -> {
-                tooltip.add(Component.literal("§e Grants Jump Boost II"));
-                tooltip.add(Component.literal("§8[Full Set] Double mana regen"));
-            }
-            case BOOTS -> {
-                tooltip.add(Component.literal("§e Walk on water"));
-                tooltip.add(Component.literal("§8[Full Set] Double mana regen"));
-            }
+            case HELMET -> TooltipHelper.addStat(tooltip, ChatFormatting.YELLOW, "tooltip.aster_risk.stellar_endgame.bonus_helmet");
+            case CHESTPLATE -> TooltipHelper.addStat(tooltip, ChatFormatting.YELLOW, "tooltip.aster_risk.stellar_endgame.bonus_chestplate");
+            case LEGGINGS -> TooltipHelper.addStat(tooltip, ChatFormatting.YELLOW, "tooltip.aster_risk.stellar_endgame.bonus_leggings");
+            case BOOTS -> TooltipHelper.addStat(tooltip, ChatFormatting.YELLOW, "tooltip.aster_risk.stellar_endgame.bonus_boots");
         }
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.stellar_endgame.set_bonus");
     }
     
     @Override

@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs grep *)",
+      "Bash(xargs head *)",
+      "Bash(find /c/Users/yanas/MCreatorWorkspaces/aster_risk/src/main/java/net/mcreator/asterrisk/item -type f -name \"*.java\" -exec grep -h \"public.*Item\\(\" {} \\\\;)",
+      "Bash(awk 'NR>=1180 && NR<=1208' \"C:\\\\Users\\\\yanas\\\\.claude\\\\projects\\\\C--Users-yanas-MCreatorWorkspaces-aster-risk\\\\a586a61f-547f-4151-a449-90238855b581.jsonl\")",
+      "Bash(awk 'NR>=1190 && NR<=1208' \"C:\\\\Users\\\\yanas\\\\.claude\\\\projects\\\\C--Users-yanas-MCreatorWorkspaces-aster-risk\\\\a586a61f-547f-4151-a449-90238855b581.jsonl\")",
+      "Read(//tmp/**)",
+      "Bash(awk 'NR>=1200 && NR<=1208' \"C:\\\\Users\\\\yanas\\\\.claude\\\\projects\\\\C--Users-yanas-MCreatorWorkspaces-aster-risk\\\\a586a61f-547f-4151-a449-90238855b581.jsonl\")",
+      "Bash(python -c ' *)",
+      "Bash(awk 'NR>=1100 && NR<=1199' \"C:\\\\Users\\\\yanas\\\\.claude\\\\projects\\\\C--Users-yanas-MCreatorWorkspaces-aster-risk\\\\a586a61f-547f-4151-a449-90238855b581.jsonl\")"
+    ]
+  }
+}

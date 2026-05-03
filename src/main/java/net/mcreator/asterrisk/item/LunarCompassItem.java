@@ -3,6 +3,7 @@ package net.mcreator.asterrisk.item;
 import net.mcreator.asterrisk.block.LunarPortalBlock;
 import net.mcreator.asterrisk.registry.ModBlocks;
 import net.mcreator.asterrisk.mana.ManaProcedures;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -54,7 +55,8 @@ public class LunarCompassItem extends Item {
                 // マナコスト確認
                 if (!ManaProcedures.castSpell(player, PORTAL_MANA_COST)) {
                     player.displayClientMessage(
-                        Component.literal("§c Not enough mana to ignite portal! Need: " + (int)PORTAL_MANA_COST),
+                        Component.translatable("message.aster_risk.compass.no_mana_portal", (int) PORTAL_MANA_COST)
+                            .withStyle(ChatFormatting.RED),
                         true
                     );
                     return InteractionResult.FAIL;
@@ -65,7 +67,8 @@ public class LunarCompassItem extends Item {
                 
                 if (success) {
                     player.displayClientMessage(
-                        Component.literal("§d✦ Lunar Portal opened!"),
+                        Component.translatable("message.aster_risk.compass.portal_opened")
+                            .withStyle(ChatFormatting.LIGHT_PURPLE),
                         true
                     );
                     level.playSound(null, pos, SoundEvents.END_PORTAL_SPAWN, SoundSource.BLOCKS, 1.0f, 1.0f);
@@ -80,7 +83,8 @@ public class LunarCompassItem extends Item {
                     // マナを返還（失敗時）
                     player.getCapability(net.mcreator.asterrisk.mana.LunarManaCapability.LUNAR_MANA).ifPresent(mana -> mana.addMana(PORTAL_MANA_COST));
                     player.displayClientMessage(
-                        Component.literal("§c Invalid portal frame!"),
+                        Component.translatable("message.aster_risk.compass.invalid_frame")
+                            .withStyle(ChatFormatting.RED),
                         true
                     );
                     return InteractionResult.FAIL;
@@ -141,34 +145,37 @@ public class LunarCompassItem extends Item {
                 double dx = spawnPos.getX() - playerPos.getX();
                 double dz = spawnPos.getZ() - playerPos.getZ();
                 double distance = Math.sqrt(dx * dx + dz * dz);
-                String direction = getDirection(dx, dz);
-                
+
                 // 現在の座標も表示
                 player.displayClientMessage(
-                    Component.literal("§b[Lunar Compass]"),
+                    Component.translatable("message.aster_risk.compass.header").withStyle(ChatFormatting.AQUA),
                     false
                 );
                 player.displayClientMessage(
-                    Component.literal("§7Your position: §e" + playerPos.getX() + ", " + playerPos.getY() + ", " + playerPos.getZ()),
+                    Component.translatable("message.aster_risk.compass.position",
+                        playerPos.getX(), playerPos.getY(), playerPos.getZ()).withStyle(ChatFormatting.GRAY),
                     false
                 );
                 player.displayClientMessage(
-                    Component.literal("§7World spawn: §e" + direction + " §7(§e" + (int)distance + " blocks§7)"),
+                    Component.translatable("message.aster_risk.compass.spawn",
+                        Component.translatable(getDirectionKey(dx, dz)), (int) distance).withStyle(ChatFormatting.GRAY),
                     false
                 );
-                
+
                 // 月齢情報も表示
                 int moonPhase = serverLevel.getMoonPhase();
-                String moonName = getMoonPhaseName(moonPhase);
                 player.displayClientMessage(
-                    Component.literal("§7Moon phase: §e" + moonName),
+                    Component.translatable("message.aster_risk.compass.moon_phase",
+                        Component.translatable(getMoonPhaseKey(moonPhase))).withStyle(ChatFormatting.GRAY),
                     false
                 );
-                
+
                 // 現在のディメンション
-                String dimName = level.dimension() == LunarPortalBlock.LUNAR_REALM ? "Lunar Realm" : level.dimension().location().toString();
+                Component dimComponent = level.dimension() == LunarPortalBlock.LUNAR_REALM
+                    ? Component.translatable("dimension.aster_risk.lunar_realm")
+                    : Component.literal(level.dimension().location().toString());
                 player.displayClientMessage(
-                    Component.literal("§7Dimension: §e" + dimName),
+                    Component.translatable("message.aster_risk.compass.dimension", dimComponent).withStyle(ChatFormatting.GRAY),
                     false
                 );
                 
@@ -191,41 +198,36 @@ public class LunarCompassItem extends Item {
         return InteractionResultHolder.consume(itemstack);
     }
 
-    private String getDirection(double dx, double dz) {
+    private String getDirectionKey(double dx, double dz) {
         double angle = Math.atan2(dz, dx) * 180 / Math.PI;
         angle = (angle + 360) % 360;
-        
-        if (angle < 22.5 || angle >= 337.5) return "East →";
-        if (angle < 67.5) return "South-East ↘";
-        if (angle < 112.5) return "South ↓";
-        if (angle < 157.5) return "South-West ↙";
-        if (angle < 202.5) return "West ←";
-        if (angle < 247.5) return "North-West ↖";
-        if (angle < 292.5) return "North ↑";
-        return "North-East ↗";
+
+        if (angle < 22.5 || angle >= 337.5) return "direction.aster_risk.east";
+        if (angle < 67.5) return "direction.aster_risk.south_east";
+        if (angle < 112.5) return "direction.aster_risk.south";
+        if (angle < 157.5) return "direction.aster_risk.south_west";
+        if (angle < 202.5) return "direction.aster_risk.west";
+        if (angle < 247.5) return "direction.aster_risk.north_west";
+        if (angle < 292.5) return "direction.aster_risk.north";
+        return "direction.aster_risk.north_east";
     }
 
-    private String getMoonPhaseName(int moonPhase) {
+    private String getMoonPhaseKey(int moonPhase) {
         return switch (moonPhase) {
-            case 0 -> "Full Moon ●";
-            case 1 -> "Waning Gibbous";
-            case 2 -> "Last Quarter ◐";
-            case 3 -> "Waning Crescent";
-            case 4 -> "New Moon ○";
-            case 5 -> "Waxing Crescent";
-            case 6 -> "First Quarter ◑";
-            case 7 -> "Waxing Gibbous";
-            default -> "Unknown";
+            case 0 -> "moon_phase.aster_risk.full";
+            case 1 -> "moon_phase.aster_risk.waning_gibbous";
+            case 2 -> "moon_phase.aster_risk.last_quarter";
+            case 3 -> "moon_phase.aster_risk.waning_crescent";
+            case 4 -> "moon_phase.aster_risk.new";
+            case 5 -> "moon_phase.aster_risk.waxing_crescent";
+            case 6 -> "moon_phase.aster_risk.first_quarter";
+            case 7 -> "moon_phase.aster_risk.waxing_gibbous";
+            default -> "moon_phase.aster_risk.unknown";
         };
     }
 
     @Override
     public boolean isFoil(ItemStack stack) {
         return true;
-    }
-
-    @Override
-    public Component getName(ItemStack stack) {
-        return Component.literal("Lunar Compass");
     }
 }

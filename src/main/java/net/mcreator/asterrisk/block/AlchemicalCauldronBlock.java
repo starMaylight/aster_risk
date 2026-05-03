@@ -2,6 +2,8 @@ package net.mcreator.asterrisk.block;
 
 import net.mcreator.asterrisk.block.entity.AlchemicalCauldronBlockEntity;
 import net.mcreator.asterrisk.registry.ModBlockEntities;
+import net.mcreator.asterrisk.util.TooltipHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -116,9 +118,11 @@ public class AlchemicalCauldronBlock extends BaseEntityBlock {
             // ステータス表示
             float mana = cauldron.getMana();
             float waterLevel = cauldron.getWaterLevel();
-            player.displayClientMessage(Component.literal(
-                String.format("§b水: %.0f%% §d| §bマナ: %.0f/%.0f", 
-                    waterLevel * 100, mana, cauldron.getMaxMana())), true);
+            player.displayClientMessage(Component.translatable(
+                "message.aster_risk.alchemical_cauldron.status",
+                String.format("%.0f", waterLevel * 100),
+                String.format("%.0f", mana),
+                String.format("%.0f", cauldron.getMaxMana())), true);
         }
 
         return InteractionResult.SUCCESS;
@@ -137,12 +141,11 @@ public class AlchemicalCauldronBlock extends BaseEntityBlock {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("§b✦ Alchemical Cauldron"));
-        tooltip.add(Component.literal("§7Transmute items using Moon Water"));
-        tooltip.add(Component.literal("§7and Stardust catalysts"));
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("§7Fill with Moon Water bucket"));
-        tooltip.add(Component.literal("§7Add ingredients to begin"));
+        TooltipHelper.addBlank(tooltip);
+        TooltipHelper.addHeader(tooltip, ChatFormatting.AQUA, "tooltip.aster_risk.alchemical_cauldron.header");
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.alchemical_cauldron.line1");
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.alchemical_cauldron.line2");
+        TooltipHelper.addInfo(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.alchemical_cauldron.use_fill");
+        TooltipHelper.addInfo(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.alchemical_cauldron.use_add");
     }
 }

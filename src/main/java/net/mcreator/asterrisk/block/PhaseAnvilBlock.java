@@ -2,6 +2,8 @@ package net.mcreator.asterrisk.block;
 
 import net.mcreator.asterrisk.block.entity.PhaseAnvilBlockEntity;
 import net.mcreator.asterrisk.registry.ModBlockEntities;
+import net.mcreator.asterrisk.util.TooltipHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -133,27 +135,27 @@ public class PhaseAnvilBlock extends BaseEntityBlock {
             
             // 現在の月相と進行状況を表示
             int moonPhase = level.getMoonPhase();
-            String phaseName = getMoonPhaseName(moonPhase);
+            Component phaseName = Component.translatable(getMoonPhaseKey(moonPhase));
             float mana = anvil.getMana();
-            
-            player.displayClientMessage(Component.literal(
-                String.format("§b月相: %s §d| §bマナ: %.0f/%.0f", phaseName, mana, anvil.getMaxMana())), true);
+
+            player.displayClientMessage(Component.translatable("message.aster_risk.phase_anvil.status",
+                phaseName, String.format("%.0f", mana), String.format("%.0f", anvil.getMaxMana())), true);
         }
 
         return InteractionResult.SUCCESS;
     }
 
-    private String getMoonPhaseName(int phase) {
+    private String getMoonPhaseKey(int phase) {
         return switch (phase) {
-            case 0 -> "満月";
-            case 1 -> "更待月";
-            case 2 -> "下弦";
-            case 3 -> "有明月";
-            case 4 -> "新月";
-            case 5 -> "三日月";
-            case 6 -> "上弦";
-            case 7 -> "十三夜";
-            default -> "不明";
+            case 0 -> "moon_phase.aster_risk.full";
+            case 1 -> "moon_phase.aster_risk.waning_gibbous";
+            case 2 -> "moon_phase.aster_risk.last_quarter";
+            case 3 -> "moon_phase.aster_risk.waning_crescent";
+            case 4 -> "moon_phase.aster_risk.new";
+            case 5 -> "moon_phase.aster_risk.waxing_crescent";
+            case 6 -> "moon_phase.aster_risk.first_quarter";
+            case 7 -> "moon_phase.aster_risk.waxing_gibbous";
+            default -> "moon_phase.aster_risk.unknown";
         };
     }
 
@@ -170,11 +172,10 @@ public class PhaseAnvilBlock extends BaseEntityBlock {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("§d☽ Phase Anvil"));
-        tooltip.add(Component.literal("§7Apply Moon Phase Sigils to equipment"));
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("§7Place equipment and sigil"));
-        tooltip.add(Component.literal("§7Supply mana to imbue"));
+        TooltipHelper.addBlank(tooltip);
+        TooltipHelper.addHeader(tooltip, ChatFormatting.LIGHT_PURPLE, "tooltip.aster_risk.phase_anvil.header");
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.phase_anvil.line1");
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.phase_anvil.line2");
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.phase_anvil.line3");
     }
 }

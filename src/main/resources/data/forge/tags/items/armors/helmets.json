@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:leather_helmet",
+    "minecraft:chainmail_helmet",
+    "minecraft:iron_helmet",
+    "minecraft:golden_helmet",
+    "minecraft:diamond_helmet",
+    "minecraft:netherite_helmet",
+    "minecraft:turtle_helmet",
+    "aster_risk:lunar_helmet",
+    "aster_risk:stellar_crown",
+    "aster_risk:meteorite_helmet",
+    "aster_risk:silver_helmet",
+    "aster_risk:void_helmet",
+    "aster_risk:eclipse_crown",
+    "aster_risk:stellar_diadem"
+  ]
+}

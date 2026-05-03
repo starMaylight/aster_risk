@@ -67,6 +67,6 @@ public class MoonlightBlock extends Block {
 
     @Override
     public MutableComponent getName() {
-        return Component.literal("Moonlight");
+        return Component.translatable("block.aster_risk.moonlight");
     }
 }

@@ -1,5 +1,7 @@
 package net.mcreator.asterrisk.item.tool;
 
+import net.mcreator.asterrisk.util.TooltipHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
@@ -40,10 +42,12 @@ public class MoonstoneToolItems {
         }
 
         @Override
-        public void appendHoverText(ItemStack stack, @Nullable Level level, 
+        public void appendHoverText(ItemStack stack, @Nullable Level level,
                                     List<Component> tooltip, TooltipFlag flag) {
-            tooltip.add(Component.literal("§b☽ Lunar Weapon"));
-            tooltip.add(Component.literal("§7+3 magic damage at night"));
+            super.appendHoverText(stack, level, tooltip, flag);
+            TooltipHelper.addBlank(tooltip);
+            TooltipHelper.addHeader(tooltip, ChatFormatting.AQUA, "tooltip.aster_risk.moonstone_tool.weapon_header");
+            TooltipHelper.addStat(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.moonstone_tool.sword_bonus");
         }
     }
 
@@ -60,10 +64,12 @@ public class MoonstoneToolItems {
         }
 
         @Override
-        public void appendHoverText(ItemStack stack, @Nullable Level level, 
+        public void appendHoverText(ItemStack stack, @Nullable Level level,
                                     List<Component> tooltip, TooltipFlag flag) {
-            tooltip.add(Component.literal("§b☽ Lunar Tool"));
-            tooltip.add(Component.literal("§7+30% mining speed at night"));
+            super.appendHoverText(stack, level, tooltip, flag);
+            TooltipHelper.addBlank(tooltip);
+            TooltipHelper.addHeader(tooltip, ChatFormatting.AQUA, "tooltip.aster_risk.moonstone_tool.tool_header");
+            TooltipHelper.addStat(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.moonstone_tool.pickaxe_bonus");
         }
     }
 
@@ -81,10 +87,12 @@ public class MoonstoneToolItems {
         }
 
         @Override
-        public void appendHoverText(ItemStack stack, @Nullable Level level, 
+        public void appendHoverText(ItemStack stack, @Nullable Level level,
                                     List<Component> tooltip, TooltipFlag flag) {
-            tooltip.add(Component.literal("§b☽ Lunar Tool"));
-            tooltip.add(Component.literal("§7+2 magic damage at night"));
+            super.appendHoverText(stack, level, tooltip, flag);
+            TooltipHelper.addBlank(tooltip);
+            TooltipHelper.addHeader(tooltip, ChatFormatting.AQUA, "tooltip.aster_risk.moonstone_tool.tool_header");
+            TooltipHelper.addStat(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.moonstone_tool.axe_bonus");
         }
     }
 
@@ -94,10 +102,12 @@ public class MoonstoneToolItems {
         }
 
         @Override
-        public void appendHoverText(ItemStack stack, @Nullable Level level, 
+        public void appendHoverText(ItemStack stack, @Nullable Level level,
                                     List<Component> tooltip, TooltipFlag flag) {
-            tooltip.add(Component.literal("§b☽ Lunar Tool"));
-            tooltip.add(Component.literal("§7+30% digging speed at night"));
+            super.appendHoverText(stack, level, tooltip, flag);
+            TooltipHelper.addBlank(tooltip);
+            TooltipHelper.addHeader(tooltip, ChatFormatting.AQUA, "tooltip.aster_risk.moonstone_tool.tool_header");
+            TooltipHelper.addStat(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.moonstone_tool.shovel_bonus");
         }
     }
 
@@ -107,10 +117,12 @@ public class MoonstoneToolItems {
         }
 
         @Override
-        public void appendHoverText(ItemStack stack, @Nullable Level level, 
+        public void appendHoverText(ItemStack stack, @Nullable Level level,
                                     List<Component> tooltip, TooltipFlag flag) {
-            tooltip.add(Component.literal("§b☽ Lunar Tool"));
-            tooltip.add(Component.literal("§7Crops grow faster when planted at night"));
+            super.appendHoverText(stack, level, tooltip, flag);
+            TooltipHelper.addBlank(tooltip);
+            TooltipHelper.addHeader(tooltip, ChatFormatting.AQUA, "tooltip.aster_risk.moonstone_tool.tool_header");
+            TooltipHelper.addStat(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.moonstone_tool.hoe_bonus");
         }
     }
 }

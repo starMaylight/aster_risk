@@ -5,6 +5,8 @@ import net.mcreator.asterrisk.mana.ManaProcedures;
 import net.minecraft.core.particles.ParticleTypes;
 import net.mcreator.asterrisk.registry.ModParticles;
 import net.mcreator.asterrisk.registry.ModSounds;
+import net.mcreator.asterrisk.util.TooltipHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -49,11 +51,6 @@ public class LunarBladeItem extends SwordItem {
 
     public LunarBladeItem(Properties properties) {
         super(LUNAR_TIER, 3, -2.4f, properties);
-    }
-
-    @Override
-    public Component getName(ItemStack stack) {
-        return Component.literal("Lunar Blade");
     }
 
     @Override
@@ -111,12 +108,13 @@ public class LunarBladeItem extends SwordItem {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("§9☽ Lunar Blade"));
-        tooltip.add(Component.literal("§7Right-click: Lunar Slash"));
-        tooltip.add(Component.literal("§b  Deals " + (int)DAMAGE + " damage to nearby enemies"));
-        tooltip.add(Component.literal("§b  Applies Glowing effect"));
-        tooltip.add(Component.literal("§3  Mana Cost: " + (int)MANA_COST));
+        super.appendHoverText(stack, level, tooltip, flag);
+        TooltipHelper.addBlank(tooltip);
+        TooltipHelper.addHeader(tooltip, ChatFormatting.BLUE, "tooltip.aster_risk.lunar_blade.header");
+        TooltipHelper.addStat(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.lunar_blade.action");
+        TooltipHelper.addStat(tooltip, ChatFormatting.AQUA, "tooltip.aster_risk.lunar_blade.aoe_damage", (int) DAMAGE);
+        TooltipHelper.addStat(tooltip, ChatFormatting.AQUA, "tooltip.aster_risk.lunar_blade.glowing");
+        TooltipHelper.addStat(tooltip, ChatFormatting.DARK_AQUA, "tooltip.aster_risk.stat.mana_cost", (int) MANA_COST);
     }
 
     @Override

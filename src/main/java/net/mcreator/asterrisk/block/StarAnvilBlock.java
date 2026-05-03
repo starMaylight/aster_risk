@@ -1,6 +1,7 @@
 package net.mcreator.asterrisk.block;
 
 import net.mcreator.asterrisk.block.entity.StarAnvilBlockEntity;
+import net.mcreator.asterrisk.util.TooltipHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -51,12 +52,15 @@ public class StarAnvilBlock extends BaseEntityBlock {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.translatable("tooltip.aster_risk.star_anvil.line1").withStyle(ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("tooltip.aster_risk.star_anvil.line2").withStyle(ChatFormatting.DARK_PURPLE));
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("Right-click: Place/Take item").withStyle(ChatFormatting.YELLOW));
-        tooltip.add(Component.literal("Shift+Click (empty): Repair (200 mana)").withStyle(ChatFormatting.GREEN));
-        tooltip.add(Component.literal("Shift+Click again: Enhance (500 mana)").withStyle(ChatFormatting.LIGHT_PURPLE));
+        TooltipHelper.addBlank(tooltip);
+        TooltipHelper.addHeader(tooltip, ChatFormatting.GOLD, "tooltip.aster_risk.star_anvil.header");
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.star_anvil.line1");
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.star_anvil.line2");
+        TooltipHelper.addInfo(tooltip, ChatFormatting.YELLOW, "tooltip.aster_risk.star_anvil.use_place");
+        TooltipHelper.addInfo(tooltip, ChatFormatting.GREEN, "tooltip.aster_risk.star_anvil.use_repair",
+            TooltipHelper.formatNumber(StarAnvilBlockEntity.REPAIR_MANA_COST));
+        TooltipHelper.addInfo(tooltip, ChatFormatting.LIGHT_PURPLE, "tooltip.aster_risk.star_anvil.use_enhance",
+            TooltipHelper.formatNumber(StarAnvilBlockEntity.ENHANCE_MANA_COST));
         super.appendHoverText(stack, level, tooltip, flag);
     }
 
@@ -94,33 +98,35 @@ public class StarAnvilBlock extends BaseEntityBlock {
         if (player.isShiftKeyDown() && heldItem.isEmpty()) {
             // Shift+素手: 修理または強化
             if (anvilItem.isEmpty()) {
-                player.displayClientMessage(Component.literal("§7No item on the anvil."), true);
+                player.displayClientMessage(Component.translatable("message.aster_risk.star_anvil.no_item"), true);
                 return InteractionResult.CONSUME;
             }
-            
+
             // まず修理を試みる（耐久値が減っている場合）
             if (anvilItem.isDamaged()) {
                 if (anvil.getMana() < StarAnvilBlockEntity.REPAIR_MANA_COST) {
-                    player.displayClientMessage(Component.literal("§cNot enough mana for repair! Need: 200"), true);
+                    player.displayClientMessage(Component.translatable("message.aster_risk.star_anvil.not_enough_mana_repair",
+                        (int)StarAnvilBlockEntity.REPAIR_MANA_COST), true);
                     return InteractionResult.CONSUME;
                 }
-                
+
                 if (anvil.repairItem()) {
-                    player.displayClientMessage(Component.literal("§a✦ Item repaired!"), true);
+                    player.displayClientMessage(Component.translatable("message.aster_risk.star_anvil.repaired"), true);
                     return InteractionResult.CONSUME;
                 }
             }
-            
+
             // 修理不要または修理済みなら強化
             if (anvil.getMana() < StarAnvilBlockEntity.ENHANCE_MANA_COST) {
-                player.displayClientMessage(Component.literal("§cNot enough mana for enhance! Need: 500"), true);
+                player.displayClientMessage(Component.translatable("message.aster_risk.star_anvil.not_enough_mana_enhance",
+                    (int)StarAnvilBlockEntity.ENHANCE_MANA_COST), true);
                 return InteractionResult.CONSUME;
             }
-            
+
             if (anvil.enhanceItem()) {
-                player.displayClientMessage(Component.literal("§d✦ Item enhanced!"), true);
+                player.displayClientMessage(Component.translatable("message.aster_risk.star_anvil.enhanced"), true);
             } else {
-                player.displayClientMessage(Component.literal("§cCannot enhance this item further!"), true);
+                player.displayClientMessage(Component.translatable("message.aster_risk.star_anvil.cannot_enhance"), true);
             }
             
             return InteractionResult.CONSUME;
@@ -131,21 +137,21 @@ public class StarAnvilBlock extends BaseEntityBlock {
             toPlace.setCount(1);
             anvil.setItem(toPlace);
             heldItem.shrink(1);
-            player.displayClientMessage(Component.literal("§7Placed " + toPlace.getHoverName().getString()), true);
+            player.displayClientMessage(Component.translatable("message.aster_risk.star_anvil.placed", toPlace.getHoverName()), true);
             return InteractionResult.CONSUME;
-            
+
         } else if (heldItem.isEmpty() && !anvilItem.isEmpty() && !player.isShiftKeyDown()) {
             // 素手で右クリック: アイテムを取り出す
             ItemStack removed = anvil.removeItem();
             player.setItemInHand(hand, removed);
-            player.displayClientMessage(Component.literal("§7Took " + removed.getHoverName().getString()), true);
+            player.displayClientMessage(Component.translatable("message.aster_risk.star_anvil.took", removed.getHoverName()), true);
             return InteractionResult.CONSUME;
-            
+
         } else if (heldItem.isEmpty() && anvilItem.isEmpty()) {
             // 空の状態でステータス表示
             player.displayClientMessage(
-                Component.literal("§5Star Anvil §7| Mana: §b" + (int)anvil.getMana() + "/" + (int)anvil.getMaxMana() +
-                    " §7| Place an item to repair/enhance"),
+                Component.translatable("message.aster_risk.star_anvil.status",
+                    (int)anvil.getMana(), (int)anvil.getMaxMana()),
                 true
             );
             return InteractionResult.CONSUME;

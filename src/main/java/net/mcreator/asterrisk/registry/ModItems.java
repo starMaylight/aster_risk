@@ -98,22 +98,22 @@ public class ModItems {
 	public static final RegistryObject<Item> LINKING_WAND = REGISTRY.register("linking_wand", () -> new LinkingWandItem());
 
 	// 月光の防具セット（Lunar Armor）
-	public static final RegistryObject<Item> LUNAR_HELMET = REGISTRY.register("lunar_helmet", () -> new LunarArmorItem(ArmorItem.Type.HELMET, new Item.Properties(), "Lunar Helmet"));
-	public static final RegistryObject<Item> LUNAR_CHESTPLATE = REGISTRY.register("lunar_chestplate", () -> new LunarArmorItem(ArmorItem.Type.CHESTPLATE, new Item.Properties(), "Lunar Chestplate"));
-	public static final RegistryObject<Item> LUNAR_LEGGINGS = REGISTRY.register("lunar_leggings", () -> new LunarArmorItem(ArmorItem.Type.LEGGINGS, new Item.Properties(), "Lunar Leggings"));
-	public static final RegistryObject<Item> LUNAR_BOOTS = REGISTRY.register("lunar_boots", () -> new LunarArmorItem(ArmorItem.Type.BOOTS, new Item.Properties(), "Lunar Boots"));
+	public static final RegistryObject<Item> LUNAR_HELMET = REGISTRY.register("lunar_helmet", () -> new LunarArmorItem(ArmorItem.Type.HELMET, new Item.Properties()));
+	public static final RegistryObject<Item> LUNAR_CHESTPLATE = REGISTRY.register("lunar_chestplate", () -> new LunarArmorItem(ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+	public static final RegistryObject<Item> LUNAR_LEGGINGS = REGISTRY.register("lunar_leggings", () -> new LunarArmorItem(ArmorItem.Type.LEGGINGS, new Item.Properties()));
+	public static final RegistryObject<Item> LUNAR_BOOTS = REGISTRY.register("lunar_boots", () -> new LunarArmorItem(ArmorItem.Type.BOOTS, new Item.Properties()));
 
 	// 星屑の防具セット（Stellar Armor）
-	public static final RegistryObject<Item> STELLAR_CROWN = REGISTRY.register("stellar_crown", () -> new StellarArmorItem(ArmorItem.Type.HELMET, new Item.Properties(), "Stellar Crown"));
-	public static final RegistryObject<Item> STELLAR_ROBE = REGISTRY.register("stellar_robe", () -> new StellarArmorItem(ArmorItem.Type.CHESTPLATE, new Item.Properties(), "Stellar Robe"));
-	public static final RegistryObject<Item> STELLAR_LEGGINGS = REGISTRY.register("stellar_leggings", () -> new StellarArmorItem(ArmorItem.Type.LEGGINGS, new Item.Properties(), "Stellar Leggings"));
-	public static final RegistryObject<Item> STELLAR_BOOTS = REGISTRY.register("stellar_boots", () -> new StellarArmorItem(ArmorItem.Type.BOOTS, new Item.Properties(), "Stellar Boots"));
+	public static final RegistryObject<Item> STELLAR_CROWN = REGISTRY.register("stellar_crown", () -> new StellarArmorItem(ArmorItem.Type.HELMET, new Item.Properties()));
+	public static final RegistryObject<Item> STELLAR_ROBE = REGISTRY.register("stellar_robe", () -> new StellarArmorItem(ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+	public static final RegistryObject<Item> STELLAR_LEGGINGS = REGISTRY.register("stellar_leggings", () -> new StellarArmorItem(ArmorItem.Type.LEGGINGS, new Item.Properties()));
+	public static final RegistryObject<Item> STELLAR_BOOTS = REGISTRY.register("stellar_boots", () -> new StellarArmorItem(ArmorItem.Type.BOOTS, new Item.Properties()));
 
 	// 隕石の防具セット（Meteorite Armor）
-	public static final RegistryObject<Item> METEORITE_HELMET = REGISTRY.register("meteorite_helmet", () -> new MeteoriteArmorItem(ArmorItem.Type.HELMET, new Item.Properties(), "Meteorite Helmet"));
-	public static final RegistryObject<Item> METEORITE_CHESTPLATE = REGISTRY.register("meteorite_chestplate", () -> new MeteoriteArmorItem(ArmorItem.Type.CHESTPLATE, new Item.Properties(), "Meteorite Chestplate"));
-	public static final RegistryObject<Item> METEORITE_LEGGINGS = REGISTRY.register("meteorite_leggings", () -> new MeteoriteArmorItem(ArmorItem.Type.LEGGINGS, new Item.Properties(), "Meteorite Leggings"));
-	public static final RegistryObject<Item> METEORITE_BOOTS = REGISTRY.register("meteorite_boots", () -> new MeteoriteArmorItem(ArmorItem.Type.BOOTS, new Item.Properties(), "Meteorite Boots"));
+	public static final RegistryObject<Item> METEORITE_HELMET = REGISTRY.register("meteorite_helmet", () -> new MeteoriteArmorItem(ArmorItem.Type.HELMET, new Item.Properties()));
+	public static final RegistryObject<Item> METEORITE_CHESTPLATE = REGISTRY.register("meteorite_chestplate", () -> new MeteoriteArmorItem(ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+	public static final RegistryObject<Item> METEORITE_LEGGINGS = REGISTRY.register("meteorite_leggings", () -> new MeteoriteArmorItem(ArmorItem.Type.LEGGINGS, new Item.Properties()));
+	public static final RegistryObject<Item> METEORITE_BOOTS = REGISTRY.register("meteorite_boots", () -> new MeteoriteArmorItem(ArmorItem.Type.BOOTS, new Item.Properties()));
 
 	// 武器
 	public static final RegistryObject<Item> LUNAR_BLADE = REGISTRY.register("lunar_blade", () -> new LunarBladeItem(new Item.Properties()));

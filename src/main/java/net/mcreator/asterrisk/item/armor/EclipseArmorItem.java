@@ -1,6 +1,8 @@
 package net.mcreator.asterrisk.item.armor;
 
 import net.mcreator.asterrisk.registry.ModItems;
+import net.mcreator.asterrisk.util.TooltipHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -88,26 +90,16 @@ public class EclipseArmorItem extends ArmorItem {
     
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal("§5§l[Eclipse Set]"));
-        
+        super.appendHoverText(stack, level, tooltip, flag);
+        TooltipHelper.addBlank(tooltip);
+        TooltipHelper.addHeader(tooltip, ChatFormatting.DARK_PURPLE, "tooltip.aster_risk.eclipse_armor.header");
         switch (this.type) {
-            case HELMET -> {
-                tooltip.add(Component.literal("§7Grants Night Vision"));
-                tooltip.add(Component.literal("§8[Full Set] Weakens nearby enemies"));
-            }
-            case CHESTPLATE -> {
-                tooltip.add(Component.literal("§7Reflects damage to attackers"));
-                tooltip.add(Component.literal("§8[Full Set] Weakens nearby enemies"));
-            }
-            case LEGGINGS -> {
-                tooltip.add(Component.literal("§7Increases movement speed"));
-                tooltip.add(Component.literal("§8[Full Set] Weakens nearby enemies"));
-            }
-            case BOOTS -> {
-                tooltip.add(Component.literal("§7Negates fall damage"));
-                tooltip.add(Component.literal("§8[Full Set] Weakens nearby enemies"));
-            }
+            case HELMET -> TooltipHelper.addStat(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.eclipse_armor.bonus_helmet");
+            case CHESTPLATE -> TooltipHelper.addStat(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.eclipse_armor.bonus_chestplate");
+            case LEGGINGS -> TooltipHelper.addStat(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.eclipse_armor.bonus_leggings");
+            case BOOTS -> TooltipHelper.addStat(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.eclipse_armor.bonus_boots");
         }
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.eclipse_armor.set_bonus");
     }
     
     @Override

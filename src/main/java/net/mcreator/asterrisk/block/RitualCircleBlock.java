@@ -82,21 +82,23 @@ public class RitualCircleBlock extends BaseEntityBlock {
             if (circle.isActive()) {
                 int progress = (int)((float)circle.getRitualProgress() / circle.getRitualTime() * 100);
                 player.displayClientMessage(
-                    Component.literal("§d[Ritual] §7Progress: §a" + progress + "% §7| Mana: §b" + (int)circle.getMana()),
+                    Component.translatable("message.aster_risk.ritual.progress",
+                        progress, (int)circle.getMana()),
                     true
                 );
             } else {
                 if (circle.tryStartRitual()) {
-                    player.displayClientMessage(Component.literal("§d[Ritual] §aStarting ritual..."), true);
+                    player.displayClientMessage(Component.translatable("message.aster_risk.ritual.starting"), true);
                 } else {
                     if (circle.getMana() < 100) {
                         player.displayClientMessage(
-                            Component.literal("§d[Ritual] §cNot enough mana! (" + (int)circle.getMana() + "/" + (int)circle.getMaxMana() + ")"),
+                            Component.translatable("message.aster_risk.ritual.not_enough_mana",
+                                (int)circle.getMana(), (int)circle.getMaxMana()),
                             true
                         );
                     } else {
                         player.displayClientMessage(
-                            Component.literal("§d[Ritual] §7No valid recipe. Shift+click for debug info."),
+                            Component.translatable("message.aster_risk.ritual.no_recipe"),
                             true
                         );
                     }
@@ -111,21 +113,22 @@ public class RitualCircleBlock extends BaseEntityBlock {
      * デバッグ情報を表示（PatternManagerから動的に取得）
      */
     private void showDebugInfo(Level level, BlockPos circlePos, RitualCircleBlockEntity circle, Player player) {
-        player.displayClientMessage(Component.literal("§e=== Ritual Circle Debug ==="), false);
-        player.displayClientMessage(Component.literal("§7Mana: §b" + (int)circle.getMana() + "/" + (int)circle.getMaxMana()), false);
-        
+        player.displayClientMessage(Component.translatable("message.aster_risk.ritual.debug_header"), false);
+        player.displayClientMessage(Component.translatable("message.aster_risk.ritual.debug_mana",
+            (int)circle.getMana(), (int)circle.getMaxMana()), false);
+
         // PatternManagerから全パターンを取得
         for (PedestalPattern pattern : PatternManager.getInstance().getAllPedestalPatterns()) {
             String patternName = pattern.getName();
-            
+
             int foundCount = 0;
             int itemCount = 0;
             StringBuilder details = new StringBuilder();
-            
+
             for (BlockPos relPos : pattern.getPositions()) {
                 BlockPos pedestalPos = circlePos.offset(relPos);
                 BlockEntity be = level.getBlockEntity(pedestalPos);
-                
+
                 if (be instanceof RitualPedestalBlockEntity pedestal) {
                     foundCount++;
                     if (pedestal.hasItem()) {
@@ -135,16 +138,17 @@ public class RitualCircleBlock extends BaseEntityBlock {
                     }
                 }
             }
-            
+
             int totalPositions = pattern.getPositions().size();
             String status = foundCount == totalPositions ? "§a✓" : "§c✗";
             player.displayClientMessage(
-                Component.literal("§7" + patternName + ": " + status + " §7(" + foundCount + "/" + totalPositions + " pedestals, " + itemCount + " items)"),
+                Component.translatable("message.aster_risk.ritual.debug_pattern",
+                    patternName, status, foundCount, totalPositions, itemCount),
                 false
             );
-            
+
             if (details.length() > 0) {
-                player.displayClientMessage(Component.literal("  §8Items: " + details), false);
+                player.displayClientMessage(Component.translatable("message.aster_risk.ritual.debug_items", details.toString()), false);
             }
         }
     }

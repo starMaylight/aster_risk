@@ -2,6 +2,7 @@ package net.mcreator.asterrisk.block;
 
 import net.mcreator.asterrisk.block.entity.LunarInfuserBlockEntity;
 import net.mcreator.asterrisk.registry.ModBlockEntities;
+import net.mcreator.asterrisk.util.TooltipHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -53,12 +54,14 @@ public class LunarInfuserBlock extends BaseEntityBlock {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.translatable("tooltip.aster_risk.lunar_infuser.line1").withStyle(ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("tooltip.aster_risk.lunar_infuser.line2").withStyle(ChatFormatting.DARK_PURPLE));
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("Right-click: Place item").withStyle(ChatFormatting.YELLOW));
-        tooltip.add(Component.literal("Shift+Right-click: Check status").withStyle(ChatFormatting.YELLOW));
-        tooltip.add(Component.literal("Transmutes items using mana").withStyle(ChatFormatting.AQUA));
+        TooltipHelper.addBlank(tooltip);
+        TooltipHelper.addHeader(tooltip, ChatFormatting.LIGHT_PURPLE, "tooltip.aster_risk.lunar_infuser.header");
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.lunar_infuser.line1");
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.lunar_infuser.line2");
+        TooltipHelper.addStat(tooltip, ChatFormatting.AQUA, "tooltip.aster_risk.stat.capacity",
+            TooltipHelper.formatNumber(LunarInfuserBlockEntity.MAX_MANA));
+        TooltipHelper.addInfo(tooltip, ChatFormatting.YELLOW, "tooltip.aster_risk.lunar_infuser.use_place");
+        TooltipHelper.addInfo(tooltip, ChatFormatting.YELLOW, "tooltip.aster_risk.lunar_infuser.use_status");
         super.appendHoverText(stack, level, tooltip, flag);
     }
 
@@ -105,12 +108,16 @@ public class LunarInfuserBlock extends BaseEntityBlock {
 
         if (player.isShiftKeyDown()) {
             // Shift+右クリック: ステータス表示
-            String status = infuser.isInfusing() ? "§eInfusing..." : "§7Idle";
+            Component status = infuser.isInfusing()
+                ? Component.translatable("message.aster_risk.lunar_infuser.status_infusing")
+                : Component.translatable("message.aster_risk.lunar_infuser.status_idle");
             int progress = (int)((float)infuser.getInfusionProgress() / infuser.getCurrentProcessTime() * 100);
+            Component progressPart = infuser.isInfusing()
+                ? Component.translatable("message.aster_risk.lunar_infuser.status_progress", progress)
+                : Component.literal("");
             player.displayClientMessage(
-                Component.literal("Lunar Infuser - " + status +
-                    " §7| Mana: §b" + (int)infuser.getMana() + "/" + (int)infuser.getMaxMana() +
-                    (infuser.isInfusing() ? " §7| Progress: §a" + progress + "%" : "")),
+                Component.translatable("message.aster_risk.lunar_infuser.status",
+                    status, (int)infuser.getMana(), (int)infuser.getMaxMana(), progressPart),
                 true
             );
         } else if (!heldItem.isEmpty() && infuserItem.isEmpty()) {
@@ -119,12 +126,12 @@ public class LunarInfuserBlock extends BaseEntityBlock {
             toPlace.setCount(1);
             infuser.setItem(toPlace);
             heldItem.shrink(1);
-            player.displayClientMessage(Component.literal("§7Placed " + toPlace.getHoverName().getString()), true);
+            player.displayClientMessage(Component.translatable("message.aster_risk.lunar_infuser.placed", toPlace.getHoverName()), true);
         } else if (!infuserItem.isEmpty() && heldItem.isEmpty()) {
             // アイテムを取り出す
             ItemStack removed = infuser.removeItem();
             player.setItemInHand(hand, removed);
-            player.displayClientMessage(Component.literal("§7Removed " + removed.getHoverName().getString()), true);
+            player.displayClientMessage(Component.translatable("message.aster_risk.lunar_infuser.removed", removed.getHoverName()), true);
         }
 
         return InteractionResult.CONSUME;

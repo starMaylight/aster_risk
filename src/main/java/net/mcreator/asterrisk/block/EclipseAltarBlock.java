@@ -48,7 +48,7 @@ public class EclipseAltarBlock extends Block {
                 // 構造物チェック（周囲にEclipse Stoneがあるか）
                 if (!checkStructure(level, pos)) {
                     player.displayClientMessage(
-                        Component.literal("§c The altar structure is incomplete! Place Eclipse Stone around it."), true);
+                        Component.translatable("message.aster_risk.eclipse_altar.structure_incomplete"), true);
                     return InteractionResult.FAIL;
                 }
                 
@@ -72,7 +72,7 @@ public class EclipseAltarBlock extends Block {
                     }
                     
                     player.displayClientMessage(
-                        Component.literal("§5✦ Eclipse Monarch has awakened! ✦"), false);
+                        Component.translatable("message.aster_risk.eclipse_altar.summoned"), false);
                     
                     return InteractionResult.SUCCESS;
                 }

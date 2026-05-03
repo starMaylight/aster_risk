@@ -99,11 +99,6 @@ public class MoonlightWandItem extends Item {
 
     @Override
     public boolean isFoil(ItemStack stack) {
-        return true; // エンチャントの光沢
-    }
-
-    @Override
-    public Component getName(ItemStack stack) {
-        return Component.literal("Moonlight Wand");
+        return true;
     }
 }

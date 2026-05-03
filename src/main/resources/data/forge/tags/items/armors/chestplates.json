@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:leather_chestplate",
+    "minecraft:chainmail_chestplate",
+    "minecraft:iron_chestplate",
+    "minecraft:golden_chestplate",
+    "minecraft:diamond_chestplate",
+    "minecraft:netherite_chestplate",
+    "minecraft:elytra",
+    "aster_risk:lunar_chestplate",
+    "aster_risk:stellar_robe",
+    "aster_risk:meteorite_chestplate",
+    "aster_risk:silver_chestplate",
+    "aster_risk:void_chestplate",
+    "aster_risk:eclipse_armor",
+    "aster_risk:stellar_vestment"
+  ]
+}

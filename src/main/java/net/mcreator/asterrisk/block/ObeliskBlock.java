@@ -4,6 +4,8 @@ import net.mcreator.asterrisk.block.entity.AltarCoreBlockEntity;
 import net.mcreator.asterrisk.block.entity.ObeliskBlockEntity;
 import net.mcreator.asterrisk.block.entity.ObeliskEnergyType;
 import net.mcreator.asterrisk.registry.ModBlockEntities;
+import net.mcreator.asterrisk.util.TooltipHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
@@ -88,9 +90,9 @@ public class ObeliskBlock extends Block implements EntityBlock {
                 int linkedCount = obelisk.getLinkedAltars().size();
                 
                 player.displayClientMessage(
-                    Component.literal(String.format("§b%s Energy: §f%d/%d §7| Linked Altars: §f%d", 
+                    Component.translatable("message.aster_risk.obelisk.status",
                         typeName.substring(0, 1).toUpperCase() + typeName.substring(1),
-                        energy, maxEnergy, linkedCount)), 
+                        energy, maxEnergy, linkedCount),
                     true
                 );
             }
@@ -101,16 +103,16 @@ public class ObeliskBlock extends Block implements EntityBlock {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, level, tooltip, flag);
-        
-        String description = switch (energyType) {
-            case LUNAR -> "§7Generates energy during §bnight§7 (bonus at full moon)";
-            case STELLAR -> "§7Generates energy during §eclear nights";
-            case SOLAR -> "§7Generates energy during §6daytime";
-            case VOID -> "§7Generates energy only during §5new moon§7 nights";
+        TooltipHelper.addBlank(tooltip);
+
+        String descKey = switch (energyType) {
+            case LUNAR -> "tooltip.aster_risk.obelisk.lunar";
+            case STELLAR -> "tooltip.aster_risk.obelisk.stellar";
+            case SOLAR -> "tooltip.aster_risk.obelisk.solar";
+            case VOID -> "tooltip.aster_risk.obelisk.void";
         };
-        
-        tooltip.add(Component.literal(description));
-        tooltip.add(Component.literal("§7Use Linking Wand to connect to Altar Core"));
+        TooltipHelper.addDescription(tooltip, descKey);
+        TooltipHelper.addInfo(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.obelisk.use_link");
     }
     
     @Override

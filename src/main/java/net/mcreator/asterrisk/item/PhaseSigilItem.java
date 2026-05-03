@@ -1,5 +1,7 @@
 package net.mcreator.asterrisk.item;
 
+import net.mcreator.asterrisk.util.TooltipHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -63,21 +65,25 @@ public class PhaseSigilItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal("§7Moon Phase: §f" + phase.getDisplayName()));
-        
-        String effect = switch (phase) {
-            case FULL_MOON -> "§c+15% Attack Damage";
-            case WANING_GIBBOUS -> "§9+10% Magic Damage";
-            case LAST_QUARTER -> "§b+12% Defense";
-            case WANING_CRESCENT -> "§d+8% Mana Regen";
-            case NEW_MOON -> "§8Stealth: Reduced detection";
-            case WAXING_CRESCENT -> "§a+10% Movement Speed";
-            case FIRST_QUARTER -> "§e+15% Mining Speed";
-            case WAXING_GIBBOUS -> "§6+10% Experience Gain";
+        super.appendHoverText(stack, level, tooltip, flag);
+        TooltipHelper.addBlank(tooltip);
+        TooltipHelper.addInfo(tooltip, ChatFormatting.GRAY,
+            "tooltip.aster_risk.phase_sigil.phase",
+            Component.translatable("moon_phase.aster_risk." + phase.getName()));
+
+        ChatFormatting effectColor = switch (phase) {
+            case FULL_MOON -> ChatFormatting.RED;
+            case WANING_GIBBOUS -> ChatFormatting.BLUE;
+            case LAST_QUARTER -> ChatFormatting.AQUA;
+            case WANING_CRESCENT -> ChatFormatting.LIGHT_PURPLE;
+            case NEW_MOON -> ChatFormatting.DARK_GRAY;
+            case WAXING_CRESCENT -> ChatFormatting.GREEN;
+            case FIRST_QUARTER -> ChatFormatting.YELLOW;
+            case WAXING_GIBBOUS -> ChatFormatting.GOLD;
         };
-        tooltip.add(Component.literal(effect));
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("§7Use at Phase Anvil to apply"));
+        TooltipHelper.addStat(tooltip, effectColor,
+            "tooltip.aster_risk.phase_sigil." + phase.getName() + ".effect");
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.phase_sigil.usage");
     }
 
     @Override

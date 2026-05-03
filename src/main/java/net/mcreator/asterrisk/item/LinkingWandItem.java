@@ -7,6 +7,7 @@ import net.mcreator.asterrisk.block.entity.MoonlightFocusBlockEntity;
 import net.mcreator.asterrisk.block.entity.ObeliskBlockEntity;
 import net.mcreator.asterrisk.block.entity.ResonatorBlockEntity;
 import net.mcreator.asterrisk.block.entity.RitualCircleBlockEntity;
+import net.mcreator.asterrisk.util.TooltipHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -46,11 +47,6 @@ public class LinkingWandItem extends Item {
             .stacksTo(1)
             .durability(256)
             .rarity(Rarity.UNCOMMON));
-    }
-
-    @Override
-    public Component getName(ItemStack stack) {
-        return Component.literal("Linking Wand");
     }
 
     @Override
@@ -413,33 +409,30 @@ public class LinkingWandItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("§b☽ Linking Wand"));
-        tooltip.add(Component.literal("§7Links magical blocks together"));
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("§e■ Focus: §7Link to targets (multi-link)"));
-        tooltip.add(Component.literal("§e  Targets: §7Focus, Chamber, Circle, Enchant"));
-        tooltip.add(Component.literal("§e■ Resonators: §7Link to transfer mana"));
-        tooltip.add(Component.literal("§e■ Obelisk → Altar: §7Link for ritual power"));
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("§e Right-click: §7Select/Link"));
-        tooltip.add(Component.literal("§e Shift+Right-click: §7Clear links"));
-        
+        TooltipHelper.addBlank(tooltip);
+        TooltipHelper.addHeader(tooltip, ChatFormatting.AQUA, "tooltip.aster_risk.linking_wand.header");
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.linking_wand.line1");
+        TooltipHelper.addInfo(tooltip, ChatFormatting.YELLOW, "tooltip.aster_risk.linking_wand.target_focus");
+        TooltipHelper.addInfo(tooltip, ChatFormatting.YELLOW, "tooltip.aster_risk.linking_wand.target_resonator");
+        TooltipHelper.addInfo(tooltip, ChatFormatting.YELLOW, "tooltip.aster_risk.linking_wand.target_obelisk");
+        TooltipHelper.addInfo(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.linking_wand.use_select");
+        TooltipHelper.addInfo(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.linking_wand.use_clear");
+
         CompoundTag tag = stack.getTag();
         if (tag != null) {
             String mode = tag.getString("linkMode");
             if (tag.contains("firstPos") && "resonator".equals(mode)) {
                 BlockPos pos = NbtUtils.readBlockPos(tag.getCompound("firstPos"));
-                tooltip.add(Component.literal(""));
-                tooltip.add(Component.literal("§6Resonator selected: " + pos.toShortString()));
+                TooltipHelper.addInfo(tooltip, ChatFormatting.GOLD,
+                    "tooltip.aster_risk.linking_wand.selected_resonator", pos.toShortString());
             } else if (tag.contains("obeliskPos") && "obelisk".equals(mode)) {
                 BlockPos pos = NbtUtils.readBlockPos(tag.getCompound("obeliskPos"));
-                tooltip.add(Component.literal(""));
-                tooltip.add(Component.literal("§5Obelisk selected: " + pos.toShortString()));
+                TooltipHelper.addInfo(tooltip, ChatFormatting.DARK_PURPLE,
+                    "tooltip.aster_risk.linking_wand.selected_obelisk", pos.toShortString());
             } else if (tag.contains("focusPos") && "focus".equals(mode)) {
                 BlockPos pos = NbtUtils.readBlockPos(tag.getCompound("focusPos"));
-                tooltip.add(Component.literal(""));
-                tooltip.add(Component.literal("§bFocus selected: " + pos.toShortString()));
+                TooltipHelper.addInfo(tooltip, ChatFormatting.AQUA,
+                    "tooltip.aster_risk.linking_wand.selected_focus", pos.toShortString());
             }
         }
     }

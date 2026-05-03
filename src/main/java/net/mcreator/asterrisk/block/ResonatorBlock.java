@@ -1,6 +1,8 @@
 package net.mcreator.asterrisk.block;
 
 import net.mcreator.asterrisk.block.entity.ResonatorBlockEntity;
+import net.mcreator.asterrisk.util.TooltipHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
@@ -99,17 +101,23 @@ public class ResonatorBlock extends BaseEntityBlock {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal(""));
-        
-        String tierName = switch (tier) {
-            case 1 -> "§b☽ Moonstone Resonator";
-            case 2 -> "§d✦ Stardust Resonator";
-            case 3 -> "§6✧ Celestial Resonator";
-            default -> "§7Resonator";
+        TooltipHelper.addBlank(tooltip);
+
+        String headerKey = switch (tier) {
+            case 1 -> "tooltip.aster_risk.resonator.tier1";
+            case 2 -> "tooltip.aster_risk.resonator.tier2";
+            case 3 -> "tooltip.aster_risk.resonator.tier3";
+            default -> "tooltip.aster_risk.resonator.tier1";
         };
-        tooltip.add(Component.literal(tierName));
-        tooltip.add(Component.literal("§7Transfers mana between linked blocks"));
-        
+        ChatFormatting headerColor = switch (tier) {
+            case 1 -> ChatFormatting.AQUA;
+            case 2 -> ChatFormatting.LIGHT_PURPLE;
+            case 3 -> ChatFormatting.GOLD;
+            default -> ChatFormatting.GRAY;
+        };
+        TooltipHelper.addHeader(tooltip, headerColor, headerKey);
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.resonator.line1");
+
         int range = switch (tier) {
             case 1 -> 16;
             case 2 -> 32;
@@ -122,11 +130,11 @@ public class ResonatorBlock extends BaseEntityBlock {
             case 3 -> 50f;
             default -> 10f;
         };
-        
-        tooltip.add(Component.literal("§b  Range: " + range + " blocks"));
-        tooltip.add(Component.literal("§b  Transfer: " + (int)rate + " mana/s"));
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("§7Use Linking Wand to connect"));
+
+        TooltipHelper.addStat(tooltip, ChatFormatting.AQUA, "tooltip.aster_risk.stat.range", range);
+        TooltipHelper.addStat(tooltip, ChatFormatting.AQUA, "tooltip.aster_risk.stat.transfer_rate",
+            TooltipHelper.formatNumber(rate));
+        TooltipHelper.addInfo(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.resonator.use_link");
     }
 
     public int getTier() {

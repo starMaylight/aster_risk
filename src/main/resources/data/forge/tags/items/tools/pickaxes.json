@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:wooden_pickaxe",
+    "minecraft:stone_pickaxe",
+    "minecraft:iron_pickaxe",
+    "minecraft:golden_pickaxe",
+    "minecraft:diamond_pickaxe",
+    "minecraft:netherite_pickaxe",
+    "aster_risk:silver_pickaxe",
+    "aster_risk:moonstone_pickaxe"
+  ]
+}

@@ -1,5 +1,7 @@
 package net.mcreator.asterrisk.item.tool;
 
+import net.mcreator.asterrisk.util.TooltipHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 
@@ -12,15 +14,20 @@ import java.util.List;
  */
 public class SilverToolItems {
 
+    private static void appendSilverTooltip(List<Component> tooltip) {
+        TooltipHelper.addStat(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.silver_tool.enchantability");
+    }
+
     public static class SilverSword extends SwordItem {
         public SilverSword(Properties properties) {
             super(ModToolTiers.SILVER, 3, -2.4f, properties);
         }
 
         @Override
-        public void appendHoverText(ItemStack stack, @Nullable net.minecraft.world.level.Level level, 
+        public void appendHoverText(ItemStack stack, @Nullable net.minecraft.world.level.Level level,
                                     List<Component> tooltip, TooltipFlag flag) {
-            tooltip.add(Component.literal("§7High enchantability"));
+            super.appendHoverText(stack, level, tooltip, flag);
+            appendSilverTooltip(tooltip);
         }
     }
 
@@ -30,9 +37,10 @@ public class SilverToolItems {
         }
 
         @Override
-        public void appendHoverText(ItemStack stack, @Nullable net.minecraft.world.level.Level level, 
+        public void appendHoverText(ItemStack stack, @Nullable net.minecraft.world.level.Level level,
                                     List<Component> tooltip, TooltipFlag flag) {
-            tooltip.add(Component.literal("§7High enchantability"));
+            super.appendHoverText(stack, level, tooltip, flag);
+            appendSilverTooltip(tooltip);
         }
     }
 
@@ -42,9 +50,10 @@ public class SilverToolItems {
         }
 
         @Override
-        public void appendHoverText(ItemStack stack, @Nullable net.minecraft.world.level.Level level, 
+        public void appendHoverText(ItemStack stack, @Nullable net.minecraft.world.level.Level level,
                                     List<Component> tooltip, TooltipFlag flag) {
-            tooltip.add(Component.literal("§7High enchantability"));
+            super.appendHoverText(stack, level, tooltip, flag);
+            appendSilverTooltip(tooltip);
         }
     }
 
@@ -54,9 +63,10 @@ public class SilverToolItems {
         }
 
         @Override
-        public void appendHoverText(ItemStack stack, @Nullable net.minecraft.world.level.Level level, 
+        public void appendHoverText(ItemStack stack, @Nullable net.minecraft.world.level.Level level,
                                     List<Component> tooltip, TooltipFlag flag) {
-            tooltip.add(Component.literal("§7High enchantability"));
+            super.appendHoverText(stack, level, tooltip, flag);
+            appendSilverTooltip(tooltip);
         }
     }
 
@@ -66,9 +76,10 @@ public class SilverToolItems {
         }
 
         @Override
-        public void appendHoverText(ItemStack stack, @Nullable net.minecraft.world.level.Level level, 
+        public void appendHoverText(ItemStack stack, @Nullable net.minecraft.world.level.Level level,
                                     List<Component> tooltip, TooltipFlag flag) {
-            tooltip.add(Component.literal("§7High enchantability"));
+            super.appendHoverText(stack, level, tooltip, flag);
+            appendSilverTooltip(tooltip);
         }
     }
 }

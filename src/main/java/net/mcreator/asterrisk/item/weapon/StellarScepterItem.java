@@ -1,6 +1,8 @@
 package net.mcreator.asterrisk.item.weapon;
 
 import net.mcreator.asterrisk.mana.LunarManaCapability;
+import net.mcreator.asterrisk.util.TooltipHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -48,7 +50,10 @@ public class StellarScepterItem extends Item {
         
         if (!hasEnoughMana.get()) {
             if (!level.isClientSide()) {
-                player.displayClientMessage(Component.literal("§c Not enough mana! (Need " + MANA_COST + ")"), true);
+                player.displayClientMessage(
+                    Component.translatable("message.aster_risk.not_enough_mana", MANA_COST)
+                        .withStyle(ChatFormatting.RED),
+                    true);
             }
             return InteractionResultHolder.fail(stack);
         }
@@ -118,11 +123,13 @@ public class StellarScepterItem extends Item {
     
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal("§6§l[Stellar Scepter]"));
-        tooltip.add(Component.literal("§e Right-click: Fire star beam"));
-        tooltip.add(Component.literal("§7 Damage: " + (int)DAMAGE));
-        tooltip.add(Component.literal("§9 Mana Cost: " + MANA_COST));
-        tooltip.add(Component.literal("§8Channeled starlight incarnate"));
+        super.appendHoverText(stack, level, tooltip, flag);
+        TooltipHelper.addBlank(tooltip);
+        TooltipHelper.addHeader(tooltip, ChatFormatting.GOLD, "tooltip.aster_risk.stellar_scepter.header");
+        TooltipHelper.addStat(tooltip, ChatFormatting.YELLOW, "tooltip.aster_risk.stellar_scepter.action");
+        TooltipHelper.addStat(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.stat.damage", (int) DAMAGE);
+        TooltipHelper.addStat(tooltip, ChatFormatting.BLUE, "tooltip.aster_risk.stat.mana_cost", MANA_COST);
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.stellar_scepter.flavor");
     }
     
     @Override

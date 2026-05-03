@@ -48,14 +48,14 @@ public class StellarSpireCoreBlock extends Block {
                 // 夜間チェック
                 if (serverLevel.isDay()) {
                     player.displayClientMessage(
-                        Component.literal("§e The stars must be visible... Wait for nightfall."), true);
+                        Component.translatable("message.aster_risk.stellar_spire_core.need_night"), true);
                     return InteractionResult.FAIL;
                 }
                 
                 // 構造物チェック（周囲にStarfall Sandがあるか）
                 if (!checkStructure(level, pos)) {
                     player.displayClientMessage(
-                        Component.literal("§c The spire structure is incomplete! Place Starfall Sand around it."), true);
+                        Component.translatable("message.aster_risk.stellar_spire_core.structure_incomplete"), true);
                     return InteractionResult.FAIL;
                 }
                 
@@ -79,7 +79,7 @@ public class StellarSpireCoreBlock extends Block {
                     }
                     
                     player.displayClientMessage(
-                        Component.literal("§6✦ Star Devourer descends from the heavens! ✦"), false);
+                        Component.translatable("message.aster_risk.stellar_spire_core.summoned"), false);
                     
                     return InteractionResult.SUCCESS;
                 }

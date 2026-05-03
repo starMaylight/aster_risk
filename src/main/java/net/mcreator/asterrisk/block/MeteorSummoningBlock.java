@@ -2,6 +2,8 @@ package net.mcreator.asterrisk.block;
 
 import net.mcreator.asterrisk.block.entity.MeteorSummoningBlockEntity;
 import net.mcreator.asterrisk.registry.ModBlockEntities;
+import net.mcreator.asterrisk.util.TooltipHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
@@ -101,12 +103,16 @@ public class MeteorSummoningBlock extends BaseEntityBlock {
             }
             
             // ステータス表示
-            String status = summoner.isSummoning() ? "§c召喚中..." : 
-                           summoner.hasCore() ? "§a準備完了" : "§7コアを設置してください";
+            Component status = summoner.isSummoning()
+                ? Component.translatable("message.aster_risk.meteor_summoning.summoning")
+                : summoner.hasCore()
+                    ? Component.translatable("message.aster_risk.meteor_summoning.ready")
+                    : Component.translatable("message.aster_risk.meteor_summoning.no_core");
             float mana = summoner.getMana();
-            
-            player.displayClientMessage(Component.literal(
-                String.format("%s §d| §bマナ: %.0f/%.0f", status, mana, summoner.getMaxMana())), true);
+
+            player.displayClientMessage(Component.translatable(
+                "message.aster_risk.meteor_summoning.status",
+                status, String.format("%.0f", mana), String.format("%.0f", summoner.getMaxMana())), true);
         }
 
         return InteractionResult.SUCCESS;
@@ -125,13 +131,11 @@ public class MeteorSummoningBlock extends BaseEntityBlock {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("§6✦ Meteor Summoning Circle"));
-        tooltip.add(Component.literal("§7Summon meteors from the sky"));
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("§7Place Meteor Summon Core to activate"));
-        tooltip.add(Component.literal("§7Requires large amounts of mana"));
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("§c⚠ Can only be used at night!"));
+        TooltipHelper.addBlank(tooltip);
+        TooltipHelper.addHeader(tooltip, ChatFormatting.GOLD, "tooltip.aster_risk.meteor_summoning.header");
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.meteor_summoning.line1");
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.meteor_summoning.line2");
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.meteor_summoning.line3");
+        TooltipHelper.addInfo(tooltip, ChatFormatting.RED, "tooltip.aster_risk.meteor_summoning.warn_night");
     }
 }

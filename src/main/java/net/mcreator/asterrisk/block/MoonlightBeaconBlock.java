@@ -2,6 +2,7 @@ package net.mcreator.asterrisk.block;
 
 import net.mcreator.asterrisk.block.entity.MoonlightBeaconBlockEntity;
 import net.mcreator.asterrisk.registry.ModBlockEntities;
+import net.mcreator.asterrisk.util.TooltipHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -53,13 +54,16 @@ public class MoonlightBeaconBlock extends BaseEntityBlock {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.translatable("tooltip.aster_risk.moonlight_beacon.line1").withStyle(ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("tooltip.aster_risk.moonlight_beacon.line2").withStyle(ChatFormatting.DARK_PURPLE));
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("Range: 16 blocks").withStyle(ChatFormatting.AQUA));
-        tooltip.add(Component.literal("Effects: Night Vision, Regeneration").withStyle(ChatFormatting.GREEN));
-        tooltip.add(Component.literal("Full Moon: +Resistance").withStyle(ChatFormatting.YELLOW));
-        tooltip.add(Component.literal("Mana: 0.5/tick").withStyle(ChatFormatting.BLUE));
+        TooltipHelper.addBlank(tooltip);
+        TooltipHelper.addHeader(tooltip, ChatFormatting.LIGHT_PURPLE, "tooltip.aster_risk.moonlight_beacon.header");
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.moonlight_beacon.line1");
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.moonlight_beacon.line2");
+        TooltipHelper.addStat(tooltip, ChatFormatting.AQUA, "tooltip.aster_risk.stat.range",
+            MoonlightBeaconBlockEntity.EFFECT_RADIUS);
+        TooltipHelper.addStat(tooltip, ChatFormatting.AQUA, "tooltip.aster_risk.stat.capacity",
+            TooltipHelper.formatNumber(MoonlightBeaconBlockEntity.MAX_MANA));
+        TooltipHelper.addInfo(tooltip, ChatFormatting.GREEN, "tooltip.aster_risk.moonlight_beacon.effects");
+        TooltipHelper.addInfo(tooltip, ChatFormatting.YELLOW, "tooltip.aster_risk.moonlight_beacon.full_moon");
         super.appendHoverText(stack, level, tooltip, flag);
     }
 
@@ -98,11 +102,13 @@ public class MoonlightBeaconBlock extends BaseEntityBlock {
 
         BlockEntity be = level.getBlockEntity(pos);
         if (be instanceof MoonlightBeaconBlockEntity beacon) {
-            String status = beacon.isActive() ? "§aActive" : "§cInactive";
+            Component status = beacon.isActive()
+                ? Component.translatable("message.aster_risk.moonlight_beacon.active")
+                : Component.translatable("message.aster_risk.moonlight_beacon.inactive");
             player.displayClientMessage(
-                Component.literal("Moonlight Beacon - " + status + 
-                    " §7| Mana: §b" + (int)beacon.getMana() + "/" + (int)beacon.getMaxMana() +
-                    " §7| Range: §e" + MoonlightBeaconBlockEntity.EFFECT_RADIUS + " blocks"),
+                Component.translatable("message.aster_risk.moonlight_beacon.status",
+                    status, (int)beacon.getMana(), (int)beacon.getMaxMana(),
+                    MoonlightBeaconBlockEntity.EFFECT_RADIUS),
                 true
             );
         }

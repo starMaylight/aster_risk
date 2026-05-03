@@ -85,9 +85,4 @@ public class HealingCrystalItem extends Item {
     public boolean isFoil(ItemStack stack) {
         return true;
     }
-
-    @Override
-    public Component getName(ItemStack stack) {
-        return Component.literal("Lunar Healing Crystal");
-    }
 }

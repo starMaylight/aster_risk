@@ -81,7 +81,7 @@ public class FocusChamberCoreBlock extends BaseEntityBlock {
                         player.drop(removed, false);
                     }
                     player.displayClientMessage(
-                        Component.literal("§b[Chamber] §7Removed: " + removed.getHoverName().getString()),
+                        Component.translatable("message.aster_risk.chamber.removed", removed.getHoverName()),
                         true
                     );
                 }
@@ -92,25 +92,29 @@ public class FocusChamberCoreBlock extends BaseEntityBlock {
                 if (chamber.addItem(toAdd)) {
                     heldItem.shrink(1);
                     player.displayClientMessage(
-                        Component.literal("§b[Chamber] §7Added: " + toAdd.getHoverName().getString()),
+                        Component.translatable("message.aster_risk.chamber.added", toAdd.getHoverName()),
                         true
                     );
                 }
             } else {
                 // 情報表示
-                String structureStatus = chamber.isStructureValid() ? "§aValid" : "§cInvalid";
-                String processStatus = chamber.isProcessing() ? 
-                    "§eProcessing " + (int)((float)chamber.getProcessProgress() / chamber.getProcessTime() * 100) + "%" : 
-                    "§7Idle";
-                
+                Component structureStatus = chamber.isStructureValid()
+                    ? Component.translatable("message.aster_risk.chamber.status_valid")
+                    : Component.translatable("message.aster_risk.chamber.status_invalid");
+                Component processStatus = chamber.isProcessing()
+                    ? Component.translatable("message.aster_risk.chamber.status_processing",
+                        (int)((float)chamber.getProcessProgress() / chamber.getProcessTime() * 100))
+                    : Component.translatable("message.aster_risk.chamber.status_idle");
+
                 List<ItemStack> items = chamber.getStoredItems();
-                String itemsStr = items.isEmpty() ? "Empty" : items.size() + " items";
-                
+                Component itemsStr = items.isEmpty()
+                    ? Component.translatable("message.aster_risk.chamber.empty")
+                    : Component.translatable("message.aster_risk.chamber.items_count", items.size());
+
                 player.displayClientMessage(
-                    Component.literal("§b[Chamber] §7Structure: " + structureStatus + 
-                        " §7| " + processStatus +
-                        " §7| Moonlight: §e" + (int)chamber.getStoredMoonlight() +
-                        " §7| Items: §f" + itemsStr),
+                    Component.translatable("message.aster_risk.chamber.status",
+                        structureStatus, processStatus,
+                        (int)chamber.getStoredMoonlight(), itemsStr),
                     true
                 );
             }

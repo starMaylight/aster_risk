@@ -1,5 +1,7 @@
 package net.mcreator.asterrisk.item;
 
+import net.mcreator.asterrisk.util.TooltipHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -49,17 +51,20 @@ public class MeteorSummonCoreItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal("§7Type: §f" + type.getDisplayName()));
-        
-        String description = switch (type) {
-            case SMALL -> "§7Drops Meteorite Fragments";
-            case STARDUST -> "§bDrops large amounts of Stardust";
-            case PRISMATIC -> "§dDrops Prismatic Meteorite (Rare!)";
-            case OMINOUS -> "§4WARNING: Summons hostile entities!";
+        super.appendHoverText(stack, level, tooltip, flag);
+        TooltipHelper.addBlank(tooltip);
+        String typeKey = "tooltip.aster_risk.meteor_summon_core." + type.getName() + ".type";
+        TooltipHelper.addInfo(tooltip, ChatFormatting.GRAY,
+            "tooltip.aster_risk.meteor_summon_core.type", Component.translatable(typeKey));
+
+        ChatFormatting effectColor = switch (type) {
+            case SMALL -> ChatFormatting.GRAY;
+            case STARDUST -> ChatFormatting.AQUA;
+            case PRISMATIC -> ChatFormatting.LIGHT_PURPLE;
+            case OMINOUS -> ChatFormatting.DARK_RED;
         };
-        tooltip.add(Component.literal(description));
-        tooltip.add(Component.literal(""));
-        tooltip.add(Component.literal("§7Place in Meteor Summoning Circle"));
+        TooltipHelper.addStat(tooltip, effectColor, "tooltip.aster_risk.meteor_summon_core." + type.getName() + ".effect");
+        TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.meteor_summon_core.usage");
     }
 
     @Override

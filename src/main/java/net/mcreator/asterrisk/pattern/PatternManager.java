@@ -149,4 +149,23 @@ public class PatternManager extends SimpleJsonResourceReloadListener {
         }
         return map;
     }
+
+    /**
+     * クライアント側でサーバーから受信したパターンを反映
+     */
+    public void clearAndReloadFromSync(Collection<FocusPattern> syncedFocus,
+                                       Collection<PedestalPattern> syncedPedestal) {
+        focusPatterns.clear();
+        pedestalPatterns.clear();
+
+        for (FocusPattern pattern : syncedFocus) {
+            focusPatterns.put(pattern.getId(), pattern);
+        }
+        for (PedestalPattern pattern : syncedPedestal) {
+            pedestalPatterns.put(pattern.getId(), pattern);
+        }
+
+        AsterRiskMod.LOGGER.info("Client: Synced {} focus patterns, {} pedestal patterns",
+            focusPatterns.size(), pedestalPatterns.size());
+    }
 }
