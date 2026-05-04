@@ -1,13 +1,20 @@
 name: Build and Release
 
-# トリガー:
-#   - "v" で始まるタグをpush → ビルドしてGitHub Releaseを自動作成
-#   - 手動実行 (workflow_dispatch) → ビルドしてArtifactとして添付（リリースは作らない）
+# 手動トリガーのみ。Actions画面で "version" を入力して実行する。
+# ビルドが成功すると、その入力値で v<version> タグのGitHub Releaseが自動作成される。
 on:
-  push:
-    tags:
-      - 'v*'
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'リリースバージョン (例: 1.3.1) — タグは v<version>、JARは aster_risk-<version>-forge-1.20.1.jar'
+        required: true
+        type: string
+        default: '1.3.1'
+      prerelease:
+        description: 'プレリリースとして作成する'
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: write  # Releaseの作成に必要
@@ -37,19 +44,22 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build mod JAR
-        run: ./gradlew build --no-daemon --stacktrace
+        run: ./gradlew build --no-daemon --stacktrace -Pmod_version=${{ inputs.version }}
 
       - name: Upload JAR artifact
         uses: actions/upload-artifact@v4
         with:
-          name: aster_risk-jar
+          name: aster_risk-${{ inputs.version }}
           path: build/libs/aster_risk-*.jar
           if-no-files-found: error
 
       - name: Create GitHub Release
-        if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: v${{ inputs.version }}
+          name: v${{ inputs.version }}
+          target_commitish: ${{ github.sha }}
           files: build/libs/aster_risk-*.jar
           generate_release_notes: true
           fail_on_unmatched_files: true
+          prerelease: ${{ inputs.prerelease }}
