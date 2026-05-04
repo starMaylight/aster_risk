@@ -8,24 +8,32 @@ base.archivesName = "aster_risk"
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
-// JEI用リポジトリ
+// JEI / Patchouli 用カスタムリポジトリ
+// content filter で対象グループを限定する。これにより無関係な依存(net.jodah:typetools 等)を
+// これらのmavenに問い合わせなくなり、いずれかが落ちていても全体のビルドは止まらない。
+// (例: dvs1.progwml6.com が HTTP 523 を返した場合でも typetools の解決は影響を受けない)
 repositories {
-    maven {
-        name = "Progwml6's maven"
-        url = "https://dvs1.progwml6.com/files/maven/"
-    }
     maven {
         name = "Jared's maven"
         url = "https://maven.blamejared.com/"
+        content {
+            includeGroup "mezz.jei"
+            includeGroup "vazkii.patchouli"
+        }
     }
     maven {
         name = "ModMaven"
         url = "https://modmaven.dev"
+        content {
+            includeGroup "mezz.jei"
+        }
     }
-    // Patchouli用リポジトリ
     maven {
-        name = "Blamejared Maven"
-        url = "https://maven.blamejared.com"
+        name = "Progwml6's maven"
+        url = "https://dvs1.progwml6.com/files/maven/"
+        content {
+            includeGroup "mezz.jei"
+        }
     }
 }
 
