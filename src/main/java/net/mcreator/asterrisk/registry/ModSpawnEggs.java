@@ -71,8 +71,15 @@ public class ModSpawnEggs {
 
     // 星喰らいのスポーンエッグ
     public static final RegistryObject<Item> STAR_DEVOURER_SPAWN_EGG = REGISTRY.register("star_devourer_spawn_egg",
-        () -> new ForgeSpawnEggItem(ModEntities.STAR_DEVOURER, 
+        () -> new ForgeSpawnEggItem(ModEntities.STAR_DEVOURER,
             0x0A0A1A, // 背景色（漆黒）
             0x4169E1, // 斑点色（ロイヤルブルー）
+            new Item.Properties()));
+
+    // 陽の化身のスポーンエッグ
+    public static final RegistryObject<Item> SUN_INCARNATE_SPAWN_EGG = REGISTRY.register("sun_incarnate_spawn_egg",
+        () -> new ForgeSpawnEggItem(ModEntities.SUN_INCARNATE,
+            0xE25822, // 背景色（燃える橙）
+            0xFFD940, // 斑点色（太陽の金）
             new Item.Properties()));
 }

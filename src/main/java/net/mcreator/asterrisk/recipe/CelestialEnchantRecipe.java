@@ -23,14 +23,15 @@ public class CelestialEnchantRecipe implements Recipe<Container> {
     private final ResourceLocation id;
     private final String pattern;           // LUNAR_CRESCENT, STAR_CROSS, etc.
     private final Ingredient inputItem;     // 対象アイテム（武器/防具など）
-    private final ResourceLocation enchantment; // 付与するエンチャントID
+    private final ResourceLocation enchantment; // 付与するエンチャントID（変換レシピの場合null）
     private final int enchantmentLevel;
     private final int moonlightCost;
     private final String description;
-    
+    private final ItemStack resultItem;     // アイテム変換レシピの結果（エンチャントの場合EMPTY）
+
     public CelestialEnchantRecipe(ResourceLocation id, String pattern, Ingredient inputItem,
                                    ResourceLocation enchantment, int enchantmentLevel,
-                                   int moonlightCost, String description) {
+                                   int moonlightCost, String description, ItemStack resultItem) {
         this.id = id;
         this.pattern = pattern;
         this.inputItem = inputItem;
@@ -38,6 +39,7 @@ public class CelestialEnchantRecipe implements Recipe<Container> {
         this.enchantmentLevel = enchantmentLevel;
         this.moonlightCost = moonlightCost;
         this.description = description;
+        this.resultItem = resultItem;
     }
     
     /**
@@ -50,10 +52,17 @@ public class CelestialEnchantRecipe implements Recipe<Container> {
     // Getters
     public String getPattern() { return pattern; }
     public Ingredient getInputItem() { return inputItem; }
+    @Nullable
     public ResourceLocation getEnchantment() { return enchantment; }
     public int getEnchantmentLevel() { return enchantmentLevel; }
     public int getMoonlightCost() { return moonlightCost; }
     public String getDescription() { return description; }
+
+    /** アイテム変換レシピの結果。エンチャントレシピの場合はEMPTY */
+    public ItemStack getResult() { return resultItem; }
+
+    /** このレシピがアイテム変換レシピか */
+    public boolean isTransformation() { return !resultItem.isEmpty(); }
     
     // Recipe interface
     @Override
@@ -98,12 +107,19 @@ public class CelestialEnchantRecipe implements Recipe<Container> {
         public CelestialEnchantRecipe fromJson(ResourceLocation id, JsonObject json) {
             String pattern = GsonHelper.getAsString(json, "pattern");
             Ingredient inputItem = Ingredient.fromJson(json.get("input"));
-            ResourceLocation enchantment = ResourceLocation.tryParse(GsonHelper.getAsString(json, "enchantment"));
+            String enchantmentId = GsonHelper.getAsString(json, "enchantment", "");
+            ResourceLocation enchantment = enchantmentId.isEmpty() ? null : ResourceLocation.tryParse(enchantmentId);
             int enchantmentLevel = GsonHelper.getAsInt(json, "level", 1);
             int moonlightCost = GsonHelper.getAsInt(json, "moonlight_cost", 500);
             String description = GsonHelper.getAsString(json, "description", "");
-            
-            return new CelestialEnchantRecipe(id, pattern, inputItem, enchantment, enchantmentLevel, moonlightCost, description);
+
+            // アイテム変換レシピ（resultフィールドあり）
+            ItemStack resultItem = ItemStack.EMPTY;
+            if (json.has("result")) {
+                resultItem = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "result"));
+            }
+
+            return new CelestialEnchantRecipe(id, pattern, inputItem, enchantment, enchantmentLevel, moonlightCost, description, resultItem);
         }
         
         @Nullable
@@ -111,22 +127,25 @@ public class CelestialEnchantRecipe implements Recipe<Container> {
         public CelestialEnchantRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
             String pattern = buf.readUtf();
             Ingredient inputItem = Ingredient.fromNetwork(buf);
-            ResourceLocation enchantment = buf.readResourceLocation();
+            String enchantmentId = buf.readUtf();
+            ResourceLocation enchantment = enchantmentId.isEmpty() ? null : ResourceLocation.tryParse(enchantmentId);
             int enchantmentLevel = buf.readVarInt();
             int moonlightCost = buf.readVarInt();
             String description = buf.readUtf();
-            
-            return new CelestialEnchantRecipe(id, pattern, inputItem, enchantment, enchantmentLevel, moonlightCost, description);
+            ItemStack resultItem = buf.readItem();
+
+            return new CelestialEnchantRecipe(id, pattern, inputItem, enchantment, enchantmentLevel, moonlightCost, description, resultItem);
         }
-        
+
         @Override
         public void toNetwork(FriendlyByteBuf buf, CelestialEnchantRecipe recipe) {
             buf.writeUtf(recipe.pattern);
             recipe.inputItem.toNetwork(buf);
-            buf.writeResourceLocation(recipe.enchantment);
+            buf.writeUtf(recipe.enchantment != null ? recipe.enchantment.toString() : "");
             buf.writeVarInt(recipe.enchantmentLevel);
             buf.writeVarInt(recipe.moonlightCost);
             buf.writeUtf(recipe.description);
+            buf.writeItem(recipe.resultItem);
         }
     }
 }

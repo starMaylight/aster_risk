@@ -1,0 +1,8 @@
+{
+    "type": "aster_risk:meteor_summoning",
+    "meteor_type": "SUN",
+    "mana_cost": 2000,
+    "description": "Call down the Sun Incarnate itself",
+    "dangerous": true,
+    "drops": []
+}

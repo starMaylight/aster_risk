@@ -1,0 +1,14 @@
+{
+    "type": "aster_risk:focus_chamber",
+    "ingredients": [
+        { "item": "aster_risk:unstable_core" },
+        { "item": "aster_risk:prismatic_meteorite" },
+        { "item": "aster_risk:phase_sigil_full_moon" }
+    ],
+    "result": {
+        "item": "aster_risk:stable_full_moon_core",
+        "count": 1
+    },
+    "moonlight_cost": 800,
+    "description": "Stabilize the unstable core with the calming power of the full moon"
+}

@@ -1,0 +1,13 @@
+{
+    "type": "aster_risk:celestial_enchant",
+    "pattern": "REVERSAL",
+    "input": {
+        "item": "aster_risk:stable_full_moon_core"
+    },
+    "moonlight_cost": 1200,
+    "description": "Reverse the moon's nature into the blazing sun",
+    "result": {
+        "item": "aster_risk:meteor_core_sun",
+        "count": 1
+    }
+}

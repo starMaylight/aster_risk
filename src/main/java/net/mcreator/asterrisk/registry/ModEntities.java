@@ -9,6 +9,7 @@ import net.mcreator.asterrisk.entity.VoidWalkerEntity;
 import net.mcreator.asterrisk.entity.CorruptedGolemEntity;
 import net.mcreator.asterrisk.entity.EclipseMonarchEntity;
 import net.mcreator.asterrisk.entity.StarDevourerEntity;
+import net.mcreator.asterrisk.entity.SunIncarnateEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.resources.ResourceLocation;
@@ -94,4 +95,13 @@ public class ModEntities {
             .clientTrackingRange(20)
             .fireImmune()
             .build(ResourceLocation.fromNamespaceAndPath(AsterRiskMod.MODID, "star_devourer").toString()));
+
+    // 陽の化身 - Sun Incarnate
+    public static final RegistryObject<EntityType<SunIncarnateEntity>> SUN_INCARNATE =
+        REGISTRY.register("sun_incarnate", () -> EntityType.Builder
+            .of(SunIncarnateEntity::new, MobCategory.MONSTER)
+            .sized(1.8F, 4.4F)
+            .clientTrackingRange(32)
+            .fireImmune()
+            .build(ResourceLocation.fromNamespaceAndPath(AsterRiskMod.MODID, "sun_incarnate").toString()));
 }

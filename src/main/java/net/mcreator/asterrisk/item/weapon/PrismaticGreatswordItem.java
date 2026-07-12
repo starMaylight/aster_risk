@@ -25,13 +25,14 @@ import java.util.Random;
 
 /**
  * 虹色の大剣 - 攻撃時にランダムな追加効果
+ * 終盤武器: 攻撃力200（基礎1 + ティア8 + 修飾191）
  */
 public class PrismaticGreatswordItem extends SwordItem {
 
     private final Random random = new Random();
 
     public PrismaticGreatswordItem(Properties properties) {
-        super(ModToolTiers.PRISMATIC, 6, -2.8f, properties.rarity(Rarity.EPIC));
+        super(ModToolTiers.PRISMATIC, 191, -2.8f, properties.rarity(Rarity.EPIC));
     }
 
     @Override

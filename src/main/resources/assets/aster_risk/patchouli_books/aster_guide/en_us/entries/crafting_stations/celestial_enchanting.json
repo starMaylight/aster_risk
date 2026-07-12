@@ -1,0 +1,22 @@
+{
+    "name": "Celestial Enchanting",
+    "icon": "aster_risk:celestial_enchanting_table",
+    "category": "aster_risk:crafting_stations",
+    "sortnum": 4,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "The $(item)Celestial Enchanting Table$() grants enchantments beyond the reach of vanilla enchanting - including $(l)exclusive enchantments$() found nowhere else.$(br2)$(l)Structure:$()$(br)Build a pillar at each of the 4 corners: 2 stacked $(item)Lunar Pillars$() crowned with a $(item)Celestial Tile$()."
+        },
+        {
+            "type": "patchouli:text",
+            "title": "Focus Patterns",
+            "text": "Arrange $(item)Moonlight Focus$() blocks around the table in specific $(l)patterns$() and link each one to the table with the $(item)Linking Wand$().$(br2)The detected pattern determines $(l)which enchantments$() can be applied. Foci also transfer the $(mana)mana$() needed for enchanting."
+        },
+        {
+            "type": "patchouli:text",
+            "title": "How to Use",
+            "text": "$(li)Right-click with an item to place it on the table$(li)$(l)Shift + Right-click$() to start enchanting$(li)Right-click empty-handed to view status (readiness, pattern, mana)$(br2)If the item, pattern, and mana all match a recipe, the celestial enchantment is applied after a short channeling time."
+        }
+    ]
+}

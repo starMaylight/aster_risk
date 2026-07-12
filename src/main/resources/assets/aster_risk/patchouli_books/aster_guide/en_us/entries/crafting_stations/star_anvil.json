@@ -1,0 +1,12 @@
+{
+    "name": "Star Anvil",
+    "icon": "aster_risk:star_anvil",
+    "category": "aster_risk:crafting_stations",
+    "sortnum": 2,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "The $(item)Star Anvil$() repairs and enhances equipment using $(mana)mana$().$(br2)$(l)How to use:$()$(br)$(li)Right-click with an item to place it$(li)Right-click empty-handed to take it back$(li)$(l)Shift + Right-click$() empty-handed to repair ($(mana)200 mana$()) or enhance ($(mana)500 mana$())$(br2)Damaged items are repaired first; fully repaired items get enhanced instead."
+        }
+    ]
+}

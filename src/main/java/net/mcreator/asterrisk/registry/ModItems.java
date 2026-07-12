@@ -21,6 +21,8 @@ import net.mcreator.asterrisk.item.armor.MeteoriteArmorItem;
 import net.mcreator.asterrisk.item.armor.LunarArmorItem;
 import net.mcreator.asterrisk.item.armor.EclipseArmorItem;
 import net.mcreator.asterrisk.item.VoidShardItem;
+import net.mcreator.asterrisk.item.UnstableCoreItem;
+import net.mcreator.asterrisk.item.StableFullMoonCoreItem;
 import net.mcreator.asterrisk.item.StellarHeartItem;
 import net.mcreator.asterrisk.item.StargazerWandItem;
 import net.mcreator.asterrisk.item.StarflagmentItem;
@@ -187,6 +189,10 @@ public class ModItems {
 	public static final RegistryObject<Item> RADIANT_DIAMOND = REGISTRY.register("radiant_diamond", RadiantDiamondItem::new);
 	public static final RegistryObject<Item> STARDUST_CATALYST = REGISTRY.register("stardust_catalyst", StardustCatalystItem::new);
 
+	// 陽の化身 召喚素材
+	public static final RegistryObject<Item> UNSTABLE_CORE = REGISTRY.register("unstable_core", UnstableCoreItem::new);
+	public static final RegistryObject<Item> STABLE_FULL_MOON_CORE = REGISTRY.register("stable_full_moon_core", StableFullMoonCoreItem::new);
+
 	// 月相の刻印（8種）
 	public static final RegistryObject<Item> PHASE_SIGIL_FULL_MOON = REGISTRY.register("phase_sigil_full_moon", () -> new PhaseSigilItem(PhaseSigilItem.MoonPhase.FULL_MOON));
 	public static final RegistryObject<Item> PHASE_SIGIL_WANING_GIBBOUS = REGISTRY.register("phase_sigil_waning_gibbous", () -> new PhaseSigilItem(PhaseSigilItem.MoonPhase.WANING_GIBBOUS));
@@ -202,6 +208,7 @@ public class ModItems {
 	public static final RegistryObject<Item> METEOR_CORE_STARDUST = REGISTRY.register("meteor_core_stardust", () -> new MeteorSummonCoreItem(MeteorSummonCoreItem.MeteorType.STARDUST));
 	public static final RegistryObject<Item> METEOR_CORE_PRISMATIC = REGISTRY.register("meteor_core_prismatic", () -> new MeteorSummonCoreItem(MeteorSummonCoreItem.MeteorType.PRISMATIC));
 	public static final RegistryObject<Item> METEOR_CORE_OMINOUS = REGISTRY.register("meteor_core_ominous", () -> new MeteorSummonCoreItem(MeteorSummonCoreItem.MeteorType.OMINOUS));
+	public static final RegistryObject<Item> METEOR_CORE_SUN = REGISTRY.register("meteor_core_sun", () -> new MeteorSummonCoreItem(MeteorSummonCoreItem.MeteorType.SUN));
 
 	// 新ブロックアイテム
 	public static final RegistryObject<Item> ALCHEMICAL_CAULDRON = block(ModBlocks.ALCHEMICAL_CAULDRON);

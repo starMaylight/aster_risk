@@ -70,17 +70,23 @@ public class CelestialEnchantRecipeCategory implements IRecipeCategory<Celestial
         builder.addSlot(RecipeIngredientRole.INPUT, 20, 40)
                .addIngredients(recipe.getInputItem());
         
-        // 出力（同じアイテム+エンチャント表示用）
-        ItemStack[] inputs = recipe.getInputItem().getItems();
-        if (inputs.length > 0) {
-            ItemStack output = inputs[0].copy();
-            // エンチャント付きで表示
-            Enchantment enchant = ForgeRegistries.ENCHANTMENTS.getValue(recipe.getEnchantment());
-            if (enchant != null) {
-                output.enchant(enchant, recipe.getEnchantmentLevel());
-            }
+        // 出力（変換レシピは結果アイテム、それ以外は同じアイテム+エンチャント表示用）
+        if (recipe.isTransformation()) {
             builder.addSlot(RecipeIngredientRole.OUTPUT, 120, 40)
-                   .addItemStack(output);
+                   .addItemStack(recipe.getResult());
+        } else {
+            ItemStack[] inputs = recipe.getInputItem().getItems();
+            if (inputs.length > 0) {
+                ItemStack output = inputs[0].copy();
+                // エンチャント付きで表示
+                Enchantment enchant = recipe.getEnchantment() != null
+                    ? ForgeRegistries.ENCHANTMENTS.getValue(recipe.getEnchantment()) : null;
+                if (enchant != null) {
+                    output.enchant(enchant, recipe.getEnchantmentLevel());
+                }
+                builder.addSlot(RecipeIngredientRole.OUTPUT, 120, 40)
+                       .addItemStack(output);
+            }
         }
     }
     
@@ -95,11 +101,18 @@ public class CelestialEnchantRecipeCategory implements IRecipeCategory<Celestial
         String patternName = "Pattern: " + formatPatternName(recipe.getPattern());
         guiGraphics.drawString(font, patternName, 5, 5, 0xAA55AA, false);
         
-        // エンチャント名
-        Enchantment enchant = ForgeRegistries.ENCHANTMENTS.getValue(recipe.getEnchantment());
-        String enchantName = enchant != null ? 
-            enchant.getFullname(recipe.getEnchantmentLevel()).getString() : 
-            recipe.getEnchantment().toString();
+        // エンチャント名（変換レシピは結果アイテム名）
+        String enchantName;
+        if (recipe.isTransformation()) {
+            enchantName = recipe.getResult().getHoverName().getString();
+        } else if (recipe.getEnchantment() != null) {
+            Enchantment enchant = ForgeRegistries.ENCHANTMENTS.getValue(recipe.getEnchantment());
+            enchantName = enchant != null ?
+                enchant.getFullname(recipe.getEnchantmentLevel()).getString() :
+                recipe.getEnchantment().toString();
+        } else {
+            enchantName = "";
+        }
         guiGraphics.drawString(font, enchantName, 5, 70, 0x55AA55, false);
         
         // 月光コスト
@@ -122,6 +135,7 @@ public class CelestialEnchantRecipeCategory implements IRecipeCategory<Celestial
             case "LUCKY_NOVA" -> "Lucky Nova";
             case "MANA_FOCUS" -> "Mana Focus";
             case "STELLAR_CORE" -> "Stellar Core";
+            case "REVERSAL" -> "Reversal";
             default -> pattern;
         };
     }

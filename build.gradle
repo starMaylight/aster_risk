@@ -4,7 +4,7 @@ plugins {
 }
 
 // `-Pmod_version=X.Y.Z` で上書き可能。CIから入力されたバージョンを反映するために使う。
-version = (project.findProperty('mod_version') ?: '1.3.1') + '-forge-1.20.1'
+version = (project.findProperty('mod_version') ?: '1.4.0') + '-forge-1.20.1'
 base.archivesName = "aster_risk"
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)

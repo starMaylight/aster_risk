@@ -27,5 +27,6 @@ public class EntityAttributeHandler {
         // ボス
         event.put(ModEntities.ECLIPSE_MONARCH.get(), EclipseMonarchEntity.createAttributes().build());
         event.put(ModEntities.STAR_DEVOURER.get(), StarDevourerEntity.createAttributes().build());
+        event.put(ModEntities.SUN_INCARNATE.get(), SunIncarnateEntity.createAttributes().build());
     }
 }

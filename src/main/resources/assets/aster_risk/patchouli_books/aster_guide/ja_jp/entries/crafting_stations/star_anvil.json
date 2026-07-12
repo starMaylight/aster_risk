@@ -1,0 +1,12 @@
+{
+    "name": "星の金床",
+    "icon": "aster_risk:star_anvil",
+    "category": "aster_risk:crafting_stations",
+    "sortnum": 2,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "$(item)星の金床$()は$(mana)マナ$()を使って装備の修理・強化を行います。$(br2)$(l)使い方:$()$(br)$(li)アイテムを持って右クリックで設置$(li)素手で右クリックで取り出し$(li)素手で$(l)Shift + 右クリック$()すると修理（$(mana)マナ200$()）または強化（$(mana)マナ500$()）$(br2)耐久値が減っている場合は修理が優先され、修理済みのアイテムは強化されます。"
+        }
+    ]
+}

@@ -2,7 +2,7 @@
     "name": "最終装備",
     "icon": "aster_risk:eclipse_crown",
     "category": "aster_risk:bosses",
-    "sortnum": 2,
+    "sortnum": 3,
     "pages": [
         {
             "type": "patchouli:text",

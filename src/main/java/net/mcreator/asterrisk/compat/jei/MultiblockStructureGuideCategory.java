@@ -109,39 +109,44 @@ public class MultiblockStructureGuideCategory implements IRecipeCategory<Multibl
     private void drawRitualCircleGuide(GuiGraphics guiGraphics, Font font, StructureGuide recipe) {
         guiGraphics.drawString(font, "Pattern: " + recipe.getPatternName(), 5, 25, 0x333333, false);
         guiGraphics.drawString(font, "Pedestals: " + recipe.getPositions().size(), 100, 25, 0x666666, false);
-        
-        // 5x5グリッド（上から見た図）
-        int gridStartX = 53;
+
+        // パターンの最大半径に合わせたグリッド（上から見た図）
+        int gridRadius = 2;
+        for (BlockPos pos : recipe.getPositions()) {
+            gridRadius = Math.max(gridRadius, Math.max(Math.abs(pos.getX()), Math.abs(pos.getZ())));
+        }
+        int cells = gridRadius * 2 + 1;
+        int cellSize = Math.max(8, 70 / cells);
+        int gridStartX = 88 - (cells * cellSize) / 2;
         int gridStartY = 38;
-        int cellSize = 14;
-        
+
         // グリッド背景
-        for (int x = 0; x < 5; x++) {
-            for (int z = 0; z < 5; z++) {
+        for (int x = 0; x < cells; x++) {
+            for (int z = 0; z < cells; z++) {
                 int px = gridStartX + x * cellSize;
                 int pz = gridStartY + z * cellSize;
                 guiGraphics.fill(px, pz, px + cellSize - 1, pz + cellSize - 1, 0x30000000);
             }
         }
-        
+
         // 中央: 魔法陣
-        int centerX = gridStartX + 2 * cellSize;
-        int centerZ = gridStartY + 2 * cellSize;
+        int centerX = gridStartX + gridRadius * cellSize;
+        int centerZ = gridStartY + gridRadius * cellSize;
         guiGraphics.fill(centerX, centerZ, centerX + cellSize - 1, centerZ + cellSize - 1, 0xFF8800FF);
-        
+
         // 台座位置
         for (BlockPos pos : recipe.getPositions()) {
-            int gx = 2 + pos.getX();
-            int gz = 2 + pos.getZ();
-            if (gx >= 0 && gx < 5 && gz >= 0 && gz < 5) {
+            int gx = gridRadius + pos.getX();
+            int gz = gridRadius + pos.getZ();
+            if (gx >= 0 && gx < cells && gz >= 0 && gz < cells) {
                 int px = gridStartX + gx * cellSize;
                 int pz = gridStartY + gz * cellSize;
                 guiGraphics.fill(px, pz, px + cellSize - 1, pz + cellSize - 1, 0xFF00CCCC);
             }
         }
-        
+
         // 方角
-        guiGraphics.drawString(font, "N", gridStartX + 2 * cellSize + 3, gridStartY - 10, 0x888888, false);
+        guiGraphics.drawString(font, "N", gridStartX + gridRadius * cellSize + 3, gridStartY - 10, 0x888888, false);
         
         // 凡例
         guiGraphics.drawString(font, "§5■ §8Ritual Circle (center)", 5, 115, 0x333333, false);

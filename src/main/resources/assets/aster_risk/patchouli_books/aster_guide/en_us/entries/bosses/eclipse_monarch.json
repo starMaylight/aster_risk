@@ -11,7 +11,7 @@
         {
             "type": "patchouli:text",
             "title": "Rewards",
-            "text": "$(l)Drops:$()$(br)$(li)$(item)Eclipse Core$() (guaranteed)$(li)Shadow Essence$(li)Void Shards$(br2)The Eclipse Core is used to craft the $(eclipse)Eclipse Armor Set$() - the ultimate dark equipment with life steal and enemy debuffs."
+            "text": "$(l)Drops:$()$(br)$(li)$(item)Eclipse Core$() (guaranteed, $(l)boss-exclusive$())$(li)Shadow Essence$(li)Void Shards$(br2)The $(item)Eclipse Core$() can $(l)only$() be obtained by defeating this boss. It is used to craft the $(eclipse)Eclipse Armor Set$() - the ultimate dark equipment with life steal and enemy debuffs."
         }
     ]
 }

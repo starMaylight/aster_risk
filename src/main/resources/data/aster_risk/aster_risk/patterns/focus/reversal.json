@@ -1,0 +1,11 @@
+{
+    "type": "focus",
+    "name": "REVERSAL",
+    "description": "South pair low, north pair high - inverts the nature of what lies within",
+    "positions": [
+        {"x": 1, "y": 1, "z": 1},
+        {"x": -1, "y": 1, "z": 1},
+        {"x": 1, "y": 3, "z": -1},
+        {"x": -1, "y": 3, "z": -1}
+    ]
+}

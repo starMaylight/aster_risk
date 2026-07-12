@@ -21,7 +21,8 @@ public class MeteorSummonCoreItem extends Item {
         SMALL("small", "小流星", Rarity.COMMON),
         STARDUST("stardust", "星屑流星", Rarity.UNCOMMON),
         PRISMATIC("prismatic", "虹流星", Rarity.RARE),
-        OMINOUS("ominous", "凶星", Rarity.EPIC);
+        OMINOUS("ominous", "凶星", Rarity.EPIC),
+        SUN("sun", "太陽", Rarity.EPIC);
 
         private final String name;
         private final String displayName;
@@ -62,6 +63,7 @@ public class MeteorSummonCoreItem extends Item {
             case STARDUST -> ChatFormatting.AQUA;
             case PRISMATIC -> ChatFormatting.LIGHT_PURPLE;
             case OMINOUS -> ChatFormatting.DARK_RED;
+            case SUN -> ChatFormatting.GOLD;
         };
         TooltipHelper.addStat(tooltip, effectColor, "tooltip.aster_risk.meteor_summon_core." + type.getName() + ".effect");
         TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.meteor_summon_core.usage");
@@ -69,6 +71,6 @@ public class MeteorSummonCoreItem extends Item {
 
     @Override
     public boolean isFoil(ItemStack stack) {
-        return type == MeteorType.PRISMATIC || type == MeteorType.OMINOUS;
+        return type == MeteorType.PRISMATIC || type == MeteorType.OMINOUS || type == MeteorType.SUN;
     }
 }

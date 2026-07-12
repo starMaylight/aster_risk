@@ -46,6 +46,7 @@ public class MeteorSummoningBlockEntity extends BlockEntity {
     private static final float STARDUST_COST = 600f;
     private static final float PRISMATIC_COST = 1500f;
     private static final float OMINOUS_COST = 1000f;
+    private static final float SUN_COST = 2000f;
 
     private final BlockManaCapability.BlockMana manaStorage;
     private final LazyOptional<BlockManaCapability.IBlockMana> manaHandler;
@@ -144,6 +145,7 @@ public class MeteorSummoningBlockEntity extends BlockEntity {
             case STARDUST -> 150;   // 7.5秒
             case PRISMATIC -> 200;  // 10秒
             case OMINOUS -> 180;    // 9秒
+            case SUN -> 300;        // 15秒（ボス召喚）
         };
     }
 
@@ -155,6 +157,7 @@ public class MeteorSummoningBlockEntity extends BlockEntity {
             case STARDUST -> STARDUST_COST;
             case PRISMATIC -> PRISMATIC_COST;
             case OMINOUS -> OMINOUS_COST;
+            case SUN -> SUN_COST;
         };
     }
 
@@ -228,6 +231,26 @@ public class MeteorSummoningBlockEntity extends BlockEntity {
                 if (random.nextFloat() < 0.15f) {
                     dropItem(serverLevel, x, y, z, new ItemStack(ModItems.PRISMATIC_METEORITE.get(), 1));
                 }
+            }
+            case SUN -> {
+                // 陽の化身を召喚
+                var boss = ModEntities.SUN_INCARNATE.get().create(serverLevel);
+                if (boss != null) {
+                    boss.moveTo(x, y + 3, z, random.nextFloat() * 360F, 0F);
+                    serverLevel.addFreshEntity(boss);
+                }
+
+                // 灼熱の降臨エフェクト
+                serverLevel.playSound(null, pos, SoundEvents.BLAZE_SHOOT, SoundSource.WEATHER, 3.0f, 0.5f);
+                serverLevel.playSound(null, pos, SoundEvents.LIGHTNING_BOLT_IMPACT, SoundSource.WEATHER, 2.0f, 0.6f);
+                for (int i = 0; i < 100; i++) {
+                    serverLevel.sendParticles(ParticleTypes.FLAME,
+                        x + (random.nextDouble() - 0.5) * 6,
+                        y + random.nextDouble() * 6,
+                        z + (random.nextDouble() - 0.5) * 6,
+                        1, 0, 0.1, 0, 0.05);
+                }
+                serverLevel.sendParticles(ParticleTypes.EXPLOSION_EMITTER, x, y + 3, z, 3, 1, 1, 1, 0);
             }
         }
 

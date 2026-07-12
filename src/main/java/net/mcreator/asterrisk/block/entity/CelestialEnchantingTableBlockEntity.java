@@ -302,11 +302,16 @@ public class CelestialEnchantingTableBlockEntity extends BlockEntity {
         }
         // 通常レシピの場合
         else if (currentRecipe != null) {
-            Enchantment enchant = ForgeRegistries.ENCHANTMENTS.getValue(currentRecipe.getEnchantment());
-            if (enchant != null) {
-                Map<Enchantment, Integer> currentEnchants = EnchantmentHelper.getEnchantments(heldItem);
-                currentEnchants.put(enchant, currentRecipe.getEnchantmentLevel());
-                EnchantmentHelper.setEnchantments(currentEnchants, heldItem);
+            if (currentRecipe.isTransformation()) {
+                // アイテム変換レシピ: 台上のアイテムを結果に置き換える
+                heldItem = currentRecipe.getResult().copy();
+            } else if (currentRecipe.getEnchantment() != null) {
+                Enchantment enchant = ForgeRegistries.ENCHANTMENTS.getValue(currentRecipe.getEnchantment());
+                if (enchant != null) {
+                    Map<Enchantment, Integer> currentEnchants = EnchantmentHelper.getEnchantments(heldItem);
+                    currentEnchants.put(enchant, currentRecipe.getEnchantmentLevel());
+                    EnchantmentHelper.setEnchantments(currentEnchants, heldItem);
+                }
             }
         }
         

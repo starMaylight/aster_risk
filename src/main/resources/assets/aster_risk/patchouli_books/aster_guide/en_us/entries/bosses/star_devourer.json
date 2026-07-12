@@ -11,7 +11,7 @@
         {
             "type": "patchouli:text",
             "title": "Rewards",
-            "text": "$(l)Drops:$()$(br)$(li)$(item)Stellar Heart$() (guaranteed)$(li)Star Fragments$(li)Stardust$(br2)The Stellar Heart is used to craft the $(stellar)Stellar Endgame Set$() - the ultimate light equipment with enhanced mana regeneration and water walking."
+            "text": "$(l)Drops:$()$(br)$(li)$(item)Stellar Heart$() (guaranteed, $(l)boss-exclusive$())$(li)Star Fragments$(li)Stardust$(br2)The $(item)Stellar Heart$() can $(l)only$() be obtained by defeating this boss. It is used to craft the $(stellar)Stellar Endgame Set$() - the ultimate light equipment with enhanced mana regeneration and water walking."
         }
     ]
 }

@@ -1,0 +1,27 @@
+{
+    "name": "Sun Incarnate",
+    "icon": "aster_risk:sun_incarnate_spawn_egg",
+    "category": "aster_risk:bosses",
+    "sortnum": 2,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "The $(stellar)Sun Incarnate$() is solar fury given form - the mightiest being known to Aster Risk.$(br2)$(l)Stats:$()$(br)$(li)Health: 4000$(li)Attack: 50+ (ignites on hit)$(li)Armor: 50+$(br2)Calling it down requires forging the $(item)Sun Meteor Core$() through a four-stage ritual chain."
+        },
+        {
+            "type": "patchouli:text",
+            "title": "The Path of the Sun",
+            "text": "$(l)1. Unstable Core$()$(br)$(item)Ritual Circle$() (SUN pattern): $(item)Stellar Heart$() + $(item)Eclipse Core$() + 2x $(item)Celestial Nucleus$() + 2x $(item)Enhanced Gold$() + 2x $(item)Radiant Diamond$()$(br2)$(l)2. Stable Full Moon Core$()$(br)$(item)Focus Chamber$(): Unstable Core + $(item)Prismatic Meteorite$() + $(item)Full Moon Sigil$()$(br2)$(l)3. Sun Meteor Core$()$(br)$(item)Celestial Enchanting Table$() (REVERSAL pattern)$(br2)$(l)4. Summoning$()$(br)Set the core in the $(item)Meteor Summoning Circle$() at night."
+        },
+        {
+            "type": "patchouli:text",
+            "title": "Rules of the Sun",
+            "text": "$(l)Unique battle rules:$()$(br)$(li)Attacks from beyond $(l)20 blocks$() are nullified$(li)Becomes $(l)invulnerable for 1 second$() after each hit$(li)Any single blow exceeding its max health is $(l)reflected back$() at the attacker$(li)Immune to fire and explosions$(li)Touching it deals $(l)1000 damage$()$(li)Contact and reflection $(l)scorch your equipment$() - 10% max durability per hit; gear without durability is $(l)incinerated$()$(li)Everything within 20 blocks is set ablaze$(li)Liquids within 20 blocks evaporate"
+        },
+        {
+            "type": "patchouli:text",
+            "title": "Attacks & Rewards",
+            "text": "$(l)Attacks:$()$(br)$(li)Fireball volley$(li)Blazing melee$(li)Meteor fall$(li)Explosive blast$(li)Charging rush (destroys blocks in its path)$(br2)$(l)Drops:$()$(br)$(li)$(item)Radiant Diamond$()$(li)$(item)Enhanced Gold$()$(li)$(item)Celestial Nucleus$()$(li)$(item)Nether Star$()"
+        }
+    ]
+}

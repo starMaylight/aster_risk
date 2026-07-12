@@ -83,6 +83,7 @@ public class MeteorSummoningRecipeCategory implements IRecipeCategory<MeteorSumm
             case STARDUST -> new ItemStack(ModItems.METEOR_CORE_STARDUST.get());
             case PRISMATIC -> new ItemStack(ModItems.METEOR_CORE_PRISMATIC.get());
             case OMINOUS -> new ItemStack(ModItems.METEOR_CORE_OMINOUS.get());
+            case SUN -> new ItemStack(ModItems.METEOR_CORE_SUN.get());
         };
     }
 

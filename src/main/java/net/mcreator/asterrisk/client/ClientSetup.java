@@ -9,6 +9,7 @@ import net.mcreator.asterrisk.models.VoidWalkerModel;
 import net.mcreator.asterrisk.models.CorruptedGolemModel;
 import net.mcreator.asterrisk.models.EclipseMonarchModel;
 import net.mcreator.asterrisk.models.StarDevourerModel;
+import net.mcreator.asterrisk.models.SunIncarnateModel;
 import net.mcreator.asterrisk.client.renderer.LunarInfuserRenderer;
 import net.mcreator.asterrisk.client.renderer.RitualPedestalRenderer;
 import net.mcreator.asterrisk.client.renderer.StarAnvilRenderer;
@@ -25,6 +26,7 @@ import net.mcreator.asterrisk.client.renderer.VoidWalkerRenderer;
 import net.mcreator.asterrisk.client.renderer.CorruptedGolemRenderer;
 import net.mcreator.asterrisk.client.renderer.EclipseMonarchRenderer;
 import net.mcreator.asterrisk.client.renderer.StarDevourerRenderer;
+import net.mcreator.asterrisk.client.renderer.SunIncarnateRenderer;
 import net.mcreator.asterrisk.client.renderer.HeavenlyAnvilRenderer;
 import net.mcreator.asterrisk.entity.ModEntityTypes;
 import net.mcreator.asterrisk.registry.ModBlockEntities;
@@ -66,6 +68,7 @@ public class ClientSetup {
         // ボス
         event.registerEntityRenderer(ModEntities.ECLIPSE_MONARCH.get(), EclipseMonarchRenderer::new);
         event.registerEntityRenderer(ModEntities.STAR_DEVOURER.get(), StarDevourerRenderer::new);
+        event.registerEntityRenderer(ModEntities.SUN_INCARNATE.get(), SunIncarnateRenderer::new);
         
         // その他エンティティ
         event.registerEntityRenderer(ModEntityTypes.HEAVENLY_ANVIL.get(), HeavenlyAnvilRenderer::new);
@@ -86,5 +89,6 @@ public class ClientSetup {
         // ボス
         event.registerLayerDefinition(EclipseMonarchModel.LAYER_LOCATION, EclipseMonarchModel::createBodyLayer);
         event.registerLayerDefinition(StarDevourerModel.LAYER_LOCATION, StarDevourerModel::createBodyLayer);
+        event.registerLayerDefinition(SunIncarnateModel.LAYER_LOCATION, SunIncarnateModel::createBodyLayer);
     }
 }

@@ -1,0 +1,16 @@
+{
+    "type": "aster_risk:ritual",
+    "ingredients": [
+        { "item": "aster_risk:meteorite_greatsword" },
+        { "item": "aster_risk:prismatic_meteorite" },
+        { "item": "aster_risk:prismatic_meteorite" },
+        { "item": "aster_risk:stellar_heart" },
+        { "item": "aster_risk:eclipse_core" },
+        { "item": "aster_risk:radiant_diamond" }
+    ],
+    "result": {
+        "item": "aster_risk:prismatic_greatsword",
+        "count": 1
+    },
+    "mana_cost": 2500
+}

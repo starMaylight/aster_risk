@@ -137,6 +137,19 @@ public class RitualCircleRecipeCategory implements IRecipeCategory<RitualCircleR
                     case 5 -> new int[]{54, 18};  // 北西
                     default -> SLOT_POSITIONS[index % SLOT_POSITIONS.length];
                 };
+            case "SUN":
+                // 太陽型: 四方の光線（外周）+ 対角の円盤（内側）
+                return switch (index) {
+                    case 0 -> new int[]{72, 0};    // 北（半径3）
+                    case 1 -> new int[]{126, 54};  // 東（半径3）
+                    case 2 -> new int[]{72, 108};  // 南（半径3）
+                    case 3 -> new int[]{18, 54};   // 西（半径3）
+                    case 4 -> new int[]{99, 27};   // 北東（半径2）
+                    case 5 -> new int[]{99, 81};   // 南東（半径2）
+                    case 6 -> new int[]{45, 81};   // 南西（半径2）
+                    case 7 -> new int[]{45, 27};   // 北西（半径2）
+                    default -> SLOT_POSITIONS[index % SLOT_POSITIONS.length];
+                };
             case "STAR":
             default:
                 return SLOT_POSITIONS[index % SLOT_POSITIONS.length];

@@ -133,6 +133,7 @@ public class ModTabs {
             // === Phase 8: ボススポーンエッグ ===
             event.accept(ModSpawnEggs.ECLIPSE_MONARCH_SPAWN_EGG.get());
             event.accept(ModSpawnEggs.STAR_DEVOURER_SPAWN_EGG.get());
+            event.accept(ModSpawnEggs.SUN_INCARNATE_SPAWN_EGG.get());
 
             // === Phase 10: Lunar Realm ===
             event.accept(ModItems.LUNAR_SAPLING.get());
@@ -181,6 +182,8 @@ public class ModTabs {
             event.accept(ModItems.ENHANCED_GOLD.get());
             event.accept(ModItems.RADIANT_DIAMOND.get());
             event.accept(ModItems.STARDUST_CATALYST.get());
+            event.accept(ModItems.UNSTABLE_CORE.get());
+            event.accept(ModItems.STABLE_FULL_MOON_CORE.get());
 
             // === 月相の刻印（8種） ===
             event.accept(ModItems.PHASE_SIGIL_FULL_MOON.get());
@@ -197,6 +200,7 @@ public class ModTabs {
             event.accept(ModItems.METEOR_CORE_STARDUST.get());
             event.accept(ModItems.METEOR_CORE_PRISMATIC.get());
             event.accept(ModItems.METEOR_CORE_OMINOUS.get());
+            event.accept(ModItems.METEOR_CORE_SUN.get());
 
             // === 銀のツールセット ===
             event.accept(ModItems.SILVER_SWORD.get());

@@ -1,0 +1,17 @@
+{
+    "name": "Ritual Circle",
+    "icon": "aster_risk:ritual_circle",
+    "category": "aster_risk:crafting_stations",
+    "sortnum": 3,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "The $(item)Ritual Circle$() performs advanced pattern-based rituals.$(br2)Arrange $(item)Ritual Pedestals$() around the circle in one of the defined $(l)patterns$(), then place the required ingredients on them.$(br2)Right-click the circle to begin - if the pedestal layout and items match a recipe, the ritual starts and consumes $(mana)mana$()."
+        },
+        {
+            "type": "patchouli:text",
+            "title": "Tips",
+            "text": "$(li)Right-click while active to check $(l)progress$() and stored mana$(li)If no recipe matches, $(l)Shift + Right-click$() shows debug info about detected patterns (when enabled in config)$(li)Supply mana via $(item)Moonlight Focus$() links or adjacent mana sources$(br2)Craft powerful items such as the $(item)Moonlight Focus$() and $(item)Celestial Enchanting Table$() here."
+        }
+    ]
+}
