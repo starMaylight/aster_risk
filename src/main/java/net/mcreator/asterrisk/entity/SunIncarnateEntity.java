@@ -33,6 +33,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ProjectileWeaponItem;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.TridentItem;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
@@ -88,6 +89,9 @@ public class SunIncarnateEntity extends Monster {
     // 突進
     private int chargeTicks = 0;
     private Vec3 chargeDirection = Vec3.ZERO;
+
+    // 吸い込み
+    private int suctionTicks = 0;
 
     // スタック検知
     private Vec3 lastPos = Vec3.ZERO;
@@ -284,10 +288,12 @@ public class SunIncarnateEntity extends Monster {
         specialAttackTimer++;
         auraTimer++;
 
-        // (b) 半径20ブロックの生物を炎上
+        // (b) 半径20ブロックの生物を炎上 + 定期処理
         if (auraTimer >= 20) {
             auraTimer = 0;
             igniteAura();
+            enforceClearWeather();
+            updateDynamicStats();
         }
 
         // (f) 接触1000ダメージ
@@ -296,9 +302,11 @@ public class SunIncarnateEntity extends Monster {
         // (f) 液体消去（1tickにつき1レイヤーずつ走査）
         purgeLiquidsLayer();
 
-        // 突進処理
+        // 突進・吸い込み処理
         if (chargeTicks > 0) {
             tickCharge();
+        } else if (suctionTicks > 0) {
+            tickSuction();
         } else {
             // (h) スタック検知 → 周囲のブロック破壊
             detectStuckAndBreak();
@@ -308,6 +316,39 @@ public class SunIncarnateEntity extends Monster {
                 specialAttackTimer = 0;
                 performSpecialAttack();
             }
+        }
+    }
+
+    /** スポーン中は天候を晴れに固定 */
+    private void enforceClearWeather() {
+        if (this.level() instanceof net.minecraft.server.level.ServerLevel serverLevel
+                && (serverLevel.isRaining() || serverLevel.isThundering())) {
+            serverLevel.setWeatherParameters(6000, 0, false, false);
+        }
+    }
+
+    /**
+     * ターゲットの武器・防具に付いたエンチャント数に応じて攻撃力/防御力を変動
+     * （基礎50 + 10×エンチャント個数）
+     */
+    private void updateDynamicStats() {
+        int enchantCount = 0;
+        if (this.getTarget() instanceof Player player) {
+            for (EquipmentSlot slot : EquipmentSlot.values()) {
+                ItemStack stack = player.getItemBySlot(slot);
+                if (!stack.isEmpty()) {
+                    enchantCount += EnchantmentHelper.getEnchantments(stack).size();
+                }
+            }
+        }
+        double bonus = enchantCount * 10.0D;
+        var attack = this.getAttribute(Attributes.ATTACK_DAMAGE);
+        if (attack != null) {
+            attack.setBaseValue(50.0D + bonus);
+        }
+        var armor = this.getAttribute(Attributes.ARMOR);
+        if (armor != null) {
+            armor.setBaseValue(50.0D + bonus);
         }
     }
 
@@ -372,12 +413,65 @@ public class SunIncarnateEntity extends Monster {
     // ===== 特殊攻撃 =====
 
     private void performSpecialAttack() {
-        int attackType = this.random.nextInt(4);
+        LivingEntity target = this.getTarget();
+
+        // ターゲットが3ブロック以上高い位置にいる場合は吸い込みを積極的に使用
+        if (target != null && target.getY() - this.getY() >= 3.0D) {
+            startSuction();
+            return;
+        }
+
+        int attackType = this.random.nextInt(5);
         switch (attackType) {
             case 0 -> fireballVolley();
             case 1 -> meteorFall();
             case 2 -> explosionBlast();
             case 3 -> startCharge();
+            case 4 -> startSuction();
+        }
+    }
+
+    /** 吸い込み開始 */
+    private void startSuction() {
+        suctionTicks = 20;
+        this.level().playSound(null, this.blockPosition(),
+            SoundEvents.ENDER_DRAGON_GROWL, this.getSoundSource(), 2.0F, 0.5F);
+    }
+
+    /** 吸い込み中の処理: 周囲の生物を高速で引き寄せ、終了後は突進に移行 */
+    private void tickSuction() {
+        suctionTicks--;
+
+        AABB area = this.getBoundingBox().inflate(EFFECT_RADIUS);
+        List<LivingEntity> targets = this.level().getEntitiesOfClass(LivingEntity.class, area,
+            e -> e != this && !(e instanceof SunIncarnateEntity));
+        Vec3 center = this.position().add(0, 1.0D, 0);
+
+        for (LivingEntity entity : targets) {
+            Vec3 pull = center.subtract(entity.position());
+            double dist = pull.length();
+            if (dist < 2.0D) continue; // 至近距離（接触ダメージ圏）はそれ以上引かない
+
+            entity.setDeltaMovement(pull.normalize().scale(1.2D));
+            entity.hurtMarked = true; // 速度変更をクライアントに同期
+        }
+
+        // 渦のパーティクル
+        if (this.level() instanceof net.minecraft.server.level.ServerLevel serverLevel) {
+            for (int i = 0; i < 6; i++) {
+                double angle = this.random.nextDouble() * Math.PI * 2;
+                double radius = 4.0D + this.random.nextDouble() * 12.0D;
+                serverLevel.sendParticles(ParticleTypes.FLAME,
+                    this.getX() + Math.cos(angle) * radius,
+                    this.getY() + 1.0D + this.random.nextDouble() * 3.0D,
+                    this.getZ() + Math.sin(angle) * radius,
+                    0, -Math.cos(angle) * 0.5D, 0.0D, -Math.sin(angle) * 0.5D, 0.5D);
+            }
+        }
+
+        // 吸い込み終了後は突進で追撃（固定）
+        if (suctionTicks <= 0) {
+            startCharge();
         }
     }
 
@@ -606,6 +700,7 @@ public class SunIncarnateEntity extends Monster {
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         tag.putInt("ChargeTicks", this.chargeTicks);
+        tag.putInt("SuctionTicks", this.suctionTicks);
     }
 
     @Override
@@ -619,6 +714,9 @@ public class SunIncarnateEntity extends Monster {
         }
         if (tag.contains("ChargeTicks")) {
             this.chargeTicks = tag.getInt("ChargeTicks");
+        }
+        if (tag.contains("SuctionTicks")) {
+            this.suctionTicks = tag.getInt("SuctionTicks");
         }
     }
 }

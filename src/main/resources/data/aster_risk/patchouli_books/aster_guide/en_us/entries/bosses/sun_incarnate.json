@@ -6,7 +6,7 @@
     "pages": [
         {
             "type": "patchouli:text",
-            "text": "The $(stellar)Sun Incarnate$() is solar fury given form - the mightiest being known to Aster Risk.$(br2)$(l)Stats:$()$(br)$(li)Health: 4000$(li)Attack: 50+ (ignites on hit)$(li)Armor: 50+$(br2)Calling it down requires forging the $(item)Sun Meteor Core$() through a four-stage ritual chain."
+            "text": "The $(stellar)Sun Incarnate$() is solar fury given form - the mightiest being known to Aster Risk.$(br2)$(l)Stats:$()$(br)$(li)Health: 4000$(li)Attack/Armor: 50 $(l)+10 per enchantment$() on your gear$(li)Ignites on hit$(li)While it lives, the skies are $(l)forced clear$()$(br2)Calling it down requires forging the $(item)Sun Meteor Core$() through a four-stage ritual chain."
         },
         {
             "type": "patchouli:text",
@@ -21,7 +21,7 @@
         {
             "type": "patchouli:text",
             "title": "Attacks & Rewards",
-            "text": "$(l)Attacks:$()$(br)$(li)Fireball volley$(li)Blazing melee$(li)Meteor fall$(li)Explosive blast$(li)Charging rush (destroys blocks in its path)$(br2)$(l)Drops:$()$(br)$(li)$(item)Radiant Diamond$()$(li)$(item)Enhanced Gold$()$(li)$(item)Celestial Nucleus$()$(li)$(item)Nether Star$()"
+            "text": "$(l)Attacks:$()$(br)$(li)Fireball volley$(li)Blazing melee$(li)Meteor fall$(li)Explosive blast$(li)Charging rush (destroys blocks in its path)$(li)$(l)Solar vacuum$() - drags everything nearby into it, then charges; used eagerly against foes perched 3+ blocks above$(br2)$(l)Drops:$()$(br)$(li)$(item)Radiant Diamond$()$(li)$(item)Enhanced Gold$()$(li)$(item)Celestial Nucleus$()$(li)$(item)Nether Star$()"
         }
     ]
 }

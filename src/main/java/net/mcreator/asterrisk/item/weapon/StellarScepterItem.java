@@ -31,7 +31,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class StellarScepterItem extends Item {
     
     private static final int MANA_COST = 50;
-    private static final float DAMAGE = 25.0F;
+    private static final float DAMAGE = 150.0F;
     private static final double RANGE = 12.0D;
     
     public StellarScepterItem(Properties properties) {
