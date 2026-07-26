@@ -1,12 +1,17 @@
 package net.mcreator.asterrisk.entity;
 
+import net.mcreator.asterrisk.AsterRiskMod;
+import net.mcreator.asterrisk.compat.CuriosCompat;
+import net.mcreator.asterrisk.damage.ModDamageTypes;
 import net.mcreator.asterrisk.registry.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerBossEvent;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.Mth;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
@@ -18,6 +23,8 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -41,7 +48,13 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
+import javax.annotation.Nullable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -56,17 +69,26 @@ import java.util.List;
  * - killコマンド（generic_kill）以外の即死系ダメージ無効
  * - 半径20ブロックより外からの攻撃無効
  * - 最大体力以上の一撃を受けた場合、ダメージを攻撃者へ反射（ブロック起因なら該当ブロックを空気化）
- * - 被弾後1秒間無敵
- * - 炎上・爆発無効、接触で1000ダメージ、半径20ブロック内の液体を消去
- * - 攻撃手段: 火炎弾・インファイト・隕石落下・爆破・突進
+ * - 被弾後1秒間無敵。無敵を貫通されたダメージは解除時に100倍回復し、死亡判定も解除後まで保留
+ * - 1回あたりの被ダメージ上限 =（攻撃者の防具エンチャントLv合計 - 武器エンチャントLv合計）× 100
+ *   （下限10 / 上限は最大体力の半分）
+ * - 炎上・爆発無効、接触ダメージ = 相手の防具エンチャントLv合計 × 100（なしなら1000）
+ * - 半径20ブロック内の液体を消去、天候を晴れに固定
+ * - 召喚時の最大体力を記録し、改変されたら復元して全回復
+ * - NoAI / tickキャンセルによる行動停止を無効化
+ * - 攻撃手段: 火炎弾・インファイト・隕石落下・爆破・突進・吸い込み
  * - 移動不能時や突進経路上のブロックを破壊
  */
 public class SunIncarnateEntity extends Monster {
 
     /** オーラ・攻撃制限・液体消去の共通半径 */
     private static final double EFFECT_RADIUS = 20.0D;
-    /** 接触ダメージ */
-    private static final float CONTACT_DAMAGE = 1000.0F;
+    /** エンチャントなしの相手に対する接触ダメージ */
+    private static final float CONTACT_DAMAGE_BASE = 1000.0F;
+    /** エンチャントレベル1あたりの接触ダメージ / 被ダメージ上限の係数 */
+    private static final float ENCHANT_SCALE = 100.0F;
+    /** 被ダメージ上限の下限値 */
+    private static final float MIN_DAMAGE_CAP = 10.0F;
     /** 被弾後の無敵時間（tick） */
     private static final int POST_HURT_INVULN = 20;
 
@@ -85,6 +107,16 @@ public class SunIncarnateEntity extends Monster {
     private int specialAttackTimer = 0;
     private int auraTimer = 0;
     private int liquidScanLayer = -(int) EFFECT_RADIUS;
+
+    /** 召喚時に確定した最大体力（改変検知用、-1は未確定） */
+    private float lockedMaxHealth = -1.0F;
+    /** 無敵開始時点の体力（貫通ダメージ検知用） */
+    private float healthAtInvulnStart = 0.0F;
+    /** 無敵中に貫通ダメージを受けたか */
+    private boolean penetratedDuringInvuln = false;
+    /** 無敵中に保留された死亡ソース */
+    @Nullable
+    private DamageSource pendingDeathSource = null;
 
     // 突進
     private int chargeTicks = 0;
@@ -155,6 +187,10 @@ public class SunIncarnateEntity extends Monster {
                 && this.level().getDifficulty() != Difficulty.PEACEFUL) {
             return;
         }
+        // 無敵中の撃破による削除も拒否（解除時の回復処理より先に消えないようにする）
+        if (reason == Entity.RemovalReason.KILLED && postHurtInvulnTicks > 0) {
+            return;
+        }
         super.remove(reason);
     }
 
@@ -201,11 +237,170 @@ public class SunIncarnateEntity extends Monster {
             return false;
         }
 
-        boolean result = super.hurt(source, amount);
+        // 1回あたりの被ダメージ上限を適用
+        float capped = Math.min(amount, computeDamageCap(source));
+
+        boolean result = super.hurt(source, capped);
         if (result) {
             postHurtInvulnTicks = POST_HURT_INVULN;
+            healthAtInvulnStart = this.getHealth();
         }
         return result;
+    }
+
+    /**
+     * 1回あたりの被ダメージ上限。
+     * （攻撃者の防具エンチャントレベル合計 - 武器エンチャントレベル合計）× 100
+     * 下限10 / エンチャントなしも10 / 上限は最大体力の半分。
+     */
+    private float computeDamageCap(DamageSource source) {
+        float hardCap = this.getMaxHealth() / 2.0F;
+        if (!(source.getEntity() instanceof LivingEntity attacker)) {
+            return Math.min(MIN_DAMAGE_CAP, hardCap);
+        }
+
+        int armorLevels = sumEnchantLevels(attacker, true);
+        int weaponLevels = sumEnchantLevels(attacker, false);
+        if (armorLevels == 0 && weaponLevels == 0) {
+            return Math.min(MIN_DAMAGE_CAP, hardCap);
+        }
+
+        float cap = (armorLevels - weaponLevels) * ENCHANT_SCALE;
+        return Mth.clamp(cap, MIN_DAMAGE_CAP, hardCap);
+    }
+
+    /**
+     * エンチャントレベルの合計を集計。
+     * @param armorSlots true=防具4部位 / false=手持ち2スロット
+     */
+    private static int sumEnchantLevels(LivingEntity entity, boolean armorSlots) {
+        int total = 0;
+        for (EquipmentSlot slot : EquipmentSlot.values()) {
+            if (slot.isArmor() != armorSlots) continue;
+            ItemStack stack = entity.getItemBySlot(slot);
+            if (stack.isEmpty()) continue;
+            for (int level : EnchantmentHelper.getEnchantments(stack).values()) {
+                total += level;
+            }
+        }
+        return total;
+    }
+
+    // ===== 無敵中の死亡保留（4・5） =====
+
+    @Override
+    public void die(DamageSource source) {
+        // 無敵中は死亡判定を保留（無敵解除時の回復処理後に再判定）
+        if (postHurtInvulnTicks > 0) {
+            pendingDeathSource = source;
+            return;
+        }
+        super.die(source);
+    }
+
+    @Override
+    public boolean isDeadOrDying() {
+        // 無敵中は死亡状態とみなさない（死亡アニメーション・削除を抑止）
+        if (postHurtInvulnTicks > 0) {
+            return false;
+        }
+        return super.isDeadOrDying();
+    }
+
+    /**
+     * 無敵解除時の処理。
+     * 無敵を貫通して受けたダメージがあれば全回復してから死亡判定を行う。
+     */
+    private void onInvulnerabilityEnd() {
+        boolean penetrated = penetratedDuringInvuln || this.getHealth() < healthAtInvulnStart;
+        penetratedDuringInvuln = false;
+
+        if (penetrated) {
+            // 特殊ダメージ源による削り切りへの対抗として全回復
+            // 最大体力自体が改変されている可能性があるので先に復元してから回復する
+            enforceMaxHealth();
+            // heal()は体力0のとき機能しないため直接設定（0からの復帰に対応）
+            allowHealthChange = true;
+            try {
+                this.setHealth(this.getMaxHealth());
+            } finally {
+                allowHealthChange = false;
+            }
+            pendingDeathSource = null;
+
+            if (this.level() instanceof ServerLevel serverLevel) {
+                serverLevel.playSound(null, this.blockPosition(),
+                    SoundEvents.RESPAWN_ANCHOR_CHARGE, this.getSoundSource(), 2.0F, 1.4F);
+                serverLevel.sendParticles(ParticleTypes.FLAME,
+                    this.getX(), this.getY() + 2.0D, this.getZ(), 40, 1.5, 2.0, 1.5, 0.15);
+            }
+        }
+
+        // 保留していた死亡判定をここで確定
+        if (this.getHealth() <= 0.0F) {
+            DamageSource source = pendingDeathSource != null
+                ? pendingDeathSource : this.damageSources().generic();
+            pendingDeathSource = null;
+            super.die(source);
+        } else {
+            pendingDeathSource = null;
+        }
+    }
+
+    // ===== 最大体力の固定（3） =====
+
+    /**
+     * 召喚時の最大体力を保存し、以降改変されていたら復元して全回復する。
+     */
+    private void enforceMaxHealth() {
+        if (lockedMaxHealth <= 0.0F) {
+            lockedMaxHealth = this.getMaxHealth();
+            return;
+        }
+        if (this.getMaxHealth() == lockedMaxHealth) {
+            return;
+        }
+
+        AttributeInstance attr = this.getAttribute(Attributes.MAX_HEALTH);
+        if (attr != null) {
+            for (AttributeModifier modifier : new ArrayList<>(attr.getModifiers())) {
+                attr.removeModifier(modifier);
+            }
+            attr.setBaseValue(lockedMaxHealth);
+        }
+
+        // 改変への対抗として全回復
+        allowHealthChange = true;
+        try {
+            this.setHealth(lockedMaxHealth);
+        } finally {
+            allowHealthChange = false;
+        }
+    }
+
+    // ===== tick停止無効（6） =====
+
+    @Override
+    public void setNoAi(boolean noAi) {
+        // NoAIによる行動停止を拒否
+    }
+
+    @Override
+    public boolean isNoAi() {
+        return false;
+    }
+
+    /**
+     * 他modによるtickキャンセルを打ち消す
+     */
+    @Mod.EventBusSubscriber(modid = AsterRiskMod.MODID)
+    public static class TickGuard {
+        @SubscribeEvent(priority = EventPriority.LOWEST, receiveCanceled = true)
+        public static void onLivingTick(LivingEvent.LivingTickEvent event) {
+            if (event.getEntity() instanceof SunIncarnateEntity && event.isCanceled()) {
+                event.setCanceled(false);
+            }
+        }
     }
 
     /**
@@ -236,24 +431,71 @@ public class SunIncarnateEntity extends Monster {
 
     /**
      * 装備劣化: 全装備スロットの耐久値を最大値の10%分減らす。
-     * 耐久値を持たない防具・武器（Unbreakable含む）は太陽の熱で焼失する。
+     *
+     * 耐久削減も破壊も通らなかった場合（Unbreakableや耐久保護系mod等）は、
+     * 防具スロットとCuriosスロットの装備をすべて剥ぎ取ってその場にドロップさせる。
      */
     private void degradeEquipment(LivingEntity target) {
         if (target instanceof Player player && (player.isCreative() || player.isSpectator())) {
             return;
         }
+
+        boolean degradeBlocked = false;
+
         for (EquipmentSlot slot : EquipmentSlot.values()) {
             ItemStack stack = target.getItemBySlot(slot);
             if (stack.isEmpty()) continue;
 
             if (stack.isDamageableItem()) {
+                int damageBefore = stack.getDamageValue();
                 int loss = Math.max(1, stack.getMaxDamage() / 10);
                 stack.hurtAndBreak(loss, target, e -> e.broadcastBreakEvent(slot));
+
+                // 破壊もされず耐久も減っていない = 劣化が阻止された
+                ItemStack after = target.getItemBySlot(slot);
+                if (!after.isEmpty() && after.getDamageValue() <= damageBefore) {
+                    degradeBlocked = true;
+                }
             } else if (isArmorOrWeapon(stack, slot)) {
-                // 耐久値を持たない防具・武器は焼失
-                target.setItemSlot(slot, ItemStack.EMPTY);
-                this.level().playSound(null, target.blockPosition(),
-                    SoundEvents.ITEM_BREAK, this.getSoundSource(), 1.0F, 0.7F);
+                // そもそも耐久値を持たない装備
+                degradeBlocked = true;
+            }
+        }
+
+        if (degradeBlocked) {
+            stripProtectionToGround(target);
+        }
+    }
+
+    /**
+     * 防具スロットとCuriosスロットの装備をすべて剥ぎ取り、その場にドロップさせる。
+     */
+    private void stripProtectionToGround(LivingEntity target) {
+        boolean stripped = false;
+
+        // 防具スロット
+        for (EquipmentSlot slot : EquipmentSlot.values()) {
+            if (!slot.isArmor()) continue;
+            ItemStack stack = target.getItemBySlot(slot);
+            if (stack.isEmpty()) continue;
+
+            target.setItemSlot(slot, ItemStack.EMPTY);
+            target.spawnAtLocation(stack.copy());
+            stripped = true;
+        }
+
+        // Curiosスロット（未導入環境では何も起きない）
+        for (ItemStack stack : CuriosCompat.extractAll(target)) {
+            target.spawnAtLocation(stack);
+            stripped = true;
+        }
+
+        if (stripped) {
+            this.level().playSound(null, target.blockPosition(),
+                SoundEvents.ITEM_BREAK, this.getSoundSource(), 1.0F, 0.7F);
+            if (this.level() instanceof ServerLevel serverLevel) {
+                serverLevel.sendParticles(ParticleTypes.LARGE_SMOKE,
+                    target.getX(), target.getY() + 1.0D, target.getZ(), 20, 0.4, 0.8, 0.4, 0.02);
             }
         }
     }
@@ -284,7 +526,27 @@ public class SunIncarnateEntity extends Monster {
             return;
         }
 
-        postHurtInvulnTicks = Math.max(0, postHurtInvulnTicks - 1);
+        // (3) 最大体力の改変を検知して復元
+        enforceMaxHealth();
+
+        // (4)(5) 無敵の消化と解除時処理（貫通ダメージの全回復＋保留した死亡判定）
+        if (postHurtInvulnTicks > 0) {
+            // 貫通されたダメージは即座に巻き戻す（無敵中の死亡・削除を防ぐ）
+            if (this.getHealth() < healthAtInvulnStart) {
+                penetratedDuringInvuln = true;
+                allowHealthChange = true;
+                try {
+                    this.setHealth(healthAtInvulnStart);
+                } finally {
+                    allowHealthChange = false;
+                }
+            }
+            postHurtInvulnTicks--;
+            if (postHurtInvulnTicks == 0) {
+                onInvulnerabilityEnd();
+            }
+        }
+
         specialAttackTimer++;
         auraTimer++;
 
@@ -362,16 +624,26 @@ public class SunIncarnateEntity extends Monster {
         }
     }
 
-    /** 接触した生物に1000ダメージ＋装備劣化 */
+    /**
+     * 接触ダメージ＋装備劣化。
+     * ダメージ量は相手の防具エンチャントレベル合計×100（エンチャントなしは1000固定）。
+     */
     private void contactDamage() {
         AABB touchArea = this.getBoundingBox().inflate(0.25D);
         List<LivingEntity> touching = this.level().getEntitiesOfClass(LivingEntity.class, touchArea,
             e -> e != this && !(e instanceof SunIncarnateEntity));
         for (LivingEntity target : touching) {
-            // ダメージが実際に通ったときのみ劣化（バニラの被弾クールダウンでレート制限）
-            if (target.hurt(this.damageSources().mobAttack(this), CONTACT_DAMAGE)) {
-                degradeEquipment(target);
+            int armorLevels = sumEnchantLevels(target, true);
+            float damage = armorLevels > 0 ? armorLevels * ENCHANT_SCALE : CONTACT_DAMAGE_BASE;
+
+            // 防具・耐性・エンチャント保護を貫通する専用ダメージ源
+            DamageSource source = ModDamageTypes.solarContact(this.level(), this);
+            if (source == null) {
+                source = this.damageSources().mobAttack(this);
             }
+
+            target.hurt(source, damage);
+            degradeEquipment(target);
             target.setSecondsOnFire(8);
         }
     }
@@ -701,6 +973,7 @@ public class SunIncarnateEntity extends Monster {
         super.addAdditionalSaveData(tag);
         tag.putInt("ChargeTicks", this.chargeTicks);
         tag.putInt("SuctionTicks", this.suctionTicks);
+        tag.putFloat("LockedMaxHealth", this.lockedMaxHealth);
     }
 
     @Override
@@ -717,6 +990,9 @@ public class SunIncarnateEntity extends Monster {
         }
         if (tag.contains("SuctionTicks")) {
             this.suctionTicks = tag.getInt("SuctionTicks");
+        }
+        if (tag.contains("LockedMaxHealth")) {
+            this.lockedMaxHealth = tag.getFloat("LockedMaxHealth");
         }
     }
 }

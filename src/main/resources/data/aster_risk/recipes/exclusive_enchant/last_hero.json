@@ -1,0 +1,9 @@
+{
+    "type": "aster_risk:exclusive_enchant",
+    "pattern": "GUARDIAN_OATH",
+    "enchantment": "aster_risk:last_hero",
+    "base_cost": 1200,
+    "max_level": 2,
+    "item_type": "armor",
+    "description": "Spend experience to endure a lethal blow"
+}

@@ -94,6 +94,16 @@ public class ModEnchantments {
         REGISTRY.register("mana_beam", ManaBeamEnchantment::new);
     
     // 10. 星の昇華 - 他エンチャントのレベルを上げる
-    public static final RegistryObject<Enchantment> STELLAR_ASCENSION = 
+    public static final RegistryObject<Enchantment> STELLAR_ASCENSION =
         REGISTRY.register("stellar_ascension", StellarAscensionEnchantment::new);
+
+    // ===== バランス調整用（Celestial Enchanting Table専用） =====
+
+    // 最後の英雄 - 死亡時に経験値を消費して食いしばり（最大2）
+    public static final RegistryObject<Enchantment> LAST_HERO =
+        REGISTRY.register("last_hero", LastHeroEnchantment::new);
+
+    // 耐久保持 - 耐久1/4以下でレベルを1消費して全回復（最大7）
+    public static final RegistryObject<Enchantment> DURABILITY_RETENTION =
+        REGISTRY.register("durability_retention", DurabilityRetentionEnchantment::new);
 }

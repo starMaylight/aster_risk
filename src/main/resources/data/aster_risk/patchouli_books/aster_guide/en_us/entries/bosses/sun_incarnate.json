@@ -6,7 +6,7 @@
     "pages": [
         {
             "type": "patchouli:text",
-            "text": "The $(stellar)Sun Incarnate$() is solar fury given form - the mightiest being known to Aster Risk.$(br2)$(l)Stats:$()$(br)$(li)Health: 4000$(li)Attack/Armor: 50 $(l)+10 per enchantment$() on your gear$(li)Ignites on hit$(li)While it lives, the skies are $(l)forced clear$()$(br2)Calling it down requires forging the $(item)Sun Meteor Core$() through a four-stage ritual chain."
+            "text": "The $(stellar)Sun Incarnate$() is solar fury given form - the mightiest being known to Aster Risk.$(br2)$(l)Stats:$()$(br)$(li)Health: 4000$(li)Attack/Armor: 50 $(l)+10 per enchantment$() on your gear$(li)Ignites on hit$(li)While it lives, the skies are $(l)forced clear$()$(br2)$(4)Its health cannot be rewritten, its ticking cannot be halted, and wounds dealt through its guard are $(l)healed back twofold$().$(br2)Calling it down requires forging the $(item)Sun Meteor Core$() through a four-stage ritual chain."
         },
         {
             "type": "patchouli:text",
@@ -16,7 +16,12 @@
         {
             "type": "patchouli:text",
             "title": "Rules of the Sun",
-            "text": "$(l)Unique battle rules:$()$(br)$(li)Attacks from beyond $(l)20 blocks$() are nullified$(li)Becomes $(l)invulnerable for 1 second$() after each hit$(li)Any single blow exceeding its max health is $(l)reflected back$() at the attacker$(li)Immune to fire and explosions$(li)Touching it deals $(l)1000 damage$()$(li)Contact and reflection $(l)scorch your equipment$() - 10% max durability per hit; gear without durability is $(l)incinerated$()$(li)Everything within 20 blocks is set ablaze$(li)Liquids within 20 blocks evaporate"
+            "text": "$(l)Unique battle rules:$()$(br)$(li)Attacks from beyond $(l)20 blocks$() are nullified$(li)Becomes $(l)invulnerable for 1 second$() after each hit$(li)Any single blow exceeding its max health is $(l)reflected back$() at the attacker$(li)Immune to fire and explosions$(li)Contact and reflection $(l)scorch your equipment$() - 10% max durability per hit; gear without durability is $(l)incinerated$()$(li)Everything within 20 blocks is set ablaze$(li)Liquids within 20 blocks evaporate"
+        },
+        {
+            "type": "patchouli:text",
+            "title": "The Enchantment Curse",
+            "text": "The sun feeds on woven magic. $(l)Every enchantment you carry strengthens it.$()$(br2)$(li)$(l)Attack & Armor:$() 50 $(l)+10 per enchantment$() on your gear$(br2)$(li)$(l)Contact damage:$() your $(l)armor enchantment levels x100$() (a flat 1000 if unenchanted)$(br2)$(li)$(l)Damage cap per hit:$() (armor enchant levels - $(l)weapon$() enchant levels) x100. Minimum 10, capped at half its health.$(br2)$(4)A heavily enchanted weapon $(l)lowers$() your own damage ceiling. Choose your loadout with care."
         },
         {
             "type": "patchouli:text",

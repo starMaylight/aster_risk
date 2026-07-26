@@ -1,0 +1,12 @@
+{
+    "type": "focus",
+    "name": "ETERNAL_FORGE",
+    "description": "An unending anvil - four flanks and a high spark",
+    "positions": [
+        {"x": 2, "y": 1, "z": 1},
+        {"x": 2, "y": 1, "z": -1},
+        {"x": -2, "y": 1, "z": 1},
+        {"x": -2, "y": 1, "z": -1},
+        {"x": 0, "y": 3, "z": 0}
+    ]
+}

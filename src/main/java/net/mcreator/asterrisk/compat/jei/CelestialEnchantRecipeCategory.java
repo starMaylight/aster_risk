@@ -136,6 +136,8 @@ public class CelestialEnchantRecipeCategory implements IRecipeCategory<Celestial
             case "MANA_FOCUS" -> "Mana Focus";
             case "STELLAR_CORE" -> "Stellar Core";
             case "REVERSAL" -> "Reversal";
+            case "GUARDIAN_OATH" -> "Guardian Oath";
+            case "ETERNAL_FORGE" -> "Eternal Forge";
             default -> pattern;
         };
     }

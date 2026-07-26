@@ -4,7 +4,7 @@ license="MIT License"
 
 [[mods]]
 modId="aster_risk"
-version="1.4.0"
+version="1.4.2"
 displayName="Aster Risk"
 displayURL="https://github.com/starMaylight/aster_risk"
 logoFile="logo.png"

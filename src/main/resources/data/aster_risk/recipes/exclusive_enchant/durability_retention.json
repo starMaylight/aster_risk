@@ -1,0 +1,9 @@
+{
+    "type": "aster_risk:exclusive_enchant",
+    "pattern": "ETERNAL_FORGE",
+    "enchantment": "aster_risk:durability_retention",
+    "base_cost": 700,
+    "max_level": 7,
+    "item_type": "damageable",
+    "description": "Consume a level to fully repair when nearly broken"
+}
