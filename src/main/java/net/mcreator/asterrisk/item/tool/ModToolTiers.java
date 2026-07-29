@@ -22,7 +22,10 @@ public enum ModToolTiers implements Tier {
     METEORITE(3, 2000, 7.5f, 6.0f, 12, () -> Ingredient.of(ModItems.METEORITE_FRAGMENT.get())),
     
     // 虹色隕石: 最高級
-    PRISMATIC(4, 3000, 11.0f, 8.0f, 25, () -> Ingredient.of(ModItems.PRISMATIC_METEORITE.get()));
+    PRISMATIC(4, 3000, 11.0f, 8.0f, 25, () -> Ingredient.of(ModItems.PRISMATIC_METEORITE.get())),
+
+    // 太陽: 最終装備。陽の化身のドロップでのみ修理可能
+    SOLAR(4, 4000, 12.0f, 9.0f, 30, () -> Ingredient.of(ModItems.SUN_FRAGMENT.get()));
 
     private final int level;
     private final int uses;

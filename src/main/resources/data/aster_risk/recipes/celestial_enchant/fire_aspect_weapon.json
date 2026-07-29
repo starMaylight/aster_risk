@@ -2,7 +2,7 @@
     "type": "aster_risk:celestial_enchant",
     "pattern": "STELLAR_CORE",
     "input": {
-        "tag": "forge:tools/swords"
+        "tag": "aster_risk:enchantable_swords"
     },
     "enchantment": "minecraft:fire_aspect",
     "level": 2,

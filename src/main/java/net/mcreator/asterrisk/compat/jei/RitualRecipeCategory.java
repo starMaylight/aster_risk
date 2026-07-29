@@ -11,6 +11,8 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.mcreator.asterrisk.AsterRiskMod;
 import net.mcreator.asterrisk.block.entity.ObeliskEnergyType;
+
+import java.util.Map;
 import net.mcreator.asterrisk.registry.ModBlocks;
 import net.mcreator.asterrisk.recipe.RitualRecipe;
 import net.minecraft.client.Minecraft;
@@ -101,36 +103,55 @@ public class RitualRecipeCategory implements IRecipeCategory<RitualRecipe> {
         
         // 矢印を描画
         guiGraphics.drawString(font, ">>>", 100, 25, 0x555555, false);
-        
+
         // マナコスト表示
-        String manaText = "Mana: " + (int) recipe.getManaCost();
-        guiGraphics.drawString(font, manaText, 5, HEIGHT - 25, 0x9966FF, false);
-        
-        // オベリスクエネルギー要求表示
-        if (recipe.requiresObeliskEnergy()) {
-            ObeliskEnergyType type = recipe.getRequiredEnergyType();
-            int amount = recipe.getRequiredEnergyAmount();
-            
-            String typeName = type != null ? type.getName() : "unknown";
-            typeName = typeName.substring(0, 1).toUpperCase() + typeName.substring(1);
-            
-            int color = type != null ? type.getColor() : 0xFFFFFF;
-            
-            String energyText = typeName + " Energy: " + amount;
-            guiGraphics.drawString(font, energyText, 5, HEIGHT - 12, color, false);
-            
-            // アイコン表示（オベリスクの種類を示す）
-            String icon = switch (type) {
-                case LUNAR -> "☽";
-                case STELLAR -> "★";
-                case SOLAR -> "☀";
-                case VOID -> "◯";
-                default -> "?";
-            };
-            guiGraphics.drawString(font, icon, WIDTH - 15, HEIGHT - 12, color, false);
-        } else {
-            // エネルギー不要の場合
-            guiGraphics.drawString(font, "No special energy required", 5, HEIGHT - 12, 0x888888, false);
+        guiGraphics.drawString(font,
+            Component.translatable("gui.aster_risk.jei.mana", (int) recipe.getManaCost()),
+            5, HEIGHT - 25, 0x9966FF, false);
+
+        drawEnergyRequirements(guiGraphics, font, recipe);
+    }
+
+    /**
+     * オベリスクエネルギー要求の描画。
+     * 複数種のエネルギーを要求するレシピにも対応し、横に並べて表示する。
+     */
+    private void drawEnergyRequirements(GuiGraphics guiGraphics, Font font, RitualRecipe recipe) {
+        int lineY = HEIGHT - 12;
+
+        // 全オベリスク必須のレシピ
+        if (recipe.requiresAllObelisks()) {
+            guiGraphics.drawString(font,
+                Component.translatable("gui.aster_risk.jei.all_obelisks"),
+                5, lineY, 0xFFAA00, false);
+            return;
         }
+
+        Map<ObeliskEnergyType, Integer> energies = recipe.getRequiredEnergies();
+        if (energies.isEmpty()) {
+            guiGraphics.drawString(font,
+                Component.translatable("gui.aster_risk.jei.no_energy"),
+                5, lineY, 0x888888, false);
+            return;
+        }
+
+        // 複数エネルギーを横に並べる（アイコン + 数量）
+        int x = 5;
+        for (Map.Entry<ObeliskEnergyType, Integer> entry : energies.entrySet()) {
+            ObeliskEnergyType type = entry.getKey();
+            String text = energyIcon(type) + entry.getValue();
+            guiGraphics.drawString(font, text, x, lineY, type.getColor(), false);
+            x += font.width(text) + 6;
+        }
+    }
+
+    private static String energyIcon(ObeliskEnergyType type) {
+        if (type == null) return "?";
+        return switch (type) {
+            case LUNAR -> "☽";
+            case STELLAR -> "★";
+            case SOLAR -> "☀";
+            case VOID -> "◯";
+        };
     }
 }

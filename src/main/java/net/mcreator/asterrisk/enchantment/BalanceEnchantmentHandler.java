@@ -18,6 +18,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -39,12 +41,50 @@ public class BalanceEnchantmentHandler {
 
     // ===== 最後の英雄 =====
 
+    /**
+     * 致死ダメージそのものを打ち消す（連続攻撃でも経験値が続く限り耐え続ける）。
+     * LOWESTで受けることで、他modによる軽減がすべて済んだ最終ダメージ値で判定する。
+     */
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void onLivingDamage(LivingDamageEvent event) {
+        if (!(event.getEntity() instanceof Player player)) return;
+        if (player.level().isClientSide()) return;
+        if (player.isCreative() || player.isSpectator()) return;
+
+        // /kill など強制death系は食いしばれない
+        if (event.getSource().is(DamageTypes.GENERIC_KILL)) return;
+
+        // 致死でなければ何もしない（吸収シールドも考慮）
+        float effectiveHealth = player.getHealth() + player.getAbsorptionAmount();
+        if (event.getAmount() < effectiveHealth) return;
+
+        if (!tryEndure(player)) return;
+
+        // ダメージ自体を無効化することで死亡判定に到達させない
+        event.setAmount(0.0F);
+        event.setCanceled(true);
+    }
+
+    /**
+     * 死亡イベント側の保険。
+     * LivingDamageEventを経由しない死因（直接setHealth等）に対応する。
+     */
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void onLivingDeath(LivingDeathEvent event) {
         if (!(event.getEntity() instanceof Player player)) return;
         if (player.level().isClientSide()) return;
         if (player.isCreative() || player.isSpectator()) return;
+        if (event.getSource().is(DamageTypes.GENERIC_KILL)) return;
 
+        if (!tryEndure(player)) return;
+        event.setCanceled(true);
+    }
+
+    /**
+     * 経験値を消費して食いしばりを試みる。
+     * @return 発動できたらtrue
+     */
+    private static boolean tryEndure(Player player) {
         // 防具4部位のうち最も高いレベルを採用
         int enchantLevel = 0;
         for (EquipmentSlot slot : EquipmentSlot.values()) {
@@ -54,22 +94,24 @@ public class BalanceEnchantmentHandler {
             enchantLevel = Math.max(enchantLevel,
                 EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.LAST_HERO.get(), stack));
         }
-        if (enchantLevel <= 0) return;
+        if (enchantLevel <= 0) return false;
 
         // 経験値が足りなければ発動しない
         int cost = LastHeroEnchantment.getXpLevelCost(enchantLevel);
-        if (player.experienceLevel < cost) return;
+        if (player.experienceLevel < cost) return false;
 
         player.giveExperienceLevels(-cost);
-        event.setCanceled(true);
 
         // 復活処理
         player.setHealth(Math.max(1.0F, player.getMaxHealth() * 0.3F));
+        player.setAbsorptionAmount(0.0F);
         player.removeAllEffects();
         player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 1));
         player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 100, 1));
         player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 200, 0));
         player.clearFire();
+        // 連撃の次の一撃までにわずかな猶予を与える
+        player.invulnerableTime = Math.max(player.invulnerableTime, 20);
 
         player.displayClientMessage(
             Component.translatable("message.aster_risk.last_hero.triggered", cost)
@@ -82,6 +124,7 @@ public class BalanceEnchantmentHandler {
             serverLevel.sendParticles(ParticleTypes.TOTEM_OF_UNDYING,
                 player.getX(), player.getY() + 1.0D, player.getZ(), 60, 0.5, 1.0, 0.5, 0.3);
         }
+        return true;
     }
 
     // ===== 耐久保持 =====

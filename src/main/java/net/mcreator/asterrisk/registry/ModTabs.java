@@ -182,6 +182,7 @@ public class ModTabs {
             event.accept(ModItems.ENHANCED_GOLD.get());
             event.accept(ModItems.RADIANT_DIAMOND.get());
             event.accept(ModItems.STARDUST_CATALYST.get());
+            event.accept(ModItems.SUN_FRAGMENT.get());
             event.accept(ModItems.UNSTABLE_CORE.get());
             event.accept(ModItems.STABLE_FULL_MOON_CORE.get());
 
@@ -218,6 +219,7 @@ public class ModTabs {
 
             // === 新武器 ===
             event.accept(ModItems.PRISMATIC_GREATSWORD.get());
+            event.accept(ModItems.SUN_SWORD.get());
             event.accept(ModItems.VOID_DAGGER.get());
             event.accept(ModItems.SHADOW_SCYTHE.get());
 

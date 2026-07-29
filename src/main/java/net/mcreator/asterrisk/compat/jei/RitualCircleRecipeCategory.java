@@ -161,12 +161,15 @@ public class RitualCircleRecipeCategory implements IRecipeCategory<RitualCircleR
         Font font = Minecraft.getInstance().font;
         
         // パターン名
-        String patternName = "Pattern: " + recipe.getPattern();
-        guiGraphics.drawString(font, patternName, 0, 120, 0x555555, false);
-        
+        guiGraphics.drawString(font,
+            Component.translatable("gui.aster_risk.jei.pattern",
+                JeiTextHelper.patternName(recipe.getPattern())),
+            0, 120, 0x555555, false);
+
         // マナコスト
-        String manaCost = "Mana: " + recipe.getManaCost();
-        guiGraphics.drawString(font, manaCost, 100, 120, 0x5555FF, false);
+        guiGraphics.drawString(font,
+            Component.translatable("gui.aster_risk.jei.mana", recipe.getManaCost()),
+            100, 120, 0x5555FF, false);
         
         // 魔法陣の円を描画
         drawRitualCircle(guiGraphics, 80, 62);

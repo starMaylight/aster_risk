@@ -2,7 +2,7 @@
     "type": "aster_risk:celestial_enchant",
     "pattern": "CONSTELLATION",
     "input": {
-        "tag": "forge:tools"
+        "tag": "aster_risk:enchantable_tools"
     },
     "enchantment": "minecraft:unbreaking",
     "level": 3,

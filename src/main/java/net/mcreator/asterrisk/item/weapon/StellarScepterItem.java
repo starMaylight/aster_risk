@@ -1,6 +1,10 @@
 package net.mcreator.asterrisk.item.weapon;
 
+import net.mcreator.asterrisk.entity.SunIncarnateEntity;
 import net.mcreator.asterrisk.mana.LunarManaCapability;
+import net.mcreator.asterrisk.util.SolarCombatHelper;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.mcreator.asterrisk.util.TooltipHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleTypes;
@@ -38,6 +42,13 @@ public class StellarScepterItem extends Item {
         super(properties.stacksTo(1).rarity(Rarity.EPIC).fireResistant().durability(500));
     }
     
+    /**
+     * 貫通攻撃としてダメージを与える（共通ロジックへ委譲）。
+     */
+    private static void dealPiercingDamage(Player player, LivingEntity target) {
+        SolarCombatHelper.dealPiercingDamage(target, player.damageSources().magic(), DAMAGE);
+    }
+
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
@@ -97,8 +108,8 @@ public class StellarScepterItem extends Item {
                     double distance = closestPoint.distanceTo(target.position().add(0, target.getBbHeight() / 2, 0));
                     
                     if (distance < 2.0) {
-                        target.hurt(player.damageSources().magic(), DAMAGE);
-                        
+                        dealPiercingDamage(player, target);
+
                         // ヒットエフェクト
                         serverLevel.sendParticles(ParticleTypes.FLASH,
                             target.getX(), target.getY() + target.getBbHeight() / 2, target.getZ(),
@@ -128,6 +139,7 @@ public class StellarScepterItem extends Item {
         TooltipHelper.addHeader(tooltip, ChatFormatting.GOLD, "tooltip.aster_risk.stellar_scepter.header");
         TooltipHelper.addStat(tooltip, ChatFormatting.YELLOW, "tooltip.aster_risk.stellar_scepter.action");
         TooltipHelper.addStat(tooltip, ChatFormatting.GRAY, "tooltip.aster_risk.stat.damage", (int) DAMAGE);
+        TooltipHelper.addStat(tooltip, ChatFormatting.LIGHT_PURPLE, "tooltip.aster_risk.stellar_scepter.piercing");
         TooltipHelper.addStat(tooltip, ChatFormatting.BLUE, "tooltip.aster_risk.stat.mana_cost", MANA_COST);
         TooltipHelper.addDescription(tooltip, "tooltip.aster_risk.stellar_scepter.flavor");
     }

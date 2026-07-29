@@ -4,10 +4,14 @@ import net.mcreator.asterrisk.AsterRiskMod;
 import net.mcreator.asterrisk.compat.CuriosCompat;
 import net.mcreator.asterrisk.damage.ModDamageTypes;
 import net.mcreator.asterrisk.registry.ModSounds;
+import net.mcreator.asterrisk.util.SolarCombatHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -92,6 +96,13 @@ public class SunIncarnateEntity extends Monster {
     /** 被弾後の無敵時間（tick） */
     private static final int POST_HURT_INVULN = 20;
 
+    /**
+     * 貫通攻撃を受けている最中かどうか（Stellar Scepter等が設定）。
+     * SynchedEntityData経由でクライアントにも同期し、演出にも利用する。
+     */
+    private static final EntityDataAccessor<Boolean> DATA_PIERCED =
+        SynchedEntityData.defineId(SunIncarnateEntity.class, EntityDataSerializers.BOOLEAN);
+
     private final ServerBossEvent bossEvent = new ServerBossEvent(
         Component.translatable("entity.aster_risk.sun_incarnate"),
         BossEvent.BossBarColor.YELLOW,
@@ -146,6 +157,33 @@ public class SunIncarnateEntity extends Monster {
 
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
+    }
+
+    @Override
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(DATA_PIERCED, false);
+    }
+
+    /**
+     * 貫通攻撃属性の設定。
+     * trueの間は被ダメージ上限と射程制限を無視してダメージが通る。
+     */
+    public void setPierced(boolean pierced) {
+        this.entityData.set(DATA_PIERCED, pierced);
+    }
+
+    public boolean isPierced() {
+        return this.entityData.get(DATA_PIERCED);
+    }
+
+    /**
+     * 貫通攻撃によって削られた体力を正規のダメージとして受理する。
+     * 無敵中の巻き戻し（および解除時の全回復）の対象から外すため、
+     * 基準体力を現在値まで引き下げる。
+     */
+    public void acceptPiercingDamage() {
+        this.healthAtInvulnStart = Math.min(this.healthAtInvulnStart, this.getHealth());
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -214,15 +252,18 @@ public class SunIncarnateEntity extends Monster {
         if (postHurtInvulnTicks > 0) {
             return false;
         }
-        // 半径20ブロックより外からの攻撃は無効
-        Vec3 sourcePos = null;
-        if (source.getEntity() != null) {
-            sourcePos = source.getEntity().position();
-        } else if (source.getSourcePosition() != null) {
-            sourcePos = source.getSourcePosition();
-        }
-        if (sourcePos != null && this.position().distanceTo(sourcePos) > EFFECT_RADIUS) {
-            return false;
+        // 貫通攻撃は射程制限を無視する
+        if (!isPierced()) {
+            // 半径20ブロックより外からの攻撃は無効
+            Vec3 sourcePos = null;
+            if (source.getEntity() != null) {
+                sourcePos = source.getEntity().position();
+            } else if (source.getSourcePosition() != null) {
+                sourcePos = source.getSourcePosition();
+            }
+            if (sourcePos != null && this.position().distanceTo(sourcePos) > EFFECT_RADIUS) {
+                return false;
+            }
         }
         // 最大体力以上の一撃はダメージを攻撃者へ移し替える
         if (amount >= this.getMaxHealth()) {
@@ -237,8 +278,8 @@ public class SunIncarnateEntity extends Monster {
             return false;
         }
 
-        // 1回あたりの被ダメージ上限を適用
-        float capped = Math.min(amount, computeDamageCap(source));
+        // 1回あたりの被ダメージ上限を適用（貫通攻撃は上限を無視）
+        float capped = isPierced() ? amount : Math.min(amount, computeDamageCap(source));
 
         boolean result = super.hurt(source, capped);
         if (result) {
@@ -431,88 +472,10 @@ public class SunIncarnateEntity extends Monster {
 
     /**
      * 装備劣化: 全装備スロットの耐久値を最大値の10%分減らす。
-     *
-     * 耐久削減も破壊も通らなかった場合（Unbreakableや耐久保護系mod等）は、
-     * 防具スロットとCuriosスロットの装備をすべて剥ぎ取ってその場にドロップさせる。
+     * 耐久値を持たない防具・武器は強制的に外してその場にドロップさせる。
      */
     private void degradeEquipment(LivingEntity target) {
-        if (target instanceof Player player && (player.isCreative() || player.isSpectator())) {
-            return;
-        }
-
-        boolean degradeBlocked = false;
-
-        for (EquipmentSlot slot : EquipmentSlot.values()) {
-            ItemStack stack = target.getItemBySlot(slot);
-            if (stack.isEmpty()) continue;
-
-            if (stack.isDamageableItem()) {
-                int damageBefore = stack.getDamageValue();
-                int loss = Math.max(1, stack.getMaxDamage() / 10);
-                stack.hurtAndBreak(loss, target, e -> e.broadcastBreakEvent(slot));
-
-                // 破壊もされず耐久も減っていない = 劣化が阻止された
-                ItemStack after = target.getItemBySlot(slot);
-                if (!after.isEmpty() && after.getDamageValue() <= damageBefore) {
-                    degradeBlocked = true;
-                }
-            } else if (isArmorOrWeapon(stack, slot)) {
-                // そもそも耐久値を持たない装備
-                degradeBlocked = true;
-            }
-        }
-
-        if (degradeBlocked) {
-            stripProtectionToGround(target);
-        }
-    }
-
-    /**
-     * 防具スロットとCuriosスロットの装備をすべて剥ぎ取り、その場にドロップさせる。
-     */
-    private void stripProtectionToGround(LivingEntity target) {
-        boolean stripped = false;
-
-        // 防具スロット
-        for (EquipmentSlot slot : EquipmentSlot.values()) {
-            if (!slot.isArmor()) continue;
-            ItemStack stack = target.getItemBySlot(slot);
-            if (stack.isEmpty()) continue;
-
-            target.setItemSlot(slot, ItemStack.EMPTY);
-            target.spawnAtLocation(stack.copy());
-            stripped = true;
-        }
-
-        // Curiosスロット（未導入環境では何も起きない）
-        for (ItemStack stack : CuriosCompat.extractAll(target)) {
-            target.spawnAtLocation(stack);
-            stripped = true;
-        }
-
-        if (stripped) {
-            this.level().playSound(null, target.blockPosition(),
-                SoundEvents.ITEM_BREAK, this.getSoundSource(), 1.0F, 0.7F);
-            if (this.level() instanceof ServerLevel serverLevel) {
-                serverLevel.sendParticles(ParticleTypes.LARGE_SMOKE,
-                    target.getX(), target.getY() + 1.0D, target.getZ(), 20, 0.4, 0.8, 0.4, 0.02);
-            }
-        }
-    }
-
-    /** 焼失対象（防具または武器）かどうかの判定 */
-    private boolean isArmorOrWeapon(ItemStack stack, EquipmentSlot slot) {
-        // 防具スロットに装備している物は防具とみなす
-        if (slot.isArmor()) {
-            return true;
-        }
-        Item item = stack.getItem();
-        if (item instanceof SwordItem || item instanceof DiggerItem
-                || item instanceof TridentItem || item instanceof ProjectileWeaponItem) {
-            return true;
-        }
-        // 攻撃力修飾子を持つアイテムも武器とみなす
-        return !stack.getAttributeModifiers(slot).get(Attributes.ATTACK_DAMAGE).isEmpty();
+        SolarCombatHelper.degradeEquipment(target, this);
     }
 
     // ===== メインループ =====

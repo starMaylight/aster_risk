@@ -1,0 +1,13 @@
+{
+    "type": "aster_risk:focus_chamber",
+    "ingredients": [
+        { "item": "aster_risk:sun_fragment" },
+        { "item": "aster_risk:prismatic_greatsword" }
+    ],
+    "result": {
+        "item": "aster_risk:sun_sword",
+        "count": 1
+    },
+    "moonlight_cost": 2000,
+    "description": "Forge the fragment of the sun into a prismatic blade"
+}

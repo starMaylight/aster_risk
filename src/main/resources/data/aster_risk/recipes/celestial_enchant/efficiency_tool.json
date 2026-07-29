@@ -2,7 +2,7 @@
     "type": "aster_risk:celestial_enchant",
     "pattern": "MANA_FOCUS",
     "input": {
-        "tag": "forge:tools"
+        "tag": "aster_risk:enchantable_tools"
     },
     "enchantment": "minecraft:efficiency",
     "level": 5,

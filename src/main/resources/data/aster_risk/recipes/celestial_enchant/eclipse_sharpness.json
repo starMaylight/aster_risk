@@ -2,7 +2,7 @@
     "type": "aster_risk:celestial_enchant",
     "pattern": "ECLIPSE_RING",
     "input": {
-        "tag": "forge:tools/swords"
+        "tag": "aster_risk:enchantable_swords"
     },
     "enchantment": "minecraft:sharpness",
     "level": 5,

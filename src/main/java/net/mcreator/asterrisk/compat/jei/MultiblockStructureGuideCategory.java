@@ -107,8 +107,8 @@ public class MultiblockStructureGuideCategory implements IRecipeCategory<Multibl
     
     // ===== Ritual Circle =====
     private void drawRitualCircleGuide(GuiGraphics guiGraphics, Font font, StructureGuide recipe) {
-        guiGraphics.drawString(font, "Pattern: " + recipe.getPatternName(), 5, 25, 0x333333, false);
-        guiGraphics.drawString(font, "Pedestals: " + recipe.getPositions().size(), 100, 25, 0x666666, false);
+        guiGraphics.drawString(font, Component.translatable("gui.aster_risk.jei.pattern", JeiTextHelper.patternName(recipe.getPatternName())), 5, 25, 0x333333, false);
+        guiGraphics.drawString(font, Component.translatable("gui.aster_risk.jei.pedestals", recipe.getPositions().size()), 100, 25, 0x666666, false);
 
         // パターンの最大半径に合わせたグリッド（上から見た図）
         int gridRadius = 2;
@@ -273,8 +273,8 @@ public class MultiblockStructureGuideCategory implements IRecipeCategory<Multibl
     
     // ===== Celestial Enchant - Focus Pattern =====
     private void drawCelestialFocusGuide(GuiGraphics guiGraphics, Font font, StructureGuide recipe) {
-        guiGraphics.drawString(font, "Pattern: " + recipe.getPatternName(), 5, 25, 0x333333, false);
-        guiGraphics.drawString(font, "Focus: " + recipe.getPositions().size(), 120, 25, 0x666666, false);
+        guiGraphics.drawString(font, Component.translatable("gui.aster_risk.jei.pattern", JeiTextHelper.patternName(recipe.getPatternName())), 5, 25, 0x333333, false);
+        guiGraphics.drawString(font, Component.translatable("gui.aster_risk.jei.focus_count", recipe.getPositions().size()), 120, 25, 0x666666, false);
         
         int gridStartX = 30;
         int gridStartY = 40;

@@ -86,8 +86,15 @@ public class AsterRiskJeiPlugin implements IModPlugin {
             List<FocusChamberRecipe> focusChamberRecipes = recipeManager.getAllRecipesFor(ModRecipes.FOCUS_CHAMBER_TYPE.get());
             registration.addRecipes(FocusChamberRecipeCategory.RECIPE_TYPE, focusChamberRecipes);
             
-            List<CelestialEnchantRecipe> celestialEnchantRecipes = recipeManager.getAllRecipesFor(ModRecipes.CELESTIAL_ENCHANT_TYPE.get());
-            registration.addRecipes(CelestialEnchantRecipeCategory.RECIPE_TYPE, celestialEnchantRecipes);
+            // 天体エンチャント（通常レシピ + 専用エンチャントを統合表示）
+            List<CelestialEnchantEntry> enchantEntries = new java.util.ArrayList<>();
+            for (CelestialEnchantRecipe recipe : recipeManager.getAllRecipesFor(ModRecipes.CELESTIAL_ENCHANT_TYPE.get())) {
+                enchantEntries.add(CelestialEnchantEntry.of(recipe));
+            }
+            for (var exclusive : ExclusiveEnchantRecipeManager.getInstance().getAllRecipes()) {
+                enchantEntries.add(CelestialEnchantEntry.of(exclusive));
+            }
+            registration.addRecipes(CelestialEnchantRecipeCategory.RECIPE_TYPE, enchantEntries);
             
             // マルチブロック構造ガイド（静的データ）
             registration.addRecipes(MultiblockStructureGuideCategory.RECIPE_TYPE, MultiblockStructureGuideCategory.getAllGuides());
@@ -146,6 +153,10 @@ public class AsterRiskJeiPlugin implements IModPlugin {
             // 天体エンチャント
             registration.addRecipeCatalyst(
                 new ItemStack(ModBlocks.CELESTIAL_ENCHANTING_TABLE.get()),
+                CelestialEnchantRecipeCategory.RECIPE_TYPE
+            );
+            registration.addRecipeCatalyst(
+                new ItemStack(ModBlocks.MOONLIGHT_FOCUS.get()),
                 CelestialEnchantRecipeCategory.RECIPE_TYPE
             );
             

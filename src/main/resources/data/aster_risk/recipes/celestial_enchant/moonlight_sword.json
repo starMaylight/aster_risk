@@ -2,7 +2,7 @@
     "type": "aster_risk:celestial_enchant",
     "pattern": "LUNAR_CRESCENT",
     "input": {
-        "tag": "forge:tools/swords"
+        "tag": "aster_risk:enchantable_swords"
     },
     "enchantment": "aster_risk:moonlight",
     "level": 5,

@@ -21,6 +21,7 @@ import net.mcreator.asterrisk.item.armor.MeteoriteArmorItem;
 import net.mcreator.asterrisk.item.armor.LunarArmorItem;
 import net.mcreator.asterrisk.item.armor.EclipseArmorItem;
 import net.mcreator.asterrisk.item.VoidShardItem;
+import net.mcreator.asterrisk.item.SunFragmentItem;
 import net.mcreator.asterrisk.item.UnstableCoreItem;
 import net.mcreator.asterrisk.item.StableFullMoonCoreItem;
 import net.mcreator.asterrisk.item.StellarHeartItem;
@@ -189,6 +190,9 @@ public class ModItems {
 	public static final RegistryObject<Item> RADIANT_DIAMOND = REGISTRY.register("radiant_diamond", RadiantDiamondItem::new);
 	public static final RegistryObject<Item> STARDUST_CATALYST = REGISTRY.register("stardust_catalyst", StardustCatalystItem::new);
 
+	// 陽の化身 ドロップ素材
+	public static final RegistryObject<Item> SUN_FRAGMENT = REGISTRY.register("sun_fragment", SunFragmentItem::new);
+
 	// 陽の化身 召喚素材
 	public static final RegistryObject<Item> UNSTABLE_CORE = REGISTRY.register("unstable_core", UnstableCoreItem::new);
 	public static final RegistryObject<Item> STABLE_FULL_MOON_CORE = REGISTRY.register("stable_full_moon_core", StableFullMoonCoreItem::new);
@@ -238,6 +242,7 @@ public class ModItems {
 
 	// 新武器
 	public static final RegistryObject<Item> PRISMATIC_GREATSWORD = REGISTRY.register("prismatic_greatsword", () -> new net.mcreator.asterrisk.item.weapon.PrismaticGreatswordItem(new Item.Properties()));
+	public static final RegistryObject<Item> SUN_SWORD = REGISTRY.register("sun_sword", () -> new net.mcreator.asterrisk.item.weapon.SunSwordItem(new Item.Properties()));
 	public static final RegistryObject<Item> VOID_DAGGER = REGISTRY.register("void_dagger", () -> new net.mcreator.asterrisk.item.weapon.VoidDaggerItem(new Item.Properties()));
 	public static final RegistryObject<Item> SHADOW_SCYTHE = REGISTRY.register("shadow_scythe", () -> new net.mcreator.asterrisk.item.weapon.ShadowScytheItem(new Item.Properties()));
 
